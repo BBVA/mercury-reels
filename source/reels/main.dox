@@ -1,0 +1,46 @@
+/**
+\mainpage [Programming documentation for Reels]
+
+\section reels_diag Reels Classes Diagram (across languages)
+
+This diagram shows the different classes implemented in each language. \n
+
+![Reels Classes](../../images/reels_classes.png)
+
+The maturity level of the different classes is:\n
+
+Maturity | Description
+-------- | -----------
+nothing  | Code is complete and tested.
+[TEST]   | Code is complete, but testing is not complete.
+[PROTO]  | Code under active development, possibly working, but not release quality.
+[DRAFT]  | Code under active development, PoC and API closed.
+[FUTURE] | Code not under active development. Working on PoC.
+\n
+
+This site documents the C++ implementation only at development level.
+
+\n
+\section names_TOC There is one namespace
+
+1. \ref reels
+
+\n
+\section classes_TOC And the following classes
+
+1. \ref reels::Events
+2. \ref reels::Clients
+3. \ref reels::Clips
+4. \ref reels::Targets
+
+\n
+\section wrapper_sec Python wrapper
+
+Everything here is built into a Python package that can be found at: [Mercury-dynamics repository](https://globaldevtools.bbva.com/bitbucket/projects/CDA/repos/mercury-dynamics/browse).\n
+
+\n
+\section repo_sec REPOSITORIES
+
+Everything is in the [Reels repository]().\n
+
+*/
