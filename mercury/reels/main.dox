@@ -1,11 +1,11 @@
 /**
-\mainpage [Programming documentation for Reels]
+\mainpage [C++ documentation for Reels]
 
 \section reels_diag Reels Classes Diagram (across languages)
 
 This diagram shows the different classes implemented in each language. \n
 
-![Reels Classes](../../images/reels_classes.png)
+![Reels Classes](../../notebooks/images/reels_classes.png)
 
 The maturity level of the different classes is:\n
 
@@ -36,11 +36,6 @@ This site documents the C++ implementation only at development level.
 \n
 \section wrapper_sec Python wrapper
 
-Everything here is built into a Python package that can be found at: [Mercury-dynamics repository](https://globaldevtools.bbva.com/bitbucket/projects/CDA/repos/mercury-dynamics/browse).\n
-
-\n
-\section repo_sec REPOSITORIES
-
-Everything is in the [Reels repository]().\n
+Everything here is built into a Python package that can be found at: [Reels repository](https://github.com/BBVA/mercury-reels.git).\n
 
 */
