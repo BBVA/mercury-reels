@@ -45,8 +45,8 @@ mode_test:
 	$(eval CPPFLAGS = $(TFLAGS))
 
 reels: mode_release reels.o reels_main.o
-	@echo "Making Reels as reels_main ..."
-	g++ -o reels_main reels.o reels_main.o
+	@echo "Making the command line Reels as ./reels_cli ..."
+	g++ -o reels_cli reels.o reels_main.o
 
 test: mode_test reels.o reels_test.o
 	@echo "Making Reels as reels_test ..."
