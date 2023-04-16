@@ -70,6 +70,25 @@ Reels is implemented in four classes.
 pip install mercury-reels
 ```
 
+## Clone and set up a development environment to work with it
+
+To work with Reels command line or develop Reels, you can set up an environment with git, gcc, make and the following tools:
+
+  * catch2 (Already included in source code)
+  * doxygen 1.9.5 or better (to render C++ documentation)
+  * mkdocs 1.4.2 or better (to render Python documentation)
+  * swig 4.0.2
+  * python 3.x with appropriate paths to python.h (see Makefile)
+
+```bash
+git clone https://github.com/BBVA/mercury-reels.git
+cd mercury-reels/mercury
+
+make
+```
+
+Make without arguments gives help. Try all the options. Everything should work assuming the tools are installed.
+
 ## Documentation
 
   * [Python API](__doc__/reference/python/reels/)
