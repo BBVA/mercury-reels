@@ -67,6 +67,10 @@ doc_cpp:
 	@doxygen 2>errors.log 1>/dev/null
 	@cat errors.log
 
+.PHONY	: doc_py
+doc_py:
+	@echo "mkdocs doc building scaffold ..."
+
 .PHONY	: package
 package: mode_release
 	g++ -c -fpic -O3 -std=c++11 -Ireels -DNDEBUG -o reels.o reels/reels.cpp
