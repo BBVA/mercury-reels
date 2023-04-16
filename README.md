@@ -39,25 +39,25 @@ Reels is implemented in four classes.
 <img src="notebooks/images/events.png" width = "640" />
 
   * [Python API](__doc__/reference/python/events/)
-  * [C++ API](__doc__/reference/cpp/events/)
+  * [C++ API](__doc__/reference/html/classreels_1_1Events.html)
 
 ### The Clients class
 <img src="notebooks/images/clients.png" width = "640" />
 
   * [Python API](__doc__/reference/python/clients/)
-  * [C++ API](__doc__/reference/cpp/clients/)
+  * [C++ API](__doc__/reference/html/classreels_1_1Clients.html)
 
 ### The Clips class
 <img src="notebooks/images/clips.png" width = "640" />
 
   * [Python API](__doc__/reference/python/clips/)
-  * [C++ API](__doc__/reference/cpp/clips/)
+  * [C++ API](__doc__/reference/html/classreels_1_1Clips.html)
 
 ### The Targets class
 <img src="notebooks/images/targets.png" width = "640" />
 
   * [Python API](__doc__/reference/python/targets/)
-  * [C++ API](__doc__/reference/cpp/targets/)
+  * [C++ API](__doc__/reference/html/classreels_1_1Targets.html)
 
 ## Try it without any installation on Google Colab
 
@@ -73,7 +73,7 @@ pip install mercury-reels
 ## Documentation
 
   * [Python API](__doc__/reference/python/reels/)
-  * [C++ API](__doc__/reference/cpp/reels/)
+  * [C++ API](__doc__/reference/html/index.html)
   * [Algorithm description: Reels -- An efficient tree-based event prediction algorithm](__doc__/reference/reels_paper/)
 
 ## License
