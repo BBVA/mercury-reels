@@ -62,8 +62,8 @@ clean:
 	@find . | grep .ipynb_checkpoints | xargs rm -rf
 	@rm -rf ../reference
 
-.PHONY	: reels_doc
-doc:
+.PHONY	: doc_cpp
+doc_cpp:
 	@doxygen 2>errors.log 1>/dev/null
 	@cat errors.log
 
