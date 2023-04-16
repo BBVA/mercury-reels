@@ -55,16 +55,12 @@ test: mode_test reels.o reels_test.o
 .PHONY	: clean
 clean:
 	@echo "Cleaning up all files not stored in the repo ..."
-	@rm -f *.o reels_main reels_test mode_* errors.log .coverage
+	@rm -f *.o reels_cli reels_test mode_* errors.log .coverage
 	@rm -f reels/*.so reels/*.o
 	@rm -f logs/*
 	@find . | grep __pycache__ | xargs rm -rf
 	@find . | grep .ipynb_checkpoints | xargs rm -rf
-	@find . -type d -iname ".py*" | xargs rm -rf
-	@rm -rf ../reels_doc
-	@rm -rf ../datasets/results/poison_antidote_*
-	@rm -rf ../datasets/results/e-commerce_*
-	@rm -rf ../datasets/results/mooc_*
+	@rm -rf ../reference
 
 .PHONY	: reels_doc
 doc:
