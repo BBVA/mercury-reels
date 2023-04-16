@@ -77,3 +77,5 @@ package: mode_release
 	cd reels && swig -python py_reels.i && mv py_reels.py __init__.py && cat imports.py >>__init__.py
 	g++ -c -fpic -O3 reels/py_reels_wrap.c -Dpython -I/usr/include/python3.8 -I/usr/include/python3.10
 	g++ -shared reels.o py_reels_wrap.o -o reels/_py_reels.so
+	@printf "\nPython 3.x package was built locally in the folder './reels'.\n"
+	@printf "\nYou can run 'import reels' for here or ./test.sh to test it!\n"
