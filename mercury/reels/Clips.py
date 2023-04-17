@@ -67,10 +67,10 @@ class Clips:
     for size and iterated by calling clips_client_hashes().
 
     Args:
-        clients:	  A possibly initialized Clients object to restrict building
+        clients:      A possibly initialized Clients object to restrict building
                       the clips to a specific set of clients. Pass an empty Clients
                       object for no restriction (all clients).
-        events:		  An Events object that defines what events have to be considered
+        events:       An Events object that defines what events have to be considered
                       to build the clips.
         time_format:  An optional definition of the time format that will affect how
                       time is parsed by scan_event() the default is "%Y-%m-%d %H:%M:%S"
@@ -113,11 +113,11 @@ class Clips:
         """Process a row from a transaction file, to add the event to the client's timeline in a Clips object.
 
         Args:
-            emitter:	 The "emitter". A string representing "owner of event".
+            emitter:     The "emitter". A string representing "owner of event".
             description: The "description". A string representing "the event".
-            weight:		 The "weight". A double representing a weight of the event.
-            client:		 The "client". A string representing "the actor".
-            time:		 The "time". A timestamp of the event as a string. (The format
+            weight:      The "weight". A double representing a weight of the event.
+            client:      The "client". A string representing "the actor".
+            time:        The "time". A timestamp of the event as a string. (The format
                          is given via the time_format argument to the constructor.)
 
         Returns:
@@ -221,7 +221,7 @@ class Clips:
 
         Args:
             seq_num: The sequence id (in range 0.499).
-            target:	 True for one of the target sequences, false for non target.
+            target:  True for one of the target sequences, false for non target.
 
         Returns:
             A sequence of integer codes list or None if seq_num is out of range.

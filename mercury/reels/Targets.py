@@ -75,7 +75,7 @@ class Targets:
     Once .
 
     Args:
-        clips:		  A Clips object containing the clips defining the events for a set of clients.
+        clips:        A Clips object containing the clips defining the events for a set of clients.
         time_format:  An optional definition of the time format that will affect how
                       time is parsed by insert_target() the default is "%Y-%m-%d %H:%M:%S"
                       https://www.gnu.org/software/libc/manual/html_node/Formatting-Calendar-Time.html
@@ -124,7 +124,7 @@ class Targets:
 
         Args:
             client: The "client". A string representing "the actor".
-            time:	The "time". A timestamp of the target event as a string. (The format
+            time:   The "time". A timestamp of the target event as a string. (The format
                     is given via the time_format argument to the constructor.)
 
         Returns:
@@ -139,11 +139,11 @@ class Targets:
             Fit can only be called once in the life of a Targets object and predict_*() cannot be called before fit().
 
         Args:
-            x_form	   A possible transformation of the times. (Currently "log" or "linear".)
-            agg		   The mechanism used for the aggregation. (Currently "minimax", "mean" or "longest".)
-            p		   The width of the confidence interval for the binomial proportion used to calculate the lower bound.
+            x_form:    A possible transformation of the times. (Currently "log" or "linear".)
+            agg:       The mechanism used for the aggregation. (Currently "minimax", "mean" or "longest".)
+            p:         The width of the confidence interval for the binomial proportion used to calculate the lower bound.
                        (E.g., p = 0.5 will estimate a lower bound of a symmetric CI with coverage of 0.5.)
-            depth	   The maximum depth of the tree (maximum sequence length learned).
+            depth:     The maximum depth of the tree (maximum sequence length learned).
             as_states: Treat events as states by removing repeated ones from the ClipMap keeping the time of the first instance only.
                        When used, the ClipMap passed to the constructor by reference will be converted to states as a side effect.
 
@@ -196,7 +196,7 @@ class Targets:
 
         Args:
             parent_idx: The index of the parent node which is either 0 for root or returned from a previous tree_node_idx() call.
-            code:		The code that leads in the tree from the parent node to the child node.
+            code:       The code that leads in the tree from the parent node to the child node.
 
         Returns:
             On success, i.e, if both the parent index exists and contains the code, it will return the index of the child (-1 otherwise).

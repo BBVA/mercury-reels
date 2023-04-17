@@ -136,7 +136,7 @@ class Intake:
       - insert_targets() is Targets.insert_target() for each row
 
     Args:
-        dataframe:	  Either a pandas or a pyspark dataframe with the data to be loaded into reels objects.
+        dataframe:    Either a pandas or a pyspark dataframe with the data to be loaded into reels objects.
         spark_method: This only applies to pyspark dataframe. It has two possible values 'local_iterator' (default) the safest and less
                       RAM consuming. If your environment has many workers (and therefore you would want to improve performance via
                       parallelism) and you have enough RAM in the driver to hold a list of tuples with the values you want to load,

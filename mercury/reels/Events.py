@@ -67,9 +67,9 @@ class Events:
     methods exist.
 
     Args:
-        max_num_events:	The maximum number of events to limit the discovery via
+        max_num_events: The maximum number of events to limit the discovery via
                         insert_row() to the max_num_events more frequent/recent.
-        binary_image:	An optional binary image (returned by save_as_binary_image())
+        binary_image:   An optional binary image (returned by save_as_binary_image())
                         to initialize the object with data copied from another Events
                         object.
     """
@@ -111,9 +111,9 @@ class Events:
         either one way or the other.
 
         Args:
-            emitter:	 The "emitter". A C/Python string representing "owner of event".
+            emitter:     The "emitter". A C/Python string representing "owner of event".
             description: The "description". A C/Python string representing "the event".
-            weight:		 The "weight". A double representing a weight of the event.
+            weight:      The "weight". A double representing a weight of the event.
 
         Returns:
             True on success.
@@ -128,10 +128,10 @@ class Events:
         either one way or the other.
 
         Args:
-            emitter:	 The "emitter". A C/Python string representing "owner of event".
+            emitter:     The "emitter". A C/Python string representing "owner of event".
             description: The "description". A C/Python string representing "the event".
-            weight:		 The "weight". A double representing a weight of the event.
-            code:		 A unique code number identifying the event.
+            weight:      The "weight". A double representing a weight of the event.
+            code:        A unique code number identifying the event.
 
         Returns:
             True on success.
@@ -225,24 +225,24 @@ class Events:
             When the algorithm finishes, the internal EventCodeMap is used to rename the object codes and the whole process is reported.
 
         Args:
-            clips:			The id of a clips object with the same codes and clips for a set of clients whose prediction we optimize.
-            targets:		The id of a Targets object whose internal TargetMap defines the targets. (Internally a new Targets object
+            clips:          The id of a clips object with the same codes and clips for a set of clients whose prediction we optimize.
+            targets:        The id of a Targets object whose internal TargetMap defines the targets. (Internally a new Targets object
                             will be used to make the predictions we want to optimize.)
-            num_steps:		The number of steps to iterate. The method will stop early if no codes are found at a step.
-            codes_per_step:	The number of codes to be tried from the top of the priority list at each step.
-            threshold:		A minimum threshold, below which a score change is not considered improvement.
-            force_include:	An optional pointer to a set of codes that must be included before starting.
-            force_exclude:	An optional pointer to a set of codes that will excluded and set to the base code.
-            x_form:			The x_form argument to fit the internal Targets object prediction model.
-            agg:			The agg argument to fit the internal Targets object prediction model.
-            p:				The p argument to fit the internal Targets object prediction model.
-            depth:			The depth argument to fit the internal Targets object prediction model.
-            as_states:		The as_states argument to fit the internal Targets object prediction model.
-            exp_decay:		Exponential Decay Factor applied to the internal score in terms of depth. That score selects what
+            num_steps:      The number of steps to iterate. The method will stop early if no codes are found at a step.
+            codes_per_step: The number of codes to be tried from the top of the priority list at each step.
+            threshold:      A minimum threshold, below which a score change is not considered improvement.
+            force_include:  An optional pointer to a set of codes that must be included before starting.
+            force_exclude:  An optional pointer to a set of codes that will excluded and set to the base code.
+            x_form:         The x_form argument to fit the internal Targets object prediction model.
+            agg:            The agg argument to fit the internal Targets object prediction model.
+            p:              The p argument to fit the internal Targets object prediction model.
+            depth:          The depth argument to fit the internal Targets object prediction model.
+            as_states:      The as_states argument to fit the internal Targets object prediction model.
+            exp_decay:      Exponential Decay Factor applied to the internal score in terms of depth. That score selects what
                             codes enter the model. The decay is applied to the average tree depth. 0 is no decay, default
                             value = 0.00693 decays to 0.5 in 100 steps.
-            lower_bound_p:	Another p for lower bound, but applied to the scoring process rather than the model.
-            log_lift:		A boolean to set if lift (= LB(included)/LB(after inclusion)) is log() transformed or not.
+            lower_bound_p:  Another p for lower bound, but applied to the scoring process rather than the model.
+            log_lift:       A boolean to set if lift (= LB(included)/LB(after inclusion)) is log() transformed or not.
 
         Returns:
             A tuple (success, dictionary, top_codes, log)
@@ -281,7 +281,7 @@ class Events:
         with either optimize_events() or a Targets object, not to continue populating it with events via insert_row().
 
         Args:
-            dictionary:	A dictionary to be applied during the copy. The dictionary must be returned by a previous optimize_events()
+            dictionary: A dictionary to be applied during the copy. The dictionary must be returned by a previous optimize_events()
                         of an identical object in order to have the same codes defined. Otherwise, the codes not present in the dictionary
                         will not be translated into events.
 
