@@ -9,7 +9,7 @@ help:
 	@echo "make doc_py  : Build the reels Python documentation."
 	@echo ""
 	@echo "make clean   : Clean up all files not stored in the repo."
-	@echo "make package : Clean, compile all and build the mercury-dynamics package."
+	@echo "make package : Clean, compile all and build the Python reels package."
 
 	@echo ""
 
