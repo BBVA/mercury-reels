@@ -69,7 +69,8 @@ doc_cpp:
 
 .PHONY	: doc_py
 doc_py:
-	@echo "mkdocs doc building scaffold ..."
+	@mkdocs build 2>errors.log 1>/dev/null
+	@cat errors.log | grep -vE 'No type or annotation for'
 
 .PHONY	: package
 package: mode_release
