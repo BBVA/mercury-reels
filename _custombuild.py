@@ -2,6 +2,10 @@
 
 import setuptools
 
+
+reels_ext = setuptools.Extension('reels', sources = ['mercury/reels'], extra_compile_args = ['-std=c17', '-lm', '-Wl', '-c', '-fPIC'])
+
+
 class build_py(setuptools.command.build_py):
 
     def run(self):
@@ -16,6 +20,4 @@ class build_py(setuptools.command.build_py):
         if self.distribution.ext_modules == None:
             self.distribution.ext_modules = []
 
-		ext = setuptools.Extension('reels', sources = ['mercury/reels'], extra_compile_args = ['-std=c17', '-lm', '-Wl', '-c', '-fPIC'])
-
-        self.distribution.ext_modules.append(ext)
+        self.distribution.ext_modules.append(reels_ext)
