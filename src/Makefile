@@ -60,7 +60,7 @@ clean:
 	@rm -f logs/*
 	@find . | grep __pycache__ | xargs rm -rf
 	@find . | grep .ipynb_checkpoints | xargs rm -rf
-	@rm -rf ../reference ../build ../dist ../mercury_reels.egg-info
+	@rm -rf ../reference ../build ../dist ../mercury_reels.egg-info ../src/mercury_reels.egg-info
 
 .PHONY	: doc_cpp
 doc_cpp:
