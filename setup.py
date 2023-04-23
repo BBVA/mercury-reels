@@ -17,20 +17,18 @@ setuptools.setup(
     name			 = 'mercury-reels',
     version			 = '1.4.1',
     description		 = 'Reels helps identify patterns in event data and can predict target events.',
-	long_description = """
-Reels is a library to analyze sequences of events extracted from transactional data. These events can be automatically discovered
-or manually defined. Reels identifies events by assigning them event codes and creates clips, which are sequences of
-(code, time of occurrence) tuples for each client. Using these clips, a model can be generated to predict the time at which
-target events may occur in the future.
-""",
+	long_description = """    Reels is a library to analyze sequences of events extracted from transactional data. These events can be
+		automatically discovered or manually defined. Reels identifies events by assigning them event codes and creates clips, which are
+		sequences of (code, time of occurrence) tuples for each client. Using these clips, a model can be generated to predict the time at
+		which target events may occur in the future.""",
 	url				 = 'https://github.com/BBVA/mercury-reels',
-	license			 = '',
+	license			 = 'Apache 2',
+	platforms		 = ['Linux', 'MacOS', 'Windows'],
 	classifiers		 = ['Programming Language :: Python :: 3',
 		'License :: OSI Approved :: Apache Software License',
-		'Operating System :: OS Independent']
-	keywords		 = ['event detection', 'event prediction', 'time series']
-    packages		 = ['reels'],
-	py_modules		 = ['_custom_build'],
+		'Operating System :: OS Independent'],
+	keywords		 = ['event detection', 'event prediction', 'time series'],
+    packages		 = ['src/reels'],
 	python_requires	 = '>=3.8',
     ext_modules		 = [reels_ext]
 )

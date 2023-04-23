@@ -8,8 +8,6 @@ authors			= [{name = 'Mercury Team', email = 'mercury.group@bbva.com'}]
 readme			= 'README.md'
 requires-python	= '>=3.8'
 
-dependencies	= []
-
 
 [tool.setuptools]
 py-modules		= ['_custom_build']
@@ -17,13 +15,3 @@ py-modules		= ['_custom_build']
 
 [tool.setuptools.cmdclass]
 build_py		= '_custom_build.build_py'
-
-
-[tool.setuptools.packages.find]
-include			= ['mercury*', 'mercury/reels*']
-exclude			= ['catch2*', 'docs*', 'notebooks*', 'test_all.py', 'imports.py']
-
-
-[project.urls]
-'Homepage'		= 'https://github.com/BBVA/mercury-reels'
-'Bug Tracker'	= 'https://github.com/BBVA/mercury-reels/issues'
