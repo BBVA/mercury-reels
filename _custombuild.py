@@ -2,8 +2,7 @@
 
 import setuptools
 
-
-reels_ext = setuptools.Extension('reels', sources = ['mercury/reels'], extra_compile_args = ['-std=c17', '-lm', '-Wl', '-c', '-fPIC'])
+from .setup import reels_ext
 
 
 class build_py(setuptools.command.build_py):
@@ -12,7 +11,6 @@ class build_py(setuptools.command.build_py):
         self.run_command('build_ext')
 
         return super().run()
-
 
     def initialize_options(self):
         super().initialize_options()
