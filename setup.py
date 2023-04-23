@@ -28,7 +28,8 @@ setuptools.setup(
 		'License :: OSI Approved :: Apache Software License',
 		'Operating System :: OS Independent'],
 	keywords		 = ['event detection', 'event prediction', 'time series'],
-    packages		 = ['src/reels'],
+    packages		 = ['reels'],
+    package_dir		 = {'' : 'src'},
 	python_requires	 = '>=3.8',
     ext_modules		 = [reels_ext]
 )
