@@ -4,19 +4,9 @@ build-backend	= 'setuptools.build_meta'
 
 
 [project]
-name			= 'mercury-reels'
-license			= {file = 'LICENSE.txt'}
-version			= '1.4.1'
-authors			= [{ name = 'Mercury Team', email = 'mercury.group@bbva.com' }]
-description		= 'Reels helps identify patterns in event data and can predict target events.'
+authors			= [{name = 'Mercury Team', email = 'mercury.group@bbva.com'}]
 readme			= 'README.md'
 requires-python	= '>=3.8'
-classifiers		= [
-    'Programming Language :: Python :: 3',
-    'License :: OSI Approved :: Apache Software License',
-    'Operating System :: OS Independent',
-]
-keywords		= ['event detection', 'event prediction', 'time series']
 
 dependencies	= []
 
@@ -31,7 +21,7 @@ build_py		= '_custom_build.build_py'
 
 [tool.setuptools.packages.find]
 include			= ['mercury*', 'mercury/reels*']
-exclude			= ['catch2*', 'docs*', 'notebooks*', 'test_all.py']
+exclude			= ['catch2*', 'docs*', 'notebooks*', 'test_all.py', 'imports.py']
 
 
 [project.urls]
