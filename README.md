@@ -91,7 +91,7 @@ To work with Reels command line or develop Reels, you can set up an environment 
 
 ```bash
 git clone https://github.com/BBVA/mercury-reels.git
-cd mercury-reels/mercury
+cd mercury-reels/src
 
 make
 ```
