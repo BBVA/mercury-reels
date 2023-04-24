@@ -35,24 +35,6 @@ class custom_build_py(_build_py):
 		return ret
 
 
-	# def initialize_options(self):
-	# 	super().initialize_options()
-
-	# 	if self.distribution.ext_modules == None:
-	# 		self.distribution.ext_modules = []
-
-	# 	self.distribution.ext_modules.append(reels_ext)
-
-
-	# g++ -c -fpic -O3 -std=c++11 -Ireels -DNDEBUG -o reels.o reels/reels.cpp
-	# cd reels && swig -python py_reels.i && mv py_reels.py __init__.py && cat imports.py >>__init__.py
-	# g++ -c -fpic -O3 reels/py_reels_wrap.c -Dpython -I/usr/include/python3.8 -I/usr/include/python3.10
-	# g++ -shared reels.o py_reels_wrap.o -o reels/_py_reels.so
-
-# https://setuptools.pypa.io/en/latest/deprecated/distutils/apiref.html#distutils.core.Extension
-# https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/
-# https://ianhopkinson.org.uk/2022/02/understanding-setup-py-setup-cfg-and-pyproject-toml-in-python/
-
 setuptools.setup(
     name			 = 'mercury-reels',
     version			 = '1.4.1',
