@@ -64,7 +64,7 @@ clean:
 
 .PHONY	: doc_cpp
 doc_cpp:
-	@doxygen 2>errors.log 1>/dev/null
+	@-doxygen 2>errors.log 1>/dev/null
 	@cat errors.log
 
 .PHONY	: doc_py
