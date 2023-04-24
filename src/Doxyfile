@@ -967,7 +967,7 @@ RECURSIVE              = YES
 # run.
 
 EXCLUDE                = ./reels/catch2 \
-                         ./reels/py_reels_wrap.c
+                         ./reels/py_reels_wrap.cpp
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
