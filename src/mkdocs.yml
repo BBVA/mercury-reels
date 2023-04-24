@@ -17,6 +17,7 @@ nav:
   - Client: reference/clients.md
   - Clips: reference/clips.md
   - Targets: reference/targets.md
+  - Intake: reference/intake.md
 markdown_extensions:
 - codehilite
 - admonition
