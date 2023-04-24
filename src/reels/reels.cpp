@@ -362,7 +362,7 @@ String Events::optimize_events (Clips &clips, TargetMap &targets, int num_steps,
 		int new_codes = 0;
 		log.log_printf("  Trying:\n");
 		while (new_codes < codes_per_step) {
-			if (top_ix == top_code.size())
+			if (top_ix == (int) top_code.size())
 				break;
 
 			uint64_t code_try = top_code[top_ix++].code;
@@ -405,7 +405,7 @@ String Events::optimize_events (Clips &clips, TargetMap &targets, int num_steps,
 	log.log_printf("  Final dictionary = {");
 
 	EventCodeMap::iterator it_small = small_dict.begin();
-	for (int i = 1; i < small_dict.size(); i++) {
+	for (int i = 1; i < (int) small_dict.size(); i++) {
 		log.log_printf("%i:%i, ", it_small->first, it_small->second - code_base);
 
 		++it_small;
@@ -1274,7 +1274,7 @@ bool Targets::recurse_tree_stats(int depth, int idx, int parent_idx, uint64_t co
 
 	int ts = tree.size();
 
-	if (depth >= ts | idx < 0 || idx >= ts)
+	if (depth >= ts || idx < 0 || idx >= ts)
 		return false;
 
 	if (parent_idx >= 0 && parent_idx < ts) {
@@ -2932,7 +2932,7 @@ int	targets_tree_node_idx(int id, int parent_idx, int code) {
 
 	pCodeTree pT = it->second->p_tree();
 
-	if (parent_idx < 0 || parent_idx >= pT->size())
+	if (parent_idx < 0 || parent_idx >= (int) pT->size())
 		return -1;
 
 	pCodeTreeNode pN = &pT->at(parent_idx);
@@ -2964,7 +2964,7 @@ char *targets_tree_node_children(int id, int idx) {
 
 	pCodeTree pT = it->second->p_tree();
 
-	if (idx < 0 || idx >= pT->size())
+	if (idx < 0 || idx >= (int) pT->size())
 		return answer_buffer;
 
 	pCodeTreeNode pN = &pT->at(idx);
@@ -3006,7 +3006,7 @@ char *targets_describe_tree_node(int id, int idx) {
 
 	pCodeTree pT = it->second->p_tree();
 
-	if (idx < 0 || idx >= pT->size())
+	if (idx < 0 || idx >= (int) pT->size())
 		return answer_buffer;
 
 	pCodeTreeNode pN = &pT->at(idx);

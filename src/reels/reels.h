@@ -792,7 +792,7 @@ class TimeUtil {
 					   http://www.gnu.org/software/libc/manual/html_node/Formatting-Calendar-Time.html
 		*/
 		inline void set_time_format(pChar fmt) {
-			strncpy(time_format, fmt, sizeof(time_format));
+			strncpy(time_format, fmt, sizeof(time_format) - 1);
 		}
 };
 
