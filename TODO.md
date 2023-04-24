@@ -1,7 +1,6 @@
 # Towards a full release
 
   * Replace "\__doc__" in README with the proper path
-  * Automate version
   * Automate with github actions a build that generates for all python versions and all platforms
   * Automate with github actions  help + push
   * Change the travis and codecov badges to github actions

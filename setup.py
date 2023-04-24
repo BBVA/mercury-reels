@@ -1,6 +1,7 @@
 import os, warnings, setuptools
 
 from setuptools.command.build_py import build_py as _build_py
+from src.version import __version__
 
 
 def warn(*args, **kwargs):
@@ -44,7 +45,7 @@ class custom_build_py(_build_py):
 
 setuptools.setup(
     name			 = 'mercury-reels',
-    version			 = '1.4.1',
+    version			 = __version__,
     description		 = 'Reels helps identify patterns in event data and can predict target events.',
 	long_description = """    Reels is a library to analyze sequences of events extracted from transactional data. These events can be
 		automatically discovered or manually defined. Reels identifies events by assigning them event codes and creates clips, which are

@@ -213,6 +213,9 @@ def destroy_binary_image_iterator(image_id):
     return _py_reels.destroy_binary_image_iterator(image_id)
 
 
+# The the source version file is <proj>/src/version.py, anything else is auto generated.
+__version__ = '1.4.1'
+
 from reels.Clients import Clients
 from reels.Events import Events
 from reels.Clips import Clips

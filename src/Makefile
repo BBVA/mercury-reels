@@ -75,7 +75,7 @@ doc_py:
 .PHONY	: package
 package: mode_release
 	g++ -c -fpic -O3 -std=c++11 -Ireels -DNDEBUG -o reels.o reels/reels.cpp
-	cd reels && swig -python -o py_reels_wrap.cpp py_reels.i && mv py_reels.py __init__.py && cat imports.in >>__init__.py
+	cd reels && swig -python -o py_reels_wrap.cpp py_reels.i && mv py_reels.py __init__.py && cat ../version.py >>__init__.py && cat imports.in >>__init__.py
 	g++ -c -fpic -O3 reels/py_reels_wrap.cpp -Dpython -I/usr/include/python3.8 -I/usr/include/python3.10
 	g++ -shared reels.o py_reels_wrap.o -o reels/_py_reels.so
 	@printf "\nPython 3.x package was built locally in the folder './reels'.\n"
