@@ -1,4 +1,4 @@
-import setuptools
+import os, setuptools
 
 from setuptools.command.build_py import build_py as _build_py
 
@@ -12,12 +12,25 @@ class custom_build_py(_build_py):
 	def run(self):
 		self.run_command('build_ext')
 
+		dis = self.distribution if type(self.distribution) != list else self.distribution[0]
+		cob = dis.command_obj['build_ext']
+
+		fn = cob.build_lib
+		assert 'src' in os.listdir(fn)
+
+		fn += '/src'
+		assert 'reels' in os.listdir(fn)
+
+		fn += '/reels'
+
+		fnl = os.listdir(fn)
+		assert len(fnl) == 1
+
+		fn += '/' + fnl[0]
+
 		ret = super().run()
 
-# TODO: Find the paths and names in a better way
-
-		self.move_file('build/lib.linux-x86_64-3.10/src/reels/_py_reels.cpython-310-x86_64-linux-gnu.so',
-					   'build/lib.linux-x86_64-3.10/reels/_py_reels.cpython-310-x86_64-linux-gnu.so')
+		self.move_file(fn, fn.replace('src/reels', 'reels'))
 
 		return ret
 
