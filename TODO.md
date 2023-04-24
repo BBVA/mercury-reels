@@ -1,7 +1,5 @@
 # Towards a full release
 
-  * Complete pyproject.toml
-  * Complete _custombuild.py
   * Replace "\__doc__" in README with the proper path
   * Automate version
   * Automate with github actions a build that generates for all python versions and all platforms
