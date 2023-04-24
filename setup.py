@@ -22,13 +22,13 @@ class custom_build_py(_build_py):
 		return ret
 
 
-	def initialize_options(self):
-		super().initialize_options()
+	# def initialize_options(self):
+	# 	super().initialize_options()
 
-		if self.distribution.ext_modules == None:
-			self.distribution.ext_modules = []
+	# 	if self.distribution.ext_modules == None:
+	# 		self.distribution.ext_modules = []
 
-		self.distribution.ext_modules.append(reels_ext)
+	# 	self.distribution.ext_modules.append(reels_ext)
 
 
 	# g++ -c -fpic -O3 -std=c++11 -Ireels -DNDEBUG -o reels.o reels/reels.cpp
