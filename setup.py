@@ -1,6 +1,13 @@
-import os, setuptools
+import os, warnings, setuptools
 
 from setuptools.command.build_py import build_py as _build_py
+
+
+def warn(*args, **kwargs):
+	pass
+
+warnings.warn = warn
+
 
 reels_ext = setuptools.Extension(name				= 'src.reels._py_reels',
 								 sources			= ['src/reels/reels.cpp', 'src/reels/py_reels_wrap.cpp'],
