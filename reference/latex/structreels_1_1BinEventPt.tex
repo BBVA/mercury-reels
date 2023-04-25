@@ -1,0 +1,89 @@
+\hypertarget{structreels_1_1BinEventPt}{}\doxysection{reels\+::Bin\+Event\+Pt Struct Reference}
+\label{structreels_1_1BinEventPt}\index{reels::BinEventPt@{reels::BinEventPt}}
+
+
+The binary representation of an event as stored in a transaction file.  
+
+
+
+
+{\ttfamily \#include $<$reels.\+h$>$}
+
+
+
+Inheritance diagram for reels\+::Bin\+Event\+Pt\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{structreels_1_1BinEventPt__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structreels_1_1BinEventPt_af08980f08a1a08459e7bc1414542c3c4}{operator==}} (const \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&o) const
+\begin{DoxyCompactList}\small\item\em Compare to another \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} for identity to support use as a key in a map. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structreels_1_1BinEventPt_a59169892f9565706dbc1fec8f52c2f82}{operator$<$}} (const \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&o) const
+\begin{DoxyCompactList}\small\item\em Compare to another \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} for strict order to support use as a key in a map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structreels_1_1BinEventPt_af1c176a8469ff7f8f8fb240ad087f5c3}\label{structreels_1_1BinEventPt_af1c176a8469ff7f8f8fb240ad087f5c3}} 
+\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} {\bfseries e}
+\begin{DoxyCompactList}\small\item\em The \char`\"{}emitter\char`\"{}. A binary hash of a string representing \char`\"{}owner of event\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structreels_1_1BinEventPt_a888668af385cd60b63f22b9c3d332bbd}\label{structreels_1_1BinEventPt_a888668af385cd60b63f22b9c3d332bbd}} 
+\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} {\bfseries d}
+\begin{DoxyCompactList}\small\item\em The \char`\"{}description\char`\"{}. A binary hash of a string representing \char`\"{}the event\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structreels_1_1BinEventPt_a3a84158eeac3bec39c1c324127458b86}\label{structreels_1_1BinEventPt_a3a84158eeac3bec39c1c324127458b86}} 
+double {\bfseries w}
+\begin{DoxyCompactList}\small\item\em The \char`\"{}weight\char`\"{}. A double representing a weight of the event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The binary representation of an event as stored in a transaction file. 
+
+This is the intersection of transaction and event. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structreels_1_1BinEventPt_a59169892f9565706dbc1fec8f52c2f82}\label{structreels_1_1BinEventPt_a59169892f9565706dbc1fec8f52c2f82}} 
+\index{reels::BinEventPt@{reels::BinEventPt}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!reels::BinEventPt@{reels::BinEventPt}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool reels\+::\+Bin\+Event\+Pt\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&}]{o }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compare to another \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} for strict order to support use as a key in a map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & Another \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} to which the current object is compared.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if strictly smaller (before in the order). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structreels_1_1BinEventPt_af08980f08a1a08459e7bc1414542c3c4}\label{structreels_1_1BinEventPt_af08980f08a1a08459e7bc1414542c3c4}} 
+\index{reels::BinEventPt@{reels::BinEventPt}!operator==@{operator==}}
+\index{operator==@{operator==}!reels::BinEventPt@{reels::BinEventPt}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool reels\+::\+Bin\+Event\+Pt\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&}]{o }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compare to another \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} for identity to support use as a key in a map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & Another \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} to which the current object is compared.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if identical. 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+reels/reels.\+h\end{DoxyCompactItemize}

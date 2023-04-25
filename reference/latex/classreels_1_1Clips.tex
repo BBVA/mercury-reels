@@ -1,0 +1,252 @@
+\hypertarget{classreels_1_1Clips}{}\doxysection{reels\+::Clips Class Reference}
+\label{classreels_1_1Clips}\index{reels::Clips@{reels::Clips}}
+
+
+A container class to hold clips (sequences of events).  
+
+
+
+
+{\ttfamily \#include $<$reels.\+h$>$}
+
+
+
+Inheritance diagram for reels\+::Clips\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classreels_1_1Clips__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for reels\+::Clips\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classreels_1_1Clips__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreels_1_1Clips_a50812a06667503006062af47a9964d43}\label{classreels_1_1Clips_a50812a06667503006062af47a9964d43}} 
+{\bfseries Clips} ()
+\begin{DoxyCompactList}\small\item\em Default construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object as an abstract method. This is required for declaring a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object that will later be copy constructed based on conditional statements. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classreels_1_1Clips_a6c15d4375b2c7efcf28921360ef47960}{Clips}} (\mbox{\hyperlink{classreels_1_1Clients}{Clients}} clients, \mbox{\hyperlink{classreels_1_1Events}{Events}} events)
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object from a \mbox{\hyperlink{classreels_1_1Clients}{Clients}} and an \mbox{\hyperlink{classreels_1_1Events}{Events}} objects. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classreels_1_1Clips_a8cc6cdea54a86491531f2bde92c9c000}{Clips}} (const \mbox{\hyperlink{namespacereels_a603b492f253098a318c7cece8dc26181}{Clip\+Map}} \&\mbox{\hyperlink{classreels_1_1Clips_a021d03d443bd0fdcb1a60b1dbc21e5cb}{clip\+\_\+map}})
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object from a Clip\+Map to be copied. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classreels_1_1Clips_a7c9c88ee25eac25419cecda70b1dd17c}{Clips}} (\mbox{\hyperlink{classreels_1_1Clips}{Clips}} \&o\+\_\+clips)
+\begin{DoxyCompactList}\small\item\em Copy-\/construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Clips_a8955d5070c8128d68104eaf7bc0a8b31}{scan\+\_\+event}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+e, \mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+d, double w, \mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+c, \mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Process a row from a transaction file, to add the event to the client\textquotesingle{}s timeline (clip). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreels_1_1Clips_a3aae6f651b5dbd2cc96a9f70b31270ed}{insert\+\_\+event}} (\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} client\+\_\+hash, uint64\+\_\+t code, \mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}} time\+\_\+pt)
+\begin{DoxyCompactList}\small\item\em The kernel of a \mbox{\hyperlink{classreels_1_1Clips_a8955d5070c8128d68104eaf7bc0a8b31}{scan\+\_\+event()}} made inline, when all checks and conversion to binary are successful. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Clips_a706fc3a60fef03151deda0a7f99e467e}{load}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&p\+\_\+bi)
+\begin{DoxyCompactList}\small\item\em Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Clips_aeb24ae067eb0cee0a00adb0383f10371}{save}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&p\+\_\+bi)
+\begin{DoxyCompactList}\small\item\em Save the state of an object into a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_aa589037ff1304165b2b9736c08bf3f66}{image\+\_\+put()}} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacereels_a967ca40ad0410dcf5f4ff55206a988ff}{p\+Clip\+Map}} \mbox{\hyperlink{classreels_1_1Clips_a021d03d443bd0fdcb1a60b1dbc21e5cb}{clip\+\_\+map}} ()
+\begin{DoxyCompactList}\small\item\em The address of the internal Clip\+Map to be accessed from a \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classreels_1_1Clips_ab6831205dd7596c2a7b4880cbd6bebb6}{num\+\_\+events}} ()
+\begin{DoxyCompactList}\small\item\em Return the number of events stored in the internal Clip\+Map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreels_1_1Clips_a5183d5d53d4bca1d2c1f40c3cf80f658}{collapse\+\_\+to\+\_\+states}} ()
+\begin{DoxyCompactList}\small\item\em Collapse the Clip\+Map to states. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classreels_1_1TimeUtil}{reels\+::\+Time\+Util}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}} \mbox{\hyperlink{classreels_1_1TimeUtil_ae8e19904eaec93a5c9a4f0e6e0792369}{get\+\_\+time}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Convert time as a string to a Time\+Point (using the object\textquotesingle{}s time\+\_\+format). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreels_1_1TimeUtil_ae45cac3f4e552d0128d3b82039896456}{set\+\_\+time\+\_\+format}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} fmt)
+\begin{DoxyCompactList}\small\item\em Sets the public property time\+\_\+format to simplify the python interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{classreels_1_1TimeUtil}{reels\+::\+Time\+Util}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreels_1_1TimeUtil_ad026787163f981a528c58a1096ea57fc}\label{classreels_1_1TimeUtil_ad026787163f981a528c58a1096ea57fc}} 
+char {\bfseries time\+\_\+format} \mbox{[}128\mbox{]} = \char`\"{}\%Y-\/\%m-\/\%d \%H\+:\%M\+:\%S\char`\"{}
+\begin{DoxyCompactList}\small\item\em Date and time format for insert\+\_\+row() and define\+\_\+event() \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A container class to hold clips (sequences of events). 
+
+To simplify the Python interface, the object has a \mbox{\hyperlink{classreels_1_1TimeUtil_ae45cac3f4e552d0128d3b82039896456}{set\+\_\+time\+\_\+format()}} method. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classreels_1_1Clips_a6c15d4375b2c7efcf28921360ef47960}\label{classreels_1_1Clips_a6c15d4375b2c7efcf28921360ef47960}} 
+\index{reels::Clips@{reels::Clips}!Clips@{Clips}}
+\index{Clips@{Clips}!reels::Clips@{reels::Clips}}
+\doxysubsubsection{\texorpdfstring{Clips()}{Clips()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily reels\+::\+Clips\+::\+Clips (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classreels_1_1Clients}{Clients}}}]{clients,  }\item[{\mbox{\hyperlink{classreels_1_1Events}{Events}}}]{events }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object from a \mbox{\hyperlink{classreels_1_1Clients}{Clients}} and an \mbox{\hyperlink{classreels_1_1Events}{Events}} objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clients} & The list of all the clients to be processed. If empty, all the clients will be considered. \\
+\hline
+{\em events} & An initialized \mbox{\hyperlink{classreels_1_1Events}{Events}} object created either by auto-\/detection (insert\+\_\+row) or definition (define\+\_\+event). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classreels_1_1Clips_a8cc6cdea54a86491531f2bde92c9c000}\label{classreels_1_1Clips_a8cc6cdea54a86491531f2bde92c9c000}} 
+\index{reels::Clips@{reels::Clips}!Clips@{Clips}}
+\index{Clips@{Clips}!reels::Clips@{reels::Clips}}
+\doxysubsubsection{\texorpdfstring{Clips()}{Clips()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily reels\+::\+Clips\+::\+Clips (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacereels_a603b492f253098a318c7cece8dc26181}{Clip\+Map}} \&}]{clip\+\_\+map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object from a Clip\+Map to be copied. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clip\+\_\+map} & The \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object to be copied. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classreels_1_1Clips_a7c9c88ee25eac25419cecda70b1dd17c}\label{classreels_1_1Clips_a7c9c88ee25eac25419cecda70b1dd17c}} 
+\index{reels::Clips@{reels::Clips}!Clips@{Clips}}
+\index{Clips@{Clips}!reels::Clips@{reels::Clips}}
+\doxysubsubsection{\texorpdfstring{Clips()}{Clips()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily reels\+::\+Clips\+::\+Clips (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classreels_1_1Clips}{Clips}} \&}]{o\+\_\+clips }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy-\/construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+\_\+clips} & The \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object to be copied. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classreels_1_1Clips_a021d03d443bd0fdcb1a60b1dbc21e5cb}\label{classreels_1_1Clips_a021d03d443bd0fdcb1a60b1dbc21e5cb}} 
+\index{reels::Clips@{reels::Clips}!clip\_map@{clip\_map}}
+\index{clip\_map@{clip\_map}!reels::Clips@{reels::Clips}}
+\doxysubsubsection{\texorpdfstring{clip\_map()}{clip\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_a967ca40ad0410dcf5f4ff55206a988ff}{p\+Clip\+Map}} reels\+::\+Clips\+::clip\+\_\+map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The address of the internal Clip\+Map to be accessed from a \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object. 
+
+\begin{DoxyReturn}{Returns}
+The address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Clips_a5183d5d53d4bca1d2c1f40c3cf80f658}\label{classreels_1_1Clips_a5183d5d53d4bca1d2c1f40c3cf80f658}} 
+\index{reels::Clips@{reels::Clips}!collapse\_to\_states@{collapse\_to\_states}}
+\index{collapse\_to\_states@{collapse\_to\_states}!reels::Clips@{reels::Clips}}
+\doxysubsubsection{\texorpdfstring{collapse\_to\_states()}{collapse\_to\_states()}}
+{\footnotesize\ttfamily void reels\+::\+Clips\+::collapse\+\_\+to\+\_\+states (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Collapse the Clip\+Map to states. 
+
+This removes identical consecutive codes from all the clips in the Clip\+Map keeping the time of the first instance. \mbox{\Hypertarget{classreels_1_1Clips_a3aae6f651b5dbd2cc96a9f70b31270ed}\label{classreels_1_1Clips_a3aae6f651b5dbd2cc96a9f70b31270ed}} 
+\index{reels::Clips@{reels::Clips}!insert\_event@{insert\_event}}
+\index{insert\_event@{insert\_event}!reels::Clips@{reels::Clips}}
+\doxysubsubsection{\texorpdfstring{insert\_event()}{insert\_event()}}
+{\footnotesize\ttfamily void reels\+::\+Clips\+::insert\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}}}]{client\+\_\+hash,  }\item[{uint64\+\_\+t}]{code,  }\item[{\mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}}}]{time\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The kernel of a \mbox{\hyperlink{classreels_1_1Clips_a8955d5070c8128d68104eaf7bc0a8b31}{scan\+\_\+event()}} made inline, when all checks and conversion to binary are successful. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+hash} & The \char`\"{}client\char`\"{}. Already verified for insertion and converted into hash. \\
+\hline
+{\em code} & The code number identifying the event already found in events. \\
+\hline
+{\em time\+\_\+pt} & The \char`\"{}time\char`\"{} already verified and converted into a Time\+Point. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classreels_1_1Clips_a706fc3a60fef03151deda0a7f99e467e}\label{classreels_1_1Clips_a706fc3a60fef03151deda0a7f99e467e}} 
+\index{reels::Clips@{reels::Clips}!load@{load}}
+\index{load@{load}!reels::Clips@{reels::Clips}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily bool reels\+::\+Clips\+::load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&}]{p\+\_\+bi }\end{DoxyParamCaption})}
+
+
+
+Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & The address of a Binary\+Image stream containing a previously \mbox{\hyperlink{classreels_1_1Clips_aeb24ae067eb0cee0a00adb0383f10371}{save()}}-\/ed image at the cursor position.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success (Most likely error is a wrong stream). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Clips_ab6831205dd7596c2a7b4880cbd6bebb6}\label{classreels_1_1Clips_ab6831205dd7596c2a7b4880cbd6bebb6}} 
+\index{reels::Clips@{reels::Clips}!num\_events@{num\_events}}
+\index{num\_events@{num\_events}!reels::Clips@{reels::Clips}}
+\doxysubsubsection{\texorpdfstring{num\_events()}{num\_events()}}
+{\footnotesize\ttfamily uint64\+\_\+t reels\+::\+Clips\+::num\+\_\+events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of events stored in the internal Clip\+Map. 
+
+\begin{DoxyReturn}{Returns}
+The total count of events aggregating all the clips in the internal Clip\+Map. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Clips_aeb24ae067eb0cee0a00adb0383f10371}\label{classreels_1_1Clips_aeb24ae067eb0cee0a00adb0383f10371}} 
+\index{reels::Clips@{reels::Clips}!save@{save}}
+\index{save@{save}!reels::Clips@{reels::Clips}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily bool reels\+::\+Clips\+::save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&}]{p\+\_\+bi }\end{DoxyParamCaption})}
+
+
+
+Save the state of an object into a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_aa589037ff1304165b2b9736c08bf3f66}{image\+\_\+put()}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & The address of a Binary\+Image stream that is either empty or has been used only for writing.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success (Most likely error is allocation). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Clips_a8955d5070c8128d68104eaf7bc0a8b31}\label{classreels_1_1Clips_a8955d5070c8128d68104eaf7bc0a8b31}} 
+\index{reels::Clips@{reels::Clips}!scan\_event@{scan\_event}}
+\index{scan\_event@{scan\_event}!reels::Clips@{reels::Clips}}
+\doxysubsubsection{\texorpdfstring{scan\_event()}{scan\_event()}}
+{\footnotesize\ttfamily bool reels\+::\+Clips\+::scan\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+e,  }\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+d,  }\item[{double}]{w,  }\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+c,  }\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+t }\end{DoxyParamCaption})}
+
+
+
+Process a row from a transaction file, to add the event to the client\textquotesingle{}s timeline (clip). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+e} & The \char`\"{}emitter\char`\"{}. A C/\+Python string representing \char`\"{}owner of event\char`\"{}. \\
+\hline
+{\em p\+\_\+d} & The \char`\"{}description\char`\"{}. A C/\+Python string representing \char`\"{}the event\char`\"{}. \\
+\hline
+{\em w} & The \char`\"{}weight\char`\"{}. A double representing a weight of the event. \\
+\hline
+{\em p\+\_\+c} & The \char`\"{}client\char`\"{}. A C/\+Python string representing \char`\"{}the actor\char`\"{}. \\
+\hline
+{\em p\+\_\+t} & The \char`\"{}time\char`\"{}. A timestamp of the event as a C/\+Python string. (The format is given via \mbox{\hyperlink{classreels_1_1TimeUtil_ae45cac3f4e552d0128d3b82039896456}{set\+\_\+time\+\_\+format()}}.)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on insertion. False usually just means, the event is not in events or the client is not in clients. Occasionally, it may be a time parsing error. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+reels/reels.\+h\item 
+reels/reels.\+cpp\end{DoxyCompactItemize}

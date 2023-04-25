@@ -1,0 +1,539 @@
+\hypertarget{classreels_1_1Targets}{}\doxysection{reels\+::Targets Class Reference}
+\label{classreels_1_1Targets}\index{reels::Targets@{reels::Targets}}
+
+
+A container class to hold target events and do predictions based on clips.  
+
+
+
+
+{\ttfamily \#include $<$reels.\+h$>$}
+
+
+
+Inheritance diagram for reels\+::Targets\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classreels_1_1Targets__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for reels\+::Targets\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classreels_1_1Targets__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classreels_1_1Targets_a788c0a0b574885ad093398bea7081455}{Targets}} (\mbox{\hyperlink{namespacereels_a967ca40ad0410dcf5f4ff55206a988ff}{p\+Clip\+Map}} p\+\_\+clips, \mbox{\hyperlink{namespacereels_ad37c6476c649ff89a1e3b08ae308ac18}{Target\+Map}} target)
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object from a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object and a Target\+Map. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Targets_aa494e3e344558109a7586f5d46a8c65d}{insert\+\_\+target}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+c, \mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Utility to fill the internal Target\+Map target. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Targets_a09486f71a7545b25a5a396d87f459d29}{fit}} (\mbox{\hyperlink{namespacereels_ad44e06140c2e753acec63a0c7f59fa06}{Transform}} x\+\_\+form, \mbox{\hyperlink{namespacereels_af9e843e456fd6d18c38b1758c8258946}{Aggregate}} agg, double p, int depth, bool as\+\_\+states)
+\begin{DoxyCompactList}\small\item\em Fit the prediction model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacereels_afab3fdb12dfcf2726f495bd074225411}{Times\+To\+Target}} \mbox{\hyperlink{classreels_1_1Targets_aefdb329ae8284265f37c6fee9f3a074a}{predict}} ()
+\begin{DoxyCompactList}\small\item\em Predict time to target for all the clients in the \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object used to fit the model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacereels_afab3fdb12dfcf2726f495bd074225411}{Times\+To\+Target}} \mbox{\hyperlink{classreels_1_1Targets_a553f2ab5dd3bcec26034115b1d917679}{predict}} (\mbox{\hyperlink{classreels_1_1Clients}{Clients}} clients)
+\begin{DoxyCompactList}\small\item\em Predict time to target for all the clients in a given \mbox{\hyperlink{classreels_1_1Clients}{Clients}} object whose clips have been used to fit the model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacereels_afab3fdb12dfcf2726f495bd074225411}{Times\+To\+Target}} \mbox{\hyperlink{classreels_1_1Targets_a616b36f99f75c5592a7fc82febad23d0}{predict}} (\mbox{\hyperlink{namespacereels_a967ca40ad0410dcf5f4ff55206a988ff}{p\+Clip\+Map}} p\+\_\+clips)
+\begin{DoxyCompactList}\small\item\em Predict time to target for a set of clients whose clips are given in a Clip\+Map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreels_1_1Targets_a428215b5a28ab3c607766c7f57c93f09}{verbose\+\_\+predict\+\_\+clip}} (const \mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} \&client, \mbox{\hyperlink{namespacereels_a2f6d86b83946e88c6e43e7c1b476f0b4}{Clip}} \&clip, \mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}} \&obs\+\_\+time, bool \&target\+\_\+yn, int \&longest\+\_\+seq, uint64\+\_\+t \&n\+\_\+visits, uint64\+\_\+t \&n\+\_\+targets, double \&targ\+\_\+mean\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Predict time for a single Clip returning all kind of prediction related information. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Targets_a96b6945602462b00a810f3489f3a2288}{load}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&p\+\_\+bi)
+\begin{DoxyCompactList}\small\item\em Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Targets_ac4a9e31f024d5b382fa48eec82bfcb9b}{save}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&p\+\_\+bi)
+\begin{DoxyCompactList}\small\item\em Save the state of an object into a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_aa589037ff1304165b2b9736c08bf3f66}{image\+\_\+put()}} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classreels_1_1Targets_acc1ee6e15e1250af634a8167868c70ae}{update\+\_\+node}} (int idx\+\_\+parent, uint64\+\_\+t code, bool target, \mbox{\hyperlink{namespacereels_a0e17cc783e9a6a6e802c866ec6c9f003}{Ext\+Float}} time\+\_\+d)
+\begin{DoxyCompactList}\small\item\em Update (fit) the Code\+Tree inserting new nodes as necessary. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classreels_1_1Targets_a6dca89e79ea2f68868bd17326b5d19d5}{normal\+\_\+pdf}} (double x)
+\begin{DoxyCompactList}\small\item\em Density (pdf) for the normal distribution with mean 0 and standard deviation 1. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classreels_1_1Targets_afbff88985aa0045475304bc3a56b0ff3}{normal\+\_\+cdf}} (double x)
+\begin{DoxyCompactList}\small\item\em Cumulative distribution (cdf) for the normal distribution with mean 0 and standard deviation 1. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classreels_1_1Targets_a2986f57a1a97ee8e1c7b2ffb816e3350}{agresti\+\_\+coull\+\_\+upper\+\_\+bound}} (uint64\+\_\+t n\+\_\+hits, uint64\+\_\+t n\+\_\+total)
+\begin{DoxyCompactList}\small\item\em Upper bound of the Agresti-\/\+Coull confidence interval for a binomial proportion. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classreels_1_1Targets_abeacf235481ea5d461876c95b9d0288e}{agresti\+\_\+coull\+\_\+lower\+\_\+bound}} (uint64\+\_\+t n\+\_\+hits, uint64\+\_\+t n\+\_\+total)
+\begin{DoxyCompactList}\small\item\em Lower bound of the Agresti-\/\+Coull confidence interval for a binomial proportion. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classreels_1_1Targets_a80b4a813cca93acd4439d1d34036327b}{predict\+\_\+time}} (\mbox{\hyperlink{structreels_1_1CodeTreeNode}{Code\+Tree\+Node}} \&node)
+\begin{DoxyCompactList}\small\item\em Predict the time to target for a sub-\/clip that starts at a node. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classreels_1_1Targets_aa0711b5c32e23aab8f4656be2484eab1}{predict\+\_\+clip}} (\mbox{\hyperlink{namespacereels_a2f6d86b83946e88c6e43e7c1b476f0b4}{Clip}} clip)
+\begin{DoxyCompactList}\small\item\em Predict the time to target for a clip. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Targets_af539c8e3fe2bc1a3f77f32e414bfcbfd}{recurse\+\_\+tree\+\_\+stats}} (int depth, int idx, int parent\+\_\+idx, uint64\+\_\+t code, \mbox{\hyperlink{namespacereels_ad8514b34ba2d1a7ef5b6ed500479ed56}{Code\+In\+Tree\+Stat\+Map}} \&codes\+\_\+stat)
+\begin{DoxyCompactList}\small\item\em Recursive tree exploration updating a Code\+In\+Tree\+Stat\+Map map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classreels_1_1Targets_a194426a4f66ca447b433b1483c6f9b08}{num\+\_\+targets}} ()
+\begin{DoxyCompactList}\small\item\em Return the size of the internal Target\+Map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classreels_1_1Targets_a625045e775f73503e3e9e61b753cfe05}{tree\+\_\+size}} ()
+\begin{DoxyCompactList}\small\item\em Return the size of the internal Code\+Tree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacereels_a967ca40ad0410dcf5f4ff55206a988ff}{p\+Clip\+Map}} \mbox{\hyperlink{classreels_1_1Targets_a2e193774de3a2ac5920fcac53aed4b6b}{clip\+\_\+map}} ()
+\begin{DoxyCompactList}\small\item\em The address of the internal Clip\+Map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacereels_a1d46156e5435a796e0994528e1cf0c54}{p\+Code\+Tree}} \mbox{\hyperlink{classreels_1_1Targets_a903da912dd75677cb03c3c41283d7f9d}{p\+\_\+tree}} ()
+\begin{DoxyCompactList}\small\item\em The address of the internal Code\+Tree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacereels_a0fd1b6d201e1eec9fdbe8940245b5d8d}{p\+Target\+Map}} \mbox{\hyperlink{classreels_1_1Targets_a0a9bd52e830ad7fe7dd0e5ad07d808e1}{p\+\_\+target}} ()
+\begin{DoxyCompactList}\small\item\em The address of the internal Target\+Map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classreels_1_1TimeUtil}{reels\+::\+Time\+Util}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}} \mbox{\hyperlink{classreels_1_1TimeUtil_ae8e19904eaec93a5c9a4f0e6e0792369}{get\+\_\+time}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Convert time as a string to a Time\+Point (using the object\textquotesingle{}s time\+\_\+format). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreels_1_1TimeUtil_ae45cac3f4e552d0128d3b82039896456}{set\+\_\+time\+\_\+format}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} fmt)
+\begin{DoxyCompactList}\small\item\em Sets the public property time\+\_\+format to simplify the python interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{classreels_1_1TimeUtil}{reels\+::\+Time\+Util}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreels_1_1TimeUtil_ad026787163f981a528c58a1096ea57fc}\label{classreels_1_1TimeUtil_ad026787163f981a528c58a1096ea57fc}} 
+char {\bfseries time\+\_\+format} \mbox{[}128\mbox{]} = \char`\"{}\%Y-\/\%m-\/\%d \%H\+:\%M\+:\%S\char`\"{}
+\begin{DoxyCompactList}\small\item\em Date and time format for insert\+\_\+row() and define\+\_\+event() \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A container class to hold target events and do predictions based on clips. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classreels_1_1Targets_a788c0a0b574885ad093398bea7081455}\label{classreels_1_1Targets_a788c0a0b574885ad093398bea7081455}} 
+\index{reels::Targets@{reels::Targets}!Targets@{Targets}}
+\index{Targets@{Targets}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{Targets()}{Targets()}}
+{\footnotesize\ttfamily reels\+::\+Targets\+::\+Targets (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a967ca40ad0410dcf5f4ff55206a988ff}{p\+Clip\+Map}}}]{p\+\_\+clips,  }\item[{\mbox{\hyperlink{namespacereels_ad37c6476c649ff89a1e3b08ae308ac18}{Target\+Map}}}]{target }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object from a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object and a Target\+Map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+clips} & The address of a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object initialized with the clips of a set of clients. \\
+\hline
+{\em target} & A Target\+Map with the even times for a subset of the same clients (those who experienced the target). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classreels_1_1Targets_abeacf235481ea5d461876c95b9d0288e}\label{classreels_1_1Targets_abeacf235481ea5d461876c95b9d0288e}} 
+\index{reels::Targets@{reels::Targets}!agresti\_coull\_lower\_bound@{agresti\_coull\_lower\_bound}}
+\index{agresti\_coull\_lower\_bound@{agresti\_coull\_lower\_bound}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{agresti\_coull\_lower\_bound()}{agresti\_coull\_lower\_bound()}}
+{\footnotesize\ttfamily double reels\+::\+Targets\+::agresti\+\_\+coull\+\_\+lower\+\_\+bound (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{n\+\_\+hits,  }\item[{uint64\+\_\+t}]{n\+\_\+total }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Lower bound of the Agresti-\/\+Coull confidence interval for a binomial proportion. 
+
+The confidence level is passed as an argument to the \mbox{\hyperlink{classreels_1_1Targets_a09486f71a7545b25a5a396d87f459d29}{fit()}} method, the fit method computes some \char`\"{}binomial\+\_\+z.$\ast$\char`\"{} variables used in this function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+hits} & The number of successes. \\
+\hline
+{\em n\+\_\+total} & The number of independent trials.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The upper bound of the AC confidence interval. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a2986f57a1a97ee8e1c7b2ffb816e3350}\label{classreels_1_1Targets_a2986f57a1a97ee8e1c7b2ffb816e3350}} 
+\index{reels::Targets@{reels::Targets}!agresti\_coull\_upper\_bound@{agresti\_coull\_upper\_bound}}
+\index{agresti\_coull\_upper\_bound@{agresti\_coull\_upper\_bound}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{agresti\_coull\_upper\_bound()}{agresti\_coull\_upper\_bound()}}
+{\footnotesize\ttfamily double reels\+::\+Targets\+::agresti\+\_\+coull\+\_\+upper\+\_\+bound (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{n\+\_\+hits,  }\item[{uint64\+\_\+t}]{n\+\_\+total }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Upper bound of the Agresti-\/\+Coull confidence interval for a binomial proportion. 
+
+The confidence level is passed as an argument to the \mbox{\hyperlink{classreels_1_1Targets_a09486f71a7545b25a5a396d87f459d29}{fit()}} method, the fit method computes some \char`\"{}binomial\+\_\+z.$\ast$\char`\"{} variables used in this function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+hits} & The number of successes. \\
+\hline
+{\em n\+\_\+total} & The number of independent trials.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The upper bound of the AC confidence interval. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a2e193774de3a2ac5920fcac53aed4b6b}\label{classreels_1_1Targets_a2e193774de3a2ac5920fcac53aed4b6b}} 
+\index{reels::Targets@{reels::Targets}!clip\_map@{clip\_map}}
+\index{clip\_map@{clip\_map}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{clip\_map()}{clip\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_a967ca40ad0410dcf5f4ff55206a988ff}{p\+Clip\+Map}} reels\+::\+Targets\+::clip\+\_\+map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The address of the internal Clip\+Map. 
+
+\begin{DoxyReturn}{Returns}
+The address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a09486f71a7545b25a5a396d87f459d29}\label{classreels_1_1Targets_a09486f71a7545b25a5a396d87f459d29}} 
+\index{reels::Targets@{reels::Targets}!fit@{fit}}
+\index{fit@{fit}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{fit()}{fit()}}
+{\footnotesize\ttfamily bool reels\+::\+Targets\+::fit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ad44e06140c2e753acec63a0c7f59fa06}{Transform}}}]{x\+\_\+form,  }\item[{\mbox{\hyperlink{namespacereels_af9e843e456fd6d18c38b1758c8258946}{Aggregate}}}]{agg,  }\item[{double}]{p,  }\item[{int}]{depth,  }\item[{bool}]{as\+\_\+states }\end{DoxyParamCaption})}
+
+
+
+Fit the prediction model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+form} & A possible transformation of the times. (Currently \char`\"{}log\char`\"{} or \char`\"{}linear\char`\"{}.) \\
+\hline
+{\em agg} & The mechanism used for the aggregation. (Currently \char`\"{}minimax\char`\"{}, \char`\"{}mean\char`\"{} or \char`\"{}longest\char`\"{}.) \\
+\hline
+{\em p} & The width of the confidence interval for the binomial proportion used to calculate the lower bound. (E.\+g., p = 0.\+5 will estimate a lower bound of a symmetric CI with coverage of 0.\+5.) \\
+\hline
+{\em depth} & The maximum depth of the tree (maximum sequence length learned). \\
+\hline
+{\em as\+\_\+states} & Treat events as states by removing repeated ones from the Clip\+Map keeping the time of the first instance only. When used, the Clip\+Map passed to the constructor by reference will be converted to states as a side effect.\\
+\hline
+\end{DoxyParams}
+Fit can only be called once in the life of a \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object and \mbox{\hyperlink{classreels_1_1Targets_aefdb329ae8284265f37c6fee9f3a074a}{predict()}} cannot be called before \mbox{\hyperlink{classreels_1_1Targets_a09486f71a7545b25a5a396d87f459d29}{fit()}}.
+
+\begin{DoxyReturn}{Returns}
+True on success. Error is already fitted or wrong arguments. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_aa494e3e344558109a7586f5d46a8c65d}\label{classreels_1_1Targets_aa494e3e344558109a7586f5d46a8c65d}} 
+\index{reels::Targets@{reels::Targets}!insert\_target@{insert\_target}}
+\index{insert\_target@{insert\_target}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{insert\_target()}{insert\_target()}}
+{\footnotesize\ttfamily bool reels\+::\+Targets\+::insert\+\_\+target (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+c,  }\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+t }\end{DoxyParamCaption})}
+
+
+
+Utility to fill the internal Target\+Map target. 
+
+The Target\+Map can be initialized and given to the constructor, or an empty Target\+Map can be given to the constructor ans initialized by this method.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+c} & The \char`\"{}client\char`\"{}. A C/\+Python string representing \char`\"{}the actor\char`\"{}. \\
+\hline
+{\em p\+\_\+t} & The \char`\"{}time\char`\"{}. A timestamp of the event as a C/\+Python string. (The format is given via \mbox{\hyperlink{classreels_1_1TimeUtil_ae45cac3f4e552d0128d3b82039896456}{set\+\_\+time\+\_\+format()}}.)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on new clients. False if the client is already in the Target\+Map or the time is in the wrong format. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a96b6945602462b00a810f3489f3a2288}\label{classreels_1_1Targets_a96b6945602462b00a810f3489f3a2288}} 
+\index{reels::Targets@{reels::Targets}!load@{load}}
+\index{load@{load}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily bool reels\+::\+Targets\+::load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&}]{p\+\_\+bi }\end{DoxyParamCaption})}
+
+
+
+Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & The address of a Binary\+Image stream containing a previously \mbox{\hyperlink{classreels_1_1Targets_ac4a9e31f024d5b382fa48eec82bfcb9b}{save()}}-\/ed image at the cursor position.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success (Most likely error is a wrong stream). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_afbff88985aa0045475304bc3a56b0ff3}\label{classreels_1_1Targets_afbff88985aa0045475304bc3a56b0ff3}} 
+\index{reels::Targets@{reels::Targets}!normal\_cdf@{normal\_cdf}}
+\index{normal\_cdf@{normal\_cdf}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{normal\_cdf()}{normal\_cdf()}}
+{\footnotesize\ttfamily double reels\+::\+Targets\+::normal\+\_\+cdf (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cumulative distribution (cdf) for the normal distribution with mean 0 and standard deviation 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The quantile.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cumulative probability. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a6dca89e79ea2f68868bd17326b5d19d5}\label{classreels_1_1Targets_a6dca89e79ea2f68868bd17326b5d19d5}} 
+\index{reels::Targets@{reels::Targets}!normal\_pdf@{normal\_pdf}}
+\index{normal\_pdf@{normal\_pdf}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{normal\_pdf()}{normal\_pdf()}}
+{\footnotesize\ttfamily double reels\+::\+Targets\+::normal\+\_\+pdf (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Density (pdf) for the normal distribution with mean 0 and standard deviation 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The quantile.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The density. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a194426a4f66ca447b433b1483c6f9b08}\label{classreels_1_1Targets_a194426a4f66ca447b433b1483c6f9b08}} 
+\index{reels::Targets@{reels::Targets}!num\_targets@{num\_targets}}
+\index{num\_targets@{num\_targets}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{num\_targets()}{num\_targets()}}
+{\footnotesize\ttfamily int reels\+::\+Targets\+::num\+\_\+targets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the size of the internal Target\+Map. 
+
+\begin{DoxyReturn}{Returns}
+Size of the internal Target\+Map. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a0a9bd52e830ad7fe7dd0e5ad07d808e1}\label{classreels_1_1Targets_a0a9bd52e830ad7fe7dd0e5ad07d808e1}} 
+\index{reels::Targets@{reels::Targets}!p\_target@{p\_target}}
+\index{p\_target@{p\_target}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{p\_target()}{p\_target()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_a0fd1b6d201e1eec9fdbe8940245b5d8d}{p\+Target\+Map}} reels\+::\+Targets\+::p\+\_\+target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The address of the internal Target\+Map. 
+
+\begin{DoxyReturn}{Returns}
+The address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a903da912dd75677cb03c3c41283d7f9d}\label{classreels_1_1Targets_a903da912dd75677cb03c3c41283d7f9d}} 
+\index{reels::Targets@{reels::Targets}!p\_tree@{p\_tree}}
+\index{p\_tree@{p\_tree}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{p\_tree()}{p\_tree()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_a1d46156e5435a796e0994528e1cf0c54}{p\+Code\+Tree}} reels\+::\+Targets\+::p\+\_\+tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The address of the internal Code\+Tree. 
+
+\begin{DoxyReturn}{Returns}
+The address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_aefdb329ae8284265f37c6fee9f3a074a}\label{classreels_1_1Targets_aefdb329ae8284265f37c6fee9f3a074a}} 
+\index{reels::Targets@{reels::Targets}!predict@{predict}}
+\index{predict@{predict}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_afab3fdb12dfcf2726f495bd074225411}{Times\+To\+Target}} reels\+::\+Targets\+::predict (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Predict time to target for all the clients in the \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object used to fit the model. 
+
+\mbox{\hyperlink{classreels_1_1Targets_aefdb329ae8284265f37c6fee9f3a074a}{predict()}} cannot be called before \mbox{\hyperlink{classreels_1_1Targets_a09486f71a7545b25a5a396d87f459d29}{fit()}} and can be called any number of times in all overloaded forms after that.
+
+\begin{DoxyReturn}{Returns}
+A vector with the times. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a553f2ab5dd3bcec26034115b1d917679}\label{classreels_1_1Targets_a553f2ab5dd3bcec26034115b1d917679}} 
+\index{reels::Targets@{reels::Targets}!predict@{predict}}
+\index{predict@{predict}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_afab3fdb12dfcf2726f495bd074225411}{Times\+To\+Target}} reels\+::\+Targets\+::predict (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classreels_1_1Clients}{Clients}}}]{clients }\end{DoxyParamCaption})}
+
+
+
+Predict time to target for all the clients in a given \mbox{\hyperlink{classreels_1_1Clients}{Clients}} object whose clips have been used to fit the model. 
+
+It will predict the prediction of the zero-\/length clip (accumulated in the root node) if the client is not found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em clients} & A \mbox{\hyperlink{classreels_1_1Clients}{Clients}} object with a subset of the clients used to fit the model.\\
+\hline
+\end{DoxyParams}
+\mbox{\hyperlink{classreels_1_1Targets_aefdb329ae8284265f37c6fee9f3a074a}{predict()}} cannot be called before \mbox{\hyperlink{classreels_1_1Targets_a09486f71a7545b25a5a396d87f459d29}{fit()}} and can be called any number of times in all overloaded forms after that.
+
+\begin{DoxyReturn}{Returns}
+A vector with the times. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a616b36f99f75c5592a7fc82febad23d0}\label{classreels_1_1Targets_a616b36f99f75c5592a7fc82febad23d0}} 
+\index{reels::Targets@{reels::Targets}!predict@{predict}}
+\index{predict@{predict}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_afab3fdb12dfcf2726f495bd074225411}{Times\+To\+Target}} reels\+::\+Targets\+::predict (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a967ca40ad0410dcf5f4ff55206a988ff}{p\+Clip\+Map}}}]{p\+\_\+clips }\end{DoxyParamCaption})}
+
+
+
+Predict time to target for a set of clients whose clips are given in a Clip\+Map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+clips} & A Clip\+Map of clients and clips to be used in prediction.\\
+\hline
+\end{DoxyParams}
+\mbox{\hyperlink{classreels_1_1Targets_aefdb329ae8284265f37c6fee9f3a074a}{predict()}} cannot be called before \mbox{\hyperlink{classreels_1_1Targets_a09486f71a7545b25a5a396d87f459d29}{fit()}} and can be called any number of times in all overloaded forms after that.
+
+\begin{DoxyReturn}{Returns}
+A vector with the times. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_aa0711b5c32e23aab8f4656be2484eab1}\label{classreels_1_1Targets_aa0711b5c32e23aab8f4656be2484eab1}} 
+\index{reels::Targets@{reels::Targets}!predict\_clip@{predict\_clip}}
+\index{predict\_clip@{predict\_clip}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{predict\_clip()}{predict\_clip()}}
+{\footnotesize\ttfamily double reels\+::\+Targets\+::predict\+\_\+clip (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a2f6d86b83946e88c6e43e7c1b476f0b4}{Clip}}}]{clip }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Predict the time to target for a clip. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clip} & A clip containing a sequence of event codes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The predicted time to the target event. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a80b4a813cca93acd4439d1d34036327b}\label{classreels_1_1Targets_a80b4a813cca93acd4439d1d34036327b}} 
+\index{reels::Targets@{reels::Targets}!predict\_time@{predict\_time}}
+\index{predict\_time@{predict\_time}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{predict\_time()}{predict\_time()}}
+{\footnotesize\ttfamily double reels\+::\+Targets\+::predict\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structreels_1_1CodeTreeNode}{Code\+Tree\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Predict the time to target for a sub-\/clip that starts at a node. 
+
+This method assumes uniform distribution over time of the events (like Poisson distribution) but weighted by evidence.
+
+Basically, we assume that the observed maximum likelihood time (mu\+\_\+hat) is the mean (therefore the half) of a uniform distribution U(0, 2$\ast$mu\+\_\+hat) and the whole \char`\"{}event space\char`\"{}, if estimated without bias, would be U(0, 2$\ast$mu\+\_\+hat$\ast$n\+\_\+seen/n\+\_\+target).
+
+Caveat 1. We don\textquotesingle{}t want it unbiased, but biased by evidence, because many estimates will be done, \char`\"{}lucky paths\char`\"{} are a real thing, especially with low number of visits. That is why we use \mbox{\hyperlink{classreels_1_1Targets_abeacf235481ea5d461876c95b9d0288e}{agresti\+\_\+coull\+\_\+lower\+\_\+bound()}} and not n\+\_\+seen/n\+\_\+target. Note that, of course, as you reduce the confidence (the p argument of fit), you will make it approach n\+\_\+seen/n\+\_\+target.
+
+Caveat 2. We, intentionally bias towards underestimating the urgency. With much evidence, it will be close to unbiased, but with little evidence, if will underrepresent the urgency (proximity of the event happening). This is why minimax will select the most urgent (min) of the biased up values (max).
+
+Caveat 3. mu\+\_\+hat is numerically more stable if the transformation is log (although the aggregation it is computed in 128 bit floating point arithmetic which should be stable either way) but, in that case mu\+\_\+hat will not be the mean time, but its geometric mean (since adding logs is multiplying).
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The node in the tree defining the sub-\/clip.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The predicted time to the target event. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_af539c8e3fe2bc1a3f77f32e414bfcbfd}\label{classreels_1_1Targets_af539c8e3fe2bc1a3f77f32e414bfcbfd}} 
+\index{reels::Targets@{reels::Targets}!recurse\_tree\_stats@{recurse\_tree\_stats}}
+\index{recurse\_tree\_stats@{recurse\_tree\_stats}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{recurse\_tree\_stats()}{recurse\_tree\_stats()}}
+{\footnotesize\ttfamily bool reels\+::\+Targets\+::recurse\+\_\+tree\+\_\+stats (\begin{DoxyParamCaption}\item[{int}]{depth,  }\item[{int}]{idx,  }\item[{int}]{parent\+\_\+idx,  }\item[{uint64\+\_\+t}]{code,  }\item[{\mbox{\hyperlink{namespacereels_ad8514b34ba2d1a7ef5b6ed500479ed56}{Code\+In\+Tree\+Stat\+Map}} \&}]{codes\+\_\+stat }\end{DoxyParamCaption})}
+
+
+
+Recursive tree exploration updating a Code\+In\+Tree\+Stat\+Map map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em depth} & The recursion depth \\
+\hline
+{\em idx} & The index of the current node \\
+\hline
+{\em parent\+\_\+idx} & The index of the parent node \\
+\hline
+{\em code} & The current code \\
+\hline
+{\em codes\+\_\+stat} & The Code\+In\+Tree\+Stat\+Map being updated\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+False on error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_ac4a9e31f024d5b382fa48eec82bfcb9b}\label{classreels_1_1Targets_ac4a9e31f024d5b382fa48eec82bfcb9b}} 
+\index{reels::Targets@{reels::Targets}!save@{save}}
+\index{save@{save}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily bool reels\+::\+Targets\+::save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&}]{p\+\_\+bi }\end{DoxyParamCaption})}
+
+
+
+Save the state of an object into a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_aa589037ff1304165b2b9736c08bf3f66}{image\+\_\+put()}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & The address of a Binary\+Image stream that is either empty or has been used only for writing.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success (Most likely error is allocation). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a625045e775f73503e3e9e61b753cfe05}\label{classreels_1_1Targets_a625045e775f73503e3e9e61b753cfe05}} 
+\index{reels::Targets@{reels::Targets}!tree\_size@{tree\_size}}
+\index{tree\_size@{tree\_size}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{tree\_size()}{tree\_size()}}
+{\footnotesize\ttfamily int reels\+::\+Targets\+::tree\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the size of the internal Code\+Tree. 
+
+\begin{DoxyReturn}{Returns}
+Size of the internal Code\+Tree. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_acc1ee6e15e1250af634a8167868c70ae}\label{classreels_1_1Targets_acc1ee6e15e1250af634a8167868c70ae}} 
+\index{reels::Targets@{reels::Targets}!update\_node@{update\_node}}
+\index{update\_node@{update\_node}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{update\_node()}{update\_node()}}
+{\footnotesize\ttfamily int reels\+::\+Targets\+::update\+\_\+node (\begin{DoxyParamCaption}\item[{int}]{idx\+\_\+parent,  }\item[{uint64\+\_\+t}]{code,  }\item[{bool}]{target,  }\item[{\mbox{\hyperlink{namespacereels_a0e17cc783e9a6a6e802c866ec6c9f003}{Ext\+Float}}}]{time\+\_\+d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update (fit) the Code\+Tree inserting new nodes as necessary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx\+\_\+parent} & The index of the parent node. For the first insertion, root == 0. For more, returned values of this. \\
+\hline
+{\em code} & The node will be the child of the parent node whose code is this code. \\
+\hline
+{\em target} & The target was matched in the clip or not. \\
+\hline
+{\em time\+\_\+d} & The time difference from the code to the target (when there is a target, must be 0 otherwise).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the current node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Targets_a428215b5a28ab3c607766c7f57c93f09}\label{classreels_1_1Targets_a428215b5a28ab3c607766c7f57c93f09}} 
+\index{reels::Targets@{reels::Targets}!verbose\_predict\_clip@{verbose\_predict\_clip}}
+\index{verbose\_predict\_clip@{verbose\_predict\_clip}!reels::Targets@{reels::Targets}}
+\doxysubsubsection{\texorpdfstring{verbose\_predict\_clip()}{verbose\_predict\_clip()}}
+{\footnotesize\ttfamily void reels\+::\+Targets\+::verbose\+\_\+predict\+\_\+clip (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} \&}]{client,  }\item[{\mbox{\hyperlink{namespacereels_a2f6d86b83946e88c6e43e7c1b476f0b4}{Clip}} \&}]{clip,  }\item[{\mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}} \&}]{obs\+\_\+time,  }\item[{bool \&}]{target\+\_\+yn,  }\item[{int \&}]{longest\+\_\+seq,  }\item[{uint64\+\_\+t \&}]{n\+\_\+visits,  }\item[{uint64\+\_\+t \&}]{n\+\_\+targets,  }\item[{double \&}]{targ\+\_\+mean\+\_\+t }\end{DoxyParamCaption})}
+
+
+
+Predict time for a single Clip returning all kind of prediction related information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & The client hash (needed to see if he fits the target). \\
+\hline
+{\em clip} & The clip we want to predict \\
+\hline
+{\em obs\+\_\+time} & A variable to store the time between the last even and the target when the target is hit. \\
+\hline
+{\em target\+\_\+yn} & A variable to store if the target was hit (true) or not (false). \\
+\hline
+{\em longest\+\_\+seq} & A variable to store the longest aligned matching sequence stored in the tree. \\
+\hline
+{\em n\+\_\+visits} & A variable to store the number of visits for the longest sequence. \\
+\hline
+{\em n\+\_\+targets} & A variable to store the number of target hits for the longest sequence. \\
+\hline
+{\em targ\+\_\+mean\+\_\+t} & A variable to store average observed time for hits in the longest sequence. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+reels/reels.\+h\item 
+reels/reels.\+cpp\end{DoxyCompactItemize}

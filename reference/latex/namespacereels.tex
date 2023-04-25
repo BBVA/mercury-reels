@@ -1,0 +1,389 @@
+\hypertarget{namespacereels}{}\doxysection{reels Namespace Reference}
+\label{namespacereels}\index{reels@{reels}}
+
+
+The namespace including everything to simplify using Reels in a c++ application,.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}}
+\begin{DoxyCompactList}\small\item\em The binary representation of an event as stored in a transaction file. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structreels_1_1BinTransaction}{Bin\+Transaction}}
+\begin{DoxyCompactList}\small\item\em The binary representation of a transaction in a transaction file. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classreels_1_1Clients}{Clients}}
+\begin{DoxyCompactList}\small\item\em A container class to hold client ids. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classreels_1_1Clips}{Clips}}
+\begin{DoxyCompactList}\small\item\em A container class to hold clips (sequences of events). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structreels_1_1CodeInTreeStatistics}{Code\+In\+Tree\+Statistics}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structreels_1_1CodeInTreeStatistics}{Code\+In\+Tree\+Statistics}}\+: A structure to compute aggregated statistics of for each code. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}}\+: A structure to sort codes by lift. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structreels_1_1CodeTreeNode}{Code\+Tree\+Node}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structreels_1_1CodeTreeNode}{Code\+Tree\+Node}}\+: Each node in a fitted Code\+Tree. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classreels_1_1Events}{Events}}
+\begin{DoxyCompactList}\small\item\em A container class to hold events. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structreels_1_1EventStat}{Event\+Stat}}
+\begin{DoxyCompactList}\small\item\em The metrics associated to an event identified by a \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}}. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structreels_1_1ImageBlock}{Image\+Block}}
+\begin{DoxyCompactList}\small\item\em An generic block structure to store object state in a Python-\/friendly way. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classreels_1_1Logger}{Logger}}
+\begin{DoxyCompactList}\small\item\em A minimalist logger stored as a std\+::string providing sprintf functionality. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}}\+: A structure to compare predicted and observed. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structreels_1_1StringUsage}{String\+Usage}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structreels_1_1StringUsage}{String\+Usage}}\+: A pair of String and number of times it is used. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classreels_1_1Targets}{Targets}}
+\begin{DoxyCompactList}\small\item\em A container class to hold target events and do predictions based on clips. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classreels_1_1TimeUtil}{Time\+Util}}
+\begin{DoxyCompactList}\small\item\em A common ancestor of \mbox{\hyperlink{classreels_1_1Clips}{Clips}} and \mbox{\hyperlink{classreels_1_1Targets}{Targets}} to avoid duplicating time management. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}\label{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}} 
+typedef uint64\+\_\+t {\bfseries Element\+Hash}
+\begin{DoxyCompactList}\small\item\em A binary hash of a string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a8439b64892718b921e015accbfad1478}\label{namespacereels_a8439b64892718b921e015accbfad1478}} 
+typedef std\+::string {\bfseries String}
+\begin{DoxyCompactList}\small\item\em A dynamically allocated c++ string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}\label{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}} 
+typedef const char $\ast$ {\bfseries p\+Char}
+\begin{DoxyCompactList}\small\item\em A c string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}\label{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}} 
+typedef time\+\_\+t {\bfseries Time\+Point}
+\begin{DoxyCompactList}\small\item\em A c 8 byte integer time point. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_ab2c2070f5faa49767ec138bd7c6b8db5}\label{namespacereels_ab2c2070f5faa49767ec138bd7c6b8db5}} 
+typedef struct tm {\bfseries Time\+Struct}
+\begin{DoxyCompactList}\small\item\em A c structure of integer fields. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a0e17cc783e9a6a6e802c866ec6c9f003}\label{namespacereels_a0e17cc783e9a6a6e802c866ec6c9f003}} 
+typedef double {\bfseries Ext\+Float}
+\begin{DoxyCompactList}\small\item\em Accumulator type\+: Was a 128 bit float, changed to 64 for macos compatibility. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_ad0d2080a74e1cd4f00a9280923bd3283}\label{namespacereels_ad0d2080a74e1cd4f00a9280923bd3283}} 
+typedef std\+::vector$<$ \mbox{\hyperlink{structreels_1_1ImageBlock}{Image\+Block}} $>$ {\bfseries Binary\+Image}
+\begin{DoxyCompactList}\small\item\em An array of generic blocks to serialize anything. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}\label{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}} 
+typedef \mbox{\hyperlink{namespacereels_ad0d2080a74e1cd4f00a9280923bd3283}{Binary\+Image}} $\ast$ {\bfseries p\+Binary\+Image}
+\begin{DoxyCompactList}\small\item\em A pointer to Binary\+Image. \end{DoxyCompactList}\item 
+typedef std\+::map$<$ \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}}, \mbox{\hyperlink{structreels_1_1EventStat}{Event\+Stat}} $>$ \mbox{\hyperlink{namespacereels_a753be4488a8c210f29ee5ccd95f672b9}{Event\+Map}}
+\begin{DoxyCompactList}\small\item\em Event\+Map\+: A map from hashes in an \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} to usage data defines the info about an event. \end{DoxyCompactList}\item 
+typedef std\+::map$<$ uint64\+\_\+t, \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} $>$ \mbox{\hyperlink{namespacereels_a3102c8c75ce0c85bb260c478b71fa90a}{Priority\+Map}}
+\begin{DoxyCompactList}\small\item\em Priority\+Map\+: A map with all the acceptable priority values in the Event\+Map as keys. \end{DoxyCompactList}\item 
+typedef std\+::map$<$ uint64\+\_\+t, uint64\+\_\+t $>$ \mbox{\hyperlink{namespacereels_ad23367fd7ac91cfd895fea61134f5e53}{Event\+Code\+Map}}
+\begin{DoxyCompactList}\small\item\em Event\+Code\+Map\+: A map converting the space of Event codes into a lower cardinality set for Event optimization. \end{DoxyCompactList}\item 
+typedef std\+::map$<$ uint64\+\_\+t, \mbox{\hyperlink{structreels_1_1CodeInTreeStatistics}{Code\+In\+Tree\+Statistics}} $>$ \mbox{\hyperlink{namespacereels_ad8514b34ba2d1a7ef5b6ed500479ed56}{Code\+In\+Tree\+Stat\+Map}}
+\begin{DoxyCompactList}\small\item\em Code\+In\+Tree\+Stat\+Map\+: A map to store all the \mbox{\hyperlink{structreels_1_1CodeInTreeStatistics}{Code\+In\+Tree\+Statistics}} by code. \end{DoxyCompactList}\item 
+typedef std\+::map$<$ \mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}}, \mbox{\hyperlink{structreels_1_1StringUsage}{String\+Usage}} $>$ \mbox{\hyperlink{namespacereels_af2b9d59d7a42cbf383aa707de86ee9a8}{String\+Usage\+Map}}
+\begin{DoxyCompactList}\small\item\em String\+Usage\+Map\+: A map from hashes to string and number of times the string is used. \end{DoxyCompactList}\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} $>$ \mbox{\hyperlink{namespacereels_a2f35b05990dd7c5c01448a07bf89723c}{Client\+IDs}}
+\begin{DoxyCompactList}\small\item\em Client\+IDs\+: A vector of client ID hashes. \end{DoxyCompactList}\item 
+typedef std\+::set$<$ \mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} $>$ \mbox{\hyperlink{namespacereels_a73a7ae63cbb27d7caabe69e99ec19646}{Client\+IDSet}}
+\begin{DoxyCompactList}\small\item\em Client\+IDSet\+: A set of client ID hashes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a2f6d86b83946e88c6e43e7c1b476f0b4}\label{namespacereels_a2f6d86b83946e88c6e43e7c1b476f0b4}} 
+typedef std\+::map$<$ \mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}}, uint64\+\_\+t $>$ {\bfseries Clip}
+\begin{DoxyCompactList}\small\item\em Clip\+: The clip (timeline) of a client is just a map of time points and codes. \end{DoxyCompactList}\item 
+typedef std\+::map$<$ \mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}}, \mbox{\hyperlink{namespacereels_a2f6d86b83946e88c6e43e7c1b476f0b4}{Clip}} $>$ \mbox{\hyperlink{namespacereels_a603b492f253098a318c7cece8dc26181}{Clip\+Map}}
+\begin{DoxyCompactList}\small\item\em Clip\+Map\+: A map from clients to clips. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a967ca40ad0410dcf5f4ff55206a988ff}\label{namespacereels_a967ca40ad0410dcf5f4ff55206a988ff}} 
+typedef \mbox{\hyperlink{namespacereels_a603b492f253098a318c7cece8dc26181}{Clip\+Map}} $\ast$ {\bfseries p\+Clip\+Map}
+\begin{DoxyCompactList}\small\item\em Pointer to a Clip\+Map. \end{DoxyCompactList}\item 
+typedef std\+::map$<$ \mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}}, \mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}} $>$ \mbox{\hyperlink{namespacereels_ad37c6476c649ff89a1e3b08ae308ac18}{Target\+Map}}
+\begin{DoxyCompactList}\small\item\em Target\+Map\+: A map from clients to target event Time\+Points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a0fd1b6d201e1eec9fdbe8940245b5d8d}\label{namespacereels_a0fd1b6d201e1eec9fdbe8940245b5d8d}} 
+typedef \mbox{\hyperlink{namespacereels_ad37c6476c649ff89a1e3b08ae308ac18}{Target\+Map}} $\ast$ {\bfseries p\+Target\+Map}
+\begin{DoxyCompactList}\small\item\em Pointer to a Target\+Map. \end{DoxyCompactList}\item 
+typedef std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacereels_afab3fdb12dfcf2726f495bd074225411}{Times\+To\+Target}}
+\begin{DoxyCompactList}\small\item\em Times\+To\+Target\+: A vector of predictions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a160646a36c079403d0afebd76a4d16cf}\label{namespacereels_a160646a36c079403d0afebd76a4d16cf}} 
+typedef std\+::set$<$ uint64\+\_\+t $>$ {\bfseries Code\+Set}
+\begin{DoxyCompactList}\small\item\em Code\+Set\+: A set of event codes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_ae76ecaa3940df39d3b8fa491fc62246c}\label{namespacereels_ae76ecaa3940df39d3b8fa491fc62246c}} 
+typedef \mbox{\hyperlink{namespacereels_a160646a36c079403d0afebd76a4d16cf}{Code\+Set}} $\ast$ {\bfseries p\+Code\+Set}
+\begin{DoxyCompactList}\small\item\em Pointer to a Code\+Set. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a085f2a70bd9319a74fcba2295b958e9e}\label{namespacereels_a085f2a70bd9319a74fcba2295b958e9e}} 
+typedef std\+::vector$<$ \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}} $>$ {\bfseries Optimize\+Eval}
+\begin{DoxyCompactList}\small\item\em Optimize\+Eval\+: A vector of \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a0003bf321a0a67c2609068f322a72b93}\label{namespacereels_a0003bf321a0a67c2609068f322a72b93}} 
+typedef std\+::vector$<$ \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}} $>$ {\bfseries Code\+Scores}
+\begin{DoxyCompactList}\small\item\em Code\+Scores\+: A vector of \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a9a4100c2745268c213a5e49ba813c9fe}\label{namespacereels_a9a4100c2745268c213a5e49ba813c9fe}} 
+typedef std\+::map$<$ uint64\+\_\+t, int $>$ {\bfseries Child\+Index}
+\begin{DoxyCompactList}\small\item\em Child\+Index\+: A map to find the next child in a Code\+Tree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a5d95cbf5c5aeea11aee17d84e67a699b}\label{namespacereels_a5d95cbf5c5aeea11aee17d84e67a699b}} 
+typedef \mbox{\hyperlink{structreels_1_1CodeTreeNode}{Code\+Tree\+Node}} $\ast$ {\bfseries p\+Code\+Tree\+Node}
+\begin{DoxyCompactList}\small\item\em Pointer to a \mbox{\hyperlink{structreels_1_1CodeTreeNode}{Code\+Tree\+Node}}. \end{DoxyCompactList}\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{structreels_1_1CodeTreeNode}{Code\+Tree\+Node}} $>$ \mbox{\hyperlink{namespacereels_ae33576cf78c338400805eb04d8e9ada8}{Code\+Tree}}
+\begin{DoxyCompactList}\small\item\em Code\+Tree\+: A tree of fitted targets. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_a1d46156e5435a796e0994528e1cf0c54}\label{namespacereels_a1d46156e5435a796e0994528e1cf0c54}} 
+typedef \mbox{\hyperlink{namespacereels_ae33576cf78c338400805eb04d8e9ada8}{Code\+Tree}} $\ast$ {\bfseries p\+Code\+Tree}
+\begin{DoxyCompactList}\small\item\em Pointer to a Code\+Tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacereels_ad44e06140c2e753acec63a0c7f59fa06}\label{namespacereels_ad44e06140c2e753acec63a0c7f59fa06}} 
+enum \mbox{\hyperlink{namespacereels_ad44e06140c2e753acec63a0c7f59fa06}{Transform}} \{ {\bfseries tr\+\_\+undefined}
+, {\bfseries tr\+\_\+linear}
+, {\bfseries tr\+\_\+log}
+ \}
+\begin{DoxyCompactList}\small\item\em Transform\+: The transformation applied to time differences. (And inverted again in predict().) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacereels_af9e843e456fd6d18c38b1758c8258946}\label{namespacereels_af9e843e456fd6d18c38b1758c8258946}} 
+enum \mbox{\hyperlink{namespacereels_af9e843e456fd6d18c38b1758c8258946}{Aggregate}} \{ {\bfseries ag\+\_\+undefined}
+, {\bfseries ag\+\_\+mean}
+, {\bfseries ag\+\_\+minimax}
+, {\bfseries ag\+\_\+longest}
+ \}
+\begin{DoxyCompactList}\small\item\em Aggregate\+: The method used to aggregate predictions for different sequence lengths. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{namespacereels_aea29224c74ab1bbd3337bc9e22fca30b}{Murmur\+Hash64A}} (const void $\ast$key, int len)
+\begin{DoxyCompactList}\small\item\em Murmur\+Hash2, 64-\/bit versions, by Austin Appleby. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacereels_aa589037ff1304165b2b9736c08bf3f66}{image\+\_\+put}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} p\+\_\+bi, void $\ast$p\+\_\+data, int size)
+\begin{DoxyCompactList}\small\item\em A function to push arbitrary raw data into a Binary\+Image. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} p\+\_\+bi, int \&c\+\_\+block, int \&c\+\_\+ofs, void $\ast$p\+\_\+data, int size)
+\begin{DoxyCompactList}\small\item\em A function to get an arbitrary raw data block from a Binary\+Image. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacereels_a61012bf02c1c020a69da611a23924260}{compare\+\_\+optimize\+\_\+eval}} (const \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}} a, const \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}} b)
+\begin{DoxyCompactList}\small\item\em Compare two \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}} structures for sorting. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacereels_a0af913ee39497684a86e93cda3d69568}{compare\+\_\+score\+\_\+item}} (const \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}} a, const \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}} b)
+\begin{DoxyCompactList}\small\item\em Compare two \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}} structures for sorting. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacereels_a5c9e6a93f951c87ed85543f0bc77e16b}\label{namespacereels_a5c9e6a93f951c87ed85543f0bc77e16b}} 
+\mbox{\hyperlink{classreels_1_1Logger}{Logger}} {\bfseries REELS\+\_\+logger} = \{\}
+\begin{DoxyCompactList}\small\item\em Used to output stats of \mbox{\hyperlink{classreels_1_1Events_a170ec0e95f3b17689259305f4c64f76a}{Events\+::get\+\_\+top\+\_\+codes}} added by the Python API in events\+\_\+optimize\+\_\+events() \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The namespace including everything to simplify using Reels in a c++ application,. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespacereels_a2f35b05990dd7c5c01448a07bf89723c}\label{namespacereels_a2f35b05990dd7c5c01448a07bf89723c}} 
+\index{reels@{reels}!ClientIDs@{ClientIDs}}
+\index{ClientIDs@{ClientIDs}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{ClientIDs}{ClientIDs}}
+{\footnotesize\ttfamily typedef std\+::vector$<$\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}}$>$ \mbox{\hyperlink{namespacereels_a2f35b05990dd7c5c01448a07bf89723c}{reels\+::\+Client\+IDs}}}
+
+
+
+Client\+IDs\+: A vector of client ID hashes. 
+
+This map is the fundamental storage of the \mbox{\hyperlink{classreels_1_1Clients}{Clients}} class preserving the order in which they are defined. \mbox{\Hypertarget{namespacereels_a73a7ae63cbb27d7caabe69e99ec19646}\label{namespacereels_a73a7ae63cbb27d7caabe69e99ec19646}} 
+\index{reels@{reels}!ClientIDSet@{ClientIDSet}}
+\index{ClientIDSet@{ClientIDSet}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{ClientIDSet}{ClientIDSet}}
+{\footnotesize\ttfamily typedef std\+::set$<$\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}}$>$ \mbox{\hyperlink{namespacereels_a73a7ae63cbb27d7caabe69e99ec19646}{reels\+::\+Client\+IDSet}}}
+
+
+
+Client\+IDSet\+: A set of client ID hashes. 
+
+This set allows fast search of a Client ID hash. \mbox{\Hypertarget{namespacereels_a603b492f253098a318c7cece8dc26181}\label{namespacereels_a603b492f253098a318c7cece8dc26181}} 
+\index{reels@{reels}!ClipMap@{ClipMap}}
+\index{ClipMap@{ClipMap}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{ClipMap}{ClipMap}}
+{\footnotesize\ttfamily typedef std\+::map$<$\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}}, \mbox{\hyperlink{namespacereels_a2f6d86b83946e88c6e43e7c1b476f0b4}{Clip}}$>$ \mbox{\hyperlink{namespacereels_a603b492f253098a318c7cece8dc26181}{reels\+::\+Clip\+Map}}}
+
+
+
+Clip\+Map\+: A map from clients to clips. 
+
+This map is the fundamental storage of the \mbox{\hyperlink{classreels_1_1Clips}{Clips}} class. \mbox{\Hypertarget{namespacereels_ad8514b34ba2d1a7ef5b6ed500479ed56}\label{namespacereels_ad8514b34ba2d1a7ef5b6ed500479ed56}} 
+\index{reels@{reels}!CodeInTreeStatMap@{CodeInTreeStatMap}}
+\index{CodeInTreeStatMap@{CodeInTreeStatMap}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{CodeInTreeStatMap}{CodeInTreeStatMap}}
+{\footnotesize\ttfamily typedef std\+::map$<$uint64\+\_\+t, \mbox{\hyperlink{structreels_1_1CodeInTreeStatistics}{Code\+In\+Tree\+Statistics}}$>$ \mbox{\hyperlink{namespacereels_ad8514b34ba2d1a7ef5b6ed500479ed56}{reels\+::\+Code\+In\+Tree\+Stat\+Map}}}
+
+
+
+Code\+In\+Tree\+Stat\+Map\+: A map to store all the \mbox{\hyperlink{structreels_1_1CodeInTreeStatistics}{Code\+In\+Tree\+Statistics}} by code. 
+
+\mbox{\Hypertarget{namespacereels_ae33576cf78c338400805eb04d8e9ada8}\label{namespacereels_ae33576cf78c338400805eb04d8e9ada8}} 
+\index{reels@{reels}!CodeTree@{CodeTree}}
+\index{CodeTree@{CodeTree}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{CodeTree}{CodeTree}}
+{\footnotesize\ttfamily typedef std\+::vector$<$\mbox{\hyperlink{structreels_1_1CodeTreeNode}{Code\+Tree\+Node}}$>$ \mbox{\hyperlink{namespacereels_ae33576cf78c338400805eb04d8e9ada8}{reels\+::\+Code\+Tree}}}
+
+
+
+Code\+Tree\+: A tree of fitted targets. 
+
+This is the complete fitted model in a \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object. \mbox{\Hypertarget{namespacereels_ad23367fd7ac91cfd895fea61134f5e53}\label{namespacereels_ad23367fd7ac91cfd895fea61134f5e53}} 
+\index{reels@{reels}!EventCodeMap@{EventCodeMap}}
+\index{EventCodeMap@{EventCodeMap}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{EventCodeMap}{EventCodeMap}}
+{\footnotesize\ttfamily typedef std\+::map$<$uint64\+\_\+t, uint64\+\_\+t$>$ \mbox{\hyperlink{namespacereels_ad23367fd7ac91cfd895fea61134f5e53}{reels\+::\+Event\+Code\+Map}}}
+
+
+
+Event\+Code\+Map\+: A map converting the space of Event codes into a lower cardinality set for Event optimization. 
+
+\mbox{\Hypertarget{namespacereels_a753be4488a8c210f29ee5ccd95f672b9}\label{namespacereels_a753be4488a8c210f29ee5ccd95f672b9}} 
+\index{reels@{reels}!EventMap@{EventMap}}
+\index{EventMap@{EventMap}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{EventMap}{EventMap}}
+{\footnotesize\ttfamily typedef std\+::map$<$\mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}}, \mbox{\hyperlink{structreels_1_1EventStat}{Event\+Stat}}$>$ \mbox{\hyperlink{namespacereels_a753be4488a8c210f29ee5ccd95f672b9}{reels\+::\+Event\+Map}}}
+
+
+
+Event\+Map\+: A map from hashes in an \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} to usage data defines the info about an event. 
+
+This map is combined with a Priority\+Map to update observed events. \mbox{\Hypertarget{namespacereels_a3102c8c75ce0c85bb260c478b71fa90a}\label{namespacereels_a3102c8c75ce0c85bb260c478b71fa90a}} 
+\index{reels@{reels}!PriorityMap@{PriorityMap}}
+\index{PriorityMap@{PriorityMap}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{PriorityMap}{PriorityMap}}
+{\footnotesize\ttfamily typedef std\+::map$<$uint64\+\_\+t, \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}}$>$ \mbox{\hyperlink{namespacereels_a3102c8c75ce0c85bb260c478b71fa90a}{reels\+::\+Priority\+Map}}}
+
+
+
+Priority\+Map\+: A map with all the acceptable priority values in the Event\+Map as keys. 
+
+This map is the priority queue that accepts removal by least priority of current value. \mbox{\Hypertarget{namespacereels_af2b9d59d7a42cbf383aa707de86ee9a8}\label{namespacereels_af2b9d59d7a42cbf383aa707de86ee9a8}} 
+\index{reels@{reels}!StringUsageMap@{StringUsageMap}}
+\index{StringUsageMap@{StringUsageMap}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{StringUsageMap}{StringUsageMap}}
+{\footnotesize\ttfamily typedef std\+::map$<$\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}}, \mbox{\hyperlink{structreels_1_1StringUsage}{String\+Usage}}$>$ \mbox{\hyperlink{namespacereels_af2b9d59d7a42cbf383aa707de86ee9a8}{reels\+::\+String\+Usage\+Map}}}
+
+
+
+String\+Usage\+Map\+: A map from hashes to string and number of times the string is used. 
+
+This map allows doing the reverse conversion to a hash() function finding out the original string. \mbox{\Hypertarget{namespacereels_ad37c6476c649ff89a1e3b08ae308ac18}\label{namespacereels_ad37c6476c649ff89a1e3b08ae308ac18}} 
+\index{reels@{reels}!TargetMap@{TargetMap}}
+\index{TargetMap@{TargetMap}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{TargetMap}{TargetMap}}
+{\footnotesize\ttfamily typedef std\+::map$<$\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}}, \mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}}$>$ \mbox{\hyperlink{namespacereels_ad37c6476c649ff89a1e3b08ae308ac18}{reels\+::\+Target\+Map}}}
+
+
+
+Target\+Map\+: A map from clients to target event Time\+Points. 
+
+This map is given to the constructor of a Target object. \mbox{\Hypertarget{namespacereels_afab3fdb12dfcf2726f495bd074225411}\label{namespacereels_afab3fdb12dfcf2726f495bd074225411}} 
+\index{reels@{reels}!TimesToTarget@{TimesToTarget}}
+\index{TimesToTarget@{TimesToTarget}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{TimesToTarget}{TimesToTarget}}
+{\footnotesize\ttfamily typedef std\+::vector$<$double$>$ \mbox{\hyperlink{namespacereels_afab3fdb12dfcf2726f495bd074225411}{reels\+::\+Times\+To\+Target}}}
+
+
+
+Times\+To\+Target\+: A vector of predictions. 
+
+This is the return type of all predict methods. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacereels_a61012bf02c1c020a69da611a23924260}\label{namespacereels_a61012bf02c1c020a69da611a23924260}} 
+\index{reels@{reels}!compare\_optimize\_eval@{compare\_optimize\_eval}}
+\index{compare\_optimize\_eval@{compare\_optimize\_eval}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{compare\_optimize\_eval()}{compare\_optimize\_eval()}}
+{\footnotesize\ttfamily bool reels\+::compare\+\_\+optimize\+\_\+eval (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}}}]{a,  }\item[{const \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}}}]{b }\end{DoxyParamCaption})}
+
+
+
+Compare two \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}} structures for sorting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The first structure \\
+\hline
+{\em b} & The second one\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a \texorpdfstring{$<$}{<} b. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacereels_a0af913ee39497684a86e93cda3d69568}\label{namespacereels_a0af913ee39497684a86e93cda3d69568}} 
+\index{reels@{reels}!compare\_score\_item@{compare\_score\_item}}
+\index{compare\_score\_item@{compare\_score\_item}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{compare\_score\_item()}{compare\_score\_item()}}
+{\footnotesize\ttfamily bool reels\+::compare\+\_\+score\+\_\+item (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}}}]{a,  }\item[{const \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}}}]{b }\end{DoxyParamCaption})}
+
+
+
+Compare two \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}} structures for sorting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The first structure \\
+\hline
+{\em b} & The second one\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a \texorpdfstring{$<$}{<} b. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}\label{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}} 
+\index{reels@{reels}!image\_get@{image\_get}}
+\index{image\_get@{image\_get}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{image\_get()}{image\_get()}}
+{\footnotesize\ttfamily bool reels\+::image\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}}}]{p\+\_\+bi,  }\item[{int \&}]{c\+\_\+block,  }\item[{int \&}]{c\+\_\+ofs,  }\item[{void $\ast$}]{p\+\_\+data,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+A function to get an arbitrary raw data block from a Binary\+Image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & A pointer to an existing Binary\+Image that was created by a series of image\+\_\+put call (saved/loaded, etc.) \\
+\hline
+{\em c\+\_\+block} & The highest number (block number of the current cursor) that defines where to start reading from. (The normal use is starting at (0,0) and let this function update cursor value. Just get() the blocks in the same order ands size that was used to put() them.) \\
+\hline
+{\em c\+\_\+ofs} & The lowest number (offset inside the current block number) of the current cursor. This works together with {\ttfamily c\+\_\+block}. \\
+\hline
+{\em p\+\_\+data} & Address of the memory buffer that will receive the block \\
+\hline
+{\em size} & Number of bytes to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacereels_aa589037ff1304165b2b9736c08bf3f66}\label{namespacereels_aa589037ff1304165b2b9736c08bf3f66}} 
+\index{reels@{reels}!image\_put@{image\_put}}
+\index{image\_put@{image\_put}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{image\_put()}{image\_put()}}
+{\footnotesize\ttfamily bool reels\+::image\+\_\+put (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}}}]{p\+\_\+bi,  }\item[{void $\ast$}]{p\+\_\+data,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+A function to push arbitrary raw data into a Binary\+Image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & A pointer to an existing Binary\+Image that receives the data \\
+\hline
+{\em p\+\_\+data} & Address of the memory block to store \\
+\hline
+{\em size} & Number of bytes to store \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacereels_aea29224c74ab1bbd3337bc9e22fca30b}\label{namespacereels_aea29224c74ab1bbd3337bc9e22fca30b}} 
+\index{reels@{reels}!MurmurHash64A@{MurmurHash64A}}
+\index{MurmurHash64A@{MurmurHash64A}!reels@{reels}}
+\doxysubsubsection{\texorpdfstring{MurmurHash64A()}{MurmurHash64A()}}
+{\footnotesize\ttfamily uint64\+\_\+t reels\+::\+Murmur\+Hash64A (\begin{DoxyParamCaption}\item[{const void $\ast$}]{key,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+
+
+Murmur\+Hash2, 64-\/bit versions, by Austin Appleby. 
+
+(from \href{https://sites.google.com/site/murmurhash/}{\texttt{ https\+://sites.\+google.\+com/site/murmurhash/}}) a 64-\/bit hash for 64-\/bit platforms
+
+All code is released to the public domain. For business purposes, Murmurhash is under the MIT license.
+
+The same caveats as 32-\/bit Murmur\+Hash2 apply here -\/ beware of alignment and endian-\/ness issues if used across multiple platforms.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & address of the memory block to hash. \\
+\hline
+{\em len} & Number of bytes to hash. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+64-\/bit hash of the memory block. 
+\end{DoxyReturn}

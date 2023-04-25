@@ -1,0 +1,78 @@
+\hypertarget{classreels_1_1TimeUtil}{}\doxysection{reels\+::Time\+Util Class Reference}
+\label{classreels_1_1TimeUtil}\index{reels::TimeUtil@{reels::TimeUtil}}
+
+
+A common ancestor of \mbox{\hyperlink{classreels_1_1Clips}{Clips}} and \mbox{\hyperlink{classreels_1_1Targets}{Targets}} to avoid duplicating time management.  
+
+
+
+
+{\ttfamily \#include $<$reels.\+h$>$}
+
+
+
+Inheritance diagram for reels\+::Time\+Util\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{classreels_1_1TimeUtil__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}} \mbox{\hyperlink{classreels_1_1TimeUtil_ae8e19904eaec93a5c9a4f0e6e0792369}{get\+\_\+time}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Convert time as a string to a Time\+Point (using the object\textquotesingle{}s time\+\_\+format). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreels_1_1TimeUtil_ae45cac3f4e552d0128d3b82039896456}{set\+\_\+time\+\_\+format}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} fmt)
+\begin{DoxyCompactList}\small\item\em Sets the public property time\+\_\+format to simplify the python interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreels_1_1TimeUtil_ad026787163f981a528c58a1096ea57fc}\label{classreels_1_1TimeUtil_ad026787163f981a528c58a1096ea57fc}} 
+char {\bfseries time\+\_\+format} \mbox{[}128\mbox{]} = \char`\"{}\%Y-\/\%m-\/\%d \%H\+:\%M\+:\%S\char`\"{}
+\begin{DoxyCompactList}\small\item\em Date and time format for insert\+\_\+row() and define\+\_\+event() \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A common ancestor of \mbox{\hyperlink{classreels_1_1Clips}{Clips}} and \mbox{\hyperlink{classreels_1_1Targets}{Targets}} to avoid duplicating time management. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classreels_1_1TimeUtil_ae8e19904eaec93a5c9a4f0e6e0792369}\label{classreels_1_1TimeUtil_ae8e19904eaec93a5c9a4f0e6e0792369}} 
+\index{reels::TimeUtil@{reels::TimeUtil}!get\_time@{get\_time}}
+\index{get\_time@{get\_time}!reels::TimeUtil@{reels::TimeUtil}}
+\doxysubsubsection{\texorpdfstring{get\_time()}{get\_time()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}} reels\+::\+Time\+Util\+::get\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convert time as a string to a Time\+Point (using the object\textquotesingle{}s time\+\_\+format). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+t} & A string containing a valid date and time in the object\textquotesingle{}s time\+\_\+format.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Time\+Point corresponding to that time or a negative value on error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1TimeUtil_ae45cac3f4e552d0128d3b82039896456}\label{classreels_1_1TimeUtil_ae45cac3f4e552d0128d3b82039896456}} 
+\index{reels::TimeUtil@{reels::TimeUtil}!set\_time\_format@{set\_time\_format}}
+\index{set\_time\_format@{set\_time\_format}!reels::TimeUtil@{reels::TimeUtil}}
+\doxysubsubsection{\texorpdfstring{set\_time\_format()}{set\_time\_format()}}
+{\footnotesize\ttfamily void reels\+::\+Time\+Util\+::set\+\_\+time\+\_\+format (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{fmt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the public property time\+\_\+format to simplify the python interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmt} & The time format in standard calendar time format \href{http://www.gnu.org/software/libc/manual/html_node/Formatting-Calendar-Time.html}{\texttt{ http\+://www.\+gnu.\+org/software/libc/manual/html\+\_\+node/\+Formatting-\/\+Calendar-\/\+Time.\+html}} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+reels/reels.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,1893 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../clients/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
+    
+    
+      
+        <title>Events - Mercury Reels</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reels.Events" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mercury Reels" class="md-header__button md-logo" aria-label="Mercury Reels" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mercury Reels
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Events
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/BBVA/mercury-reels/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mercury-reels
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mercury Reels" class="md-nav__button md-logo" aria-label="Mercury Reels" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5V2M6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5Z"/></svg>
+
+    </a>
+    Mercury Reels
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/BBVA/mercury-reels/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mercury-reels
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Api
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Api
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Events
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Events
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reels.Events" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.EventTuples" class="md-nav__link">
+    EventTuples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.__getstate__" class="md-nav__link">
+    __getstate__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.__setstate__" class="md-nav__link">
+    __setstate__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.copy" class="md-nav__link">
+    copy()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.define_event" class="md-nav__link">
+    define_event()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.describe_events" class="md-nav__link">
+    describe_events()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.insert_row" class="md-nav__link">
+    insert_row()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.load_from_binary_image" class="md-nav__link">
+    load_from_binary_image()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.num_events" class="md-nav__link">
+    num_events()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.optimize_events" class="md-nav__link">
+    optimize_events()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.save_as_binary_image" class="md-nav__link">
+    save_as_binary_image()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clients/" class="md-nav__link">
+        Client
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clips/" class="md-nav__link">
+        Clips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../targets/" class="md-nav__link">
+        Targets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intake/" class="md-nav__link">
+        Intake
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reels.Events" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.EventTuples" class="md-nav__link">
+    EventTuples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.__getstate__" class="md-nav__link">
+    __getstate__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.__setstate__" class="md-nav__link">
+    __setstate__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.copy" class="md-nav__link">
+    copy()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.define_event" class="md-nav__link">
+    define_event()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.describe_events" class="md-nav__link">
+    describe_events()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.insert_row" class="md-nav__link">
+    insert_row()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.load_from_binary_image" class="md-nav__link">
+    load_from_binary_image()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.num_events" class="md-nav__link">
+    num_events()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.optimize_events" class="md-nav__link">
+    optimize_events()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reels.Events.Events.save_as_binary_image" class="md-nav__link">
+    save_as_binary_image()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Events</h1>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="reels.Events" class="doc doc-heading">
+          <code>reels.Events</code>
+
+
+</h2>
+
+  <div class="doc doc-contents first">
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="reels.Events.EventTuples" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">EventTuples</span><span class="p">(</span><span class="n">ev_id</span><span class="p">)</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+
+  
+      <p>Iterator of (emitter, description, weight, code) tuples.</p>
+
+
+          <details class="quote">
+            <summary>Source code in <code>reels/Events.py</code></summary>
+            <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ev_id</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span> <span class="o">=</span> <span class="n">ev_id</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">prev_tuple</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="reels.Events.Events" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">Events</span><span class="p">(</span><span class="n">max_num_events</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">binary_image</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+
+  
+      <p>Interface to the c++ container object to hold events.</p>
+<p>The purpose of this object is to be filled (either via successive
+insert_row() or define_event() calls) and passed to a Clips (and
+indirectly to Targets objects). The content can just be serialized as
+a pickle to make it pythonic or checked for size. No other introspection
+methods exist.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>max_num_events</code></td>
+          <td>
+          </td>
+          <td><p>The maximum number of events to limit the discovery via
+            insert_row() to the max_num_events more frequent/recent.</p></td>
+          <td>
+                <code>1000</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>binary_image</code></td>
+          <td>
+          </td>
+          <td><p>An optional binary image (returned by save_as_binary_image())
+            to initialize the object with data copied from another Events
+            object.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          <details class="quote">
+            <summary>Source code in <code>reels/Events.py</code></summary>
+            <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_num_events</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">binary_image</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span> <span class="o">=</span> <span class="n">new_events</span><span class="p">()</span>
+
+    <span class="n">events_set_max_num_events</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span><span class="p">,</span> <span class="n">max_num_events</span><span class="p">)</span>
+    <span class="n">events_set_store_strings</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">max_num_events</span> <span class="o">=</span> <span class="n">max_num_events</span>
+
+    <span class="k">if</span> <span class="n">binary_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_from_binary_image</span><span class="p">(</span><span class="n">binary_image</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="reels.Events.Events.__getstate__" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">__getstate__</span><span class="p">()</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Used by pickle.dump() (See https://docs.python.org/3/library/pickle.html)</p>
+
+      <details class="quote">
+        <summary>Source code in <code>reels/Events.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">97</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used by pickle.dump() (See https://docs.python.org/3/library/pickle.html)&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_as_binary_image</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="reels.Events.Events.__setstate__" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">__setstate__</span><span class="p">(</span><span class="n">state</span><span class="p">)</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Used by pickle.load() (See https://docs.python.org/3/library/pickle.html)</p>
+
+      <details class="quote">
+        <summary>Source code in <code>reels/Events.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Used by pickle.load() (See https://docs.python.org/3/library/pickle.html)&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span> <span class="o">=</span> <span class="n">new_events</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">load_from_binary_image</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="reels.Events.Events.copy" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">copy</span><span class="p">(</span><span class="n">dictionary</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Creates a new Events object that is either a copy of the current one or a copy with the codes transformed by a dictionary.</p>
+<p>The typical use of this method is in combination with optimize_events() typically to create a copy of an Events object
+and optimize the copy rather than the original object to leave the latter unmodified. Also, after optimize_events()
+the dictionary returned completely defines the optimization and can be used to transform the original object by applying it
+during the copy.</p>
+<p>NOTE: The copy is identical in terms of recorded events and their codes, but does not have usage frequency statistics since
+it is created via define_event() calls, not by insert_row() over a complete dataset. It is intended to operate in combination
+with either optimize_events() or a Targets object, not to continue populating it with events via insert_row().</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>dictionary</code></td>
+          <td>
+          </td>
+          <td><p>A dictionary to be applied during the copy. The dictionary must be returned by a previous optimize_events()
+        of an identical object in order to have the same codes defined. Otherwise, the codes not present in the dictionary
+        will not be translated into events.</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+          </td>
+          <td><p>A new Events object</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>reels/Events.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dictionary</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a new Events object that is either a copy of the current one or a copy with the codes transformed by a dictionary.</span>
+
+<span class="sd">    The typical use of this method is in combination with optimize_events() typically to create a copy of an Events object</span>
+<span class="sd">    and optimize the copy rather than the original object to leave the latter unmodified. Also, after optimize_events()</span>
+<span class="sd">    the dictionary returned completely defines the optimization and can be used to transform the original object by applying it</span>
+<span class="sd">    during the copy.</span>
+
+<span class="sd">    NOTE: The copy is identical in terms of recorded events and their codes, but does not have usage frequency statistics since</span>
+<span class="sd">    it is created via define_event() calls, not by insert_row() over a complete dataset. It is intended to operate in combination</span>
+<span class="sd">    with either optimize_events() or a Targets object, not to continue populating it with events via insert_row().</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dictionary: A dictionary to be applied during the copy. The dictionary must be returned by a previous optimize_events()</span>
+<span class="sd">                    of an identical object in order to have the same codes defined. Otherwise, the codes not present in the dictionary</span>
+<span class="sd">                    will not be translated into events.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A new Events object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">Events</span><span class="p">(</span><span class="n">max_num_events</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_num_events</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dictionary</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">emitter</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">code</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">describe_events</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+                <span class="n">code</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">code</span><span class="p">]</span>
+                <span class="n">ret</span><span class="o">.</span><span class="n">define_event</span><span class="p">(</span><span class="n">emitter</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">emitter</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">code</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">describe_events</span><span class="p">():</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">define_event</span><span class="p">(</span><span class="n">emitter</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ret</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="reels.Events.Events.define_event" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">define_event</span><span class="p">(</span><span class="n">emitter</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Define events explicitly.</p>
+<p><strong>Caveat</strong>: insert_row() and define_event() should not be mixed. The former is for
+event discovery and the latter for explicit definition. A set of events is build
+either one way or the other.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>emitter</code></td>
+          <td>
+          </td>
+          <td><p>The "emitter". A C/Python string representing "owner of event".</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>description</code></td>
+          <td>
+          </td>
+          <td><p>The "description". A C/Python string representing "the event".</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>weight</code></td>
+          <td>
+          </td>
+          <td><p>The "weight". A double representing a weight of the event.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>code</code></td>
+          <td>
+          </td>
+          <td><p>A unique code number identifying the event.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+          </td>
+          <td><p>True on success.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>reels/Events.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">define_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emitter</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Define events explicitly.</span>
+
+<span class="sd">    **Caveat**: insert_row() and define_event() should not be mixed. The former is for</span>
+<span class="sd">    event discovery and the latter for explicit definition. A set of events is build</span>
+<span class="sd">    either one way or the other.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        emitter:     The &quot;emitter&quot;. A C/Python string representing &quot;owner of event&quot;.</span>
+<span class="sd">        description: The &quot;description&quot;. A C/Python string representing &quot;the event&quot;.</span>
+<span class="sd">        weight:      The &quot;weight&quot;. A double representing a weight of the event.</span>
+<span class="sd">        code:        A unique code number identifying the event.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        True on success.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">events_define_event</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span><span class="p">,</span> <span class="n">emitter</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="reels.Events.Events.describe_events" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">describe_events</span><span class="p">()</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Return an iterator of (emitter, description, weight, code) tuples describing all events.</p>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+          </td>
+          <td><p>An iterator of (emitter, description, weight, code) tuple on success or None on failure.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>reels/Events.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">describe_events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an iterator of (emitter, description, weight, code) tuples describing all events.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        An iterator of (emitter, description, weight, code) tuple on success or None on failure.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">EventTuples</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="reels.Events.Events.insert_row" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">insert_row</span><span class="p">(</span><span class="n">emitter</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Process a row from a transaction file.</p>
+<p><strong>Caveat</strong>: insert_row() and define_event() should not be mixed. The former is for
+event discovery and the latter for explicit definition. A set of events is build
+either one way or the other.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>emitter</code></td>
+          <td>
+          </td>
+          <td><p>The "emitter". A C/Python string representing "owner of event".</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>description</code></td>
+          <td>
+          </td>
+          <td><p>The "description". A C/Python string representing "the event".</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>weight</code></td>
+          <td>
+          </td>
+          <td><p>The "weight". A double representing a weight of the event.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+          </td>
+          <td><p>True on success.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>reels/Events.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insert_row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emitter</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Process a row from a transaction file.</span>
+
+<span class="sd">    **Caveat**: insert_row() and define_event() should not be mixed. The former is for</span>
+<span class="sd">    event discovery and the latter for explicit definition. A set of events is build</span>
+<span class="sd">    either one way or the other.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        emitter:     The &quot;emitter&quot;. A C/Python string representing &quot;owner of event&quot;.</span>
+<span class="sd">        description: The &quot;description&quot;. A C/Python string representing &quot;the event&quot;.</span>
+<span class="sd">        weight:      The &quot;weight&quot;. A double representing a weight of the event.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        True on success.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">events_insert_row</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span><span class="p">,</span> <span class="n">emitter</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="reels.Events.Events.load_from_binary_image" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">load_from_binary_image</span><span class="p">(</span><span class="n">binary_image</span><span class="p">)</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Load the state of the c++ Events object from a binary_image
+    returned by a previous save_as_binary_image() call.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>binary_image</code></td>
+          <td>
+          </td>
+          <td><p>A list of strings returned by save_as_binary_image()</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+          </td>
+          <td><p>True on success, destroys, initializes and returns false on failure.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>reels/Events.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load_from_binary_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary_image</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load the state of the c++ Events object from a binary_image</span>
+<span class="sd">        returned by a previous save_as_binary_image() call.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        binary_image: A list of strings returned by save_as_binary_image()</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        True on success, destroys, initializes and returns false on failure.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">failed</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">for</span> <span class="n">binary_image_block</span> <span class="ow">in</span> <span class="n">binary_image</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">events_load_block</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span><span class="p">,</span> <span class="n">binary_image_block</span><span class="p">):</span>
+            <span class="n">failed</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">break</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">failed</span><span class="p">:</span>
+        <span class="n">failed</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">events_load_block</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">failed</span><span class="p">:</span>
+        <span class="n">destroy_events</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span> <span class="o">=</span> <span class="n">new_events</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="reels.Events.Events.num_events" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">num_events</span><span class="p">()</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Return the number of events in the object.</p>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+          </td>
+          <td><p>The number of events stored in the object.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>reels/Events.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">num_events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the number of events in the object.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The number of events stored in the object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">events_num_events</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="reels.Events.Events.optimize_events" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">optimize_events</span><span class="p">(</span><span class="n">clips</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">num_steps</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">codes_per_step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">force_include</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">force_exclude</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">x_form</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">agg</span><span class="o">=</span><span class="s1">&#39;longest&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">as_states</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exp_decay</span><span class="o">=</span><span class="mf">0.00693</span><span class="p">,</span> <span class="n">lower_bound_p</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">log_lift</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Events optimizer.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Optimizes</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">events</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">maximize</span><span class="w"> </span><span class="n">prediction</span><span class="w"> </span><span class="k">signal</span><span class="o">.</span><span class="w"> </span><span class="p">(</span><span class="n">F1</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">positives</span><span class="o">.</span><span class="p">)</span>
+<span class="n">It</span><span class="w"> </span><span class="n">converts</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="n">many</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">one</span><span class="w"> </span><span class="n">trying</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="n">codes</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">categories</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">represent</span><span class="w"> </span><span class="n">similar</span><span class="w"> </span><span class="n">events</span><span class="o">.</span>
+
+<span class="n">Before</span><span class="w"> </span><span class="n">starting</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">optimized</span><span class="w"> </span><span class="n">Events</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">populated</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">initial</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">codes</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">reduce</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">assigning</span>
+<span class="n">new</span><span class="w"> </span><span class="n">many</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">one</span><span class="w"> </span><span class="n">codes</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">them</span><span class="o">.</span>
+
+<span class="n">The</span><span class="w"> </span><span class="n">algorithm</span><span class="w"> </span><span class="n">initially</span><span class="w"> </span><span class="n">removes</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">codes</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">clips</span><span class="w"> </span><span class="n">object</span><span class="o">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">completely</span><span class="w"> </span><span class="n">removes</span><span class="w"> </span><span class="n">them</span><span class="o">.</span>
+
+<span class="n">The</span><span class="w"> </span><span class="n">algorithm</span><span class="w"> </span><span class="n">builds</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">most</span><span class="w"> </span><span class="n">promising</span><span class="w"> </span><span class="p">(</span><span class="ow">not</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="n">used</span><span class="p">)</span><span class="w"> </span><span class="n">codes</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">beginning</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">full</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="n">search</span><span class="o">.</span>
+<span class="n">From</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">tried</span><span class="w"> </span><span class="n">downwards</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">{</span><span class="n">noise</span><span class="p">,</span><span class="w"> </span><span class="n">new_code</span><span class="p">,</span><span class="w"> </span><span class="n">last_code</span><span class="p">}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="n">improvement</span><span class="w"> </span><span class="n">above</span><span class="w"> </span><span class="n">threshold</span>
+<span class="n">up</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">codes_per_step</span><span class="w"> </span><span class="n">steps</span><span class="o">.</span><span class="w"> </span><span class="n">And</span><span class="w"> </span><span class="n">assigned</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">accordingly</span><span class="o">.</span>
+<span class="n">The</span><span class="w"> </span><span class="n">codes</span><span class="w"> </span><span class="n">assigned</span><span class="w"> </span><span class="n">become</span><span class="w"> </span><span class="n">part</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">internal</span><span class="w"> </span><span class="n">EventCodeMap</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="n">they</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="n">old</span><span class="w"> </span><span class="n">values</span><span class="o">.</span>
+
+<span class="n">When</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">algorithm</span><span class="w"> </span><span class="n">finishes</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">internal</span><span class="w"> </span><span class="n">EventCodeMap</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">rename</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="n">codes</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">whole</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">reported</span><span class="o">.</span>
+</code></pre></div>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>clips</code></td>
+          <td>
+          </td>
+          <td><p>The id of a clips object with the same codes and clips for a set of clients whose prediction we optimize.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>targets</code></td>
+          <td>
+          </td>
+          <td><p>The id of a Targets object whose internal TargetMap defines the targets. (Internally a new Targets object
+            will be used to make the predictions we want to optimize.)</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>num_steps</code></td>
+          <td>
+          </td>
+          <td><p>The number of steps to iterate. The method will stop early if no codes are found at a step.</p></td>
+          <td>
+                <code>10</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>codes_per_step</code></td>
+          <td>
+          </td>
+          <td><p>The number of codes to be tried from the top of the priority list at each step.</p></td>
+          <td>
+                <code>5</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>threshold</code></td>
+          <td>
+          </td>
+          <td><p>A minimum threshold, below which a score change is not considered improvement.</p></td>
+          <td>
+                <code>0.0001</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>force_include</code></td>
+          <td>
+          </td>
+          <td><p>An optional pointer to a set of codes that must be included before starting.</p></td>
+          <td>
+                <code>&#39;&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>force_exclude</code></td>
+          <td>
+          </td>
+          <td><p>An optional pointer to a set of codes that will excluded and set to the base code.</p></td>
+          <td>
+                <code>&#39;&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>x_form</code></td>
+          <td>
+          </td>
+          <td><p>The x_form argument to fit the internal Targets object prediction model.</p></td>
+          <td>
+                <code>&#39;linear&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>agg</code></td>
+          <td>
+          </td>
+          <td><p>The agg argument to fit the internal Targets object prediction model.</p></td>
+          <td>
+                <code>&#39;longest&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>p</code></td>
+          <td>
+          </td>
+          <td><p>The p argument to fit the internal Targets object prediction model.</p></td>
+          <td>
+                <code>0.5</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>depth</code></td>
+          <td>
+          </td>
+          <td><p>The depth argument to fit the internal Targets object prediction model.</p></td>
+          <td>
+                <code>1000</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>as_states</code></td>
+          <td>
+          </td>
+          <td><p>The as_states argument to fit the internal Targets object prediction model.</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>exp_decay</code></td>
+          <td>
+          </td>
+          <td><p>Exponential Decay Factor applied to the internal score in terms of depth. That score selects what
+            codes enter the model. The decay is applied to the average tree depth. 0 is no decay, default
+            value = 0.00693 decays to 0.5 in 100 steps.</p></td>
+          <td>
+                <code>0.00693</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>lower_bound_p</code></td>
+          <td>
+          </td>
+          <td><p>Another p for lower bound, but applied to the scoring process rather than the model.</p></td>
+          <td>
+                <code>0.95</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>log_lift</code></td>
+          <td>
+          </td>
+          <td><p>A boolean to set if lift (= LB(included)/LB(after inclusion)) is log() transformed or not.</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+          </td>
+          <td><p>A tuple (success, dictionary, top_codes, log)</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>reels/Events.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">optimize_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clips</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">num_steps</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">codes_per_step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">force_include</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">force_exclude</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">x_form</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">agg</span><span class="o">=</span><span class="s1">&#39;longest&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">as_states</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">exp_decay</span><span class="o">=</span><span class="mf">0.00693</span><span class="p">,</span> <span class="n">lower_bound_p</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">log_lift</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Events optimizer.</span>
+
+<span class="sd">        Optimizes the events to maximize prediction signal. (F1 score over same number of positives.)</span>
+<span class="sd">        It converts code values many-to-one trying to group event codes into categories that represent similar events.</span>
+
+<span class="sd">        Before starting, a non-optimized Events object must be populated with an initial set of codes we want to reduce by assigning</span>
+<span class="sd">        new many-to-one codes to them.</span>
+
+<span class="sd">        The algorithm initially removes all codes not found in the clips object. This completely removes them.</span>
+
+<span class="sd">        The algorithm builds a list of most promising (not already used) codes at the beginning of each step by full tree search.</span>
+<span class="sd">        From that list, each code is tried downwards as {noise, new_code, last_code} for score improvement above threshold</span>
+<span class="sd">        up to codes_per_step steps. And assigned a new code accordingly.</span>
+<span class="sd">        The codes assigned become part of the internal EventCodeMap and in the next step they will replace their old values.</span>
+
+<span class="sd">        When the algorithm finishes, the internal EventCodeMap is used to rename the object codes and the whole process is reported.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        clips:          The id of a clips object with the same codes and clips for a set of clients whose prediction we optimize.</span>
+<span class="sd">        targets:        The id of a Targets object whose internal TargetMap defines the targets. (Internally a new Targets object</span>
+<span class="sd">                        will be used to make the predictions we want to optimize.)</span>
+<span class="sd">        num_steps:      The number of steps to iterate. The method will stop early if no codes are found at a step.</span>
+<span class="sd">        codes_per_step: The number of codes to be tried from the top of the priority list at each step.</span>
+<span class="sd">        threshold:      A minimum threshold, below which a score change is not considered improvement.</span>
+<span class="sd">        force_include:  An optional pointer to a set of codes that must be included before starting.</span>
+<span class="sd">        force_exclude:  An optional pointer to a set of codes that will excluded and set to the base code.</span>
+<span class="sd">        x_form:         The x_form argument to fit the internal Targets object prediction model.</span>
+<span class="sd">        agg:            The agg argument to fit the internal Targets object prediction model.</span>
+<span class="sd">        p:              The p argument to fit the internal Targets object prediction model.</span>
+<span class="sd">        depth:          The depth argument to fit the internal Targets object prediction model.</span>
+<span class="sd">        as_states:      The as_states argument to fit the internal Targets object prediction model.</span>
+<span class="sd">        exp_decay:      Exponential Decay Factor applied to the internal score in terms of depth. That score selects what</span>
+<span class="sd">                        codes enter the model. The decay is applied to the average tree depth. 0 is no decay, default</span>
+<span class="sd">                        value = 0.00693 decays to 0.5 in 100 steps.</span>
+<span class="sd">        lower_bound_p:  Another p for lower bound, but applied to the scoring process rather than the model.</span>
+<span class="sd">        log_lift:       A boolean to set if lift (= LB(included)/LB(after inclusion)) is log() transformed or not.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A tuple (success, dictionary, top_codes, log)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">events_optimize_events</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span><span class="p">,</span> <span class="n">clips</span><span class="o">.</span><span class="n">cp_id</span><span class="p">,</span> <span class="n">targets</span><span class="o">.</span><span class="n">tr_id</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">codes_per_step</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">force_include</span><span class="p">,</span>
+                                 <span class="n">force_exclude</span><span class="p">,</span> <span class="n">x_form</span><span class="p">,</span> <span class="n">agg</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">as_states</span><span class="p">,</span> <span class="n">exp_decay</span><span class="p">,</span> <span class="n">lower_bound_p</span><span class="p">,</span> <span class="n">log_lift</span><span class="p">)</span>
+
+    <span class="n">success</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;SUCCESS&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">success</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ret</span>
+
+    <span class="n">txt</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;  Final dictionary =&#39;</span><span class="p">))</span>
+    <span class="n">log</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">txt</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">dictionary</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">txt</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">20</span><span class="p">:])</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;code_performance&#39;</span><span class="p">))</span>
+    <span class="n">top_codes</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">txt</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):])</span>
+
+    <span class="k">return</span> <span class="n">success</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">top_codes</span><span class="p">,</span> <span class="n">log</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="reels.Events.Events.save_as_binary_image" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">save_as_binary_image</span><span class="p">()</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Saves the state of the c++ Events object as a Python
+    list of strings referred to a binary_image.</p>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+          </td>
+          <td><p>The binary_image containing the state of the Events. There is</p></td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td><p>not much you can do with it except serializing it as a Python</p></td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td><p>(e.g., pickle) object and loading it into another Events object.</p></td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td><p>Pass it to the constructor to create an initialized object,</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>reels/Events.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">save_as_binary_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Saves the state of the c++ Events object as a Python</span>
+<span class="sd">        list of strings referred to a binary_image.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The binary_image containing the state of the Events. There is</span>
+<span class="sd">        not much you can do with it except serializing it as a Python</span>
+<span class="sd">        (e.g., pickle) object and loading it into another Events object.</span>
+<span class="sd">        Pass it to the constructor to create an initialized object,</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bi_idx</span> <span class="o">=</span> <span class="n">events_save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ev_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">bi_idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">bi</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">bi_size</span> <span class="o">=</span> <span class="n">size_binary_image_iterator</span><span class="p">(</span><span class="n">bi_idx</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bi_size</span><span class="p">):</span>
+        <span class="n">bi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_binary_image_iterator</span><span class="p">(</span><span class="n">bi_idx</span><span class="p">))</span>
+
+    <span class="n">destroy_binary_image_iterator</span><span class="p">(</span><span class="n">bi_idx</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">bi</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

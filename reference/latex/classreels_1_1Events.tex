@@ -1,0 +1,461 @@
+\hypertarget{classreels_1_1Events}{}\doxysection{reels\+::Events Class Reference}
+\label{classreels_1_1Events}\index{reels::Events@{reels::Events}}
+
+
+A container class to hold events.  
+
+
+
+
+{\ttfamily \#include $<$reels.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classreels_1_1Events_a437b2281880b356ccf8586e5a982f4d5}{insert\+\_\+row}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+e, \mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+d, double w)
+\begin{DoxyCompactList}\small\item\em Process a row from a transaction file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Events_a601dc6b767f5fcea7128a1a3280c0db6}{define\+\_\+event}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+e, \mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+d, double w, uint64\+\_\+t code)
+\begin{DoxyCompactList}\small\item\em Define events explicitly. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacereels_a8439b64892718b921e015accbfad1478}{String}} \mbox{\hyperlink{classreels_1_1Events_a256e8d27c4ebbd547fe0f12ac08cde30}{optimize\+\_\+events}} (\mbox{\hyperlink{classreels_1_1Clips}{Clips}} \&clips, \mbox{\hyperlink{namespacereels_ad37c6476c649ff89a1e3b08ae308ac18}{Target\+Map}} \&targets, int num\+\_\+steps=10, int codes\+\_\+per\+\_\+step=5, double threshold=0.\+0001, \mbox{\hyperlink{namespacereels_ae76ecaa3940df39d3b8fa491fc62246c}{p\+Code\+Set}} p\+\_\+force\+\_\+include=nullptr, \mbox{\hyperlink{namespacereels_ae76ecaa3940df39d3b8fa491fc62246c}{p\+Code\+Set}} p\+\_\+force\+\_\+exclude=nullptr, \mbox{\hyperlink{namespacereels_ad44e06140c2e753acec63a0c7f59fa06}{Transform}} x\+\_\+form=tr\+\_\+linear, \mbox{\hyperlink{namespacereels_af9e843e456fd6d18c38b1758c8258946}{Aggregate}} agg=ag\+\_\+longest, double p=0.\+5, int depth=1000, bool as\+\_\+states=true, double exponential\+\_\+decay=0.\+00693, double lower\+\_\+bound\+\_\+p=0.\+95, bool log\+\_\+lift=true)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classreels_1_1Events}{Events}} optimizer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Events_ab280c7b4b4fe194570537b3e88c298a9}{score\+\_\+model}} (double \&score, double \&targ\+\_\+prop, \mbox{\hyperlink{namespacereels_ad8514b34ba2d1a7ef5b6ed500479ed56}{Code\+In\+Tree\+Stat\+Map}} \&codes\+\_\+stat, bool calc\+\_\+tree\+\_\+stats, \mbox{\hyperlink{classreels_1_1Clips}{Clips}} \&clips, \mbox{\hyperlink{namespacereels_ad37c6476c649ff89a1e3b08ae308ac18}{Target\+Map}} \&targets, \mbox{\hyperlink{namespacereels_ad23367fd7ac91cfd895fea61134f5e53}{Event\+Code\+Map}} code\+\_\+dict, \mbox{\hyperlink{namespacereels_ad44e06140c2e753acec63a0c7f59fa06}{Transform}} x\+\_\+form, \mbox{\hyperlink{namespacereels_af9e843e456fd6d18c38b1758c8258946}{Aggregate}} agg, double p, int depth, bool as\+\_\+states)
+\begin{DoxyCompactList}\small\item\em Internal\+: Do one step of the \mbox{\hyperlink{classreels_1_1Events_a256e8d27c4ebbd547fe0f12ac08cde30}{optimize\+\_\+events()}} method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacereels_a0003bf321a0a67c2609068f322a72b93}{Code\+Scores}} \mbox{\hyperlink{classreels_1_1Events_a170ec0e95f3b17689259305f4c64f76a}{get\+\_\+top\+\_\+codes}} (\mbox{\hyperlink{namespacereels_ad8514b34ba2d1a7ef5b6ed500479ed56}{Code\+In\+Tree\+Stat\+Map}} \&codes\+\_\+stat, double targ\+\_\+prop, double exponential\+\_\+decay, double lower\+\_\+bound\+\_\+p, bool log\+\_\+lift)
+\begin{DoxyCompactList}\small\item\em Internal\+: Extract the top top\+\_\+n codes by lift from a Code\+In\+Tree\+Stat\+Map map. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classreels_1_1Events_a8cba11f94673a7045f4d9737047788d3}{linear\+\_\+correlation}} (\mbox{\hyperlink{namespacereels_a085f2a70bd9319a74fcba2295b958e9e}{Optimize\+Eval}} \&ev)
+\begin{DoxyCompactList}\small\item\em Compute Pearson linear correlation between predicted and observed in an Optimize\+Eval. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Events_a464476e8cc5dec6256e29a97392a957d}{load}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&p\+\_\+bi)
+\begin{DoxyCompactList}\small\item\em Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Events_ab8a6dec443d149cc7dc5154348185f96}{load}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&p\+\_\+bi, int \&c\+\_\+block, int \&c\+\_\+ofs)
+\begin{DoxyCompactList}\small\item\em Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Events_a83f1ba063a2cb7a124ee04432ded5c81}{save}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&p\+\_\+bi)
+\begin{DoxyCompactList}\small\item\em Save the state of an object into a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_aa589037ff1304165b2b9736c08bf3f66}{image\+\_\+put()}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreels_1_1Events_aeb8fdeaf66f9097c2df4a0d06e56c746}{set\+\_\+max\+\_\+num\+\_\+events}} (int max\+\_\+events)
+\begin{DoxyCompactList}\small\item\em Sets the public property max\+\_\+num\+\_\+events to simplify the python interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreels_1_1Events_ae60b1cc227efd4b5839f01cd0af8d11a}{set\+\_\+store\+\_\+strings}} (bool store)
+\begin{DoxyCompactList}\small\item\em Sets the public property store\+\_\+strings to simplify the python interface. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} \mbox{\hyperlink{classreels_1_1Events_a7a43a9ee44caf7580e943038e44ffa16}{add\+\_\+str}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+str)
+\begin{DoxyCompactList}\small\item\em Define a new string and push it into the String\+Usage\+Map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreels_1_1Events_a5e13b0bf07486252e86e553d3c45b664}{erase\+\_\+str}} (\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} hash)
+\begin{DoxyCompactList}\small\item\em Remove a string from the String\+Usage\+Map by decreasing its use count and destroying it if not used anymore. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacereels_a8439b64892718b921e015accbfad1478}{String}} \mbox{\hyperlink{classreels_1_1Events_ae3a42c1d6ad1d4250911ab9ce8d00f39}{get\+\_\+str}} (\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} hash)
+\begin{DoxyCompactList}\small\item\em Get a string content from its hash value. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classreels_1_1Events_a0bf53cb53fa984f0237d9cada3364c30}{event\+\_\+code}} (\mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&ept)
+\begin{DoxyCompactList}\small\item\em Return the code associated to an \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} if found in the object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classreels_1_1Events_a5249983ac63ead8eeecc5b6de7fb1fee}{num\+\_\+events}} ()
+\begin{DoxyCompactList}\small\item\em Return the number of events stored in the object. \end{DoxyCompactList}\item 
+Event\+Map\+::iterator \mbox{\hyperlink{classreels_1_1Events_a4ecb634353f7b3f1d3867b2e51c50a6e}{events\+\_\+begin}} ()
+\begin{DoxyCompactList}\small\item\em Return the Event\+Map\+::iterator to the first elements in the private variable .events. \end{DoxyCompactList}\item 
+Event\+Map\+::iterator \mbox{\hyperlink{classreels_1_1Events_a3aba01818244dd48315fe524234e3506}{events\+\_\+next\+\_\+after\+\_\+find}} (\mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&ept)
+\begin{DoxyCompactList}\small\item\em Return the Event\+Map\+::iterator to the next \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} after matching ev or nullptr if not found or is last. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreels_1_1Events_a9230f0a37efd84255d1abc0c9d158b1d}\label{classreels_1_1Events_a9230f0a37efd84255d1abc0c9d158b1d}} 
+bool {\bfseries store\+\_\+strings} = true
+\begin{DoxyCompactList}\small\item\em If true, the object stores the string values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classreels_1_1Events_afd8afb0326fc16de30c37b930329c322}\label{classreels_1_1Events_afd8afb0326fc16de30c37b930329c322}} 
+int {\bfseries max\+\_\+num\+\_\+events} = DEFAULT\+\_\+\+NUM\+\_\+\+EVENTS
+\begin{DoxyCompactList}\small\item\em The maximum number of recurrent event stored via \mbox{\hyperlink{classreels_1_1Events_a437b2281880b356ccf8586e5a982f4d5}{insert\+\_\+row()}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A container class to hold events. 
+
+This class has two different modes, in both cases, it is constructed empty and the public properties store\+\_\+strings, time\+\_\+format and max\+\_\+num\+\_\+events can be set after construction. \begin{DoxyVerb}1. The object identifies recurring events from a sequence of transactions passed to the object using insert_row()
+2. The object is given the events as a series of define_event() calls
+\end{DoxyVerb}
+ To simplify the Python interface, the object has \mbox{\hyperlink{classreels_1_1Events_aeb8fdeaf66f9097c2df4a0d06e56c746}{set\+\_\+max\+\_\+num\+\_\+events()}} and \mbox{\hyperlink{classreels_1_1Events_ae60b1cc227efd4b5839f01cd0af8d11a}{set\+\_\+store\+\_\+strings()}} as methods. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classreels_1_1Events_a7a43a9ee44caf7580e943038e44ffa16}\label{classreels_1_1Events_a7a43a9ee44caf7580e943038e44ffa16}} 
+\index{reels::Events@{reels::Events}!add\_str@{add\_str}}
+\index{add\_str@{add\_str}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{add\_str()}{add\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} reels\+::\+Events\+::add\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Define a new string and push it into the String\+Usage\+Map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+str} & The string to be added.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The hash. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_a601dc6b767f5fcea7128a1a3280c0db6}\label{classreels_1_1Events_a601dc6b767f5fcea7128a1a3280c0db6}} 
+\index{reels::Events@{reels::Events}!define\_event@{define\_event}}
+\index{define\_event@{define\_event}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{define\_event()}{define\_event()}}
+{\footnotesize\ttfamily bool reels\+::\+Events\+::define\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+e,  }\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+d,  }\item[{double}]{w,  }\item[{uint64\+\_\+t}]{code }\end{DoxyParamCaption})}
+
+
+
+Define events explicitly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+e} & The \char`\"{}emitter\char`\"{}. A C/\+Python string representing \char`\"{}owner of event\char`\"{}. \\
+\hline
+{\em p\+\_\+d} & The \char`\"{}description\char`\"{}. A C/\+Python string representing \char`\"{}the event\char`\"{}. \\
+\hline
+{\em w} & The \char`\"{}weight\char`\"{}. A double representing a weight of the event. \\
+\hline
+{\em code} & A unique code number identifying the event.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success.
+\end{DoxyReturn}
+Caveat$\ast$$\ast$\+: \mbox{\hyperlink{classreels_1_1Events_a437b2281880b356ccf8586e5a982f4d5}{insert\+\_\+row()}} and \mbox{\hyperlink{classreels_1_1Events_a601dc6b767f5fcea7128a1a3280c0db6}{define\+\_\+event()}} should not be mixed. The former is for event discovery and the latter for explicit definition. A set of events is build either one way or the other. \mbox{\Hypertarget{classreels_1_1Events_a5e13b0bf07486252e86e553d3c45b664}\label{classreels_1_1Events_a5e13b0bf07486252e86e553d3c45b664}} 
+\index{reels::Events@{reels::Events}!erase\_str@{erase\_str}}
+\index{erase\_str@{erase\_str}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{erase\_str()}{erase\_str()}}
+{\footnotesize\ttfamily void reels\+::\+Events\+::erase\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}}}]{hash }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove a string from the String\+Usage\+Map by decreasing its use count and destroying it if not used anymore. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hash} & hash(key) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classreels_1_1Events_a0bf53cb53fa984f0237d9cada3364c30}\label{classreels_1_1Events_a0bf53cb53fa984f0237d9cada3364c30}} 
+\index{reels::Events@{reels::Events}!event\_code@{event\_code}}
+\index{event\_code@{event\_code}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{event\_code()}{event\_code()}}
+{\footnotesize\ttfamily uint64\+\_\+t reels\+::\+Events\+::event\+\_\+code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&}]{ept }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the code associated to an \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} if found in the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ept} & The \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} searched.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The code if found, or zero if not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_a4ecb634353f7b3f1d3867b2e51c50a6e}\label{classreels_1_1Events_a4ecb634353f7b3f1d3867b2e51c50a6e}} 
+\index{reels::Events@{reels::Events}!events\_begin@{events\_begin}}
+\index{events\_begin@{events\_begin}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{events\_begin()}{events\_begin()}}
+{\footnotesize\ttfamily Event\+Map\+::iterator reels\+::\+Events\+::events\+\_\+begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the Event\+Map\+::iterator to the first elements in the private variable .events. 
+
+\begin{DoxyReturn}{Returns}
+The iterator to the first element. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_a3aba01818244dd48315fe524234e3506}\label{classreels_1_1Events_a3aba01818244dd48315fe524234e3506}} 
+\index{reels::Events@{reels::Events}!events\_next\_after\_find@{events\_next\_after\_find}}
+\index{events\_next\_after\_find@{events\_next\_after\_find}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{events\_next\_after\_find()}{events\_next\_after\_find()}}
+{\footnotesize\ttfamily Event\+Map\+::iterator reels\+::\+Events\+::events\+\_\+next\+\_\+after\+\_\+find (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&}]{ept }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the Event\+Map\+::iterator to the next \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} after matching ev or nullptr if not found or is last. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ept} & The \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} searched.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The iterator to the next element after the matching element. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_ae3a42c1d6ad1d4250911ab9ce8d00f39}\label{classreels_1_1Events_ae3a42c1d6ad1d4250911ab9ce8d00f39}} 
+\index{reels::Events@{reels::Events}!get\_str@{get\_str}}
+\index{get\_str@{get\_str}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{get\_str()}{get\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_a8439b64892718b921e015accbfad1478}{String}} reels\+::\+Events\+::get\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}}}]{hash }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a string content from its hash value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hash} & hash(key)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string if found, or a single EOT (End of transmission) character if not found. (An empty string is usable.) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_a170ec0e95f3b17689259305f4c64f76a}\label{classreels_1_1Events_a170ec0e95f3b17689259305f4c64f76a}} 
+\index{reels::Events@{reels::Events}!get\_top\_codes@{get\_top\_codes}}
+\index{get\_top\_codes@{get\_top\_codes}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{get\_top\_codes()}{get\_top\_codes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_a0003bf321a0a67c2609068f322a72b93}{Code\+Scores}} reels\+::\+Events\+::get\+\_\+top\+\_\+codes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ad8514b34ba2d1a7ef5b6ed500479ed56}{Code\+In\+Tree\+Stat\+Map}} \&}]{codes\+\_\+stat,  }\item[{double}]{targ\+\_\+prop,  }\item[{double}]{exponential\+\_\+decay,  }\item[{double}]{lower\+\_\+bound\+\_\+p,  }\item[{bool}]{log\+\_\+lift }\end{DoxyParamCaption})}
+
+
+
+Internal\+: Extract the top top\+\_\+n codes by lift from a Code\+In\+Tree\+Stat\+Map map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codes\+\_\+stat} & A complete Code\+In\+Tree\+Stat\+Map computed by \mbox{\hyperlink{classreels_1_1Events_ab280c7b4b4fe194570537b3e88c298a9}{score\+\_\+model()}}. \\
+\hline
+{\em targ\+\_\+prop} & The targets/seen proportion at the tree root. \\
+\hline
+{\em exponential\+\_\+decay} & Exponential Decay Factor applied to the internal score in terms of depth. That score selects what codes enter the model. The decay is applied to the average tree depth. 0 is no decay, default value = 0.\+00693 decays to 0.\+5 in 100 steps. \\
+\hline
+{\em lower\+\_\+bound\+\_\+p} & Another p for lower bound, but applied to the scoring process rather than the model. \\
+\hline
+{\em log\+\_\+lift} & A boolean to set if lift (= LB(included)/\+LB(after inclusion)) is log() transformed or not.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A sorted (by lift) vector of codes top first. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_a437b2281880b356ccf8586e5a982f4d5}\label{classreels_1_1Events_a437b2281880b356ccf8586e5a982f4d5}} 
+\index{reels::Events@{reels::Events}!insert\_row@{insert\_row}}
+\index{insert\_row@{insert\_row}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{insert\_row()}{insert\_row()}}
+{\footnotesize\ttfamily void reels\+::\+Events\+::insert\+\_\+row (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+e,  }\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+d,  }\item[{double}]{w }\end{DoxyParamCaption})}
+
+
+
+Process a row from a transaction file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+e} & The \char`\"{}emitter\char`\"{}. A C/\+Python string representing \char`\"{}owner of event\char`\"{}. \\
+\hline
+{\em p\+\_\+d} & The \char`\"{}description\char`\"{}. A C/\+Python string representing \char`\"{}the event\char`\"{}. \\
+\hline
+{\em w} & The \char`\"{}weight\char`\"{}. A double representing a weight of the event.\\
+\hline
+\end{DoxyParams}
+Caveat$\ast$$\ast$\+: \mbox{\hyperlink{classreels_1_1Events_a437b2281880b356ccf8586e5a982f4d5}{insert\+\_\+row()}} and \mbox{\hyperlink{classreels_1_1Events_a601dc6b767f5fcea7128a1a3280c0db6}{define\+\_\+event()}} should not be mixed. The former is for event discovery and the latter for explicit definition. A set of events is build either one way or the other. \mbox{\Hypertarget{classreels_1_1Events_a8cba11f94673a7045f4d9737047788d3}\label{classreels_1_1Events_a8cba11f94673a7045f4d9737047788d3}} 
+\index{reels::Events@{reels::Events}!linear\_correlation@{linear\_correlation}}
+\index{linear\_correlation@{linear\_correlation}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{linear\_correlation()}{linear\_correlation()}}
+{\footnotesize\ttfamily double reels\+::\+Events\+::linear\+\_\+correlation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a085f2a70bd9319a74fcba2295b958e9e}{Optimize\+Eval}} \&}]{ev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute Pearson linear correlation between predicted and observed in an Optimize\+Eval. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ev} & The vector of \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}} containing t\+\_\+obs (observed) and t\+\_\+hat (predicted) values.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The linear correlation. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_a464476e8cc5dec6256e29a97392a957d}\label{classreels_1_1Events_a464476e8cc5dec6256e29a97392a957d}} 
+\index{reels::Events@{reels::Events}!load@{load}}
+\index{load@{load}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool reels\+::\+Events\+::load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&}]{p\+\_\+bi }\end{DoxyParamCaption})}
+
+
+
+Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & The address of a Binary\+Image stream containing a previously \mbox{\hyperlink{classreels_1_1Events_a83f1ba063a2cb7a124ee04432ded5c81}{save()}}-\/ed image at the cursor position.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success (Most likely error is a wrong stream). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_ab8a6dec443d149cc7dc5154348185f96}\label{classreels_1_1Events_ab8a6dec443d149cc7dc5154348185f96}} 
+\index{reels::Events@{reels::Events}!load@{load}}
+\index{load@{load}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool reels\+::\+Events\+::load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&}]{p\+\_\+bi,  }\item[{int \&}]{c\+\_\+block,  }\item[{int \&}]{c\+\_\+ofs }\end{DoxyParamCaption})}
+
+
+
+Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & The address of a Binary\+Image stream containing a previously \mbox{\hyperlink{classreels_1_1Events_a83f1ba063a2cb7a124ee04432ded5c81}{save()}}-\/ed image at the cursor position. \\
+\hline
+{\em c\+\_\+block} & The current reading cursor (block number) required only for nested use of \mbox{\hyperlink{classreels_1_1Events_a464476e8cc5dec6256e29a97392a957d}{load()}}. \\
+\hline
+{\em c\+\_\+ofs} & The current reading cursor (offset in block) required only for nested use of \mbox{\hyperlink{classreels_1_1Events_a464476e8cc5dec6256e29a97392a957d}{load()}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success (Most likely error is a wrong stream). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_a5249983ac63ead8eeecc5b6de7fb1fee}\label{classreels_1_1Events_a5249983ac63ead8eeecc5b6de7fb1fee}} 
+\index{reels::Events@{reels::Events}!num\_events@{num\_events}}
+\index{num\_events@{num\_events}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{num\_events()}{num\_events()}}
+{\footnotesize\ttfamily int reels\+::\+Events\+::num\+\_\+events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of events stored in the object. 
+
+\begin{DoxyReturn}{Returns}
+The size of the internal \mbox{\hyperlink{namespacereels_a753be4488a8c210f29ee5ccd95f672b9}{Event\+Map()}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_a256e8d27c4ebbd547fe0f12ac08cde30}\label{classreels_1_1Events_a256e8d27c4ebbd547fe0f12ac08cde30}} 
+\index{reels::Events@{reels::Events}!optimize\_events@{optimize\_events}}
+\index{optimize\_events@{optimize\_events}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{optimize\_events()}{optimize\_events()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_a8439b64892718b921e015accbfad1478}{String}} reels\+::\+Events\+::optimize\+\_\+events (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classreels_1_1Clips}{Clips}} \&}]{clips,  }\item[{\mbox{\hyperlink{namespacereels_ad37c6476c649ff89a1e3b08ae308ac18}{Target\+Map}} \&}]{targets,  }\item[{int}]{num\+\_\+steps = {\ttfamily 10},  }\item[{int}]{codes\+\_\+per\+\_\+step = {\ttfamily 5},  }\item[{double}]{threshold = {\ttfamily 0.0001},  }\item[{\mbox{\hyperlink{namespacereels_ae76ecaa3940df39d3b8fa491fc62246c}{p\+Code\+Set}}}]{p\+\_\+force\+\_\+include = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{namespacereels_ae76ecaa3940df39d3b8fa491fc62246c}{p\+Code\+Set}}}]{p\+\_\+force\+\_\+exclude = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{namespacereels_ad44e06140c2e753acec63a0c7f59fa06}{Transform}}}]{x\+\_\+form = {\ttfamily tr\+\_\+linear},  }\item[{\mbox{\hyperlink{namespacereels_af9e843e456fd6d18c38b1758c8258946}{Aggregate}}}]{agg = {\ttfamily ag\+\_\+longest},  }\item[{double}]{p = {\ttfamily 0.5},  }\item[{int}]{depth = {\ttfamily 1000},  }\item[{bool}]{as\+\_\+states = {\ttfamily true},  }\item[{double}]{exponential\+\_\+decay = {\ttfamily 0.00693},  }\item[{double}]{lower\+\_\+bound\+\_\+p = {\ttfamily 0.95},  }\item[{bool}]{log\+\_\+lift = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classreels_1_1Events}{Events}} optimizer. 
+
+Optimizes the events to maximize prediction signal. (F1 score over same number of positives.) It converts code values many-\/to-\/one trying to group event codes into categories that represent similar events.
+
+Before starting, a non-\/optimized \mbox{\hyperlink{classreels_1_1Events}{Events}} object must be populated with an initial set of codes we want to reduce by assigning new many-\/to-\/one codes to them.
+
+The algorithm initially removes all codes not found in the clips object. This completely removes them.
+
+The algorithm builds a list of most promising (not already used) codes at the beginning of each step by full tree search. From that list, each code is tried downwards as \{noise, new\+\_\+code, last\+\_\+code\} for score improvement above threshold up to codes\+\_\+per\+\_\+step steps. And assigned a new code accordingly. The codes assigned become part of the internal Event\+Code\+Map and in the next step they will replace their old values.
+
+When the algorithm finishes, the internal Event\+Code\+Map is used to rename the object codes and the whole process is reported.
+
+
+\begin{DoxyParams}{Parameters}
+{\em clips} & A clips object with the same codes and clips for a set of clients whose prediction we optimize. \\
+\hline
+{\em targets} & The target events in a Target\+Map object in the same format expected by a \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object. (Internally a \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object will be used to make the predictions we want to optimize.) \\
+\hline
+{\em num\+\_\+steps} & The number of steps to iterate. The method will stop early if no codes are found at a step. \\
+\hline
+{\em codes\+\_\+per\+\_\+step} & The number of codes to be tried from the top of the priority list at each step. \\
+\hline
+{\em threshold} & A minimum threshold, below which a score change is not considered improvement. \\
+\hline
+{\em p\+\_\+force\+\_\+include} & An optional pointer to a set of codes that must be included before starting. \\
+\hline
+{\em p\+\_\+force\+\_\+exclude} & An optional pointer to a set of codes that will excluded and set to the base code. \\
+\hline
+{\em x\+\_\+form} & The x\+\_\+form argument to fit the internal \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object prediction model. \\
+\hline
+{\em agg} & The agg argument to fit the internal \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object prediction model. \\
+\hline
+{\em p} & The p argument to fit the internal \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object prediction model. \\
+\hline
+{\em depth} & The depth argument to fit the internal \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object prediction model. \\
+\hline
+{\em as\+\_\+states} & The as\+\_\+states argument to fit the internal \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object prediction model. \\
+\hline
+{\em exponential\+\_\+decay} & Exponential Decay Factor applied to the internal score in terms of depth. That score selects what codes enter the model. The decay is applied to the average tree depth. 0 is no decay, default value = 0.\+00693 decays to 0.\+5 in 100 steps. \\
+\hline
+{\em lower\+\_\+bound\+\_\+p} & Another p for lower bound, but applied to the scoring process rather than the model. \\
+\hline
+{\em log\+\_\+lift} & A boolean to set if lift (= LB(included)/\+LB(after inclusion)) is log() transformed or not.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A ~\newline
+ separated report string that contains either \char`\"{}\+ERROR\char`\"{} or \char`\"{}success\char`\"{} as the first line. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_a83f1ba063a2cb7a124ee04432ded5c81}\label{classreels_1_1Events_a83f1ba063a2cb7a124ee04432ded5c81}} 
+\index{reels::Events@{reels::Events}!save@{save}}
+\index{save@{save}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily bool reels\+::\+Events\+::save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&}]{p\+\_\+bi }\end{DoxyParamCaption})}
+
+
+
+Save the state of an object into a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_aa589037ff1304165b2b9736c08bf3f66}{image\+\_\+put()}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & The address of a Binary\+Image stream that is either empty or has been used only for writing.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success (Most likely error is allocation). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_ab280c7b4b4fe194570537b3e88c298a9}\label{classreels_1_1Events_ab280c7b4b4fe194570537b3e88c298a9}} 
+\index{reels::Events@{reels::Events}!score\_model@{score\_model}}
+\index{score\_model@{score\_model}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{score\_model()}{score\_model()}}
+{\footnotesize\ttfamily bool reels\+::\+Events\+::score\+\_\+model (\begin{DoxyParamCaption}\item[{double \&}]{score,  }\item[{double \&}]{targ\+\_\+prop,  }\item[{\mbox{\hyperlink{namespacereels_ad8514b34ba2d1a7ef5b6ed500479ed56}{Code\+In\+Tree\+Stat\+Map}} \&}]{codes\+\_\+stat,  }\item[{bool}]{calc\+\_\+tree\+\_\+stats,  }\item[{\mbox{\hyperlink{classreels_1_1Clips}{Clips}} \&}]{clips,  }\item[{\mbox{\hyperlink{namespacereels_ad37c6476c649ff89a1e3b08ae308ac18}{Target\+Map}} \&}]{targets,  }\item[{\mbox{\hyperlink{namespacereels_ad23367fd7ac91cfd895fea61134f5e53}{Event\+Code\+Map}}}]{code\+\_\+dict,  }\item[{\mbox{\hyperlink{namespacereels_ad44e06140c2e753acec63a0c7f59fa06}{Transform}}}]{x\+\_\+form,  }\item[{\mbox{\hyperlink{namespacereels_af9e843e456fd6d18c38b1758c8258946}{Aggregate}}}]{agg,  }\item[{double}]{p,  }\item[{int}]{depth,  }\item[{bool}]{as\+\_\+states }\end{DoxyParamCaption})}
+
+
+
+Internal\+: Do one step of the \mbox{\hyperlink{classreels_1_1Events_a256e8d27c4ebbd547fe0f12ac08cde30}{optimize\+\_\+events()}} method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score} & Returns score by reference. \\
+\hline
+{\em targ\+\_\+prop} & Returns the targets/seen proportion at the tree root by reference (used by get\+\_\+top\+\_\+codes). \\
+\hline
+{\em codes\+\_\+stat} & Returns a complete Code\+In\+Tree\+Stat\+Map if calc\+\_\+tree\+\_\+stats is true. \\
+\hline
+{\em calc\+\_\+tree\+\_\+stats} & Complete a tree search (if true) or just evaluate the score if not. \\
+\hline
+{\em clips} & A clips object with the same codes and clips for a set of clients whose prediction we optimize. \\
+\hline
+{\em targets} & The target events in a Target\+Map object in the same format expected by a \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object. (Internally a \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object will be used to make the predictions we want to optimize.) \\
+\hline
+{\em code\+\_\+dict} & A dictionary of code transformations to be applied to a copy of the clips before fitting. \\
+\hline
+{\em x\+\_\+form} & The x\+\_\+form argument to fit the internal \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object prediction model. \\
+\hline
+{\em agg} & The agg argument to fit the internal \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object prediction model. \\
+\hline
+{\em p} & The p argument to fit the internal \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object prediction model. \\
+\hline
+{\em depth} & The depth argument to fit the internal \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object prediction model. \\
+\hline
+{\em as\+\_\+states} & The as\+\_\+states argument to fit the internal \mbox{\hyperlink{classreels_1_1Targets}{Targets}} object prediction model.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+False on error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_aeb8fdeaf66f9097c2df4a0d06e56c746}\label{classreels_1_1Events_aeb8fdeaf66f9097c2df4a0d06e56c746}} 
+\index{reels::Events@{reels::Events}!set\_max\_num\_events@{set\_max\_num\_events}}
+\index{set\_max\_num\_events@{set\_max\_num\_events}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{set\_max\_num\_events()}{set\_max\_num\_events()}}
+{\footnotesize\ttfamily void reels\+::\+Events\+::set\+\_\+max\+\_\+num\+\_\+events (\begin{DoxyParamCaption}\item[{int}]{max\+\_\+events }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the public property max\+\_\+num\+\_\+events to simplify the python interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+events} & The value to apply to max\+\_\+num\+\_\+events. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classreels_1_1Events_ae60b1cc227efd4b5839f01cd0af8d11a}\label{classreels_1_1Events_ae60b1cc227efd4b5839f01cd0af8d11a}} 
+\index{reels::Events@{reels::Events}!set\_store\_strings@{set\_store\_strings}}
+\index{set\_store\_strings@{set\_store\_strings}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{set\_store\_strings()}{set\_store\_strings()}}
+{\footnotesize\ttfamily void reels\+::\+Events\+::set\+\_\+store\+\_\+strings (\begin{DoxyParamCaption}\item[{bool}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the public property store\+\_\+strings to simplify the python interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em store} & True for storing the string contents. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+reels/reels.\+h\item 
+reels/reels.\+cpp\end{DoxyCompactItemize}

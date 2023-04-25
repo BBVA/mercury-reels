@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classreels_1_1TimeUtil.html" title="A common ancestor of Clips and Targets to avoid duplicating time management." alt="" coords="5,31,124,56"/>
+<area shape="rect" id="node2" href="$classreels_1_1Clips.html" title="A container class to hold clips (sequences of events)." alt="" coords="179,5,274,31"/>
+<area shape="rect" id="node3" href="$classreels_1_1Targets.html" title="A container class to hold target events and do predictions based on clips." alt="" coords="172,55,281,80"/>
+</map>

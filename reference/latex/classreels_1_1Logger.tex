@@ -1,0 +1,69 @@
+\hypertarget{classreels_1_1Logger}{}\doxysection{reels\+::Logger Class Reference}
+\label{classreels_1_1Logger}\index{reels::Logger@{reels::Logger}}
+
+
+A minimalist logger stored as a std\+::string providing sprintf functionality.  
+
+
+
+
+{\ttfamily \#include $<$reels.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classreels_1_1Logger_a910e75a2396bad1bd5c3c13c1ea22797}{log\+\_\+printf}} (const char $\ast$fmt,...)
+\begin{DoxyCompactList}\small\item\em Logging method wrapper supporting variable arguments. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreels_1_1Logger_a8e1216e4ae9ce9cece84ab1acb30b591}{log\+\_\+printf}} (const char $\ast$fmt, va\+\_\+list args)
+\begin{DoxyCompactList}\small\item\em Add a nicely formatted string smaller than 256 chars to the logger. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreels_1_1Logger_a0d3cb8eaed0912071e4a610227d694ff}\label{classreels_1_1Logger_a0d3cb8eaed0912071e4a610227d694ff}} 
+\mbox{\hyperlink{namespacereels_a8439b64892718b921e015accbfad1478}{String}} {\bfseries log} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em The std\+::string storing the content of the \mbox{\hyperlink{classreels_1_1Logger}{Logger}} is public. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A minimalist logger stored as a std\+::string providing sprintf functionality. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classreels_1_1Logger_a8e1216e4ae9ce9cece84ab1acb30b591}\label{classreels_1_1Logger_a8e1216e4ae9ce9cece84ab1acb30b591}} 
+\index{reels::Logger@{reels::Logger}!log\_printf@{log\_printf}}
+\index{log\_printf@{log\_printf}!reels::Logger@{reels::Logger}}
+\doxysubsubsection{\texorpdfstring{log\_printf()}{log\_printf()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void reels\+::\+Logger\+::log\+\_\+printf (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fmt,  }\item[{va\+\_\+list}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a nicely formatted string smaller than 256 chars to the logger. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmt} & A vsnprintf compatible format definition. \\
+\hline
+{\em args} & A variable list of arguments stored as a va\+\_\+list. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classreels_1_1Logger_a910e75a2396bad1bd5c3c13c1ea22797}\label{classreels_1_1Logger_a910e75a2396bad1bd5c3c13c1ea22797}} 
+\index{reels::Logger@{reels::Logger}!log\_printf@{log\_printf}}
+\index{log\_printf@{log\_printf}!reels::Logger@{reels::Logger}}
+\doxysubsubsection{\texorpdfstring{log\_printf()}{log\_printf()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void reels\+::\+Logger\+::log\+\_\+printf (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Logging method wrapper supporting variable arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmt} & A vsnprintf compatible format definition. \\
+\hline
+{\em ...} & A variable list of arguments.\\
+\hline
+\end{DoxyParams}
+This method calls the other \mbox{\hyperlink{classreels_1_1Logger_a910e75a2396bad1bd5c3c13c1ea22797}{log\+\_\+printf()}} override with the arguments in a va\+\_\+list. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+reels/reels.\+h\end{DoxyCompactItemize}

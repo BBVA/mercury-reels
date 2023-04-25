@@ -1,0 +1,4 @@
+<map id="reels::Clips" name="reels::Clips">
+<area shape="rect" id="node1" title="A container class to hold clips (sequences of events)." alt="" coords="17,79,112,104"/>
+<area shape="rect" id="node2" href="$classreels_1_1TimeUtil.html" title="A common ancestor of Clips and Targets to avoid duplicating time management." alt="" coords="5,5,124,31"/>
+</map>

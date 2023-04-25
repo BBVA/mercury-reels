@@ -1,0 +1,138 @@
+\hypertarget{classreels_1_1Clients}{}\doxysection{reels\+::Clients Class Reference}
+\label{classreels_1_1Clients}\index{reels::Clients@{reels::Clients}}
+
+
+A container class to hold client ids.  
+
+
+
+
+{\ttfamily \#include $<$reels.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} \mbox{\hyperlink{classreels_1_1Clients_a993a1fd1834a310f4ea70043545c6215}{hash\+\_\+client\+\_\+id}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+cli)
+\begin{DoxyCompactList}\small\item\em Return the hash of a client ID as an Element\+Hash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreels_1_1Clients_a2cab51f772851857f4e2d12eff1a4e2e}{add\+\_\+client\+\_\+id}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+cli)
+\begin{DoxyCompactList}\small\item\em Add a client ID to this container. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Clients_afda47b3ae3de3c1b61437df8baa4ee3c}{load}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&p\+\_\+bi)
+\begin{DoxyCompactList}\small\item\em Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Clients_a1a6024a5a3ab224c475263fc5e476198}{load}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&p\+\_\+bi, int \&c\+\_\+block, int \&c\+\_\+ofs)
+\begin{DoxyCompactList}\small\item\em Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreels_1_1Clients_aedd701a5f04694571cdf145a4ee8c1fc}{save}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&p\+\_\+bi)
+\begin{DoxyCompactList}\small\item\em Save the state of an object into a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_aa589037ff1304165b2b9736c08bf3f66}{image\+\_\+put()}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreels_1_1Clients_a7ca49533dd002fa37ad134db03a0e05d}\label{classreels_1_1Clients_a7ca49533dd002fa37ad134db03a0e05d}} 
+\mbox{\hyperlink{namespacereels_a2f35b05990dd7c5c01448a07bf89723c}{Client\+IDs}} {\bfseries id} = \{\}
+\begin{DoxyCompactList}\small\item\em The vector containing client ids as hashes in the order of definition. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classreels_1_1Clients_afc689746c7165fc8b348c0c59c243db0}\label{classreels_1_1Clients_afc689746c7165fc8b348c0c59c243db0}} 
+\mbox{\hyperlink{namespacereels_a73a7ae63cbb27d7caabe69e99ec19646}{Client\+IDSet}} {\bfseries id\+\_\+set} = \{\}
+\begin{DoxyCompactList}\small\item\em The set of the same hashes for fast search. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A container class to hold client ids. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classreels_1_1Clients_a2cab51f772851857f4e2d12eff1a4e2e}\label{classreels_1_1Clients_a2cab51f772851857f4e2d12eff1a4e2e}} 
+\index{reels::Clients@{reels::Clients}!add\_client\_id@{add\_client\_id}}
+\index{add\_client\_id@{add\_client\_id}!reels::Clients@{reels::Clients}}
+\doxysubsubsection{\texorpdfstring{add\_client\_id()}{add\_client\_id()}}
+{\footnotesize\ttfamily void reels\+::\+Clients\+::add\+\_\+client\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+cli }\end{DoxyParamCaption})}
+
+
+
+Add a client ID to this container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+cli} & The \char`\"{}client\char`\"{}. A string representing \char`\"{}the actor\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classreels_1_1Clients_a993a1fd1834a310f4ea70043545c6215}\label{classreels_1_1Clients_a993a1fd1834a310f4ea70043545c6215}} 
+\index{reels::Clients@{reels::Clients}!hash\_client\_id@{hash\_client\_id}}
+\index{hash\_client\_id@{hash\_client\_id}!reels::Clients@{reels::Clients}}
+\doxysubsubsection{\texorpdfstring{hash\_client\_id()}{hash\_client\_id()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} reels\+::\+Clients\+::hash\+\_\+client\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}}}]{p\+\_\+cli }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the hash of a client ID as an Element\+Hash. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+cli} & The \char`\"{}client\char`\"{}. A string representing \char`\"{}the actor\char`\"{}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The hash. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Clients_afda47b3ae3de3c1b61437df8baa4ee3c}\label{classreels_1_1Clients_afda47b3ae3de3c1b61437df8baa4ee3c}} 
+\index{reels::Clients@{reels::Clients}!load@{load}}
+\index{load@{load}!reels::Clients@{reels::Clients}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool reels\+::\+Clients\+::load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&}]{p\+\_\+bi }\end{DoxyParamCaption})}
+
+
+
+Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & The address of a Binary\+Image stream containing a previously \mbox{\hyperlink{classreels_1_1Clients_aedd701a5f04694571cdf145a4ee8c1fc}{save()}}-\/ed image at the cursor position.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success (Most likely error is a wrong stream). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Clients_a1a6024a5a3ab224c475263fc5e476198}\label{classreels_1_1Clients_a1a6024a5a3ab224c475263fc5e476198}} 
+\index{reels::Clients@{reels::Clients}!load@{load}}
+\index{load@{load}!reels::Clients@{reels::Clients}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool reels\+::\+Clients\+::load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&}]{p\+\_\+bi,  }\item[{int \&}]{c\+\_\+block,  }\item[{int \&}]{c\+\_\+ofs }\end{DoxyParamCaption})}
+
+
+
+Load the state of an object from a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{image\+\_\+get()}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & The address of a Binary\+Image stream containing a previously \mbox{\hyperlink{classreels_1_1Clients_aedd701a5f04694571cdf145a4ee8c1fc}{save()}}-\/ed image at the cursor position. \\
+\hline
+{\em c\+\_\+block} & The current reading cursor (block number) required only for nested use of \mbox{\hyperlink{classreels_1_1Clients_afda47b3ae3de3c1b61437df8baa4ee3c}{load()}}. \\
+\hline
+{\em c\+\_\+ofs} & The current reading cursor (offset in block) required only for nested use of \mbox{\hyperlink{classreels_1_1Clients_afda47b3ae3de3c1b61437df8baa4ee3c}{load()}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success (Most likely error is a wrong stream). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Clients_aedd701a5f04694571cdf145a4ee8c1fc}\label{classreels_1_1Clients_aedd701a5f04694571cdf145a4ee8c1fc}} 
+\index{reels::Clients@{reels::Clients}!save@{save}}
+\index{save@{save}!reels::Clients@{reels::Clients}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily bool reels\+::\+Clients\+::save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} \&}]{p\+\_\+bi }\end{DoxyParamCaption})}
+
+
+
+Save the state of an object into a base64 mercury-\/dynamics serialization using \mbox{\hyperlink{namespacereels_aa589037ff1304165b2b9736c08bf3f66}{image\+\_\+put()}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+bi} & The address of a Binary\+Image stream that is either empty or has been used only for writing.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success (Most likely error is allocation). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+reels/reels.\+h\item 
+reels/reels.\+cpp\end{DoxyCompactItemize}

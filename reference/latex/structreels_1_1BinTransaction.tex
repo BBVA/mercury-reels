@@ -1,0 +1,70 @@
+\hypertarget{structreels_1_1BinTransaction}{}\doxysection{reels\+::Bin\+Transaction Struct Reference}
+\label{structreels_1_1BinTransaction}\index{reels::BinTransaction@{reels::BinTransaction}}
+
+
+The binary representation of a transaction in a transaction file.  
+
+
+
+
+{\ttfamily \#include $<$reels.\+h$>$}
+
+
+
+Inheritance diagram for reels\+::Bin\+Transaction\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{structreels_1_1BinTransaction__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for reels\+::Bin\+Transaction\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{structreels_1_1BinTransaction__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structreels_1_1BinTransaction_a866a58e1ebd613c50acf74a133ffa6cf}\label{structreels_1_1BinTransaction_a866a58e1ebd613c50acf74a133ffa6cf}} 
+\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} {\bfseries c}
+\begin{DoxyCompactList}\small\item\em The \char`\"{}client\char`\"{}. A binary hash of a string representing \char`\"{}the actor\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structreels_1_1BinTransaction_ac34ef6746838f054029bc08af0e6869d}\label{structreels_1_1BinTransaction_ac34ef6746838f054029bc08af0e6869d}} 
+\mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}} {\bfseries t}
+\begin{DoxyCompactList}\small\item\em The \char`\"{}time\char`\"{}. A timestamp of the event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{structreels_1_1BinEventPt}{reels\+::\+Bin\+Event\+Pt}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structreels_1_1BinEventPt_af1c176a8469ff7f8f8fb240ad087f5c3}\label{structreels_1_1BinEventPt_af1c176a8469ff7f8f8fb240ad087f5c3}} 
+\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} {\bfseries e}
+\begin{DoxyCompactList}\small\item\em The \char`\"{}emitter\char`\"{}. A binary hash of a string representing \char`\"{}owner of event\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structreels_1_1BinEventPt_a888668af385cd60b63f22b9c3d332bbd}\label{structreels_1_1BinEventPt_a888668af385cd60b63f22b9c3d332bbd}} 
+\mbox{\hyperlink{namespacereels_a60510fbcbc3a367de0a7061ea5a4a0fa}{Element\+Hash}} {\bfseries d}
+\begin{DoxyCompactList}\small\item\em The \char`\"{}description\char`\"{}. A binary hash of a string representing \char`\"{}the event\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structreels_1_1BinEventPt_a3a84158eeac3bec39c1c324127458b86}\label{structreels_1_1BinEventPt_a3a84158eeac3bec39c1c324127458b86}} 
+double {\bfseries w}
+\begin{DoxyCompactList}\small\item\em The \char`\"{}weight\char`\"{}. A double representing a weight of the event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{structreels_1_1BinEventPt}{reels\+::\+Bin\+Event\+Pt}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structreels_1_1BinEventPt_af08980f08a1a08459e7bc1414542c3c4}{operator==}} (const \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&o) const
+\begin{DoxyCompactList}\small\item\em Compare to another \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} for identity to support use as a key in a map. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structreels_1_1BinEventPt_a59169892f9565706dbc1fec8f52c2f82}{operator$<$}} (const \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&o) const
+\begin{DoxyCompactList}\small\item\em Compare to another \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} for strict order to support use as a key in a map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The binary representation of a transaction in a transaction file. 
+
+The class row converts the many possible source forms into this binary representation. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+reels/reels.\+h\end{DoxyCompactItemize}
