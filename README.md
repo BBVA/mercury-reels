@@ -47,31 +47,31 @@ Reels is implemented in four classes.
 ### The Events class
 <img src="notebooks/images/events.png" width = "640" />
 
-  * [Python API](__doc__/reference/python/events/)
-  * [C++ API](__doc__/reference/html/classreels_1_1Events.html)
+  * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/events/)
+  * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Events.html)
 
 ### The Clients class
 <img src="notebooks/images/clients.png" width = "640" />
 
-  * [Python API](__doc__/reference/python/clients/)
-  * [C++ API](__doc__/reference/html/classreels_1_1Clients.html)
+  * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/clients/)
+  * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Clients.html)
 
 ### The Clips class
 <img src="notebooks/images/clips.png" width = "640" />
 
-  * [Python API](__doc__/reference/python/clips/)
-  * [C++ API](__doc__/reference/html/classreels_1_1Clips.html)
+  * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/clips/)
+  * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Clips.html)
 
 ### The Targets class
 <img src="notebooks/images/targets.png" width = "640" />
 
-  * [Python API](__doc__/reference/python/targets/)
-  * [C++ API](__doc__/reference/html/classreels_1_1Targets.html)
+  * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/targets/)
+  * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Targets.html)
 
 ## Try it without any installation on Google Colab
 
-  * [Introductory: A walk through Reels](__doc__/notebooks/reels_walkthrough.ipynb)
-  * [Advanced: Event optimization -- How to do assisted event discovery](__doc__/notebooks/event_optimization.ipynb)
+  * **Introductory**: A walk through Reels [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ZgkLtBlqEZBtW_V83R6vYNKJ_jVZaLTA)
+  * **Advanced**: Event optimization -- How to do assisted event discovery [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1bjj8kzZdhaOmNilU31W4Af5Rp9VQ-1YY)
 
 ## Install
 
@@ -100,8 +100,8 @@ Make without arguments gives help. Try all the options. Everything should work a
 
 ## Documentation
 
-  * [Python API](__doc__/reference/python/reels/)
-  * [C++ API](__doc__/reference/html/index.html)
+  * [Python API](https://bbva.github.io/mercury-reels/reference/python/index.html)
+  * [C++ API](https://bbva.github.io/mercury-reels/reference/html/index.html)
   * [Algorithm description: Reels -- An efficient tree-based event prediction algorithm](__doc__/reference/reels_paper/)
 
 ## License
