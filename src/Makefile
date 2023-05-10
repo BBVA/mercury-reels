@@ -58,8 +58,8 @@ clean:
 	@rm -f *.o reels_cli reels_test mode_* errors.log .coverage
 	@rm -f reels/*.so reels/*.o
 	@rm -f logs/*
-	@find . | grep __pycache__ | xargs rm -rf
-	@find . | grep .ipynb_checkpoints | xargs rm -rf
+	@find .. | grep __pycache__ | xargs rm -rf
+	@find .. | grep .ipynb_checkpoints | xargs rm -rf
 	@rm -rf ../reference ../build ../dist ../mercury_reels.egg-info mercury_reels.egg-info ../.pytest_cache ../notebooks/.ipynb*
 
 .PHONY	: doc_cpp
