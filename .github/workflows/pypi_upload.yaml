@@ -15,9 +15,9 @@ jobs:
           python-version: '3.10'
       - name: Install dependencies
         run: |
-          python -m pip3.10 install --upgrade pip
-          pip3.10 install wheel
-          pip3.10 install build
+          python -m pip install --upgrade pip
+          pip install wheel
+          pip install build
       - name: Build package
         run:  python3.10 setup.py bdist_wheel
       - name: Publish package
