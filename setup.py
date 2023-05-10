@@ -42,11 +42,23 @@ class custom_build_py(_build_py):
 
 		return ret
 
+# Update version in pyproject.toml
+
+with open('pyproject.toml', 'r') as f:
+	txt = [s.rstrip() for s in f]
+
+for i, s in enumerate(txt):
+	if s.startswith('version'):
+		txt[i] = "version\t\t\t= '%s'" % __version__
+
+with open('pyproject.toml', 'w') as f:
+	f.write('%s\n' % '\n'.join(txt))
+
 
 setuptools.setup(
-    name			 = 'mercury-reels',
-    version			 = __version__,
-    description		 = 'Reels helps identify patterns in event data and can predict target events.',
+	name			 = 'mercury-reels',
+	version			 = __version__,
+	description		 = 'Reels helps identify patterns in event data and can predict target events.',
 	long_description = """    Reels is a library to analyze sequences of events extracted from transactional data. These events can be
 		automatically discovered or manually defined. Reels identifies events by assigning them event codes and creates clips, which are
 		sequences of (code, time of occurrence) tuples for each client. Using these clips, a model can be generated to predict the time at
@@ -58,9 +70,9 @@ setuptools.setup(
 		'License :: OSI Approved :: Apache Software License',
 		'Operating System :: OS Independent'],
 	keywords		 = ['event detection', 'event prediction', 'time series'],
-    packages		 = ['reels'],
-    package_dir		 = {'' : 'src'},
+	packages		 = ['reels'],
+	package_dir		 = {'' : 'src'},
 	python_requires	 = '>=3.8',
 	cmdclass		 = {'build_py' : custom_build_py},
-    ext_modules		 = [reels_ext]
+	ext_modules		 = [reels_ext]
 )
