@@ -3,5 +3,13 @@ requires		= ['setuptools>=61.0']
 build-backend	= 'setuptools.build_meta'
 
 [project]
+name			= 'mercury-reels'
+description		= 'Reels helps identify patterns in event data and can predict target events.'
+license			= 'Apache 2'
+requires-python = '>=3.8'
+classifiers		= ['Programming Language :: Python :: 3',
+					'License :: OSI Approved :: Apache Software License',
+					'Operating System :: OS Independent']
+keywords		= ['event detection', 'event prediction', 'time series']
 authors			= [{name = 'Mercury Team', email = 'mercury.group@bbva.com'}]
 readme			= 'README.md'
