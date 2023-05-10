@@ -5,7 +5,7 @@ build-backend	= 'setuptools.build_meta'
 [project]
 name			= 'mercury-reels'
 description		= 'Reels helps identify patterns in event data and can predict target events.'
-license			= 'Apache 2'
+license			= {file = "LICENSE.txt"}
 requires-python = '>=3.8'
 classifiers		= ['Programming Language :: Python :: 3',
 					'License :: OSI Approved :: Apache Software License',
