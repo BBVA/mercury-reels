@@ -1984,7 +1984,8 @@ char *events_describe_next_event(int id, char *prev_event) {
 	char e[1024];
 	char d[1024];
 	BinEventPt ev;
-	EventMap::iterator it_ev = (EventMap::iterator) nullptr;
+	EventMap::iterator it_ev_end = it->second->events_end();
+	EventMap::iterator it_ev = it_ev_end;
 
 	if (ll == 0)
 		it_ev = it->second->events_begin();
@@ -2002,7 +2003,7 @@ char *events_describe_next_event(int id, char *prev_event) {
 		it_ev = it->second->events_next_after_find(ev);
 	}
 
-	if (it_ev != (EventMap::iterator) nullptr) {
+	if (it_ev != it_ev_end) {
 		if (it->second->store_strings) {
 			String e = it->second->get_str(it_ev->first.e);
 			String d = it->second->get_str(it_ev->first.d);
