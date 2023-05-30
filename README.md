@@ -102,7 +102,6 @@ Make without arguments gives help. Try all the options. Everything should work a
 
   * [Python API](https://bbva.github.io/mercury-reels/reference/python/index.html)
   * [C++ API](https://bbva.github.io/mercury-reels/reference/html/index.html)
-  * [Algorithm description: Reels -- An efficient tree-based event prediction algorithm](__doc__/reference/reels_paper/)
 
 ## License
 
