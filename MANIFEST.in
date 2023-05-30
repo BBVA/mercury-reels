@@ -1,0 +1,3 @@
+include src/settrie/_py_settrie.so
+
+graft src/reels/

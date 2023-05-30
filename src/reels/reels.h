@@ -665,21 +665,28 @@ class Events {
 		}
 
 
+		/** \brief Return the EventMap::iterator to past-the-end in the private variable .events.
+
+			\return	The iterator to the first element past-the-end.
+		*/
+		inline EventMap::iterator events_end() {
+			return event.end();
+		}
+
+
 		/** \brief Return the EventMap::iterator to the next BinEventPt after matching ev or nullptr if not found or is last.
 
 			\param ept	The BinEventPt searched.
 
-			\return	The iterator to the next element after the matching element.
+			\return	The iterator to the next element after the matching element or events_end() when no next element exists.
 		*/
 		inline EventMap::iterator events_next_after_find(BinEventPt &ept) {
 			EventMap::iterator it = event.find(ept);
 
-			if (it == event.end())
-				return (EventMap::iterator) nullptr;
+			if (it != event.end())
+				++it;
 
-			++it;
-
-			return it == event.end() ? (EventMap::iterator) nullptr : it;
+			return it;
 		}
 
 #ifndef TEST
