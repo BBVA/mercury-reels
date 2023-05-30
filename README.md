@@ -45,25 +45,25 @@ clients into smaller subsets and operate on each subset independently.
 Reels is implemented in four classes.
 
 ### The Events class
-<img src="notebooks/images/events.png" width = "640" />
+<img src="https://raw.githubusercontent.com/BBVA/mercury-reels/master/notebooks/images/events.png" width = "640" />
 
   * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/events/)
   * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Events.html)
 
 ### The Clients class
-<img src="notebooks/images/clients.png" width = "640" />
+<img src="https://raw.githubusercontent.com/BBVA/mercury-reels/master/notebooks/images/clients.png" width = "640" />
 
   * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/clients/)
   * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Clients.html)
 
 ### The Clips class
-<img src="notebooks/images/clips.png" width = "640" />
+<img src="https://raw.githubusercontent.com/BBVA/mercury-reels/master/notebooks/images/clips.png" width = "640" />
 
   * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/clips/)
   * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Clips.html)
 
 ### The Targets class
-<img src="notebooks/images/targets.png" width = "640" />
+<img src="https://raw.githubusercontent.com/BBVA/mercury-reels/master/notebooks/images/targets.png" width = "640" />
 
   * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/targets/)
   * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Targets.html)
