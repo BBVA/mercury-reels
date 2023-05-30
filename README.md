@@ -70,8 +70,8 @@ Reels is implemented in four classes.
 
 ## Try it without any installation on Google Colab
 
-  * **Introductory**: A walk through Reels [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ZgkLtBlqEZBtW_V83R6vYNKJ_jVZaLTA)
-  * **Advanced**: Event optimization -- How to do assisted event discovery [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1bjj8kzZdhaOmNilU31W4Af5Rp9VQ-1YY)
+  * **Introductory**: A walk through Reels [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BBVA/mercury-reels/blob/master/notebooks/reels_walkthrough_colab.ipynb)
+  * **Advanced**: Event optimization -- How to do assisted event discovery [![Open In Colab](https://colab.research.google.com/github/BBVA/mercury-reels/blob/master/notebooks/reels_event_optimization_colab.ipynb)
 
 ## Install
 
