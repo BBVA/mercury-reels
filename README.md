@@ -1,12 +1,12 @@
 # Mercury Reels
 
-[![Build Status](https://travis-ci.com/BBVA/mercury-reels.svg?branch=master)](https://travis-ci.com/BBVA/mercury-reels)
+![](https://img.shields.io/badge/-c++-black?logo=c%2B%2B&style=social)
+![](https://img.shields.io/pypi/v/mercury-reels?label=latest%20pypi%20build)
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-3816/)
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-3916/)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-31011/)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3113/)
 [![Apache 2 license](https://shields.io/badge/license-Apache%202-blue)](http://www.apache.org/licenses/LICENSE-2.0)
-[![codecov](https://codecov.io/gh/BBVA/mercury-reels/branch/master/graph/badge.svg)](https://codecov.io/gh/BBVA/mercury-reels)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/BBVA/mercury-reels/issues)
 
 ## What is this?
