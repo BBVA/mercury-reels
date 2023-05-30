@@ -1,12 +1,12 @@
 # Mercury Reels
 
-[![Build Status](https://travis-ci.com/BBVA/mercury-reels.svg?branch=master)](https://travis-ci.com/BBVA/mercury-reels)
+![](https://img.shields.io/badge/-c++-black?logo=c%2B%2B&style=social)
+![](https://img.shields.io/pypi/v/mercury-reels?label=latest%20pypi%20build)
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-3816/)
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-3916/)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-31011/)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3113/)
 [![Apache 2 license](https://shields.io/badge/license-Apache%202-blue)](http://www.apache.org/licenses/LICENSE-2.0)
-[![codecov](https://codecov.io/gh/BBVA/mercury-reels/branch/master/graph/badge.svg)](https://codecov.io/gh/BBVA/mercury-reels)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/BBVA/mercury-reels/issues)
 
 ## What is this?
@@ -45,33 +45,33 @@ clients into smaller subsets and operate on each subset independently.
 Reels is implemented in four classes.
 
 ### The Events class
-<img src="notebooks/images/events.png" width = "640" />
+<img src="https://raw.githubusercontent.com/BBVA/mercury-reels/master/notebooks/images/events.png" width = "640" />
 
   * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/events/)
   * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Events.html)
 
 ### The Clients class
-<img src="notebooks/images/clients.png" width = "640" />
+<img src="https://raw.githubusercontent.com/BBVA/mercury-reels/master/notebooks/images/clients.png" width = "640" />
 
   * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/clients/)
   * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Clients.html)
 
 ### The Clips class
-<img src="notebooks/images/clips.png" width = "640" />
+<img src="https://raw.githubusercontent.com/BBVA/mercury-reels/master/notebooks/images/clips.png" width = "640" />
 
   * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/clips/)
   * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Clips.html)
 
 ### The Targets class
-<img src="notebooks/images/targets.png" width = "640" />
+<img src="https://raw.githubusercontent.com/BBVA/mercury-reels/master/notebooks/images/targets.png" width = "640" />
 
   * [Python API](https://bbva.github.io/mercury-reels/reference/python/reference/targets/)
   * [C++ API](https://bbva.github.io/mercury-reels/reference/html/classreels_1_1Targets.html)
 
 ## Try it without any installation on Google Colab
 
-  * **Introductory**: A walk through Reels [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ZgkLtBlqEZBtW_V83R6vYNKJ_jVZaLTA)
-  * **Advanced**: Event optimization -- How to do assisted event discovery [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1bjj8kzZdhaOmNilU31W4Af5Rp9VQ-1YY)
+  * **Introductory**: A walk through Reels [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BBVA/mercury-reels/blob/master/notebooks/reels_walkthrough_colab.ipynb)
+  * **Advanced**: Event optimization -- How to do assisted event discovery [![Open In Colab](https://colab.research.google.com/github/BBVA/mercury-reels/blob/master/notebooks/reels_event_optimization_colab.ipynb)
 
 ## Install
 
@@ -102,7 +102,6 @@ Make without arguments gives help. Try all the options. Everything should work a
 
   * [Python API](https://bbva.github.io/mercury-reels/reference/python/index.html)
   * [C++ API](https://bbva.github.io/mercury-reels/reference/html/index.html)
-  * [Algorithm description: Reels -- An efficient tree-based event prediction algorithm](__doc__/reference/reels_paper/)
 
 ## License
 
