@@ -8,7 +8,8 @@ var searchData=
   ['eventmap_5',['EventMap',['../namespacereels.html#a753be4488a8c210f29ee5ccd95f672b9',1,'reels']]],
   ['events_6',['Events',['../classreels_1_1Events.html',1,'reels']]],
   ['events_5fbegin_7',['events_begin',['../classreels_1_1Events.html#a4ecb634353f7b3f1d3867b2e51c50a6e',1,'reels::Events']]],
-  ['events_5fnext_5fafter_5ffind_8',['events_next_after_find',['../classreels_1_1Events.html#a3aba01818244dd48315fe524234e3506',1,'reels::Events']]],
-  ['eventstat_9',['EventStat',['../structreels_1_1EventStat.html',1,'reels']]],
-  ['extfloat_10',['ExtFloat',['../namespacereels.html#a0e17cc783e9a6a6e802c866ec6c9f003',1,'reels']]]
+  ['events_5fend_8',['events_end',['../classreels_1_1Events.html#a51530f4a758147c1e6e908cb603565ff',1,'reels::Events']]],
+  ['events_5fnext_5fafter_5ffind_9',['events_next_after_find',['../classreels_1_1Events.html#a3aba01818244dd48315fe524234e3506',1,'reels::Events']]],
+  ['eventstat_10',['EventStat',['../structreels_1_1EventStat.html',1,'reels']]],
+  ['extfloat_11',['ExtFloat',['../namespacereels.html#a0e17cc783e9a6a6e802c866ec6c9f003',1,'reels']]]
 ];

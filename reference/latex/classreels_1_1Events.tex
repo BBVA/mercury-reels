@@ -46,6 +46,8 @@ int \mbox{\hyperlink{classreels_1_1Events_a5249983ac63ead8eeecc5b6de7fb1fee}{num
 \begin{DoxyCompactList}\small\item\em Return the number of events stored in the object. \end{DoxyCompactList}\item 
 Event\+Map\+::iterator \mbox{\hyperlink{classreels_1_1Events_a4ecb634353f7b3f1d3867b2e51c50a6e}{events\+\_\+begin}} ()
 \begin{DoxyCompactList}\small\item\em Return the Event\+Map\+::iterator to the first elements in the private variable .events. \end{DoxyCompactList}\item 
+Event\+Map\+::iterator \mbox{\hyperlink{classreels_1_1Events_a51530f4a758147c1e6e908cb603565ff}{events\+\_\+end}} ()
+\begin{DoxyCompactList}\small\item\em Return the Event\+Map\+::iterator to past-\/the-\/end in the private variable .events. \end{DoxyCompactList}\item 
 Event\+Map\+::iterator \mbox{\hyperlink{classreels_1_1Events_a3aba01818244dd48315fe524234e3506}{events\+\_\+next\+\_\+after\+\_\+find}} (\mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&ept)
 \begin{DoxyCompactList}\small\item\em Return the Event\+Map\+::iterator to the next \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} after matching ev or nullptr if not found or is last. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
@@ -156,6 +158,19 @@ Return the Event\+Map\+::iterator to the first elements in the private variable 
 \begin{DoxyReturn}{Returns}
 The iterator to the first element. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classreels_1_1Events_a51530f4a758147c1e6e908cb603565ff}\label{classreels_1_1Events_a51530f4a758147c1e6e908cb603565ff}} 
+\index{reels::Events@{reels::Events}!events\_end@{events\_end}}
+\index{events\_end@{events\_end}!reels::Events@{reels::Events}}
+\doxysubsubsection{\texorpdfstring{events\_end()}{events\_end()}}
+{\footnotesize\ttfamily Event\+Map\+::iterator reels\+::\+Events\+::events\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the Event\+Map\+::iterator to past-\/the-\/end in the private variable .events. 
+
+\begin{DoxyReturn}{Returns}
+The iterator to the first element past-\/the-\/end. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classreels_1_1Events_a3aba01818244dd48315fe524234e3506}\label{classreels_1_1Events_a3aba01818244dd48315fe524234e3506}} 
 \index{reels::Events@{reels::Events}!events\_next\_after\_find@{events\_next\_after\_find}}
 \index{events\_next\_after\_find@{events\_next\_after\_find}!reels::Events@{reels::Events}}
@@ -172,7 +187,7 @@ Return the Event\+Map\+::iterator to the next \mbox{\hyperlink{structreels_1_1Bi
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The iterator to the next element after the matching element. 
+The iterator to the next element after the matching element or \mbox{\hyperlink{classreels_1_1Events_a51530f4a758147c1e6e908cb603565ff}{events\+\_\+end()}} when no next element exists. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classreels_1_1Events_ae3a42c1d6ad1d4250911ab9ce8d00f39}\label{classreels_1_1Events_ae3a42c1d6ad1d4250911ab9ce8d00f39}} 
 \index{reels::Events@{reels::Events}!get\_str@{get\_str}}

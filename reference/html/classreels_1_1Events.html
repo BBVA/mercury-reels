@@ -140,6 +140,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4ecb634353f7b3f1d3867b2e51c50a6e"><td class="memItemLeft" align="right" valign="top">EventMap::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreels_1_1Events.html#a4ecb634353f7b3f1d3867b2e51c50a6e">events_begin</a> ()</td></tr>
 <tr class="memdesc:a4ecb634353f7b3f1d3867b2e51c50a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the EventMap::iterator to the first elements in the private variable .events.  <br /></td></tr>
 <tr class="separator:a4ecb634353f7b3f1d3867b2e51c50a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51530f4a758147c1e6e908cb603565ff"><td class="memItemLeft" align="right" valign="top">EventMap::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreels_1_1Events.html#a51530f4a758147c1e6e908cb603565ff">events_end</a> ()</td></tr>
+<tr class="memdesc:a51530f4a758147c1e6e908cb603565ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the EventMap::iterator to past-the-end in the private variable .events.  <br /></td></tr>
+<tr class="separator:a51530f4a758147c1e6e908cb603565ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3aba01818244dd48315fe524234e3506"><td class="memItemLeft" align="right" valign="top">EventMap::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreels_1_1Events.html#a3aba01818244dd48315fe524234e3506">events_next_after_find</a> (<a class="el" href="structreels_1_1BinEventPt.html">BinEventPt</a> &amp;ept)</td></tr>
 <tr class="memdesc:a3aba01818244dd48315fe524234e3506"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the EventMap::iterator to the next <a class="el" href="structreels_1_1BinEventPt.html" title="The binary representation of an event as stored in a transaction file.">BinEventPt</a> after matching ev or nullptr if not found or is last.  <br /></td></tr>
 <tr class="separator:a3aba01818244dd48315fe524234e3506"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -346,6 +349,34 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>max_num_events</b> = D
 
 </div>
 </div>
+<a id="a51530f4a758147c1e6e908cb603565ff" name="a51530f4a758147c1e6e908cb603565ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51530f4a758147c1e6e908cb603565ff">&#9670;&#160;</a></span>events_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EventMap::iterator reels::Events::events_end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the EventMap::iterator to past-the-end in the private variable .events. </p>
+<dl class="section return"><dt>Returns</dt><dd>The iterator to the first element past-the-end. </dd></dl>
+
+</div>
+</div>
 <a id="a3aba01818244dd48315fe524234e3506" name="a3aba01818244dd48315fe524234e3506"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3aba01818244dd48315fe524234e3506">&#9670;&#160;</a></span>events_next_after_find()</h2>
 
@@ -377,7 +408,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>max_num_events</b> = D
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The iterator to the next element after the matching element. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The iterator to the next element after the matching element or <a class="el" href="classreels_1_1Events.html#a51530f4a758147c1e6e908cb603565ff" title="Return the EventMap::iterator to past-the-end in the private variable .events.">events_end()</a> when no next element exists. </dd></dl>
 
 </div>
 </div>
