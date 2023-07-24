@@ -605,13 +605,17 @@ SCENARIO("Test Events") {
 		WHEN("I use the python API server to test events_describe_next_event().") {
 			int ev_id1 = new_events();
 			int ev_id2 = new_events();
+			int ev_id3 = new_events();
 
 			events_set_store_strings(ev_id2, false);
+			events_set_store_strings(ev_id3, true);
 
 			REQUIRE(events_insert_row(ev_id1, (char *) "emi", (char *) "des", 1));
 			REQUIRE(events_insert_row(ev_id1, (char *) "emi2", (char *) "des", 1));
 			REQUIRE(events_insert_row(ev_id2, (char *) "emi", (char *) "des", 1));
 			REQUIRE(events_insert_row(ev_id2, (char *) "emi2", (char *) "des", 1));
+			REQUIRE(events_insert_row(ev_id3, (char *) "a aa", (char *) "x", 2));
+			REQUIRE(events_insert_row(ev_id3, (char *) "b bb", (char *) "y", 2));
 
 			THEN("Everything goes.") {
 				char buff[256];
@@ -624,6 +628,10 @@ SCENARIO("Test Events") {
 
 				REQUIRE(strcmp(buff, (char *) "emi2\tdes\t1.00000\t2") == 0);
 
+				sprintf(buff, "%s", events_describe_next_event(ev_id1, buff));
+
+				REQUIRE(strlen(buff) == 0);
+
 				sprintf(buff, "%s", events_describe_next_event(ev_id1, (char *) "<a0b2fbd5d8ff9c22>\t<0a348b052daf4285>\t1.00000\t1"));
 
 				REQUIRE(strcmp(buff, (char *) "emi2\tdes\t1.00000\t2") == 0);
@@ -635,8 +643,21 @@ SCENARIO("Test Events") {
 				sprintf(buff, "%s", events_describe_next_event(ev_id2, buff));
 
 				REQUIRE(strcmp(buff, (char *) "<af06a6d491b4fc8e>\t<0a348b052daf4285>\t1.00000\t2") == 0);
+
+				sprintf(buff, "%s", events_describe_next_event(ev_id3, (char *) ""));
+
+				REQUIRE(strcmp(buff, (char *) "b bb\ty\t2.00000\t2") == 0);
+
+				sprintf(buff, "%s", events_describe_next_event(ev_id3, buff));
+
+				REQUIRE(strcmp(buff, (char *) "a aa\tx\t2.00000\t1") == 0);
+
+				sprintf(buff, "%s", events_describe_next_event(ev_id3, buff));
+
+				REQUIRE(strlen(buff) == 0);
 			}
 
+			destroy_events(ev_id3);
 			destroy_events(ev_id2);
 			destroy_events(ev_id1);
 		}
