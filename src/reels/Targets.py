@@ -161,11 +161,17 @@ class Targets:
             unlike predict_clips() which is completely general.
 
         Args:
-            clients: The Clients object containing the ids of the clients you want to predict.
+            clients: The Clients object containing the ids of the clients you want to predict or a list of client ids.
 
         Returns:
             An iterator object containing the results. (Empty on error.)
         """
+        if type(clients) == list:
+            cli = Clients()
+            for c in clients:
+                cli.add_client_id(c)
+            return Result(targets_predict_clients(self.tr_id, cli.cl_id))
+
         return Result(targets_predict_clients(self.tr_id, clients.cl_id))
 
     def predict_clips(self, clips: Clips):

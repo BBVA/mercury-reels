@@ -1962,6 +1962,37 @@ int events_save(int id) {
 }
 
 
+bool parse_bin_event_pt(char *line, BinEventPt &ev) {
+
+	char *pt = strchr(line, '\t');
+
+	if (pt == nullptr)
+		return false;
+
+	uint64_t l = (uint64_t) pt - (uint64_t) line;
+
+	if (line[0] != '<' || l != 18 || sscanf(line, "<%016lx>\t", &ev.e) != 1)
+		ev.e = MurmurHash64A(line, l);
+
+	char *pt2 = strchr(++pt, '\t');
+
+	if (pt2 == nullptr)
+		return false;
+
+	l = (uint64_t) pt2 - (uint64_t) pt;
+
+	if (pt[0] != '<' || l != 18 || sscanf(pt, "<%016lx>\t", &ev.d) != 1)
+		ev.d = MurmurHash64A(pt, l);
+
+	char *pt3 = strchr(++pt2, '\t');
+
+	if (pt3 == nullptr)
+		return false;
+
+	return sscanf(pt2, "%lf\t", &ev.w) == 1;
+}
+
+
 /** \brief Describes the internal representation of an event. (Iterate through all.)
 
 	\param id		  The id returned by a previous new_events() call.
@@ -1981,35 +2012,22 @@ char *events_describe_next_event(int id, char *prev_event) {
 
 	int ll = strlen(prev_event);
 
-	char e[1024];
-	char d[1024];
 	BinEventPt ev;
 	EventMap::iterator it_ev_end = it->second->events_end();
 	EventMap::iterator it_ev = it_ev_end;
 
 	if (ll == 0)
 		it_ev = it->second->events_begin();
-	else if (sscanf(prev_event, "%s\t%s\t%lf", e, d, &ev.w) == 3) {
-		int l = strlen(e);
-
-		if (e[0] != '<' || l != 18 || sscanf(e, "<%016lx>", &ev.e) != 1)
-			ev.e = MurmurHash64A(&e, l);
-
-		l = strlen(d);
-
-		if (d[0] != '<' || l != 18 || sscanf(d, "<%016lx>", &ev.d) != 1)
-			ev.d = MurmurHash64A(&d, l);
-
-		it_ev = it->second->events_next_after_find(ev);
-	}
+	else if (parse_bin_event_pt(prev_event, ev)) it_ev = it->second->events_next_after_find(ev);
 
 	if (it_ev != it_ev_end) {
+		double round_w = round(WEIGHT_PRECISION*it_ev->first.w)/WEIGHT_PRECISION;
 		if (it->second->store_strings) {
 			String e = it->second->get_str(it_ev->first.e);
 			String d = it->second->get_str(it_ev->first.d);
-			sprintf(answer_buffer, "%s\t%s\t%.5f\t%li", e.c_str(), d.c_str(), it_ev->first.w, it_ev->second.code);
+			sprintf(answer_buffer, "%s\t%s\t%.5f\t%li", e.c_str(), d.c_str(), round_w, it_ev->second.code);
 		} else
-			sprintf(answer_buffer, "<%016lx>\t<%016lx>\t%.5f\t%li", it_ev->first.e, it_ev->first.d, it_ev->first.w, it_ev->second.code);
+			sprintf(answer_buffer, "<%016lx>\t<%016lx>\t%.5f\t%li", it_ev->first.e, it_ev->first.d, round_w, it_ev->second.code);
 	}
 
 	return answer_buffer;
@@ -2132,18 +2150,28 @@ char *clients_hash_client_id(int id, char *p_cli) {
 }
 
 
-/** \brief Add a client ID to a Clients object stored by the ClientsServer.
+/** \brief Add a client ID to a Clients object stored by the ClientsServer only if new.
 
 	\param id	 The id returned by a previous new_clients() call.
 	\param p_cli The "client". A string representing "the actor".
 
-	\return	 True on success.
+	\return	 True on success. False on id not found or p_cli is empty or already a client.
 */
 bool clients_add_client_id(int id, char *p_cli) {
 
 	ClientsServer::iterator it = clients.find(id);
 
 	if (it == clients.end())
+		return false;
+
+	int ll = strlen(p_cli);
+
+	if (ll == 0)
+		return false;
+
+	ElementHash client_hash = MurmurHash64A(p_cli, ll);
+
+	if (it->second->id_set.find(client_hash) != it->second->id_set.end())
 		return false;
 
 	it->second->add_client_id(p_cli);
