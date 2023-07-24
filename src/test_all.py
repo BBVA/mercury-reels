@@ -65,19 +65,19 @@ def test_events():
 	assert ev_2 == 'emi2\tdes\t1.00000\t2'
 	assert ev_2 == ev_x
 
-	ev_x = events_describe_next_event(evn.ev_id, '\t'.join(ll[0:3]))
+	ev_x = events_describe_next_event(evn.ev_id, '\t'.join(ll))
 
 	assert ev_2 == ev_x
 
-	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s' % (cli.hash_client_id(ll[0]), ll[1], ll[2]))
+	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s\t' % (cli.hash_client_id(ll[0]), ll[1], ll[2]))
 
 	assert ev_2 == ev_x
 
-	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s' % (ll[0], cli.hash_client_id(ll[1]), ll[2]))
+	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s\t' % (ll[0], cli.hash_client_id(ll[1]), ll[2]))
 
 	assert ev_2 == ev_x
 
-	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s' % (cli.hash_client_id(ll[0]), cli.hash_client_id(ll[1]), ll[2]))
+	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s\t' % (cli.hash_client_id(ll[0]), cli.hash_client_id(ll[1]), ll[2]))
 
 	assert ev_2 == ev_x
 
