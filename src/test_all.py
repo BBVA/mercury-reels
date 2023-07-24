@@ -65,19 +65,19 @@ def test_events():
 	assert ev_2 == 'emi2\tdes\t1.00000\t2'
 	assert ev_2 == ev_x
 
-	ev_x = events_describe_next_event(evn.ev_id, '\t'.join(ll[0:3]))
+	ev_x = events_describe_next_event(evn.ev_id, '\t'.join(ll))
 
 	assert ev_2 == ev_x
 
-	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s' % (cli.hash_client_id(ll[0]), ll[1], ll[2]))
+	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s\t' % (cli.hash_client_id(ll[0]), ll[1], ll[2]))
 
 	assert ev_2 == ev_x
 
-	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s' % (ll[0], cli.hash_client_id(ll[1]), ll[2]))
+	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s\t' % (ll[0], cli.hash_client_id(ll[1]), ll[2]))
 
 	assert ev_2 == ev_x
 
-	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s' % (cli.hash_client_id(ll[0]), cli.hash_client_id(ll[1]), ll[2]))
+	ev_x = events_describe_next_event(evn.ev_id, '%s\t%s\t%s\t' % (cli.hash_client_id(ll[0]), cli.hash_client_id(ll[1]), ll[2]))
 
 	assert ev_2 == ev_x
 
@@ -185,15 +185,15 @@ def test_clients():
 	assert ll[0] == cli.hash_client_id('cli1')
 	assert ll[4] == cli.hash_client_id('cli5')
 
-	assert cli.add_client_id('cli4')
-	assert cli.add_client_id('cli5')
+	assert not cli.add_client_id('cli4')
+	assert not cli.add_client_id('cli5')
 
 	ll = list(cli.client_hashes())
 
-	assert len(ll) == 7
+	assert len(ll) == 5
 
-	assert ll[5] == cli.hash_client_id('cli4')
-	assert ll[6] == cli.hash_client_id('cli5')
+	assert ll[3] == cli.hash_client_id('cli4')
+	assert ll[4] == cli.hash_client_id('cli5')
 
 	im = cli.save_as_binary_image()
 
@@ -201,16 +201,16 @@ def test_clients():
 
 	ll2 = list(cl2.client_hashes())
 
-	assert ll2[5] == cl2.hash_client_id('cli4')
-	assert ll2[6] == cl2.hash_client_id('cli5')
+	assert ll2[3] == cl2.hash_client_id('cli4')
+	assert ll2[4] == cl2.hash_client_id('cli5')
 
 	pkk = pickle.dumps(cli)
 	cl3 = pickle.loads(pkk)
 
 	ll3 = list(cl3.client_hashes())
 
-	assert ll3[5] == cl3.hash_client_id('cli4')
-	assert ll3[6] == cl3.hash_client_id('cli5')
+	assert ll3[3] == cl3.hash_client_id('cli4')
+	assert ll3[4] == cl3.hash_client_id('cli5')
 
 	assert not cl3.load_from_binary_image(im)
 
@@ -400,11 +400,11 @@ def test_targets():
 	assert cli.add_client_id('cli4')
 	assert cli.add_client_id('cli5')
 	assert cli.add_client_id('cli6')
-	assert cli.add_client_id('cli5')
-	assert cli.add_client_id('cli4')
-	assert cli.add_client_id('cli1')
+	assert not cli.add_client_id('cli5')
+	assert not cli.add_client_id('cli4')
+	assert not cli.add_client_id('cli1')
 
-	assert cli.num_clients() == 9
+	assert cli.num_clients() == 6
 
 	clp = reels.Clips(cli, evn)
 	assert clp.scan_event('e', 'd1', 1.0, 'cli1', '2022-06-01 00:00:00')
@@ -662,10 +662,14 @@ def test_targets():
 
 	t_cli = list(trg.predict_clients(cli))
 
-	assert len(t_cli) == 9
-	assert t_cli[0] == t_cli[8]
-	assert t_cli[3] == t_cli[7]
-	assert t_cli[4] == t_cli[6]
+	assert len(t_cli) == 6
+
+	t_cl2 = list(trg.predict_clients(['cli1', 'cli2', 'cli3', 'cli4', 'cli5', 'cli6']))
+
+	assert len(t_cl2) == 6
+
+	for x, y in zip(t_cli, t_cl2):
+		assert x == y
 
 	t_clp = list(trg.predict_clips(clp))
 
