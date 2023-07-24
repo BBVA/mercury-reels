@@ -1966,7 +1966,7 @@ bool parse_bin_event_pt(char *line, BinEventPt &ev) {
 
 	char *pt = strchr(line, '\t');
 
-	if (pt[0] != '\t')
+	if (pt == nullptr)
 		return false;
 
 	uint64_t l = (uint64_t) pt - (uint64_t) line;
@@ -1976,7 +1976,7 @@ bool parse_bin_event_pt(char *line, BinEventPt &ev) {
 
 	char *pt2 = strchr(++pt, '\t');
 
-	if (pt2[0] != '\t')
+	if (pt2 == nullptr)
 		return false;
 
 	l = (uint64_t) pt2 - (uint64_t) pt;
@@ -1986,7 +1986,7 @@ bool parse_bin_event_pt(char *line, BinEventPt &ev) {
 
 	char *pt3 = strchr(++pt2, '\t');
 
-	if (pt3[0] != '\t')
+	if (pt3 == nullptr)
 		return false;
 
 	return sscanf(pt2, "%lf\t", &ev.w) == 1;

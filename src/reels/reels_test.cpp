@@ -632,6 +632,10 @@ SCENARIO("Test Events") {
 
 				REQUIRE(strlen(buff) == 0);
 
+				sprintf(buff, "%s", events_describe_next_event(ev_id1, (char *) "xxx"));
+
+				REQUIRE(strlen(buff) == 0);
+
 				sprintf(buff, "%s", events_describe_next_event(ev_id1, (char *) "<a0b2fbd5d8ff9c22>\t<0a348b052daf4285>\t1.00000\t1"));
 
 				REQUIRE(strcmp(buff, (char *) "emi2\tdes\t1.00000\t2") == 0);
@@ -644,6 +648,10 @@ SCENARIO("Test Events") {
 
 				REQUIRE(strcmp(buff, (char *) "<af06a6d491b4fc8e>\t<0a348b052daf4285>\t1.00000\t2") == 0);
 
+				sprintf(buff, "%s", events_describe_next_event(ev_id2, (char *) "xxx\tyyy"));
+
+				REQUIRE(strlen(buff) == 0);
+
 				sprintf(buff, "%s", events_describe_next_event(ev_id3, (char *) ""));
 
 				REQUIRE(strcmp(buff, (char *) "b bb\ty\t2.00000\t2") == 0);
@@ -655,6 +663,11 @@ SCENARIO("Test Events") {
 				sprintf(buff, "%s", events_describe_next_event(ev_id3, buff));
 
 				REQUIRE(strlen(buff) == 0);
+
+				sprintf(buff, "%s", events_describe_next_event(ev_id3, (char *) "xxx\tyyy\t1"));
+
+				REQUIRE(strlen(buff) == 0);
+
 			}
 
 			destroy_events(ev_id3);
