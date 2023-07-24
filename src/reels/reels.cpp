@@ -2150,18 +2150,28 @@ char *clients_hash_client_id(int id, char *p_cli) {
 }
 
 
-/** \brief Add a client ID to a Clients object stored by the ClientsServer.
+/** \brief Add a client ID to a Clients object stored by the ClientsServer only if new.
 
 	\param id	 The id returned by a previous new_clients() call.
 	\param p_cli The "client". A string representing "the actor".
 
-	\return	 True on success.
+	\return	 True on success. False on id not found or p_cli is empty or already a client.
 */
 bool clients_add_client_id(int id, char *p_cli) {
 
 	ClientsServer::iterator it = clients.find(id);
 
 	if (it == clients.end())
+		return false;
+
+	int ll = strlen(p_cli);
+
+	if (ll == 0)
+		return false;
+
+	ElementHash client_hash = MurmurHash64A(p_cli, ll);
+
+	if (it->second->id_set.find(client_hash) != it->second->id_set.end())
 		return false;
 
 	it->second->add_client_id(p_cli);
