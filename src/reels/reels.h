@@ -58,6 +58,7 @@ namespace reels
 #define PRIORITY_SEEN_FACTOR	2000000000				///< Close enough to 2^31 increases by 1 on visit, multiplies by this on seen.
 #define DEFAULT_NUM_EVENTS		1000					///< A size to store events in an Events object by default.
 #define MAX_SEQ_LEN_IN_PREDICT	1000					///< The maximum sequence length used in prediction.
+#define PREDICT_MAX_TIME		(100*365.25*24*3600)	///< Hundred years when the target was never seen.
 #define WEIGHT_PRECISION		10000					///< 10^ the number of digits at which weight is rounded
 
 typedef uint64_t 						ElementHash;	///< A binary hash of a string
