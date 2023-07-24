@@ -58,7 +58,7 @@ namespace reels
 #define PRIORITY_SEEN_FACTOR	2000000000				///< Close enough to 2^31 increases by 1 on visit, multiplies by this on seen.
 #define DEFAULT_NUM_EVENTS		1000					///< A size to store events in an Events object by default.
 #define MAX_SEQ_LEN_IN_PREDICT	1000					///< The maximum sequence length used in prediction.
-#define PREDICT_MAX_TIME		(10*365.25*24*3600)		///< Ten years when the target was never seen.
+#define WEIGHT_PRECISION		10000					///< 10^ the number of digits at which weight is rounded
 
 typedef uint64_t 						ElementHash;	///< A binary hash of a string
 typedef std::string						String;			///< A dynamically allocated c++ string
@@ -101,7 +101,7 @@ struct BinEventPt {
 		\return	 True if identical.
 	*/
 	bool operator==(const BinEventPt &o) const {
-		return e == o.e && d == o.d && w == o.w;
+		return e == o.e && d == o.d && round(WEIGHT_PRECISION*w) == round(WEIGHT_PRECISION*o.w);
 	}
 
 	/** \brief Compare to another BinEventPt for strict order to support use as a key in a map.
@@ -111,7 +111,7 @@ struct BinEventPt {
 		\return	 True if strictly smaller (before in the order).
 	*/
 	bool operator<(const BinEventPt &o) const {
-		return e < o.e || (e == o.e && d < o.d) || (e == o.e && d == o.d && w < o.w);
+		return e < o.e || (e == o.e && d < o.d) || (e == o.e && d == o.d && round(WEIGHT_PRECISION*w) < round(WEIGHT_PRECISION*o.w));
 	}
 };
 
