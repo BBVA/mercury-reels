@@ -185,15 +185,15 @@ def test_clients():
 	assert ll[0] == cli.hash_client_id('cli1')
 	assert ll[4] == cli.hash_client_id('cli5')
 
-	assert cli.add_client_id('cli4')
-	assert cli.add_client_id('cli5')
+	assert not cli.add_client_id('cli4')
+	assert not cli.add_client_id('cli5')
 
 	ll = list(cli.client_hashes())
 
-	assert len(ll) == 7
+	assert len(ll) == 5
 
-	assert ll[5] == cli.hash_client_id('cli4')
-	assert ll[6] == cli.hash_client_id('cli5')
+	assert ll[3] == cli.hash_client_id('cli4')
+	assert ll[4] == cli.hash_client_id('cli5')
 
 	im = cli.save_as_binary_image()
 
@@ -201,16 +201,16 @@ def test_clients():
 
 	ll2 = list(cl2.client_hashes())
 
-	assert ll2[5] == cl2.hash_client_id('cli4')
-	assert ll2[6] == cl2.hash_client_id('cli5')
+	assert ll2[3] == cl2.hash_client_id('cli4')
+	assert ll2[4] == cl2.hash_client_id('cli5')
 
 	pkk = pickle.dumps(cli)
 	cl3 = pickle.loads(pkk)
 
 	ll3 = list(cl3.client_hashes())
 
-	assert ll3[5] == cl3.hash_client_id('cli4')
-	assert ll3[6] == cl3.hash_client_id('cli5')
+	assert ll3[3] == cl3.hash_client_id('cli4')
+	assert ll3[4] == cl3.hash_client_id('cli5')
 
 	assert not cl3.load_from_binary_image(im)
 
