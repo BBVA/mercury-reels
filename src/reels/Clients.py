@@ -53,7 +53,6 @@ class ClientsHashes:
 
 
 class Clients:
-
     """Interface to the c++ container object to hold clients.
 
     The purpose of this object is to be filled (via successive add_client_id()
@@ -62,9 +61,8 @@ class Clients:
     for size and iterated by calling client_hashes().
 
     Args:
-        binary_image: An optional binary image (returned by save_as_binary_image())
-                      to initialize the object with data copied from another Clients
-                      object.
+        binary_image (list): An optional binary image (returned by save_as_binary_image())
+                             to initialize the object with data copied from another Clients object.
     """
 
     def __init__(self, binary_image=None):
@@ -98,10 +96,10 @@ class Clients:
         """Convert a client id into a hash (as stored buy the internal C** Clients object).
 
         Args:
-            client: The "client". A string representing "the actor".
+            client (str): The "client". A string representing "the actor".
 
         Returns:
-            The hash as a decimal python string starting with 'h' to prevent numeric conversion.
+            (str): The hash as a decimal python string starting with 'h' to prevent numeric conversion.
         """
         return clients_hash_client_id(self.cl_id, client)
 
@@ -109,10 +107,10 @@ class Clients:
         """Define clients explicitly.
 
         Args:
-            client: The "client". A string representing "the actor".
+            client (str): The "client". A string representing "the actor".
 
         Returns:
-            True on success.
+            (bool): True on success.
         """
         return clients_add_client_id(self.cl_id, client)
 
@@ -120,16 +118,17 @@ class Clients:
         """Return an iterator to iterate over all the hashed client ids.
 
         Returns:
-            An iterator (a ClientsHashes object)
+            (ClientsHashes): An iterator (a ClientsHashes object)
         """
         return ClientsHashes(self.cl_id, self.num_clients())
 
     def num_clients(self):
         """Return the number of clients in the object.
 
+        The container will add one client per add_client_id() call and keep the order.
+
         Returns:
-            The number of clients stored in the object which may include repeated ids.
-            The container will add one client per add_client_id() call and keep the order.
+            (int): The number of clients stored in the object which may include repeated ids.
         """
         return clients_num_clients(self.cl_id)
 
@@ -138,10 +137,10 @@ class Clients:
             list of strings referred to a binary_image.
 
         Returns:
-            The binary_image containing the state of the Clients. There is
-            not much you can do with it except serializing it as a Python
-            (e.g., pickle) object and loading it into another Clients object.
-            Pass it to the constructor to create an initialized object,
+            (list): The binary_image containing the state of the Clients. There is
+                not much you can do with it except serializing it as a Python
+                (e.g., pickle) object and loading it into another Clients object.
+                Pass it to the constructor to create an initialized object,
         """
         bi_idx = clients_save(self.cl_id)
         if bi_idx == 0:
@@ -161,10 +160,10 @@ class Clients:
             returned by a previous save_as_binary_image() call.
 
         Args:
-            binary_image: A list of strings returned by save_as_binary_image()
+            binary_image (list): A list of strings returned by save_as_binary_image()
 
         Returns:
-            True on success, destroys, initializes and returns false on failure.
+            (bool): True on success, destroys, initializes and returns false on failure.
         """
         failed = False
 

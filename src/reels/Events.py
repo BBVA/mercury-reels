@@ -57,7 +57,6 @@ class EventTuples:
 
 
 class Events:
-
     """Interface to the c++ container object to hold events.
 
     The purpose of this object is to be filled (either via successive
@@ -67,11 +66,11 @@ class Events:
     methods exist.
 
     Args:
-        max_num_events: The maximum number of events to limit the discovery via
-                        insert_row() to the max_num_events more frequent/recent.
-        binary_image:   An optional binary image (returned by save_as_binary_image())
-                        to initialize the object with data copied from another Events
-                        object.
+        max_num_events (int): The maximum number of events to limit the discovery via
+                              insert_row() to the max_num_events more frequent/recent.
+        binary_image (bool):  An optional binary image (returned by save_as_binary_image())
+                              to initialize the object with data copied from another Events
+                              object.
     """
 
     def __init__(self, max_num_events=1000, binary_image=None):
@@ -111,12 +110,12 @@ class Events:
         either one way or the other.
 
         Args:
-            emitter:     The "emitter". A C/Python string representing "owner of event".
-            description: The "description". A C/Python string representing "the event".
-            weight:      The "weight". A double representing a weight of the event.
+            emitter (str):     The "emitter". A C/Python string representing "owner of event".
+            description (str): The "description". A C/Python string representing "the event".
+            weight (float):    The "weight". A double representing a weight of the event.
 
         Returns:
-            True on success.
+            (bool): True on success.
         """
         return events_insert_row(self.ev_id, emitter, description, weight)
 
@@ -128,13 +127,13 @@ class Events:
         either one way or the other.
 
         Args:
-            emitter:     The "emitter". A C/Python string representing "owner of event".
-            description: The "description". A C/Python string representing "the event".
-            weight:      The "weight". A double representing a weight of the event.
-            code:        A unique code number identifying the event.
+            emitter (str):     The "emitter". A C/Python string representing "owner of event".
+            description (str): The "description". A C/Python string representing "the event".
+            weight (float):    The "weight". A double representing a weight of the event.
+            code (int):        A unique code number identifying the event.
 
         Returns:
-            True on success.
+            (bool): True on success.
         """
         return events_define_event(self.ev_id, emitter, description, weight, code)
 
@@ -142,7 +141,7 @@ class Events:
         """Return the number of events in the object.
 
         Returns:
-            The number of events stored in the object.
+            (int): The number of events stored in the object.
         """
         return events_num_events(self.ev_id)
 
@@ -150,7 +149,7 @@ class Events:
         """Return an iterator of (emitter, description, weight, code) tuples describing all events.
 
         Returns:
-            An iterator of (emitter, description, weight, code) tuple on success or None on failure.
+            (EventTuples): An iterator of (emitter, description, weight, code) tuple on success or None on failure.
         """
         return EventTuples(self.ev_id)
 
@@ -159,10 +158,10 @@ class Events:
             list of strings referred to a binary_image.
 
         Returns:
-            The binary_image containing the state of the Events. There is
-            not much you can do with it except serializing it as a Python
-            (e.g., pickle) object and loading it into another Events object.
-            Pass it to the constructor to create an initialized object,
+            (list): The binary_image containing the state of the Events. There is
+                not much you can do with it except serializing it as a Python
+                (e.g., pickle) object and loading it into another Events object.
+                Pass it to the constructor to create an initialized object,
         """
         bi_idx = events_save(self.ev_id)
         if bi_idx == 0:
@@ -182,10 +181,10 @@ class Events:
             returned by a previous save_as_binary_image() call.
 
         Args:
-            binary_image: A list of strings returned by save_as_binary_image()
+            binary_image (list): A list of strings returned by save_as_binary_image()
 
         Returns:
-            True on success, destroys, initializes and returns false on failure.
+            (bool): True on success, destroys, initializes and returns false on failure.
         """
         failed = False
 
@@ -204,9 +203,9 @@ class Events:
 
         return True
 
-    def optimize_events(self, clips, targets, num_steps=10, codes_per_step=5, threshold=0.0001, force_include='',
-                        force_exclude='', x_form='linear', agg='longest', p=0.5, depth=1000, as_states=True,
-                        exp_decay=0.00693, lower_bound_p=0.95, log_lift=True):
+    def optimize_events(self, clips: int, targets: int, num_steps: int=10, codes_per_step: int=5, threshold: float=0.0001,
+                        force_include: str='', force_exclude: str='', x_form: str='linear', agg: str='longest', p: float=0.5,
+                        depth: int=1000, as_states: bool=True, exp_decay: float=0.00693, lower_bound_p: float=0.95, log_lift: bool=True):
         """Events optimizer.
 
             Optimizes the events to maximize prediction signal. (F1 score over same number of positives.)
@@ -245,7 +244,7 @@ class Events:
             log_lift:       A boolean to set if lift (= LB(included)/LB(after inclusion)) is log() transformed or not.
 
         Returns:
-            A tuple (success, dictionary, top_codes, log)
+            (tuple): A tuple (success, dictionary, top_codes, log)
         """
 
         ret = events_optimize_events(self.ev_id, clips.cp_id, targets.tr_id, num_steps, codes_per_step, threshold, force_include,
@@ -281,12 +280,12 @@ class Events:
         with either optimize_events() or a Targets object, not to continue populating it with events via insert_row().
 
         Args:
-            dictionary: A dictionary to be applied during the copy. The dictionary must be returned by a previous optimize_events()
-                        of an identical object in order to have the same codes defined. Otherwise, the codes not present in the dictionary
-                        will not be translated into events.
+            dictionary (dict): A dictionary to be applied during the copy. The dictionary must be returned by a previous optimize_events()
+                of an identical object in order to have the same codes defined. Otherwise, the codes not present in the dictionary
+                will not be translated into events.
 
         Returns:
-            A new Events object
+            (Events): A new Events object
         """
 
         ret = Events(max_num_events = self.max_num_events)

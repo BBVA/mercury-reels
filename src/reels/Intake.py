@@ -47,7 +47,6 @@ else:
 
 
 class SparkEventsAcc(AccumulatorParam):
-
     """ This is an internal AccumulatorParam descendant to propagate the tuples created by a user defined function (inside the Intake)
         applied via .foreach() in the workers. It is a reducer in a map/reduce paradigm generating a complete reduced result in the driver.
 
@@ -86,7 +85,6 @@ if PYSPARK and SPARK is not None:
 
 
 class SparkClipsAcc(AccumulatorParam):
-
     """ This is an internal AccumulatorParam descendant to propagate the tuples created by a user defined function (inside the Intake)
         applied via .foreach() in the workers. It is a reducer in a map/reduce paradigm generating a complete reduced result in the driver.
 
@@ -125,7 +123,6 @@ if PYSPARK and SPARK is not None:
 
 
 class Intake:
-
     """Utility class to efficiently populate any reels object with data either from pandas or pyspark dataframes.
 
     This object implements data populating methods (in plural) that call the equivalent methods (in singular) over a complete dataframe.
@@ -143,7 +140,7 @@ class Intake:
                       you can try the more efficient but also more experimental 'accumulator' value.
     """
 
-    def __init__(self, dataframe, spark_method='local_iterator'):
+    def __init__(self, dataframe: pd.DataFrame, spark_method: str='local_iterator'):
         self.pd_data = None
         self.sp_data = None
 
@@ -177,7 +174,7 @@ class Intake:
     def __repr__(self):
         return self.__str__()
 
-    def insert_rows(self, events, columns=None):
+    def insert_rows(self, events: object, columns: list=None):
         """Populate an Events object calling events.insert_row() over the entire dataframe.
 
         Args:
@@ -217,7 +214,7 @@ class Intake:
             for row in self.sp_data.rdd.toLocalIterator():
                 lambda_f(row)
 
-    def define_events(self, events, columns=None):
+    def define_events(self, events: object, columns: str=None):
         """Populate an Events object calling events.define_event() over the entire dataframe.
 
         Args:
@@ -242,7 +239,7 @@ class Intake:
             for row in self.sp_data.rdd.toLocalIterator():
                 lambda_f(row)
 
-    def scan_events(self, clips, columns=None):
+    def scan_events(self, clips: object, columns: str=None):
         """Populate a Clips object calling clips.scan_event() over the entire dataframe.
 
         Args:
@@ -288,7 +285,7 @@ class Intake:
             for row in self.sp_data.rdd.toLocalIterator():
                 lambda_f(row)
 
-    def insert_targets(self, targets, columns=None):
+    def insert_targets(self, targets: object, columns: list=None):
         """Populate a Targets object calling targets.insert_target() over the entire dataframe.
 
         Args:

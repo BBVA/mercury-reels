@@ -68,7 +68,6 @@ class Result:
 
 
 class Targets:
-
     """Interface to the c++ container object to hold clips.
 
     This object fits the model for a set of targets defined via insert_target().
@@ -84,7 +83,7 @@ class Targets:
                       object. You have to pass empty clips to use this.
     """
 
-    def __init__(self, clips: Clips, time_format=None, binary_image=None):
+    def __init__(self, clips: Clips, time_format: str=None, binary_image: list=None):
         self.tr_id = new_targets(clips.cp_id)
         self.cp_id = clips.cp_id
 
@@ -119,7 +118,7 @@ class Targets:
         self.tr_id = new_targets(new_clips(new_clients(), new_events()))
         self.load_from_binary_image(state)
 
-    def insert_target(self, client, time):
+    def insert_target(self, client: str, time: str):
         """Define the targets before calling fit() by calling this method once for each client.
 
         Args:
@@ -128,12 +127,12 @@ class Targets:
                     is given via the time_format argument to the constructor.)
 
         Returns:
-            True on new clients. False if the client is already in the object or the time
-            is in the wrong format.
+            (bool): True on new clients. False if the client is already in the object or the time
+                is in the wrong format.
         """
         return targets_insert_target(self.tr_id, client, time)
 
-    def fit(self, x_form="log", agg="minimax", p=0.5, depth=8, as_states=False):
+    def fit(self, x_form: str='log', agg: str='minimax', p: float=0.5, depth: int=8, as_states: bool=False):
         """Fit the prediction model in the object stored after calling insert_target() multiple times.
 
             Fit can only be called once in the life of a Targets object and predict_*() cannot be called before fit().
@@ -148,7 +147,7 @@ class Targets:
                        When used, the ClipMap passed to the constructor by reference will be converted to states as a side effect.
 
         Returns:
-            True on success. Error if already fitted, wrong arguments or the id is not found.
+            (bool): True on success. Error if already fitted, wrong arguments or the id is not found.
         """
         return targets_fit(self.tr_id, x_form, agg, p, depth, as_states)
 
@@ -164,7 +163,7 @@ class Targets:
             clients: The Clients object containing the ids of the clients you want to predict or a list of client ids.
 
         Returns:
-            An iterator object containing the results. (Empty on error.)
+            (bool): An iterator object containing the results. (Empty on error.)
         """
         if type(clients) == list:
             cli = Clients()
@@ -183,7 +182,7 @@ class Targets:
             clips: The clips you want to predict.
 
         Returns:
-            An iterator object containing the results. (Empty on error.)
+            (Result): An iterator object containing the results. (Empty on error.)
         """
         return Result(targets_predict_clips(self.tr_id, clips.cp_id))
 
@@ -193,11 +192,11 @@ class Targets:
             This mostly for debugging, verifying that the number of successful insert_target() is as expected.
 
         Returns:
-            The number of target points stored in the internal target object.
+            (int): The number of target points stored in the internal target object.
         """
         return targets_num_targets(self.tr_id)
 
-    def tree_node_idx(self, parent_idx, code):
+    def tree_node_idx(self, parent_idx: int, code: int):
         """Returns the index of a tree node by parent node and code.
 
         Args:
@@ -205,32 +204,32 @@ class Targets:
             code:       The code that leads in the tree from the parent node to the child node.
 
         Returns:
-            On success, i.e, if both the parent index exists and contains the code, it will return the index of the child (-1 otherwise).
+            (int): On success, i.e, if both the parent index exists and contains the code, it will return the index of the child (-1 otherwise).
         """
         return targets_tree_node_idx(self.tr_id, parent_idx, code)
 
-    def tree_node_children(self, idx):
+    def tree_node_children(self, idx: int):
         """Return a list ot the codes of the children of a node in the tree by index.
 
         Args:
              idx: The zero-based index identifying the node (0 for root or a value returned by tree_node_idx()).
 
         Returns:
-            A list of integer codes on success or None on failure.
+            (list): A list of integer codes on success or None on failure.
         """
         s = targets_tree_node_children(self.tr_id, idx)
 
         if len(s) != 0:
             return [int(i) for i in s.split('\t')]
 
-    def describe_tree_node(self, idx):
+    def describe_tree_node(self, idx: int):
         """Return a tuple (n_seen, n_target, sum_time_d, num_codes) describing a node in the tree by index.
 
         Args:
             idx: The zero-based index identifying the node (0 for root or a value returned by tree_node_idx()).
 
         Returns:
-            A tuple (n_seen, n_target, sum_time_d, num_codes) on success or None on failure.
+            (tuple): A tuple (n_seen, n_target, sum_time_d, num_codes) on success or None on failure.
         """
         s = targets_describe_tree_node(self.tr_id, idx)
 
@@ -242,7 +241,7 @@ class Targets:
         """Describes some statistics of a fitted tree inside a Targets object.
 
         Returns:
-            On success, it will return a descriptive text with node count numbers for different node content.
+            (str): On success, it will return a descriptive text with node count numbers for different node content.
         """
 
         return targets_describe_tree(self.tr_id)
@@ -252,10 +251,10 @@ class Targets:
             list of strings referred to a binary_image.
 
         Returns:
-            The binary_image containing the state of the Targets. There is
-            not much you can do with it except serializing it as a Python
-            (e.g., pickle) object and loading it into another Targets object.
-            Pass it to the constructor to create an initialized object,
+            (list): The binary_image containing the state of the Targets. There is
+                not much you can do with it except serializing it as a Python
+                (e.g., pickle) object and loading it into another Targets object.
+                Pass it to the constructor to create an initialized object,
         """
         bi_idx = targets_save(self.tr_id)
         if bi_idx == 0:
@@ -275,10 +274,10 @@ class Targets:
             returned by a previous save_as_binary_image() call.
 
         Args:
-            binary_image: A list of strings returned by save_as_binary_image()
+            binary_image (list): A list of strings returned by save_as_binary_image()
 
         Returns:
-            True on success, destroys, initializes and returns false on failure.
+            (bool): True on success, destroys, initializes and returns false on failure.
         """
         failed = False
 
