@@ -1785,8 +1785,8 @@ bool events_define_event(int id, char *p_e, char *p_d, double w, int code) {
 	\param num_steps		The number of steps to iterate. The method will stop early if no codes are found at a step.
 	\param codes_per_step	The number of codes to be tried from the top of the priority list at each step.
 	\param threshold		A minimum threshold, below which a score change is not considered improvement.
-	\param p_force_include	An optional pointer to a set of codes that must be included before starting.
-	\param p_force_exclude	An optional pointer to a set of codes that will excluded and set to the base code.
+	\param force_include	An optional pointer to a set of codes that must be included before starting.
+	\param force_exclude	An optional pointer to a set of codes that will excluded and set to the base code.
 	\param x_form			The x_form argument to fit the internal Targets object prediction model.
 	\param agg				The agg argument to fit the internal Targets object prediction model.
 	\param p				The p argument to fit the internal Targets object prediction model.
@@ -2362,6 +2362,7 @@ bool destroy_clips(int id) {
 
 /** \brief Sets the public property time_format to simplify the python interface in a Clips object stored by the ClipsServer.
 
+	\param id  The id returned by a previous new_clips() call.
 	\param fmt The time format in standard calendar time format
 					http://www.gnu.org/software/libc/manual/html_node/Formatting-Calendar-Time.html
 
@@ -2699,6 +2700,7 @@ bool destroy_targets(int id) {
 
 /** \brief Sets the public property time_format to simplify the python interface in a Targets object stored by the TargetsServer.
 
+	\param id  The id returned by a previous new_targets() call.
 	\param fmt The time format in standard calendar time format
 					http://www.gnu.org/software/libc/manual/html_node/Formatting-Calendar-Time.html
 
@@ -2742,6 +2744,7 @@ bool targets_insert_target(int id, char *p_c, char *p_t) {
 
 /** \brief Fit the prediction model in a Targets object stored by the TargetsServer.
 
+	\param id		 The id returned by a previous new_targets() call.
 	\param x_form	 A possible transformation of the times. (Currently "log" or "linear".)
 	\param agg		 The mechanism used for the aggregation. (Currently "minimax", "mean" or "longest".)
 	\param p		 The width of the confidence interval for the binomial proportion used to calculate the lower bound.
