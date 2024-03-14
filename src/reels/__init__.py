@@ -74,8 +74,8 @@ def events_insert_row(id, p_e, p_d, w):
 def events_define_event(id, p_e, p_d, w, code):
     return _py_reels.events_define_event(id, p_e, p_d, w, code)
 
-def events_optimize_events(id, id_clips, id_targets, num_steps, codes_per_step, threshold, force_include, force_exclude, x_form, agg, p, depth, as_states, exponential_decay, lower_bound_p, log_lift):
-    return _py_reels.events_optimize_events(id, id_clips, id_targets, num_steps, codes_per_step, threshold, force_include, force_exclude, x_form, agg, p, depth, as_states, exponential_decay, lower_bound_p, log_lift)
+def events_optimize_events(id, id_clips, id_targets, num_steps, codes_per_step, threshold, force_include, force_exclude, x_form, agg, p, depth, as_states, exp_decay, lower_bound_p, log_lift):
+    return _py_reels.events_optimize_events(id, id_clips, id_targets, num_steps, codes_per_step, threshold, force_include, force_exclude, x_form, agg, p, depth, as_states, exp_decay, lower_bound_p, log_lift)
 
 def events_load_block(id, p_block):
     return _py_reels.events_load_block(id, p_block)
