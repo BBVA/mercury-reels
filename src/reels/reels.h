@@ -27,6 +27,7 @@
 #include <time.h>
 #include <vector>
 #include <stdarg.h>
+#include <cstdint>
 
 #ifdef DEBUG
 #include <iostream>
