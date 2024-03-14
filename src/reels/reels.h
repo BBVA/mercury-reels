@@ -432,7 +432,7 @@ class Events {
 			\param p				 The p argument to fit the internal Targets object prediction model.
 			\param depth			 The depth argument to fit the internal Targets object prediction model.
 			\param as_states		 The as_states argument to fit the internal Targets object prediction model.
-			\param exponential_decay Exponential Decay Factor applied to the internal score in terms of depth. That score selects what
+			\param exp_decay		 Exponential Decay Factor applied to the internal score in terms of depth. That score selects what
 									 codes enter the model. The decay is applied to the average tree depth. 0 is no decay, default
 									 value = 0.00693 decays to 0.5 in 100 steps.
 			\param lower_bound_p	 Another p for lower bound, but applied to the scoring process rather than the model.
@@ -443,7 +443,7 @@ class Events {
 		String optimize_events (Clips &clips, TargetMap &targets, int num_steps = 10, int codes_per_step = 5, double threshold = 0.0001,
 								pCodeSet p_force_include = nullptr, pCodeSet p_force_exclude = nullptr, Transform x_form = tr_linear,
 								Aggregate agg = ag_longest, double p = 0.5, int depth = 1000, bool as_states = true,
-								double exponential_decay = 0.00693, double lower_bound_p = 0.95, bool log_lift = true);
+								double exp_decay = 0.00693, double lower_bound_p = 0.95, bool log_lift = true);
 
 
 		/** \brief Internal: Do one step of the optimize_events() method.
@@ -472,7 +472,7 @@ class Events {
 
 			\param codes_stat		 A complete CodeInTreeStatMap computed by score_model().
 			\param targ_prop		 The targets/seen proportion at the tree root.
-			\param exponential_decay Exponential Decay Factor applied to the internal score in terms of depth. That score selects what
+			\param exp_decay		 Exponential Decay Factor applied to the internal score in terms of depth. That score selects what
 									 codes enter the model. The decay is applied to the average tree depth. 0 is no decay, default
 									 value = 0.00693 decays to 0.5 in 100 steps.
 			\param lower_bound_p	 Another p for lower bound, but applied to the scoring process rather than the model.
@@ -480,7 +480,7 @@ class Events {
 
 			\return	 A sorted (by lift) vector of codes top first.
 		*/
-		CodeScores get_top_codes(CodeInTreeStatMap &codes_stat, double targ_prop, double exponential_decay, double lower_bound_p,
+		CodeScores get_top_codes(CodeInTreeStatMap &codes_stat, double targ_prop, double exp_decay, double lower_bound_p,
 								 bool log_lift);
 
 

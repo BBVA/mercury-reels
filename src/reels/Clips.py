@@ -58,7 +58,6 @@ class ClipsHashes:
 
 
 class Clips:
-
     """Interface to the c++ container object to hold clips.
 
     The purpose of this object is to be filled (via successive scan_event()
@@ -81,7 +80,7 @@ class Clips:
     """
 
     def __init__(
-        self, clients: Clients, events: Events, time_format=None, binary_image=None
+        self, clients: Clients, events: Events, time_format: str=None, binary_image: list=None
     ):
         self.cp_id = new_clips(clients.cl_id, events.ev_id)
 
@@ -109,7 +108,7 @@ class Clips:
         self.cp_id = new_clips(new_clients(), new_events())
         self.load_from_binary_image(state)
 
-    def scan_event(self, emitter, description, weight, client, time):
+    def scan_event(self, emitter: str, description: str, weight: float, client: str, time: str):
         """Process a row from a transaction file, to add the event to the client's timeline in a Clips object.
 
         Args:
@@ -121,8 +120,8 @@ class Clips:
                          is given via the time_format argument to the constructor.)
 
         Returns:
-            True on insertion. False usually just means, the event is not in events
-            or the client is not in clients. It may be a time parsing error too.
+            (bool): True on insertion. False usually just means, the event is not in events
+                or the client is not in clients. It may be a time parsing error too.
         """
         return clips_scan_event(self.cp_id, emitter, description, weight, client, time)
 
@@ -130,7 +129,7 @@ class Clips:
         """Return an iterator to iterate over all the hashed client ids.
 
         Returns:
-            An iterator (a ClipsHashes object)
+            (ClipsHashes): An iterator (a ClipsHashes object)
         """
         return ClipsHashes(self.cp_id)
 
@@ -138,8 +137,7 @@ class Clips:
         """Return the number of clips in the object.
 
         Returns:
-            The number of clips stored in the object. Clips are indexed by unique
-            client hash.
+            (int): The number of clips stored in the object. Clips are indexed by unique client hash.
         """
         return clips_num_clips(self.cp_id)
 
@@ -147,7 +145,7 @@ class Clips:
         """Return the number of events counting all the clips stored by the object.
 
         Returns:
-            The number of events stored in the object.
+            (int): The number of events stored in the object.
         """
         return clips_num_events(self.cp_id)
 
@@ -155,10 +153,10 @@ class Clips:
         """Return a list ot the codes in chronological order for a given client.
 
         Args:
-            client: Either a client identifier or the hash of a client identifier returned by Clients.hash_client_id().
+            client (str): Either a client identifier or the hash of a client identifier returned by Clients.hash_client_id().
 
         Returns:
-            A list of integer codes on success or None on failure.
+            (list): A list of integer codes on success or None on failure.
         """
         s = clips_describe_clip(self.cp_id, client)
 
@@ -170,10 +168,10 @@ class Clips:
             list of strings referred to a binary_image.
 
         Returns:
-            The binary_image containing the state of the Clips. There is
-            not much you can do with it except serializing it as a Python
-            (e.g., pickle) object and loading it into another Clips object.
-            Pass it to the constructor to create an initialized object,
+            (list): The binary_image containing the state of the Clips. There is
+                not much you can do with it except serializing it as a Python
+                (e.g., pickle) object and loading it into another Clips object.
+                Pass it to the constructor to create an initialized object,
         """
         bi_idx = clips_save(self.cp_id)
         if bi_idx == 0:
@@ -193,10 +191,10 @@ class Clips:
             returned by a previous save_as_binary_image() call.
 
         Args:
-            binary_image: A list of strings returned by save_as_binary_image()
+            binary_image (list): A list of strings returned by save_as_binary_image()
 
         Returns:
-            True on success, destroys, initializes and returns false on failure.
+            (bool): True on success, destroys, initializes and returns false on failure.
         """
         failed = False
 
@@ -220,11 +218,11 @@ class Clips:
             This returns one of the 500 non target sequences or one of the 500 target sequences.
 
         Args:
-            seq_num: The sequence id (in range 0.499).
-            target:  True for one of the target sequences, false for non target.
+            seq_num (int): The sequence id (in range 0.499).
+            target (bool):  True for one of the target sequences, false for non target.
 
         Returns:
-            A sequence of integer codes list or None if seq_num is out of range.
+            (list): A sequence of integer codes list or None if seq_num is out of range.
         """
 
         s = clips_test_sequence(seq_num, target)

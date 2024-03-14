@@ -7,7 +7,7 @@
 	extern bool events_define_event(int id, char *p_e, char *p_d, double w, int code);
 	extern char *events_optimize_events(int id, int id_clips, int id_targets, int num_steps, int codes_per_step, double threshold,
 										char *force_include, char *force_exclude, char *x_form, char *agg, double p, int depth,
-										int as_states, double exponential_decay, double lower_bound_p, bool log_lift);
+										int as_states, double exp_decay, double lower_bound_p, bool log_lift);
 	extern bool events_load_block(int id, char *p_block);
 	extern int	events_save(int id);
 	extern char *events_describe_next_event(int id, char *prev_event);
@@ -66,7 +66,7 @@ extern bool events_insert_row(int id, char *p_e, char *p_d, double w);
 extern bool events_define_event(int id, char *p_e, char *p_d, double w, int code);
 extern char *events_optimize_events(int id, int id_clips, int id_targets, int num_steps, int codes_per_step, double threshold,
 									char *force_include, char *force_exclude, char *x_form, char *agg, double p, int depth,
-									int as_states, double exponential_decay, double lower_bound_p, bool log_lift);
+									int as_states, double exp_decay, double lower_bound_p, bool log_lift);
 extern bool events_load_block(int id, char *p_block);
 extern int	events_save(int id);
 extern char *events_describe_next_event(int id, char *prev_event);
