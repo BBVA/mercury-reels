@@ -274,7 +274,7 @@ bool Events::define_event(pChar	p_e, pChar p_d, double w, uint64_t code) {
 
 String Events::optimize_events (Clips &clips, TargetMap &targets, int num_steps, int codes_per_step, double threshold,
 								pCodeSet p_force_include, pCodeSet p_force_exclude, Transform x_form, Aggregate agg, double p,
-								int depth, bool as_states, double exponential_decay, double lower_bound_p, bool log_lift) {
+								int depth, bool as_states, double exp_decay, double lower_bound_p, bool log_lift) {
 
 	// Use a logger as a debug tool and to return errors.
 
@@ -347,7 +347,7 @@ String Events::optimize_events (Clips &clips, TargetMap &targets, int num_steps,
 
 	log.log_printf("  Current score = %.6f\n", large_score);
 
-	CodeScores top_code = get_top_codes(codes_stat, targ_prop, exponential_decay, lower_bound_p, log_lift);
+	CodeScores top_code = get_top_codes(codes_stat, targ_prop, exp_decay, lower_bound_p, log_lift);
 
 	// Main (over num_steps) loop
 
@@ -532,7 +532,7 @@ bool compare_score_item(const CodeScoreItem a, const CodeScoreItem b) {
 }
 
 
-CodeScores Events::get_top_codes(CodeInTreeStatMap &codes_stat, double targ_prop, double exponential_decay, double lower_bound_p, bool log_lift) {
+CodeScores Events::get_top_codes(CodeInTreeStatMap &codes_stat, double targ_prop, double exp_decay, double lower_bound_p, bool log_lift) {
 
 	CodeScores	ev = {};
 	ClipMap		clm	= {};
@@ -555,7 +555,7 @@ CodeScores Events::get_top_codes(CodeInTreeStatMap &codes_stat, double targ_prop
 	REELS_logger.log_printf("n_succ_seen\tn_succ_target\tn_incl_seen\tn_incl_target\tsum_dep\tn_dep\tedf\tprop_succ\tprop_incl\tlift\tscore\tcode\n");
 
 	for (CodeInTreeStatMap::iterator it = codes_stat.begin(); it != codes_stat.end(); ++it) {
-		double edf = it->second.n_dep > 0 ? exp(-exponential_decay*it->second.sum_dep/it->second.n_dep) : 0;
+		double edf = it->second.n_dep > 0 ? exp(-exp_decay*it->second.sum_dep/it->second.n_dep) : 0;
 		double succ = std::max((double) 0.0, tar.agresti_coull_lower_bound(it->second.n_succ_target, it->second.n_succ_seen));
 		double incl = std::max((double) 0.0, tar.agresti_coull_lower_bound(it->second.n_incl_target, it->second.n_incl_seen));
 		double lift = succ > 0.001 ? incl/succ : 0;
@@ -1802,7 +1802,7 @@ bool events_define_event(int id, char *p_e, char *p_d, double w, int code) {
 */
 char *events_optimize_events(int id, int id_clips, int id_targets, int num_steps, int codes_per_step, double threshold,
 							 char *force_include, char *force_exclude, char *x_form, char *agg, double p, int depth, int as_states,
-							 double exponential_decay, double lower_bound_p, bool log_lift) {
+							 double exp_decay, double lower_bound_p, bool log_lift) {
 	answer_buffer[0] = 0;
 
 	EventsServer::iterator it = events.find(id);
@@ -1859,7 +1859,7 @@ char *events_optimize_events(int id, int id_clips, int id_targets, int num_steps
 	Aggregate ag = strcmp("mean", agg) == 0 ? ag_mean : strcmp("longest", agg) == 0 ? ag_longest : ag_minimax;
 
 	String ret = it->second->optimize_events(*it_clip->second, *it_targ->second->p_target(), num_steps, codes_per_step, threshold,
- 											 p_force_include, p_force_exclude, xfm, ag, p, depth, as_states, exponential_decay,
+ 											 p_force_include, p_force_exclude, xfm, ag, p, depth, as_states, exp_decay,
 											 lower_bound_p, log_lift);
 
 	REELS_logger.log = ret + "\ncode_performance\n" + REELS_logger.log;
