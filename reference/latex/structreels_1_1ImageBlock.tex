@@ -12,14 +12,11 @@ An generic block structure to store object state in a Python-\/friendly way.
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structreels_1_1ImageBlock_ac8579d7ada36114ce2ca0bfd81f94c2f}\label{structreels_1_1ImageBlock_ac8579d7ada36114ce2ca0bfd81f94c2f}} 
-int {\bfseries size}
+int \mbox{\hyperlink{structreels_1_1ImageBlock_ac8579d7ada36114ce2ca0bfd81f94c2f}{size}}
 \begin{DoxyCompactList}\small\item\em The number of already allocated bytes inside the current block. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structreels_1_1ImageBlock_a0630a8d868491a21627e07c88deb8636}\label{structreels_1_1ImageBlock_a0630a8d868491a21627e07c88deb8636}} 
-int {\bfseries block\+\_\+num}
+int \mbox{\hyperlink{structreels_1_1ImageBlock_a0630a8d868491a21627e07c88deb8636}{block\+\_\+num}}
 \begin{DoxyCompactList}\small\item\em The current block number in the Binary\+Image. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structreels_1_1ImageBlock_a461902d2703e372fe93d7ce43983fb9e}\label{structreels_1_1ImageBlock_a461902d2703e372fe93d7ce43983fb9e}} 
-uint8\+\_\+t {\bfseries buffer} \mbox{[}IMAGE\+\_\+\+BUFF\+\_\+\+SIZE\mbox{]}
+uint8\+\_\+t \mbox{\hyperlink{structreels_1_1ImageBlock_a461902d2703e372fe93d7ce43983fb9e}{buffer}} \mbox{[}\mbox{\hyperlink{reels_8h_a75cc8eb3d48ceda2913f0c5c9a39edc3}{IMAGE\+\_\+\+BUFF\+\_\+\+SIZE}}\mbox{]}
 \begin{DoxyCompactList}\small\item\em The buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -28,6 +25,39 @@ An generic block structure to store object state in a Python-\/friendly way.
 
 This structure is 64encoded to 8K (3 input bytes == 24 bit -\/\texorpdfstring{$>$}{>} 4 output chars == 24 bit). Therefore, its size is 6K. 
 
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structreels_1_1ImageBlock_a0630a8d868491a21627e07c88deb8636}\label{structreels_1_1ImageBlock_a0630a8d868491a21627e07c88deb8636}} 
+\index{reels::ImageBlock@{reels::ImageBlock}!block\_num@{block\_num}}
+\index{block\_num@{block\_num}!reels::ImageBlock@{reels::ImageBlock}}
+\doxysubsubsection{\texorpdfstring{block\_num}{block\_num}}
+{\footnotesize\ttfamily int reels\+::\+Image\+Block\+::block\+\_\+num}
+
+
+
+The current block number in the Binary\+Image. 
+
+\mbox{\Hypertarget{structreels_1_1ImageBlock_a461902d2703e372fe93d7ce43983fb9e}\label{structreels_1_1ImageBlock_a461902d2703e372fe93d7ce43983fb9e}} 
+\index{reels::ImageBlock@{reels::ImageBlock}!buffer@{buffer}}
+\index{buffer@{buffer}!reels::ImageBlock@{reels::ImageBlock}}
+\doxysubsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t reels\+::\+Image\+Block\+::buffer\mbox{[}\mbox{\hyperlink{reels_8h_a75cc8eb3d48ceda2913f0c5c9a39edc3}{IMAGE\+\_\+\+BUFF\+\_\+\+SIZE}}\mbox{]}}
+
+
+
+The buffer. 
+
+\mbox{\Hypertarget{structreels_1_1ImageBlock_ac8579d7ada36114ce2ca0bfd81f94c2f}\label{structreels_1_1ImageBlock_ac8579d7ada36114ce2ca0bfd81f94c2f}} 
+\index{reels::ImageBlock@{reels::ImageBlock}!size@{size}}
+\index{size@{size}!reels::ImageBlock@{reels::ImageBlock}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily int reels\+::\+Image\+Block\+::size}
+
+
+
+The number of already allocated bytes inside the current block. 
+
+
+
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-reels/reels.\+h\end{DoxyCompactItemize}
+reels/\mbox{\hyperlink{reels_8h}{reels.\+h}}\end{DoxyCompactItemize}

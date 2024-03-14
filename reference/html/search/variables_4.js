@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['id_0',['id',['../classreels_1_1Clients.html#a7ca49533dd002fa37ad134db03a0e05d',1,'reels::Clients']]],
-  ['id_5fset_1',['id_set',['../classreels_1_1Clients.html#afc689746c7165fc8b348c0c59c243db0',1,'reels::Clients']]]
+  ['e_0',['e',['../structreels_1_1BinEventPt.html#af1c176a8469ff7f8f8fb240ad087f5c3',1,'reels::BinEventPt']]],
+  ['events_1',['events',['../reels_8cpp.html#adce2424a16866ae1bbce30758fc6ee65',1,'reels.cpp']]],
+  ['events_5fnum_2',['events_num',['../reels_8cpp.html#a10449e0245aee2d28b0bd8178e95235d',1,'reels.cpp']]]
 ];

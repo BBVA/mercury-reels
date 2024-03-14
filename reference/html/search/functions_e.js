@@ -5,5 +5,8 @@ var searchData=
   ['score_5fmodel_2',['score_model',['../classreels_1_1Events.html#ab280c7b4b4fe194570537b3e88c298a9',1,'reels::Events']]],
   ['set_5fmax_5fnum_5fevents_3',['set_max_num_events',['../classreels_1_1Events.html#aeb8fdeaf66f9097c2df4a0d06e56c746',1,'reels::Events']]],
   ['set_5fstore_5fstrings_4',['set_store_strings',['../classreels_1_1Events.html#ae60b1cc227efd4b5839f01cd0af8d11a',1,'reels::Events']]],
-  ['set_5ftime_5fformat_5',['set_time_format',['../classreels_1_1TimeUtil.html#ae45cac3f4e552d0128d3b82039896456',1,'reels::TimeUtil']]]
+  ['set_5ftime_5fformat_5',['set_time_format',['../classreels_1_1TimeUtil.html#ae45cac3f4e552d0128d3b82039896456',1,'reels::TimeUtil']]],
+  ['size_5fbinary_5fimage_5fiterator_6',['size_binary_image_iterator',['../reels_8cpp.html#aeff6e218dbf358e0b407f9ecfa77a8f1',1,'reels.cpp']]],
+  ['size_5fresult_5fiterator_7',['size_result_iterator',['../reels_8cpp.html#a53885dfb086174337b17c8735d139f5e',1,'reels.cpp']]],
+  ['string_5fas_5fimage_5fblock_8',['string_as_image_block',['../reels_8cpp.html#a824686b1b9a5de641bbeaad372e299a0',1,'reels.cpp']]]
 ];

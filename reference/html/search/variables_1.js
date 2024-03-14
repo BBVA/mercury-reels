@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['c_0',['c',['../structreels_1_1BinTransaction.html#a866a58e1ebd613c50acf74a133ffa6cf',1,'reels::BinTransaction']]],
-  ['child_1',['child',['../structreels_1_1CodeTreeNode.html#a329f4b0afda52347ed1727a929027fee',1,'reels::CodeTreeNode']]],
-  ['code_2',['code',['../structreels_1_1EventStat.html#ae14b56893bd9988687719235c4e982d9',1,'reels::EventStat::code()'],['../structreels_1_1CodeScoreItem.html#a868cbd03dbd1b254b6a5acda16ee4e5a',1,'reels::CodeScoreItem::code()']]]
+  ['b64chars_0',['b64chars',['../reels_8cpp.html#a81f444de1743a2379339d2dcc4094bad',1,'reels.cpp']]],
+  ['b64inverse_1',['b64inverse',['../reels_8cpp.html#a7bf7e1476e68f28be16d2d7642ced87d',1,'reels.cpp']]],
+  ['block_5fnum_2',['block_num',['../structreels_1_1ImageBlock.html#a0630a8d868491a21627e07c88deb8636',1,'reels::ImageBlock']]],
+  ['buffer_3',['buffer',['../structreels_1_1ImageBlock.html#a461902d2703e372fe93d7ce43983fb9e',1,'reels::ImageBlock']]]
 ];

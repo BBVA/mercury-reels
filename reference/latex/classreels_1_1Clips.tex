@@ -30,8 +30,7 @@ Collaboration diagram for reels\+::Clips\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classreels_1_1Clips_a50812a06667503006062af47a9964d43}\label{classreels_1_1Clips_a50812a06667503006062af47a9964d43}} 
-{\bfseries Clips} ()
+\mbox{\hyperlink{classreels_1_1Clips_a50812a06667503006062af47a9964d43}{Clips}} ()
 \begin{DoxyCompactList}\small\item\em Default construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object as an abstract method. This is required for declaring a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object that will later be copy constructed based on conditional statements. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classreels_1_1Clips_a6c15d4375b2c7efcf28921360ef47960}{Clips}} (\mbox{\hyperlink{classreels_1_1Clients}{Clients}} clients, \mbox{\hyperlink{classreels_1_1Events}{Events}} events)
 \begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object from a \mbox{\hyperlink{classreels_1_1Clients}{Clients}} and an \mbox{\hyperlink{classreels_1_1Events}{Events}} objects. \end{DoxyCompactList}\item 
@@ -53,20 +52,7 @@ uint64\+\_\+t \mbox{\hyperlink{classreels_1_1Clips_ab6831205dd7596c2a7b4880cbd6b
 \begin{DoxyCompactList}\small\item\em Return the number of events stored in the internal Clip\+Map. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classreels_1_1Clips_a5183d5d53d4bca1d2c1f40c3cf80f658}{collapse\+\_\+to\+\_\+states}} ()
 \begin{DoxyCompactList}\small\item\em Collapse the Clip\+Map to states. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classreels_1_1TimeUtil}{reels\+::\+Time\+Util}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{namespacereels_a4a78105f5e060eeedd5b522e287efc9d}{Time\+Point}} \mbox{\hyperlink{classreels_1_1TimeUtil_ae8e19904eaec93a5c9a4f0e6e0792369}{get\+\_\+time}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} p\+\_\+t)
-\begin{DoxyCompactList}\small\item\em Convert time as a string to a Time\+Point (using the object\textquotesingle{}s time\+\_\+format). \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classreels_1_1TimeUtil_ae45cac3f4e552d0128d3b82039896456}{set\+\_\+time\+\_\+format}} (\mbox{\hyperlink{namespacereels_a4c9a27f22e0b05c11ca77c43f0029ac1}{p\+Char}} fmt)
-\begin{DoxyCompactList}\small\item\em Sets the public property time\+\_\+format to simplify the python interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
-\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{classreels_1_1TimeUtil}{reels\+::\+Time\+Util}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classreels_1_1TimeUtil_ad026787163f981a528c58a1096ea57fc}\label{classreels_1_1TimeUtil_ad026787163f981a528c58a1096ea57fc}} 
-char {\bfseries time\+\_\+format} \mbox{[}128\mbox{]} = \char`\"{}\%Y-\/\%m-\/\%d \%H\+:\%M\+:\%S\char`\"{}
-\begin{DoxyCompactList}\small\item\em Date and time format for insert\+\_\+row() and define\+\_\+event() \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -75,10 +61,20 @@ A container class to hold clips (sequences of events).
 To simplify the Python interface, the object has a \mbox{\hyperlink{classreels_1_1TimeUtil_ae45cac3f4e552d0128d3b82039896456}{set\+\_\+time\+\_\+format()}} method. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classreels_1_1Clips_a50812a06667503006062af47a9964d43}\label{classreels_1_1Clips_a50812a06667503006062af47a9964d43}} 
+\index{reels::Clips@{reels::Clips}!Clips@{Clips}}
+\index{Clips@{Clips}!reels::Clips@{reels::Clips}}
+\doxysubsubsection{\texorpdfstring{Clips()}{Clips()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily reels\+::\+Clips\+::\+Clips (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object as an abstract method. This is required for declaring a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object that will later be copy constructed based on conditional statements. 
+
 \mbox{\Hypertarget{classreels_1_1Clips_a6c15d4375b2c7efcf28921360ef47960}\label{classreels_1_1Clips_a6c15d4375b2c7efcf28921360ef47960}} 
 \index{reels::Clips@{reels::Clips}!Clips@{Clips}}
 \index{Clips@{Clips}!reels::Clips@{reels::Clips}}
-\doxysubsubsection{\texorpdfstring{Clips()}{Clips()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\doxysubsubsection{\texorpdfstring{Clips()}{Clips()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
 {\footnotesize\ttfamily reels\+::\+Clips\+::\+Clips (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classreels_1_1Clients}{Clients}}}]{clients,  }\item[{\mbox{\hyperlink{classreels_1_1Events}{Events}}}]{events }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -95,7 +91,7 @@ Construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object from a \mbox{\h
 \mbox{\Hypertarget{classreels_1_1Clips_a8cc6cdea54a86491531f2bde92c9c000}\label{classreels_1_1Clips_a8cc6cdea54a86491531f2bde92c9c000}} 
 \index{reels::Clips@{reels::Clips}!Clips@{Clips}}
 \index{Clips@{Clips}!reels::Clips@{reels::Clips}}
-\doxysubsubsection{\texorpdfstring{Clips()}{Clips()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+\doxysubsubsection{\texorpdfstring{Clips()}{Clips()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
 {\footnotesize\ttfamily reels\+::\+Clips\+::\+Clips (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacereels_a603b492f253098a318c7cece8dc26181}{Clip\+Map}} \&}]{clip\+\_\+map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -110,7 +106,7 @@ Construct a \mbox{\hyperlink{classreels_1_1Clips}{Clips}} object from a Clip\+Ma
 \mbox{\Hypertarget{classreels_1_1Clips_a7c9c88ee25eac25419cecda70b1dd17c}\label{classreels_1_1Clips_a7c9c88ee25eac25419cecda70b1dd17c}} 
 \index{reels::Clips@{reels::Clips}!Clips@{Clips}}
 \index{Clips@{Clips}!reels::Clips@{reels::Clips}}
-\doxysubsubsection{\texorpdfstring{Clips()}{Clips()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\doxysubsubsection{\texorpdfstring{Clips()}{Clips()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
 {\footnotesize\ttfamily reels\+::\+Clips\+::\+Clips (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classreels_1_1Clips}{Clips}} \&}]{o\+\_\+clips }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -246,5 +242,5 @@ True on insertion. False usually just means, the event is not in events or the c
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-reels/reels.\+h\item 
-reels/reels.\+cpp\end{DoxyCompactItemize}
+reels/\mbox{\hyperlink{reels_8h}{reels.\+h}}\item 
+reels/\mbox{\hyperlink{reels_8cpp}{reels.\+cpp}}\end{DoxyCompactItemize}

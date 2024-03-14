@@ -10,11 +10,14 @@ var searchData=
   ['set_5fstore_5fstrings_7',['set_store_strings',['../classreels_1_1Events.html#ae60b1cc227efd4b5839f01cd0af8d11a',1,'reels::Events']]],
   ['set_5ftime_5fformat_8',['set_time_format',['../classreels_1_1TimeUtil.html#ae45cac3f4e552d0128d3b82039896456',1,'reels::TimeUtil']]],
   ['size_9',['size',['../structreels_1_1ImageBlock.html#ac8579d7ada36114ce2ca0bfd81f94c2f',1,'reels::ImageBlock']]],
-  ['store_5fstrings_10',['store_strings',['../classreels_1_1Events.html#a9230f0a37efd84255d1abc0c9d158b1d',1,'reels::Events']]],
-  ['str_11',['str',['../structreels_1_1StringUsage.html#a1865409e3da373b6338214ad6ddfb3cf',1,'reels::StringUsage']]],
-  ['string_12',['String',['../namespacereels.html#a8439b64892718b921e015accbfad1478',1,'reels']]],
-  ['stringusage_13',['StringUsage',['../structreels_1_1StringUsage.html',1,'reels']]],
-  ['stringusagemap_14',['StringUsageMap',['../namespacereels.html#af2b9d59d7a42cbf383aa707de86ee9a8',1,'reels']]],
-  ['sum_5fdep_15',['sum_dep',['../structreels_1_1CodeInTreeStatistics.html#abd294a86b371d86cd150d79c16285121',1,'reels::CodeInTreeStatistics']]],
-  ['sum_5ftime_5fd_16',['sum_time_d',['../structreels_1_1CodeTreeNode.html#a1c2655c80dc99eea71243ee1b500c5fd',1,'reels::CodeTreeNode']]]
+  ['size_5fbinary_5fimage_5fiterator_10',['size_binary_image_iterator',['../reels_8cpp.html#aeff6e218dbf358e0b407f9ecfa77a8f1',1,'reels.cpp']]],
+  ['size_5fresult_5fiterator_11',['size_result_iterator',['../reels_8cpp.html#a53885dfb086174337b17c8735d139f5e',1,'reels.cpp']]],
+  ['store_5fstrings_12',['store_strings',['../classreels_1_1Events.html#a9230f0a37efd84255d1abc0c9d158b1d',1,'reels::Events']]],
+  ['str_13',['str',['../structreels_1_1StringUsage.html#a1865409e3da373b6338214ad6ddfb3cf',1,'reels::StringUsage']]],
+  ['string_14',['String',['../namespacereels.html#a8439b64892718b921e015accbfad1478',1,'reels']]],
+  ['string_5fas_5fimage_5fblock_15',['string_as_image_block',['../reels_8cpp.html#a824686b1b9a5de641bbeaad372e299a0',1,'reels.cpp']]],
+  ['stringusage_16',['StringUsage',['../structreels_1_1StringUsage.html',1,'reels']]],
+  ['stringusagemap_17',['StringUsageMap',['../namespacereels.html#af2b9d59d7a42cbf383aa707de86ee9a8',1,'reels']]],
+  ['sum_5fdep_18',['sum_dep',['../structreels_1_1CodeInTreeStatistics.html#abd294a86b371d86cd150d79c16285121',1,'reels::CodeInTreeStatistics']]],
+  ['sum_5ftime_5fd_19',['sum_time_d',['../structreels_1_1CodeTreeNode.html#a1c2655c80dc99eea71243ee1b500c5fd',1,'reels::CodeTreeNode']]]
 ];

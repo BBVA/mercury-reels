@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['block_5fnum_0',['block_num',['../structreels_1_1ImageBlock.html#a0630a8d868491a21627e07c88deb8636',1,'reels::ImageBlock']]],
-  ['buffer_1',['buffer',['../structreels_1_1ImageBlock.html#a461902d2703e372fe93d7ce43983fb9e',1,'reels::ImageBlock']]]
+  ['answer_5fblock_0',['answer_block',['../reels_8cpp.html#a87c6228e206d40acd8bb922514f65270',1,'reels.cpp']]],
+  ['answer_5fbuffer_1',['answer_buffer',['../reels_8cpp.html#a3ce3af741592ed7c6bbc6bca94a81ca7',1,'reels.cpp']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['max_5fnum_5fevents_0',['max_num_events',['../classreels_1_1Events.html#afd8afb0326fc16de30c37b930329c322',1,'reels::Events']]]
+  ['log_0',['log',['../classreels_1_1Logger.html#a0d3cb8eaed0912071e4a610227d694ff',1,'reels::Logger']]]
 ];

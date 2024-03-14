@@ -1,0 +1,1458 @@
+\hypertarget{reels_8cpp}{}\doxysection{reels/reels.cpp File Reference}
+\label{reels_8cpp}\index{reels/reels.cpp@{reels/reels.cpp}}
+{\ttfamily \#include \char`\"{}reels.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}thousand\+\_\+sequences.\+hpp\char`\"{}}\newline
+Include dependency graph for reels.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{reels_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacereels}{reels}}
+\begin{DoxyCompactList}\small\item\em The namespace including everything to simplify using Reels in a c++ application,. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{reels_8cpp_acf830c3140deca25e44187534c55e5a8}{MURMUR\+\_\+\+SEED}}~76493
+\begin{DoxyCompactList}\small\item\em Just a 5 digit prime. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classreels_1_1Events}{Events}} $\ast$ \mbox{\hyperlink{reels_8cpp_ad1adf28e896c3187c750ffbe3121c5f5}{p\+Events}}
+\item 
+typedef \mbox{\hyperlink{classreels_1_1Clients}{Clients}} $\ast$ \mbox{\hyperlink{reels_8cpp_a44ead8188e656a732af1286d920d94c7}{p\+Clients}}
+\item 
+typedef \mbox{\hyperlink{classreels_1_1Clips}{Clips}} $\ast$ \mbox{\hyperlink{reels_8cpp_a72192362c8eca60deb750125bba3156b}{p\+Clips}}
+\item 
+typedef \mbox{\hyperlink{classreels_1_1Targets}{Targets}} $\ast$ \mbox{\hyperlink{reels_8cpp_a357c2e2a143d5d74c1c1f4e1df79fe34}{p\+Targets}}
+\item 
+typedef \mbox{\hyperlink{namespacereels_afab3fdb12dfcf2726f495bd074225411}{Times\+To\+Target}} $\ast$ \mbox{\hyperlink{reels_8cpp_ad1b206b2b9e7d3d38fa10defcd4bbe9e}{p\+Iter\+Times}}
+\item 
+typedef std\+::map$<$ int, \mbox{\hyperlink{reels_8cpp_ad1adf28e896c3187c750ffbe3121c5f5}{p\+Events}} $>$ \mbox{\hyperlink{reels_8cpp_a4621445be2bfec6306819879d877c997}{Events\+Server}}
+\item 
+typedef std\+::map$<$ int, \mbox{\hyperlink{reels_8cpp_a44ead8188e656a732af1286d920d94c7}{p\+Clients}} $>$ \mbox{\hyperlink{reels_8cpp_a4e25c11c449f301098e5b0aeb0bb632f}{Clients\+Server}}
+\item 
+typedef std\+::map$<$ int, \mbox{\hyperlink{reels_8cpp_a72192362c8eca60deb750125bba3156b}{p\+Clips}} $>$ \mbox{\hyperlink{reels_8cpp_a658506fbff411a4d274e520a5f4710d4}{Clips\+Server}}
+\item 
+typedef std\+::map$<$ int, \mbox{\hyperlink{reels_8cpp_a357c2e2a143d5d74c1c1f4e1df79fe34}{p\+Targets}} $>$ \mbox{\hyperlink{reels_8cpp_adc2ff60e6ffba59a6a3d7d8f7fccd995}{Targets\+Server}}
+\item 
+typedef std\+::map$<$ int, \mbox{\hyperlink{reels_8cpp_ad1b206b2b9e7d3d38fa10defcd4bbe9e}{p\+Iter\+Times}} $>$ \mbox{\hyperlink{reels_8cpp_a435fe75898f20ef1faaf2cf581c332b0}{Iter\+Times\+Server}}
+\item 
+typedef std\+::map$<$ int, \mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} $>$ \mbox{\hyperlink{reels_8cpp_afe560789669a8dbab1aefb1a0e5ccd6c}{Binary\+Image\+Server}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{namespacereels_aea29224c74ab1bbd3337bc9e22fca30b}{reels\+::\+Murmur\+Hash64A}} (const void $\ast$key, int len)
+\begin{DoxyCompactList}\small\item\em Murmur\+Hash2, 64-\/bit versions, by Austin Appleby. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacereels_aa589037ff1304165b2b9736c08bf3f66}{reels\+::image\+\_\+put}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} p\+\_\+bi, void $\ast$p\+\_\+data, int size)
+\begin{DoxyCompactList}\small\item\em A function to push arbitrary raw data into a Binary\+Image. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacereels_af8e91bb1d1a511412c0ddc5bb3b490c5}{reels\+::image\+\_\+get}} (\mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}} p\+\_\+bi, int \&c\+\_\+block, int \&c\+\_\+ofs, void $\ast$p\+\_\+data, int size)
+\begin{DoxyCompactList}\small\item\em A function to get an arbitrary raw data block from a Binary\+Image. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacereels_a61012bf02c1c020a69da611a23924260}{reels\+::compare\+\_\+optimize\+\_\+eval}} (const \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}} a, const \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}} b)
+\begin{DoxyCompactList}\small\item\em Compare two \mbox{\hyperlink{structreels_1_1OptimizeEvalItem}{Optimize\+Eval\+Item}} structures for sorting. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacereels_a0af913ee39497684a86e93cda3d69568}{reels\+::compare\+\_\+score\+\_\+item}} (const \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}} a, const \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}} b)
+\begin{DoxyCompactList}\small\item\em Compare two \mbox{\hyperlink{structreels_1_1CodeScoreItem}{Code\+Score\+Item}} structures for sorting. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a566cc97eaa23f70556ecf2d6e428e292}{destroy\+\_\+binary\+\_\+image\+\_\+iterator}} (int image\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Destroy an iterator for a binary \mbox{\hyperlink{reels_8cpp_aa15ca750c1f18e56d3a75eee54c1ca5b}{image(returned by save\+\_\+as\+\_\+binary\+\_\+image())}}. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_a0b00567c9a0b17ae2c390c9512144d20}{image\+\_\+block\+\_\+as\+\_\+string}} (uint8\+\_\+t $\ast$p\+\_\+in)
+\begin{DoxyCompactList}\small\item\em Serializes a complete binary block (fixed size) as a base-\/64 string which is Python compatible. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_ad453096538f0f4eb0578b41765d5da79}{image\+\_\+block\+\_\+as\+\_\+string}} (\mbox{\hyperlink{structreels_1_1ImageBlock}{Image\+Block}} \&blk)
+\begin{DoxyCompactList}\small\item\em Serializes a complete binary block (fixed size) as a base-\/64 string which is Python compatible. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a824686b1b9a5de641bbeaad372e299a0}{string\+\_\+as\+\_\+image\+\_\+block}} (\mbox{\hyperlink{structreels_1_1ImageBlock}{Image\+Block}} \&blk, char $\ast$p\+\_\+in)
+\begin{DoxyCompactList}\small\item\em Deserializes a base-\/64 string which is Python compatible as a complete binary Image\+Block (fixed size). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events}} ()
+\begin{DoxyCompactList}\small\item\em Create a new Events object that can be used via the Python interface. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a1b1eee95286f755461f81578a0af189f}{destroy\+\_\+events}} (int id)
+\begin{DoxyCompactList}\small\item\em Destroy a Events object that was used via the Python interface. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a2de569ef1ce838c792058cbdf83772db}{events\+\_\+insert\+\_\+row}} (int id, char $\ast$p\+\_\+e, char $\ast$p\+\_\+d, double w)
+\begin{DoxyCompactList}\small\item\em Process a row from a transaction file in an Events object stored by the Events\+Server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_ad3c4573e4b376a032da7e718cb53452a}{events\+\_\+define\+\_\+event}} (int id, char $\ast$p\+\_\+e, char $\ast$p\+\_\+d, double w, int code)
+\begin{DoxyCompactList}\small\item\em Define events explicitly in an Events object stored by the Events\+Server. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_a56203860d375396bcb1b2002d4fd2837}{events\+\_\+optimize\+\_\+events}} (int id, int id\+\_\+clips, int id\+\_\+targets, int num\+\_\+steps, int codes\+\_\+per\+\_\+step, double threshold, char $\ast$force\+\_\+include, char $\ast$force\+\_\+exclude, char $\ast$x\+\_\+form, char $\ast$agg, double p, int depth, int as\+\_\+states, double exp\+\_\+decay, double lower\+\_\+bound\+\_\+p, bool log\+\_\+lift)
+\begin{DoxyCompactList}\small\item\em Events optimizer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a1400d7800966cb443c4a82c2e9e10443}{events\+\_\+load\+\_\+block}} (int id, char $\ast$p\+\_\+block)
+\begin{DoxyCompactList}\small\item\em Pushes raw image blocks into an initially empty Events object and finally creates it already populated with the binary image. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_aa709548cdb33328a5d4c06dcd3859b37}{events\+\_\+save}} (int id)
+\begin{DoxyCompactList}\small\item\em Saves an Events object as a Binary\+Image. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a3df92e45e3ed99c4714a0f1fc5a225fe}{parse\+\_\+bin\+\_\+event\+\_\+pt}} (char $\ast$line, \mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&ev)
+\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_ad324ab303fd37671a2d6ab768a286fca}{events\+\_\+describe\+\_\+next\+\_\+event}} (int id, char $\ast$prev\+\_\+event)
+\begin{DoxyCompactList}\small\item\em Describes the internal representation of an event. (Iterate through all.) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a0300b8a16dd484cb1e3852fb4b57b6c8}{events\+\_\+set\+\_\+max\+\_\+num\+\_\+events}} (int id, int max\+\_\+events)
+\begin{DoxyCompactList}\small\item\em Sets the public property max\+\_\+num\+\_\+events in an Events object stored by the Events\+Server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a42a5a2671c63a26d5f8f4aa985be6afd}{events\+\_\+set\+\_\+store\+\_\+strings}} (int id, bool store)
+\begin{DoxyCompactList}\small\item\em Sets the public property store\+\_\+strings in an Events object stored by the Events\+Server. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a8022b62b4130deed3d9e53584e475f62}{events\+\_\+num\+\_\+events}} (int id)
+\begin{DoxyCompactList}\small\item\em Return the number of events stored in an Events object stored by the Events\+Server. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}{new\+\_\+clients}} ()
+\begin{DoxyCompactList}\small\item\em Create a new Clients object that can be used via the Python interface. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a1f02bdc68ebf83208a374072f2ac02df}{destroy\+\_\+clients}} (int id)
+\begin{DoxyCompactList}\small\item\em Destroy a Clients object that was used via the Python interface. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_af6265887e191539596c820fc761785dd}{clients\+\_\+hash\+\_\+client\+\_\+id}} (int id, char $\ast$p\+\_\+cli)
+\begin{DoxyCompactList}\small\item\em Return the hash of a client ID as a decimal string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_af5be1a19d87d97bc061d71b39c7b8baf}{clients\+\_\+add\+\_\+client\+\_\+id}} (int id, char $\ast$p\+\_\+cli)
+\begin{DoxyCompactList}\small\item\em Add a client ID to a Clients object stored by the Clients\+Server only if new. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_a79be2c457f8040a4eb431cb9c09466c2}{clients\+\_\+hash\+\_\+by\+\_\+index}} (int id, int idx)
+\begin{DoxyCompactList}\small\item\em Return the hash of a stored client ID by index as a decimal string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a140331afffcd681d5cbbe20bb6f14a6b}{clients\+\_\+num\+\_\+clients}} (int id)
+\begin{DoxyCompactList}\small\item\em Return the number of clients stored in an Clients object stored by the Clients\+Server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a7fd089808fcea97608908bcabc43120e}{clients\+\_\+load\+\_\+block}} (int id, char $\ast$p\+\_\+block)
+\begin{DoxyCompactList}\small\item\em Pushes raw image blocks into an initially empty Clients object and finally creates it already populated with the binary image. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a89071218291d59bd4638415110c7c97a}{clients\+\_\+save}} (int id)
+\begin{DoxyCompactList}\small\item\em Saves an Clients object as a Binary\+Image. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a26afee6065879429fa47c470a33722e2}{new\+\_\+clips}} (int id\+\_\+clients, int id\+\_\+events)
+\begin{DoxyCompactList}\small\item\em Create a new Clips object that can be used via the Python interface. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_aeddb42c1f87bcdcea77bd3eee2966eab}{destroy\+\_\+clips}} (int id)
+\begin{DoxyCompactList}\small\item\em Destroy a Clips object that was used via the Python interface. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a69ba870aaff4121852f6f3ab485421da}{clips\+\_\+set\+\_\+time\+\_\+format}} (int id, char $\ast$fmt)
+\begin{DoxyCompactList}\small\item\em Sets the public property time\+\_\+format to simplify the python interface in a Clips object stored by the Clips\+Server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_ad2a995114a91a6d05dac9ef828c3443d}{clips\+\_\+scan\+\_\+event}} (int id, char $\ast$p\+\_\+e, char $\ast$p\+\_\+d, double w, char $\ast$p\+\_\+c, char $\ast$p\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Process a row from a transaction file, to add the event to the client\textquotesingle{}s timeline in a Clips object stored by the Clips\+Server. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_a79810a419ddd904801dbcc2b10658fde}{clips\+\_\+hash\+\_\+by\+\_\+previous}} (int id, char $\ast$prev\+\_\+hash)
+\begin{DoxyCompactList}\small\item\em Return the hash of the client ID of a clip defined the previous value or zero for the first one as a decimal string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a799d94a188138c315df6770367e6ec56}{clips\+\_\+load\+\_\+block}} (int id, char $\ast$p\+\_\+block)
+\begin{DoxyCompactList}\small\item\em Pushes raw image blocks into an initially empty Clips object and finally creates it already populated with the binary image. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a36c041262157631329ed60f297f26e81}{clips\+\_\+save}} (int id)
+\begin{DoxyCompactList}\small\item\em Saves an Clips object as a Binary\+Image. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_aed14f40c4975cd33875e2aeec918b21c}{clips\+\_\+describe\+\_\+clip}} (int id, char $\ast$client\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Describes the internal representation of a clip. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_af471970a6bed1e5f004eccb310419cc1}{clips\+\_\+num\+\_\+clips}} (int id)
+\begin{DoxyCompactList}\small\item\em Return the number of clips stored in the internal Clip\+Map in a Clips object stored by the Clips\+Server. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_ae9be16a81a0aed5db53fe6d5a9dd5a40}{clips\+\_\+num\+\_\+events}} (int id)
+\begin{DoxyCompactList}\small\item\em Return the number of events stored in the internal Clip\+Map in a Clips object stored by the Clips\+Server. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_ad613b773528f9e1b869755ed896e20b8}{clips\+\_\+test\+\_\+sequence}} (int seq\+\_\+num, bool target)
+\begin{DoxyCompactList}\small\item\em Generates a constant sequence of codes for testing the Event Optimizer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets}} (int id\+\_\+clips)
+\begin{DoxyCompactList}\small\item\em Create a new Targets object that can be used via the Python interface. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a26d7d3cee4d67d80ddc0a42cf6dd932d}{destroy\+\_\+targets}} (int id)
+\begin{DoxyCompactList}\small\item\em Destroy a Targets object that was used via the Python interface. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_aa312c85d4ab4b01ab01a84a0c88ec8ae}{targets\+\_\+set\+\_\+time\+\_\+format}} (int id, char $\ast$fmt)
+\begin{DoxyCompactList}\small\item\em Sets the public property time\+\_\+format to simplify the python interface in a Targets object stored by the Targets\+Server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_aedb84d36994fe317311426c8e80c6b47}{targets\+\_\+insert\+\_\+target}} (int id, char $\ast$p\+\_\+c, char $\ast$p\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Utility to fill the internal Target\+Map target in a Targets object stored by the Targets\+Server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_a7f05da583a9a47fe8c1e71683426b548}{targets\+\_\+fit}} (int id, char $\ast$x\+\_\+form, char $\ast$agg, double p, int depth, int as\+\_\+states)
+\begin{DoxyCompactList}\small\item\em Fit the prediction model in a Targets object stored by the Targets\+Server. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a8eb56c20d36fd72344ba89a2b9d2605d}{targets\+\_\+predict\+\_\+clients}} (int id, int id\+\_\+clients)
+\begin{DoxyCompactList}\small\item\em Predict time to target for all the clients in a given Clients object whose clips have been used to fit the model in a Targets object stored by the Targets\+Server. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a300bd5f2a694adece9d1f3facf45ea82}{targets\+\_\+predict\+\_\+clips}} (int id, int id\+\_\+clips)
+\begin{DoxyCompactList}\small\item\em Predict time to target for a set of clients whose clips are given in a Clip\+Map in a Targets object stored by the Targets\+Server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{reels_8cpp_abc04894dc2f7914d71799ef1022cb31c}{targets\+\_\+load\+\_\+block}} (int id, char $\ast$p\+\_\+block)
+\begin{DoxyCompactList}\small\item\em Pushes raw image blocks into an initially empty Targets object and finally creates it already populated with the binary image. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a463625a3ae6b1f3ce4d593c929738085}{targets\+\_\+save}} (int id)
+\begin{DoxyCompactList}\small\item\em Saves an Targets object as a Binary\+Image. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a64aea04d119b92acfb840f60b61ad786}{targets\+\_\+num\+\_\+targets}} (int id)
+\begin{DoxyCompactList}\small\item\em Returns the number of target points stored in the internal target variable. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_aa6c752809c19cac0a3b5ec32927b1643}{targets\+\_\+tree\+\_\+node\+\_\+idx}} (int id, int parent\+\_\+idx, int code)
+\begin{DoxyCompactList}\small\item\em Returns the index of a tree node by parent node and code. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_a077ca0e22940e753bc304e4924b1b486}{targets\+\_\+tree\+\_\+node\+\_\+children}} (int id, int idx)
+\begin{DoxyCompactList}\small\item\em Lists the children of a tree node. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_a3fd9221ddfb27fd9b3734d78866a43c2}{targets\+\_\+describe\+\_\+tree\+\_\+node}} (int id, int idx)
+\begin{DoxyCompactList}\small\item\em Describes the internal representation of a tree node. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_a809b6ef0dc79505fcdf6214ec35afb6e}{targets\+\_\+describe\+\_\+tree}} (int id)
+\begin{DoxyCompactList}\small\item\em Describes some statistics of a fitted tree inside a Targets object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a53885dfb086174337b17c8735d139f5e}{size\+\_\+result\+\_\+iterator}} (int iter\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Return the number of unread items in an iterator returned by predict(). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{reels_8cpp_a77ef131d5aeaf5bf4cdb2029a77edac6}{next\+\_\+result\+\_\+iterator}} (int iter\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Return the first unread item in an iterator returned by predict(). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{reels_8cpp_aa097c9d0837284cbaa1861c4565b2e59}{destroy\+\_\+result\+\_\+iterator}} (int iter\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Destroy an iterator returned by predict(). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_aeff6e218dbf358e0b407f9ecfa77a8f1}{size\+\_\+binary\+\_\+image\+\_\+iterator}} (int image\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Return the number of unread binary images blocks in an iterator returned by a save\+\_\+as\+\_\+binary\+\_\+image() call. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{reels_8cpp_aafdb452dd343c4d6aee60f6cfba9a0cd}{next\+\_\+binary\+\_\+image\+\_\+iterator}} (int image\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Return the first unread binary images block in an iterator returned by a save\+\_\+as\+\_\+binary\+\_\+image() call. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classreels_1_1Logger}{Logger}} \mbox{\hyperlink{namespacereels_a5c9e6a93f951c87ed85543f0bc77e16b}{reels\+::\+REELS\+\_\+logger}} = \{\}
+\begin{DoxyCompactList}\small\item\em Used to output stats of \mbox{\hyperlink{classreels_1_1Events_ae3546332ef86c25797c4bd194fe50076}{Events\+::get\+\_\+top\+\_\+codes}} added by the Python API in \mbox{\hyperlink{reels_8cpp_a56203860d375396bcb1b2002d4fd2837}{events\+\_\+optimize\+\_\+events()}} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{reels_8cpp_a10449e0245aee2d28b0bd8178e95235d}{events\+\_\+num}} = 0
+\item 
+int \mbox{\hyperlink{reels_8cpp_a49156e4ede1f500653de726716ecb0da}{clients\+\_\+num}} = 0
+\item 
+int \mbox{\hyperlink{reels_8cpp_ac9dda8c6e744f3a852a9d26a699562d9}{clips\+\_\+num}} = 0
+\item 
+int \mbox{\hyperlink{reels_8cpp_a81816c2281f290eca2d9a80a2d89c6e5}{targets\+\_\+num}} = 0
+\item 
+int \mbox{\hyperlink{reels_8cpp_a16b081240ad2b32553c5b70fb0dc148e}{it\+\_\+times\+\_\+num}} = 0
+\item 
+\mbox{\hyperlink{reels_8cpp_a4621445be2bfec6306819879d877c997}{Events\+Server}} \mbox{\hyperlink{reels_8cpp_adce2424a16866ae1bbce30758fc6ee65}{events}} = \{\}
+\item 
+\mbox{\hyperlink{reels_8cpp_a4e25c11c449f301098e5b0aeb0bb632f}{Clients\+Server}} \mbox{\hyperlink{reels_8cpp_a34446db4a13547becf65df7e3e1e531d}{clients}} = \{\}
+\item 
+\mbox{\hyperlink{reels_8cpp_a658506fbff411a4d274e520a5f4710d4}{Clips\+Server}} \mbox{\hyperlink{reels_8cpp_a6305b7146e5de73a648a38b46d1ac549}{clips}} = \{\}
+\item 
+\mbox{\hyperlink{reels_8cpp_adc2ff60e6ffba59a6a3d7d8f7fccd995}{Targets\+Server}} \mbox{\hyperlink{reels_8cpp_ad6a5c79e1d169ef1a4db6c30c58252b2}{targets}} = \{\}
+\item 
+\mbox{\hyperlink{reels_8cpp_a435fe75898f20ef1faaf2cf581c332b0}{Iter\+Times\+Server}} \mbox{\hyperlink{reels_8cpp_a7696818d31f6a0962bcdb14726cbd060}{it\+\_\+times}} = \{\}
+\item 
+\mbox{\hyperlink{reels_8cpp_afe560789669a8dbab1aefb1a0e5ccd6c}{Binary\+Image\+Server}} \mbox{\hyperlink{reels_8cpp_aa15ca750c1f18e56d3a75eee54c1ca5b}{image}} = \{\}
+\item 
+char \mbox{\hyperlink{reels_8cpp_a3ce3af741592ed7c6bbc6bca94a81ca7}{answer\+\_\+buffer}} \mbox{[}8192\mbox{]}
+\item 
+char \mbox{\hyperlink{reels_8cpp_a87c6228e206d40acd8bb922514f65270}{answer\+\_\+block}} \mbox{[}8208\mbox{]}
+\item 
+char \mbox{\hyperlink{reels_8cpp_a81f444de1743a2379339d2dcc4094bad}{b64chars}} \mbox{[}$\,$\mbox{]} = \char`\"{}ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\char`\"{}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{reels_8cpp_a7bf7e1476e68f28be16d2d7642ced87d}{b64inverse}} \mbox{[}256\mbox{]} = \{0\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{reels_8cpp_acf830c3140deca25e44187534c55e5a8}\label{reels_8cpp_acf830c3140deca25e44187534c55e5a8}} 
+\index{reels.cpp@{reels.cpp}!MURMUR\_SEED@{MURMUR\_SEED}}
+\index{MURMUR\_SEED@{MURMUR\_SEED}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{MURMUR\_SEED}{MURMUR\_SEED}}
+{\footnotesize\ttfamily \#define MURMUR\+\_\+\+SEED~76493}
+
+
+
+Just a 5 digit prime. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{reels_8cpp_afe560789669a8dbab1aefb1a0e5ccd6c}\label{reels_8cpp_afe560789669a8dbab1aefb1a0e5ccd6c}} 
+\index{reels.cpp@{reels.cpp}!BinaryImageServer@{BinaryImageServer}}
+\index{BinaryImageServer@{BinaryImageServer}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{BinaryImageServer}{BinaryImageServer}}
+{\footnotesize\ttfamily typedef std\+::map$<$int, \mbox{\hyperlink{namespacereels_ac5c80b0d8cbac5bce1bdf61c9251cc75}{p\+Binary\+Image}}$>$ \mbox{\hyperlink{reels_8cpp_afe560789669a8dbab1aefb1a0e5ccd6c}{Binary\+Image\+Server}}}
+
+\mbox{\Hypertarget{reels_8cpp_a4e25c11c449f301098e5b0aeb0bb632f}\label{reels_8cpp_a4e25c11c449f301098e5b0aeb0bb632f}} 
+\index{reels.cpp@{reels.cpp}!ClientsServer@{ClientsServer}}
+\index{ClientsServer@{ClientsServer}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{ClientsServer}{ClientsServer}}
+{\footnotesize\ttfamily typedef std\+::map$<$int, \mbox{\hyperlink{reels_8cpp_a44ead8188e656a732af1286d920d94c7}{p\+Clients}}$>$ \mbox{\hyperlink{reels_8cpp_a4e25c11c449f301098e5b0aeb0bb632f}{Clients\+Server}}}
+
+\mbox{\Hypertarget{reels_8cpp_a658506fbff411a4d274e520a5f4710d4}\label{reels_8cpp_a658506fbff411a4d274e520a5f4710d4}} 
+\index{reels.cpp@{reels.cpp}!ClipsServer@{ClipsServer}}
+\index{ClipsServer@{ClipsServer}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{ClipsServer}{ClipsServer}}
+{\footnotesize\ttfamily typedef std\+::map$<$int, \mbox{\hyperlink{reels_8cpp_a72192362c8eca60deb750125bba3156b}{p\+Clips}}$>$ \mbox{\hyperlink{reels_8cpp_a658506fbff411a4d274e520a5f4710d4}{Clips\+Server}}}
+
+\mbox{\Hypertarget{reels_8cpp_a4621445be2bfec6306819879d877c997}\label{reels_8cpp_a4621445be2bfec6306819879d877c997}} 
+\index{reels.cpp@{reels.cpp}!EventsServer@{EventsServer}}
+\index{EventsServer@{EventsServer}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{EventsServer}{EventsServer}}
+{\footnotesize\ttfamily typedef std\+::map$<$int, \mbox{\hyperlink{reels_8cpp_ad1adf28e896c3187c750ffbe3121c5f5}{p\+Events}}$>$ \mbox{\hyperlink{reels_8cpp_a4621445be2bfec6306819879d877c997}{Events\+Server}}}
+
+\mbox{\Hypertarget{reels_8cpp_a435fe75898f20ef1faaf2cf581c332b0}\label{reels_8cpp_a435fe75898f20ef1faaf2cf581c332b0}} 
+\index{reels.cpp@{reels.cpp}!IterTimesServer@{IterTimesServer}}
+\index{IterTimesServer@{IterTimesServer}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{IterTimesServer}{IterTimesServer}}
+{\footnotesize\ttfamily typedef std\+::map$<$int, \mbox{\hyperlink{reels_8cpp_ad1b206b2b9e7d3d38fa10defcd4bbe9e}{p\+Iter\+Times}}$>$ \mbox{\hyperlink{reels_8cpp_a435fe75898f20ef1faaf2cf581c332b0}{Iter\+Times\+Server}}}
+
+\mbox{\Hypertarget{reels_8cpp_a44ead8188e656a732af1286d920d94c7}\label{reels_8cpp_a44ead8188e656a732af1286d920d94c7}} 
+\index{reels.cpp@{reels.cpp}!pClients@{pClients}}
+\index{pClients@{pClients}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{pClients}{pClients}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{classreels_1_1Clients}{Clients}}$\ast$ \mbox{\hyperlink{reels_8cpp_a44ead8188e656a732af1286d920d94c7}{p\+Clients}}}
+
+\mbox{\Hypertarget{reels_8cpp_a72192362c8eca60deb750125bba3156b}\label{reels_8cpp_a72192362c8eca60deb750125bba3156b}} 
+\index{reels.cpp@{reels.cpp}!pClips@{pClips}}
+\index{pClips@{pClips}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{pClips}{pClips}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{classreels_1_1Clips}{Clips}}$\ast$ \mbox{\hyperlink{reels_8cpp_a72192362c8eca60deb750125bba3156b}{p\+Clips}}}
+
+\mbox{\Hypertarget{reels_8cpp_ad1adf28e896c3187c750ffbe3121c5f5}\label{reels_8cpp_ad1adf28e896c3187c750ffbe3121c5f5}} 
+\index{reels.cpp@{reels.cpp}!pEvents@{pEvents}}
+\index{pEvents@{pEvents}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{pEvents}{pEvents}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{classreels_1_1Events}{Events}}$\ast$ \mbox{\hyperlink{reels_8cpp_ad1adf28e896c3187c750ffbe3121c5f5}{p\+Events}}}
+
+\mbox{\Hypertarget{reels_8cpp_ad1b206b2b9e7d3d38fa10defcd4bbe9e}\label{reels_8cpp_ad1b206b2b9e7d3d38fa10defcd4bbe9e}} 
+\index{reels.cpp@{reels.cpp}!pIterTimes@{pIterTimes}}
+\index{pIterTimes@{pIterTimes}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{pIterTimes}{pIterTimes}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{namespacereels_afab3fdb12dfcf2726f495bd074225411}{Times\+To\+Target}}$\ast$ \mbox{\hyperlink{reels_8cpp_ad1b206b2b9e7d3d38fa10defcd4bbe9e}{p\+Iter\+Times}}}
+
+\mbox{\Hypertarget{reels_8cpp_a357c2e2a143d5d74c1c1f4e1df79fe34}\label{reels_8cpp_a357c2e2a143d5d74c1c1f4e1df79fe34}} 
+\index{reels.cpp@{reels.cpp}!pTargets@{pTargets}}
+\index{pTargets@{pTargets}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{pTargets}{pTargets}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{classreels_1_1Targets}{Targets}}$\ast$ \mbox{\hyperlink{reels_8cpp_a357c2e2a143d5d74c1c1f4e1df79fe34}{p\+Targets}}}
+
+\mbox{\Hypertarget{reels_8cpp_adc2ff60e6ffba59a6a3d7d8f7fccd995}\label{reels_8cpp_adc2ff60e6ffba59a6a3d7d8f7fccd995}} 
+\index{reels.cpp@{reels.cpp}!TargetsServer@{TargetsServer}}
+\index{TargetsServer@{TargetsServer}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{TargetsServer}{TargetsServer}}
+{\footnotesize\ttfamily typedef std\+::map$<$int, \mbox{\hyperlink{reels_8cpp_a357c2e2a143d5d74c1c1f4e1df79fe34}{p\+Targets}}$>$ \mbox{\hyperlink{reels_8cpp_adc2ff60e6ffba59a6a3d7d8f7fccd995}{Targets\+Server}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{reels_8cpp_af5be1a19d87d97bc061d71b39c7b8baf}\label{reels_8cpp_af5be1a19d87d97bc061d71b39c7b8baf}} 
+\index{reels.cpp@{reels.cpp}!clients\_add\_client\_id@{clients\_add\_client\_id}}
+\index{clients\_add\_client\_id@{clients\_add\_client\_id}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clients\_add\_client\_id()}{clients\_add\_client\_id()}}
+{\footnotesize\ttfamily bool clients\+\_\+add\+\_\+client\+\_\+id (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{p\+\_\+cli }\end{DoxyParamCaption})}
+
+
+
+Add a client ID to a Clients object stored by the Clients\+Server only if new. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}{new\+\_\+clients()}} call. \\
+\hline
+{\em p\+\_\+cli} & The \char`\"{}client\char`\"{}. A string representing \char`\"{}the actor\char`\"{}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. False on id not found or p\+\_\+cli is empty or already a client. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a79be2c457f8040a4eb431cb9c09466c2}\label{reels_8cpp_a79be2c457f8040a4eb431cb9c09466c2}} 
+\index{reels.cpp@{reels.cpp}!clients\_hash\_by\_index@{clients\_hash\_by\_index}}
+\index{clients\_hash\_by\_index@{clients\_hash\_by\_index}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clients\_hash\_by\_index()}{clients\_hash\_by\_index()}}
+{\footnotesize\ttfamily char $\ast$ clients\+\_\+hash\+\_\+by\+\_\+index (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{idx }\end{DoxyParamCaption})}
+
+
+
+Return the hash of a stored client ID by index as a decimal string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}{new\+\_\+clients()}} call. \\
+\hline
+{\em idx} & The index of the client in the container (In range 0..size() -\/ 1).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The hash of the selected client id as a decimal string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_af6265887e191539596c820fc761785dd}\label{reels_8cpp_af6265887e191539596c820fc761785dd}} 
+\index{reels.cpp@{reels.cpp}!clients\_hash\_client\_id@{clients\_hash\_client\_id}}
+\index{clients\_hash\_client\_id@{clients\_hash\_client\_id}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clients\_hash\_client\_id()}{clients\_hash\_client\_id()}}
+{\footnotesize\ttfamily char $\ast$ clients\+\_\+hash\+\_\+client\+\_\+id (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{p\+\_\+cli }\end{DoxyParamCaption})}
+
+
+
+Return the hash of a client ID as a decimal string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}{new\+\_\+clients()}} call. \\
+\hline
+{\em p\+\_\+cli} & The \char`\"{}client\char`\"{}. A string representing \char`\"{}the actor\char`\"{}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The hash of the selected client if as a decimal string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a7fd089808fcea97608908bcabc43120e}\label{reels_8cpp_a7fd089808fcea97608908bcabc43120e}} 
+\index{reels.cpp@{reels.cpp}!clients\_load\_block@{clients\_load\_block}}
+\index{clients\_load\_block@{clients\_load\_block}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clients\_load\_block()}{clients\_load\_block()}}
+{\footnotesize\ttfamily bool clients\+\_\+load\+\_\+block (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{p\+\_\+block }\end{DoxyParamCaption})}
+
+
+
+Pushes raw image blocks into an initially empty Clients object and finally creates it already populated with the binary image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}{new\+\_\+clients()}} call. The object must be empty (never called). \\
+\hline
+{\em p\+\_\+block} & If non-\/empty, a block in the right order making a binary image obtained for a previous \mbox{\hyperlink{reels_8cpp_a89071218291d59bd4638415110c7c97a}{clients\+\_\+save()}} call. If empty, an order to .load() the Clients object and destroyed the previously stored blocks.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a140331afffcd681d5cbbe20bb6f14a6b}\label{reels_8cpp_a140331afffcd681d5cbbe20bb6f14a6b}} 
+\index{reels.cpp@{reels.cpp}!clients\_num\_clients@{clients\_num\_clients}}
+\index{clients\_num\_clients@{clients\_num\_clients}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clients\_num\_clients()}{clients\_num\_clients()}}
+{\footnotesize\ttfamily int clients\+\_\+num\+\_\+clients (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Return the number of clients stored in an Clients object stored by the Clients\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}{new\+\_\+clients()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size of the internal \mbox{\hyperlink{namespacereels_a73a7ae63cbb27d7caabe69e99ec19646}{Client\+IDSet()}} or a negative error code on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a89071218291d59bd4638415110c7c97a}\label{reels_8cpp_a89071218291d59bd4638415110c7c97a}} 
+\index{reels.cpp@{reels.cpp}!clients\_save@{clients\_save}}
+\index{clients\_save@{clients\_save}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clients\_save()}{clients\_save()}}
+{\footnotesize\ttfamily int clients\+\_\+save (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Saves an Clients object as a Binary\+Image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}{new\+\_\+clients()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on error, or a binary\+\_\+image\+\_\+id \texorpdfstring{$>$}{>} 0 which is the same as id and must be destroyed using \mbox{\hyperlink{reels_8cpp_a566cc97eaa23f70556ecf2d6e428e292}{destroy\+\_\+binary\+\_\+image\+\_\+iterator()}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_aed14f40c4975cd33875e2aeec918b21c}\label{reels_8cpp_aed14f40c4975cd33875e2aeec918b21c}} 
+\index{reels.cpp@{reels.cpp}!clips\_describe\_clip@{clips\_describe\_clip}}
+\index{clips\_describe\_clip@{clips\_describe\_clip}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clips\_describe\_clip()}{clips\_describe\_clip()}}
+{\footnotesize\ttfamily char $\ast$ clips\+\_\+describe\+\_\+clip (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{client\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Describes the internal representation of a clip. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a26afee6065879429fa47c470a33722e2}{new\+\_\+clips()}} call. \\
+\hline
+{\em client\+\_\+id} & The hash identifying a client or the client id.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+On success, it will return a tab separated list of codes corresponding to the clip. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a79810a419ddd904801dbcc2b10658fde}\label{reels_8cpp_a79810a419ddd904801dbcc2b10658fde}} 
+\index{reels.cpp@{reels.cpp}!clips\_hash\_by\_previous@{clips\_hash\_by\_previous}}
+\index{clips\_hash\_by\_previous@{clips\_hash\_by\_previous}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clips\_hash\_by\_previous()}{clips\_hash\_by\_previous()}}
+{\footnotesize\ttfamily char $\ast$ clips\+\_\+hash\+\_\+by\+\_\+previous (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{prev\+\_\+hash }\end{DoxyParamCaption})}
+
+
+
+Return the hash of the client ID of a clip defined the previous value or zero for the first one as a decimal string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}{new\+\_\+clients()}} call. \\
+\hline
+{\em prev\+\_\+hash} & The previous hash returned by this function to use as an iterator.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The hash of the selected client id as a hexadecimal string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a799d94a188138c315df6770367e6ec56}\label{reels_8cpp_a799d94a188138c315df6770367e6ec56}} 
+\index{reels.cpp@{reels.cpp}!clips\_load\_block@{clips\_load\_block}}
+\index{clips\_load\_block@{clips\_load\_block}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clips\_load\_block()}{clips\_load\_block()}}
+{\footnotesize\ttfamily bool clips\+\_\+load\+\_\+block (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{p\+\_\+block }\end{DoxyParamCaption})}
+
+
+
+Pushes raw image blocks into an initially empty Clips object and finally creates it already populated with the binary image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a26afee6065879429fa47c470a33722e2}{new\+\_\+clips()}} call. The object must be empty (never called). \\
+\hline
+{\em p\+\_\+block} & If non-\/empty, a block in the right order making a binary image obtained for a previous \mbox{\hyperlink{reels_8cpp_a36c041262157631329ed60f297f26e81}{clips\+\_\+save()}} call. If empty, an order to .load() the Clips object and destroyed the previously stored blocks.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_af471970a6bed1e5f004eccb310419cc1}\label{reels_8cpp_af471970a6bed1e5f004eccb310419cc1}} 
+\index{reels.cpp@{reels.cpp}!clips\_num\_clips@{clips\_num\_clips}}
+\index{clips\_num\_clips@{clips\_num\_clips}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clips\_num\_clips()}{clips\_num\_clips()}}
+{\footnotesize\ttfamily int clips\+\_\+num\+\_\+clips (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Return the number of clips stored in the internal Clip\+Map in a Clips object stored by the Clips\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a26afee6065879429fa47c470a33722e2}{new\+\_\+clips()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number clips in the internal Clip\+Map. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_ae9be16a81a0aed5db53fe6d5a9dd5a40}\label{reels_8cpp_ae9be16a81a0aed5db53fe6d5a9dd5a40}} 
+\index{reels.cpp@{reels.cpp}!clips\_num\_events@{clips\_num\_events}}
+\index{clips\_num\_events@{clips\_num\_events}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clips\_num\_events()}{clips\_num\_events()}}
+{\footnotesize\ttfamily int clips\+\_\+num\+\_\+events (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Return the number of events stored in the internal Clip\+Map in a Clips object stored by the Clips\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a26afee6065879429fa47c470a33722e2}{new\+\_\+clips()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total count of events aggregating all the clips in the internal Clip\+Map or -\/1 on error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a36c041262157631329ed60f297f26e81}\label{reels_8cpp_a36c041262157631329ed60f297f26e81}} 
+\index{reels.cpp@{reels.cpp}!clips\_save@{clips\_save}}
+\index{clips\_save@{clips\_save}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clips\_save()}{clips\_save()}}
+{\footnotesize\ttfamily int clips\+\_\+save (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Saves an Clips object as a Binary\+Image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a26afee6065879429fa47c470a33722e2}{new\+\_\+clips()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on error, or a binary\+\_\+image\+\_\+id \texorpdfstring{$>$}{>} 0 which is the same as id and must be destroyed using \mbox{\hyperlink{reels_8cpp_a566cc97eaa23f70556ecf2d6e428e292}{destroy\+\_\+binary\+\_\+image\+\_\+iterator()}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_ad2a995114a91a6d05dac9ef828c3443d}\label{reels_8cpp_ad2a995114a91a6d05dac9ef828c3443d}} 
+\index{reels.cpp@{reels.cpp}!clips\_scan\_event@{clips\_scan\_event}}
+\index{clips\_scan\_event@{clips\_scan\_event}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clips\_scan\_event()}{clips\_scan\_event()}}
+{\footnotesize\ttfamily bool clips\+\_\+scan\+\_\+event (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{p\+\_\+e,  }\item[{char $\ast$}]{p\+\_\+d,  }\item[{double}]{w,  }\item[{char $\ast$}]{p\+\_\+c,  }\item[{char $\ast$}]{p\+\_\+t }\end{DoxyParamCaption})}
+
+
+
+Process a row from a transaction file, to add the event to the client\textquotesingle{}s timeline in a Clips object stored by the Clips\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a26afee6065879429fa47c470a33722e2}{new\+\_\+clips()}} call. \\
+\hline
+{\em p\+\_\+e} & The \char`\"{}emitter\char`\"{}. A C/\+Python string representing \char`\"{}owner of event\char`\"{}. \\
+\hline
+{\em p\+\_\+d} & The \char`\"{}description\char`\"{}. A C/\+Python string representing \char`\"{}the event\char`\"{}. \\
+\hline
+{\em w} & The \char`\"{}weight\char`\"{}. A double representing a weight of the event. \\
+\hline
+{\em p\+\_\+c} & The \char`\"{}client\char`\"{}. A C/\+Python string representing \char`\"{}the actor\char`\"{}. \\
+\hline
+{\em p\+\_\+t} & The \char`\"{}time\char`\"{}. A timestamp of the event as a C/\+Python string. (The format is given via set\+\_\+time\+\_\+format().)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on insertion. False usually just means, the event is not in events or the client is not in clients. Occasionally, it may be a time parsing error or id not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a69ba870aaff4121852f6f3ab485421da}\label{reels_8cpp_a69ba870aaff4121852f6f3ab485421da}} 
+\index{reels.cpp@{reels.cpp}!clips\_set\_time\_format@{clips\_set\_time\_format}}
+\index{clips\_set\_time\_format@{clips\_set\_time\_format}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clips\_set\_time\_format()}{clips\_set\_time\_format()}}
+{\footnotesize\ttfamily bool clips\+\_\+set\+\_\+time\+\_\+format (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{fmt }\end{DoxyParamCaption})}
+
+
+
+Sets the public property time\+\_\+format to simplify the python interface in a Clips object stored by the Clips\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a26afee6065879429fa47c470a33722e2}{new\+\_\+clips()}} call. \\
+\hline
+{\em fmt} & The time format in standard calendar time format \href{http://www.gnu.org/software/libc/manual/html_node/Formatting-Calendar-Time.html}{\texttt{ http\+://www.\+gnu.\+org/software/libc/manual/html\+\_\+node/\+Formatting-\/\+Calendar-\/\+Time.\+html}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on valid id. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_ad613b773528f9e1b869755ed896e20b8}\label{reels_8cpp_ad613b773528f9e1b869755ed896e20b8}} 
+\index{reels.cpp@{reels.cpp}!clips\_test\_sequence@{clips\_test\_sequence}}
+\index{clips\_test\_sequence@{clips\_test\_sequence}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clips\_test\_sequence()}{clips\_test\_sequence()}}
+{\footnotesize\ttfamily char $\ast$ clips\+\_\+test\+\_\+sequence (\begin{DoxyParamCaption}\item[{int}]{seq\+\_\+num,  }\item[{bool}]{target }\end{DoxyParamCaption})}
+
+
+
+Generates a constant sequence of codes for testing the Event Optimizer. 
+
+This returns one of the 500 non target sequences or one of the 500 target sequences.
+
+
+\begin{DoxyParams}{Parameters}
+{\em seq\+\_\+num} & The sequence id (in range 0.\+499). \\
+\hline
+{\em target} & True for one of the target sequences, false for non target.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A sequence of integer codes as a comma separated string. Empty if seq\+\_\+num is out of range. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a566cc97eaa23f70556ecf2d6e428e292}\label{reels_8cpp_a566cc97eaa23f70556ecf2d6e428e292}} 
+\index{reels.cpp@{reels.cpp}!destroy\_binary\_image\_iterator@{destroy\_binary\_image\_iterator}}
+\index{destroy\_binary\_image\_iterator@{destroy\_binary\_image\_iterator}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{destroy\_binary\_image\_iterator()}{destroy\_binary\_image\_iterator()}}
+{\footnotesize\ttfamily bool destroy\+\_\+binary\+\_\+image\+\_\+iterator (\begin{DoxyParamCaption}\item[{int}]{image\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Destroy an iterator for a binary \mbox{\hyperlink{reels_8cpp_aa15ca750c1f18e56d3a75eee54c1ca5b}{image(returned by save\+\_\+as\+\_\+binary\+\_\+image())}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image\+\_\+id} & The image\+\_\+id returned by a previous save\+\_\+as\+\_\+binary\+\_\+image() call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a1f02bdc68ebf83208a374072f2ac02df}\label{reels_8cpp_a1f02bdc68ebf83208a374072f2ac02df}} 
+\index{reels.cpp@{reels.cpp}!destroy\_clients@{destroy\_clients}}
+\index{destroy\_clients@{destroy\_clients}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{destroy\_clients()}{destroy\_clients()}}
+{\footnotesize\ttfamily bool destroy\+\_\+clients (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Destroy a Clients object that was used via the Python interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}{new\+\_\+clients()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_aeddb42c1f87bcdcea77bd3eee2966eab}\label{reels_8cpp_aeddb42c1f87bcdcea77bd3eee2966eab}} 
+\index{reels.cpp@{reels.cpp}!destroy\_clips@{destroy\_clips}}
+\index{destroy\_clips@{destroy\_clips}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{destroy\_clips()}{destroy\_clips()}}
+{\footnotesize\ttfamily bool destroy\+\_\+clips (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Destroy a Clips object that was used via the Python interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a26afee6065879429fa47c470a33722e2}{new\+\_\+clips()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a1b1eee95286f755461f81578a0af189f}\label{reels_8cpp_a1b1eee95286f755461f81578a0af189f}} 
+\index{reels.cpp@{reels.cpp}!destroy\_events@{destroy\_events}}
+\index{destroy\_events@{destroy\_events}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{destroy\_events()}{destroy\_events()}}
+{\footnotesize\ttfamily bool destroy\+\_\+events (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Destroy a Events object that was used via the Python interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_aa097c9d0837284cbaa1861c4565b2e59}\label{reels_8cpp_aa097c9d0837284cbaa1861c4565b2e59}} 
+\index{reels.cpp@{reels.cpp}!destroy\_result\_iterator@{destroy\_result\_iterator}}
+\index{destroy\_result\_iterator@{destroy\_result\_iterator}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{destroy\_result\_iterator()}{destroy\_result\_iterator()}}
+{\footnotesize\ttfamily void destroy\+\_\+result\+\_\+iterator (\begin{DoxyParamCaption}\item[{int}]{iter\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Destroy an iterator returned by predict(). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iter\+\_\+id} & The iter\+\_\+id returned by a previous predict() call. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{reels_8cpp_a26d7d3cee4d67d80ddc0a42cf6dd932d}\label{reels_8cpp_a26d7d3cee4d67d80ddc0a42cf6dd932d}} 
+\index{reels.cpp@{reels.cpp}!destroy\_targets@{destroy\_targets}}
+\index{destroy\_targets@{destroy\_targets}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{destroy\_targets()}{destroy\_targets()}}
+{\footnotesize\ttfamily bool destroy\+\_\+targets (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Destroy a Targets object that was used via the Python interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_ad3c4573e4b376a032da7e718cb53452a}\label{reels_8cpp_ad3c4573e4b376a032da7e718cb53452a}} 
+\index{reels.cpp@{reels.cpp}!events\_define\_event@{events\_define\_event}}
+\index{events\_define\_event@{events\_define\_event}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{events\_define\_event()}{events\_define\_event()}}
+{\footnotesize\ttfamily bool events\+\_\+define\+\_\+event (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{p\+\_\+e,  }\item[{char $\ast$}]{p\+\_\+d,  }\item[{double}]{w,  }\item[{int}]{code }\end{DoxyParamCaption})}
+
+
+
+Define events explicitly in an Events object stored by the Events\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events()}} call. \\
+\hline
+{\em p\+\_\+e} & The \char`\"{}emitter\char`\"{}. A C/\+Python string representing \char`\"{}owner of event\char`\"{}. \\
+\hline
+{\em p\+\_\+d} & The \char`\"{}description\char`\"{}. A C/\+Python string representing \char`\"{}the event\char`\"{}. \\
+\hline
+{\em w} & The \char`\"{}weight\char`\"{}. A double representing a weight of the event. \\
+\hline
+{\em code} & A unique code number identifying the event.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_ad324ab303fd37671a2d6ab768a286fca}\label{reels_8cpp_ad324ab303fd37671a2d6ab768a286fca}} 
+\index{reels.cpp@{reels.cpp}!events\_describe\_next\_event@{events\_describe\_next\_event}}
+\index{events\_describe\_next\_event@{events\_describe\_next\_event}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{events\_describe\_next\_event()}{events\_describe\_next\_event()}}
+{\footnotesize\ttfamily char $\ast$ events\+\_\+describe\+\_\+next\+\_\+event (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{prev\+\_\+event }\end{DoxyParamCaption})}
+
+
+
+Describes the internal representation of an event. (Iterate through all.) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events()}} call. \\
+\hline
+{\em prev\+\_\+event} & The previous description, either complete or the (emitter, description, weight) triple alone, or empty for the first.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+On success, it will return either tab separated emitter, description, weight, code (if store\+\_\+strings is true) or the same with hashes corresponding to strings instead of strings if false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a2de569ef1ce838c792058cbdf83772db}\label{reels_8cpp_a2de569ef1ce838c792058cbdf83772db}} 
+\index{reels.cpp@{reels.cpp}!events\_insert\_row@{events\_insert\_row}}
+\index{events\_insert\_row@{events\_insert\_row}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{events\_insert\_row()}{events\_insert\_row()}}
+{\footnotesize\ttfamily bool events\+\_\+insert\+\_\+row (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{p\+\_\+e,  }\item[{char $\ast$}]{p\+\_\+d,  }\item[{double}]{w }\end{DoxyParamCaption})}
+
+
+
+Process a row from a transaction file in an Events object stored by the Events\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events()}} call. \\
+\hline
+{\em p\+\_\+e} & The \char`\"{}emitter\char`\"{}. A C/\+Python string representing \char`\"{}owner of event\char`\"{}. \\
+\hline
+{\em p\+\_\+d} & The \char`\"{}description\char`\"{}. A C/\+Python string representing \char`\"{}the event\char`\"{}. \\
+\hline
+{\em w} & The \char`\"{}weight\char`\"{}. A double representing a weight of the event.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a1400d7800966cb443c4a82c2e9e10443}\label{reels_8cpp_a1400d7800966cb443c4a82c2e9e10443}} 
+\index{reels.cpp@{reels.cpp}!events\_load\_block@{events\_load\_block}}
+\index{events\_load\_block@{events\_load\_block}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{events\_load\_block()}{events\_load\_block()}}
+{\footnotesize\ttfamily bool events\+\_\+load\+\_\+block (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{p\+\_\+block }\end{DoxyParamCaption})}
+
+
+
+Pushes raw image blocks into an initially empty Events object and finally creates it already populated with the binary image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events()}} call. The object must be empty (never called). \\
+\hline
+{\em p\+\_\+block} & If non-\/empty, a block in the right order making a binary image obtained for a previous \mbox{\hyperlink{reels_8cpp_aa709548cdb33328a5d4c06dcd3859b37}{events\+\_\+save()}} call. If empty, an order to .load() the Events object and destroyed the previously stored blocks.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a8022b62b4130deed3d9e53584e475f62}\label{reels_8cpp_a8022b62b4130deed3d9e53584e475f62}} 
+\index{reels.cpp@{reels.cpp}!events\_num\_events@{events\_num\_events}}
+\index{events\_num\_events@{events\_num\_events}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{events\_num\_events()}{events\_num\_events()}}
+{\footnotesize\ttfamily int events\+\_\+num\+\_\+events (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Return the number of events stored in an Events object stored by the Events\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size of the internal \mbox{\hyperlink{namespacereels_a753be4488a8c210f29ee5ccd95f672b9}{Event\+Map()}} or a negative error code on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a56203860d375396bcb1b2002d4fd2837}\label{reels_8cpp_a56203860d375396bcb1b2002d4fd2837}} 
+\index{reels.cpp@{reels.cpp}!events\_optimize\_events@{events\_optimize\_events}}
+\index{events\_optimize\_events@{events\_optimize\_events}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{events\_optimize\_events()}{events\_optimize\_events()}}
+{\footnotesize\ttfamily char $\ast$ events\+\_\+optimize\+\_\+events (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{id\+\_\+clips,  }\item[{int}]{id\+\_\+targets,  }\item[{int}]{num\+\_\+steps,  }\item[{int}]{codes\+\_\+per\+\_\+step,  }\item[{double}]{threshold,  }\item[{char $\ast$}]{force\+\_\+include,  }\item[{char $\ast$}]{force\+\_\+exclude,  }\item[{char $\ast$}]{x\+\_\+form,  }\item[{char $\ast$}]{agg,  }\item[{double}]{p,  }\item[{int}]{depth,  }\item[{int}]{as\+\_\+states,  }\item[{double}]{exp\+\_\+decay,  }\item[{double}]{lower\+\_\+bound\+\_\+p,  }\item[{bool}]{log\+\_\+lift }\end{DoxyParamCaption})}
+
+
+
+Events optimizer. 
+
+Optimizes the events to maximize prediction signal. (F1 score over same number of positives.) It converts code values many-\/to-\/one trying to group event codes into categories that represent similar events.
+
+Before starting, a non-\/optimized Events object must be populated with an initial set of codes we want to reduce by assigning new many-\/to-\/one codes to them.
+
+The algorithm initially removes all codes not found in the clips object. This completely removes them.
+
+The algorithm builds a list of most promising (not already used) codes at the beginning of each step by full tree search. From that list, each code is tried downwards as \{noise, new\+\_\+code, last\+\_\+code\} for score improvement above threshold up to codes\+\_\+per\+\_\+step steps. And assigned a new code accordingly. The codes assigned become part of the internal Event\+Code\+Map and in the next step they will replace their old values.
+
+When the algorithm finishes, the internal Event\+Code\+Map is used to rename the object codes and the whole process is reported.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events()}} call. The object must be empty (never called). \\
+\hline
+{\em id\+\_\+clips} & The id of a clips object with the same codes and clips for a set of clients whose prediction we optimize. \\
+\hline
+{\em id\+\_\+targets} & The id of a Targets object whose internal Target\+Map defines the targets. (Internally a new Targets object will be used to make the predictions we want to optimize.) \\
+\hline
+{\em num\+\_\+steps} & The number of steps to iterate. The method will stop early if no codes are found at a step. \\
+\hline
+{\em codes\+\_\+per\+\_\+step} & The number of codes to be tried from the top of the priority list at each step. \\
+\hline
+{\em threshold} & A minimum threshold, below which a score change is not considered improvement. \\
+\hline
+{\em force\+\_\+include} & An optional pointer to a set of codes that must be included before starting. \\
+\hline
+{\em force\+\_\+exclude} & An optional pointer to a set of codes that will excluded and set to the base code. \\
+\hline
+{\em x\+\_\+form} & The x\+\_\+form argument to fit the internal Targets object prediction model. \\
+\hline
+{\em agg} & The agg argument to fit the internal Targets object prediction model. \\
+\hline
+{\em p} & The p argument to fit the internal Targets object prediction model. \\
+\hline
+{\em depth} & The depth argument to fit the internal Targets object prediction model. \\
+\hline
+{\em as\+\_\+states} & The as\+\_\+states argument to fit the internal Targets object prediction model. \\
+\hline
+{\em exp\+\_\+decay} & Exponential Decay Factor applied to the internal score in terms of depth. That score selects what codes enter the model. The decay is applied to the average tree depth. 0 is no decay, default value = 0.\+00693 decays to 0.\+5 in 100 steps. \\
+\hline
+{\em lower\+\_\+bound\+\_\+p} & Another p for lower bound, but applied to the scoring process rather than the model. \\
+\hline
+{\em log\+\_\+lift} & A boolean to set if lift (= LB(included)/\+LB(after inclusion)) is log() transformed or not.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A lf separated report string that contains either \char`\"{}\+ERROR\char`\"{} or \char`\"{}success\char`\"{} as the first line. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_aa709548cdb33328a5d4c06dcd3859b37}\label{reels_8cpp_aa709548cdb33328a5d4c06dcd3859b37}} 
+\index{reels.cpp@{reels.cpp}!events\_save@{events\_save}}
+\index{events\_save@{events\_save}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{events\_save()}{events\_save()}}
+{\footnotesize\ttfamily int events\+\_\+save (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Saves an Events object as a Binary\+Image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on error, or a binary\+\_\+image\+\_\+id \texorpdfstring{$>$}{>} 0 which is the same as id and must be destroyed using \mbox{\hyperlink{reels_8cpp_a566cc97eaa23f70556ecf2d6e428e292}{destroy\+\_\+binary\+\_\+image\+\_\+iterator()}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a0300b8a16dd484cb1e3852fb4b57b6c8}\label{reels_8cpp_a0300b8a16dd484cb1e3852fb4b57b6c8}} 
+\index{reels.cpp@{reels.cpp}!events\_set\_max\_num\_events@{events\_set\_max\_num\_events}}
+\index{events\_set\_max\_num\_events@{events\_set\_max\_num\_events}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{events\_set\_max\_num\_events()}{events\_set\_max\_num\_events()}}
+{\footnotesize\ttfamily bool events\+\_\+set\+\_\+max\+\_\+num\+\_\+events (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{max\+\_\+events }\end{DoxyParamCaption})}
+
+
+
+Sets the public property max\+\_\+num\+\_\+events in an Events object stored by the Events\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events()}} call. \\
+\hline
+{\em max\+\_\+events} & The value to apply to max\+\_\+num\+\_\+events.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a42a5a2671c63a26d5f8f4aa985be6afd}\label{reels_8cpp_a42a5a2671c63a26d5f8f4aa985be6afd}} 
+\index{reels.cpp@{reels.cpp}!events\_set\_store\_strings@{events\_set\_store\_strings}}
+\index{events\_set\_store\_strings@{events\_set\_store\_strings}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{events\_set\_store\_strings()}{events\_set\_store\_strings()}}
+{\footnotesize\ttfamily bool events\+\_\+set\+\_\+store\+\_\+strings (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{bool}]{store }\end{DoxyParamCaption})}
+
+
+
+Sets the public property store\+\_\+strings in an Events object stored by the Events\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events()}} call. \\
+\hline
+{\em store} & True for storing the string contents.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_ad453096538f0f4eb0578b41765d5da79}\label{reels_8cpp_ad453096538f0f4eb0578b41765d5da79}} 
+\index{reels.cpp@{reels.cpp}!image\_block\_as\_string@{image\_block\_as\_string}}
+\index{image\_block\_as\_string@{image\_block\_as\_string}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{image\_block\_as\_string()}{image\_block\_as\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily char $\ast$ image\+\_\+block\+\_\+as\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structreels_1_1ImageBlock}{Image\+Block}} \&}]{blk }\end{DoxyParamCaption})}
+
+
+
+Serializes a complete binary block (fixed size) as a base-\/64 string which is Python compatible. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blk} & An Image\+Block passed by reference.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The address of a fixed buffer big enough to hold the output. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a0b00567c9a0b17ae2c390c9512144d20}\label{reels_8cpp_a0b00567c9a0b17ae2c390c9512144d20}} 
+\index{reels.cpp@{reels.cpp}!image\_block\_as\_string@{image\_block\_as\_string}}
+\index{image\_block\_as\_string@{image\_block\_as\_string}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{image\_block\_as\_string()}{image\_block\_as\_string()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily char $\ast$ image\+\_\+block\+\_\+as\+\_\+string (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{p\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+Serializes a complete binary block (fixed size) as a base-\/64 string which is Python compatible. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+in} & The address of the Image\+Block as a generic unsigned pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The address of a fixed buffer big enough to hold the output. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}\label{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}} 
+\index{reels.cpp@{reels.cpp}!new\_clients@{new\_clients}}
+\index{new\_clients@{new\_clients}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{new\_clients()}{new\_clients()}}
+{\footnotesize\ttfamily int new\+\_\+clients (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create a new Clients object that can be used via the Python interface. 
+
+\begin{DoxyReturn}{Returns}
+A unique ID that can be passed as the id parameter for any method in the Python interface.
+\end{DoxyReturn}
+To free the resources allocated by this ID, the (python) caller must call \mbox{\hyperlink{reels_8cpp_a1f02bdc68ebf83208a374072f2ac02df}{destroy\+\_\+clients()}} with the id and never use the same id after that. \mbox{\Hypertarget{reels_8cpp_a26afee6065879429fa47c470a33722e2}\label{reels_8cpp_a26afee6065879429fa47c470a33722e2}} 
+\index{reels.cpp@{reels.cpp}!new\_clips@{new\_clips}}
+\index{new\_clips@{new\_clips}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{new\_clips()}{new\_clips()}}
+{\footnotesize\ttfamily int new\+\_\+clips (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+clients,  }\item[{int}]{id\+\_\+events }\end{DoxyParamCaption})}
+
+
+
+Create a new Clips object that can be used via the Python interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+\_\+clients} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_ad0f10235a85ca2ef5fa0f7d2d1dac347}{new\+\_\+clients()}} call passed to the constructor. \\
+\hline
+{\em id\+\_\+events} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}{new\+\_\+events()}} call passed to the constructor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A unique ID that can be passed as the id parameter for any method in the Python interface or -\/1 on error.
+\end{DoxyReturn}
+To free the resources allocated by this ID, the (python) caller must call \mbox{\hyperlink{reels_8cpp_aeddb42c1f87bcdcea77bd3eee2966eab}{destroy\+\_\+clips()}} with the id and never use the same id after that. \mbox{\Hypertarget{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}\label{reels_8cpp_afcb458b4621ac0bf9043272aef4f5aaf}} 
+\index{reels.cpp@{reels.cpp}!new\_events@{new\_events}}
+\index{new\_events@{new\_events}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{new\_events()}{new\_events()}}
+{\footnotesize\ttfamily int new\+\_\+events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create a new Events object that can be used via the Python interface. 
+
+\begin{DoxyReturn}{Returns}
+A unique ID that can be passed as the id parameter for any method in the Python interface.
+\end{DoxyReturn}
+To free the resources allocated by this ID, the (python) caller must call \mbox{\hyperlink{reels_8cpp_a1b1eee95286f755461f81578a0af189f}{destroy\+\_\+events()}} with the id and never use the same id after that. \mbox{\Hypertarget{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}\label{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}} 
+\index{reels.cpp@{reels.cpp}!new\_targets@{new\_targets}}
+\index{new\_targets@{new\_targets}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{new\_targets()}{new\_targets()}}
+{\footnotesize\ttfamily int new\+\_\+targets (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+clips }\end{DoxyParamCaption})}
+
+
+
+Create a new Targets object that can be used via the Python interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+\_\+clips} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a26afee6065879429fa47c470a33722e2}{new\+\_\+clips()}} call passed to the constructor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A unique ID that can be passed as the id parameter for any method in the Python interface or -\/1 on error.
+\end{DoxyReturn}
+To free the resources allocated by this ID, the (python) caller must call \mbox{\hyperlink{reels_8cpp_a26d7d3cee4d67d80ddc0a42cf6dd932d}{destroy\+\_\+targets()}} with the id and never use the same id after that. \mbox{\Hypertarget{reels_8cpp_aafdb452dd343c4d6aee60f6cfba9a0cd}\label{reels_8cpp_aafdb452dd343c4d6aee60f6cfba9a0cd}} 
+\index{reels.cpp@{reels.cpp}!next\_binary\_image\_iterator@{next\_binary\_image\_iterator}}
+\index{next\_binary\_image\_iterator@{next\_binary\_image\_iterator}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{next\_binary\_image\_iterator()}{next\_binary\_image\_iterator()}}
+{\footnotesize\ttfamily char $\ast$ next\+\_\+binary\+\_\+image\+\_\+iterator (\begin{DoxyParamCaption}\item[{int}]{image\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Return the first unread binary images block in an iterator returned by a save\+\_\+as\+\_\+binary\+\_\+image() call. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image\+\_\+id} & The image\+\_\+id returned by a previous save\+\_\+as\+\_\+binary\+\_\+image() call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The the binary image block serialized as base64 or an empty string on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a77ef131d5aeaf5bf4cdb2029a77edac6}\label{reels_8cpp_a77ef131d5aeaf5bf4cdb2029a77edac6}} 
+\index{reels.cpp@{reels.cpp}!next\_result\_iterator@{next\_result\_iterator}}
+\index{next\_result\_iterator@{next\_result\_iterator}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{next\_result\_iterator()}{next\_result\_iterator()}}
+{\footnotesize\ttfamily double next\+\_\+result\+\_\+iterator (\begin{DoxyParamCaption}\item[{int}]{iter\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Return the first unread item in an iterator returned by predict(). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iter\+\_\+id} & The iter\+\_\+id returned by a previous predict() call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The str\+\_\+id of an insert()-\/ed set that matches the query. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a3df92e45e3ed99c4714a0f1fc5a225fe}\label{reels_8cpp_a3df92e45e3ed99c4714a0f1fc5a225fe}} 
+\index{reels.cpp@{reels.cpp}!parse\_bin\_event\_pt@{parse\_bin\_event\_pt}}
+\index{parse\_bin\_event\_pt@{parse\_bin\_event\_pt}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{parse\_bin\_event\_pt()}{parse\_bin\_event\_pt()}}
+{\footnotesize\ttfamily bool parse\+\_\+bin\+\_\+event\+\_\+pt (\begin{DoxyParamCaption}\item[{char $\ast$}]{line,  }\item[{\mbox{\hyperlink{structreels_1_1BinEventPt}{Bin\+Event\+Pt}} \&}]{ev }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{reels_8cpp_aeff6e218dbf358e0b407f9ecfa77a8f1}\label{reels_8cpp_aeff6e218dbf358e0b407f9ecfa77a8f1}} 
+\index{reels.cpp@{reels.cpp}!size\_binary\_image\_iterator@{size\_binary\_image\_iterator}}
+\index{size\_binary\_image\_iterator@{size\_binary\_image\_iterator}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{size\_binary\_image\_iterator()}{size\_binary\_image\_iterator()}}
+{\footnotesize\ttfamily int size\+\_\+binary\+\_\+image\+\_\+iterator (\begin{DoxyParamCaption}\item[{int}]{image\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Return the number of unread binary images blocks in an iterator returned by a save\+\_\+as\+\_\+binary\+\_\+image() call. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image\+\_\+id} & The image\+\_\+id returned by a previous save\+\_\+as\+\_\+binary\+\_\+image() call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of unread blocks in the iterator. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a53885dfb086174337b17c8735d139f5e}\label{reels_8cpp_a53885dfb086174337b17c8735d139f5e}} 
+\index{reels.cpp@{reels.cpp}!size\_result\_iterator@{size\_result\_iterator}}
+\index{size\_result\_iterator@{size\_result\_iterator}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{size\_result\_iterator()}{size\_result\_iterator()}}
+{\footnotesize\ttfamily int size\+\_\+result\+\_\+iterator (\begin{DoxyParamCaption}\item[{int}]{iter\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Return the number of unread items in an iterator returned by predict(). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iter\+\_\+id} & The iter\+\_\+id returned by a previous predict() call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of unread items in the iterator. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a824686b1b9a5de641bbeaad372e299a0}\label{reels_8cpp_a824686b1b9a5de641bbeaad372e299a0}} 
+\index{reels.cpp@{reels.cpp}!string\_as\_image\_block@{string\_as\_image\_block}}
+\index{string\_as\_image\_block@{string\_as\_image\_block}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{string\_as\_image\_block()}{string\_as\_image\_block()}}
+{\footnotesize\ttfamily bool string\+\_\+as\+\_\+image\+\_\+block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structreels_1_1ImageBlock}{Image\+Block}} \&}]{blk,  }\item[{char $\ast$}]{p\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+Deserializes a base-\/64 string which is Python compatible as a complete binary Image\+Block (fixed size). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blk} & An Image\+Block passed by reference. \\
+\hline
+{\em p\+\_\+in} & The address of the Image\+Block as a generic unsigned pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The address of a fixed buffer big enough to hold the output. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a809b6ef0dc79505fcdf6214ec35afb6e}\label{reels_8cpp_a809b6ef0dc79505fcdf6214ec35afb6e}} 
+\index{reels.cpp@{reels.cpp}!targets\_describe\_tree@{targets\_describe\_tree}}
+\index{targets\_describe\_tree@{targets\_describe\_tree}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_describe\_tree()}{targets\_describe\_tree()}}
+{\footnotesize\ttfamily char $\ast$ targets\+\_\+describe\+\_\+tree (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Describes some statistics of a fitted tree inside a Targets object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+On success, it will return a descriptive text with node count numbers for different node content. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a3fd9221ddfb27fd9b3734d78866a43c2}\label{reels_8cpp_a3fd9221ddfb27fd9b3734d78866a43c2}} 
+\index{reels.cpp@{reels.cpp}!targets\_describe\_tree\_node@{targets\_describe\_tree\_node}}
+\index{targets\_describe\_tree\_node@{targets\_describe\_tree\_node}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_describe\_tree\_node()}{targets\_describe\_tree\_node()}}
+{\footnotesize\ttfamily char $\ast$ targets\+\_\+describe\+\_\+tree\+\_\+node (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{idx }\end{DoxyParamCaption})}
+
+
+
+Describes the internal representation of a tree node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call. \\
+\hline
+{\em idx} & The index of the node in the tree, typically navigated using \mbox{\hyperlink{reels_8cpp_aa6c752809c19cac0a3b5ec32927b1643}{targets\+\_\+tree\+\_\+node\+\_\+idx()}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+On success, it will return a tab separated list n\+\_\+seen, n\+\_\+target, sum\+\_\+time\+\_\+d, num\+\_\+codes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a7f05da583a9a47fe8c1e71683426b548}\label{reels_8cpp_a7f05da583a9a47fe8c1e71683426b548}} 
+\index{reels.cpp@{reels.cpp}!targets\_fit@{targets\_fit}}
+\index{targets\_fit@{targets\_fit}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_fit()}{targets\_fit()}}
+{\footnotesize\ttfamily bool targets\+\_\+fit (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{x\+\_\+form,  }\item[{char $\ast$}]{agg,  }\item[{double}]{p,  }\item[{int}]{depth,  }\item[{int}]{as\+\_\+states }\end{DoxyParamCaption})}
+
+
+
+Fit the prediction model in a Targets object stored by the Targets\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call. \\
+\hline
+{\em x\+\_\+form} & A possible transformation of the times. (Currently \char`\"{}log\char`\"{} or \char`\"{}linear\char`\"{}.) \\
+\hline
+{\em agg} & The mechanism used for the aggregation. (Currently \char`\"{}minimax\char`\"{}, \char`\"{}mean\char`\"{} or \char`\"{}longest\char`\"{}.) \\
+\hline
+{\em p} & The width of the confidence interval for the binomial proportion used to calculate the lower bound. (E.\+g., p = 0.\+5 will estimate a lower bound of a symmetric CI with coverage of 0.\+5.) \\
+\hline
+{\em depth} & The maximum depth of the tree (maximum sequence length learned). \\
+\hline
+{\em as\+\_\+states} & Treat events as states by removing repeated ones from the Clip\+Map keeping the time of the first instance only. When used, the Clip\+Map passed to the constructor by reference will be converted to states as a side effect.\\
+\hline
+\end{DoxyParams}
+Fit can only be called once in the life of a Targets object and predict() cannot be called before fit().
+
+\begin{DoxyReturn}{Returns}
+True on success. Error if already fitted, wrong arguments or the id is not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_aedb84d36994fe317311426c8e80c6b47}\label{reels_8cpp_aedb84d36994fe317311426c8e80c6b47}} 
+\index{reels.cpp@{reels.cpp}!targets\_insert\_target@{targets\_insert\_target}}
+\index{targets\_insert\_target@{targets\_insert\_target}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_insert\_target()}{targets\_insert\_target()}}
+{\footnotesize\ttfamily bool targets\+\_\+insert\+\_\+target (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{p\+\_\+c,  }\item[{char $\ast$}]{p\+\_\+t }\end{DoxyParamCaption})}
+
+
+
+Utility to fill the internal Target\+Map target in a Targets object stored by the Targets\+Server. 
+
+The Target\+Map can be initialized and given to the constructor, or an empty Target\+Map can be given to the constructor ans initialized by this method. From the python interface only the latter is available.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call. \\
+\hline
+{\em p\+\_\+c} & The \char`\"{}client\char`\"{}. A C/\+Python string representing \char`\"{}the actor\char`\"{}. \\
+\hline
+{\em p\+\_\+t} & The \char`\"{}time\char`\"{}. A timestamp of the event as a C/\+Python string. (The format is given via set\+\_\+time\+\_\+format().)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on new clients. False if the client is already in the Target\+Map or the time is in the wrong format. Also false if the id is not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_abc04894dc2f7914d71799ef1022cb31c}\label{reels_8cpp_abc04894dc2f7914d71799ef1022cb31c}} 
+\index{reels.cpp@{reels.cpp}!targets\_load\_block@{targets\_load\_block}}
+\index{targets\_load\_block@{targets\_load\_block}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_load\_block()}{targets\_load\_block()}}
+{\footnotesize\ttfamily bool targets\+\_\+load\+\_\+block (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{p\+\_\+block }\end{DoxyParamCaption})}
+
+
+
+Pushes raw image blocks into an initially empty Targets object and finally creates it already populated with the binary image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call. The object must be empty (never called). \\
+\hline
+{\em p\+\_\+block} & If non-\/empty, a block in the right order making a binary image obtained for a previous \mbox{\hyperlink{reels_8cpp_a463625a3ae6b1f3ce4d593c929738085}{targets\+\_\+save()}} call. If empty, an order to .load() the Targets object and destroyed the previously stored blocks.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a64aea04d119b92acfb840f60b61ad786}\label{reels_8cpp_a64aea04d119b92acfb840f60b61ad786}} 
+\index{reels.cpp@{reels.cpp}!targets\_num\_targets@{targets\_num\_targets}}
+\index{targets\_num\_targets@{targets\_num\_targets}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_num\_targets()}{targets\_num\_targets()}}
+{\footnotesize\ttfamily int targets\+\_\+num\+\_\+targets (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Returns the number of target points stored in the internal target variable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1 on error (wrong id) or the size. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a8eb56c20d36fd72344ba89a2b9d2605d}\label{reels_8cpp_a8eb56c20d36fd72344ba89a2b9d2605d}} 
+\index{reels.cpp@{reels.cpp}!targets\_predict\_clients@{targets\_predict\_clients}}
+\index{targets\_predict\_clients@{targets\_predict\_clients}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_predict\_clients()}{targets\_predict\_clients()}}
+{\footnotesize\ttfamily int targets\+\_\+predict\+\_\+clients (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{id\+\_\+clients }\end{DoxyParamCaption})}
+
+
+
+Predict time to target for all the clients in a given Clients object whose clips have been used to fit the model in a Targets object stored by the Targets\+Server. 
+
+\begin{DoxyVerb}predict() cannot be called before fit() and can be called any number of times in all overloaded forms after that.
+
+\param id         The id returned by a previous new_targets() call.
+\param id_clients The id returned by a previous new_clients() call passed to the constructor.
+
+\return  The index of an iterator (valid for size_result_iterator(), next_result_iterator() and destroy_result_iterator() calls)
+with the times of the predictions in seconds or -1 on error such as id not found.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{reels_8cpp_a300bd5f2a694adece9d1f3facf45ea82}\label{reels_8cpp_a300bd5f2a694adece9d1f3facf45ea82}} 
+\index{reels.cpp@{reels.cpp}!targets\_predict\_clips@{targets\_predict\_clips}}
+\index{targets\_predict\_clips@{targets\_predict\_clips}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_predict\_clips()}{targets\_predict\_clips()}}
+{\footnotesize\ttfamily int targets\+\_\+predict\+\_\+clips (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{id\+\_\+clips }\end{DoxyParamCaption})}
+
+
+
+Predict time to target for a set of clients whose clips are given in a Clip\+Map in a Targets object stored by the Targets\+Server. 
+
+predict() cannot be called before fit() and can be called any number of times in all overloaded forms after that.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call. \\
+\hline
+{\em id\+\_\+clips} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a26afee6065879429fa47c470a33722e2}{new\+\_\+clips()}} call passed to the constructor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of an iterator (valid for \mbox{\hyperlink{reels_8cpp_a53885dfb086174337b17c8735d139f5e}{size\+\_\+result\+\_\+iterator()}}, \mbox{\hyperlink{reels_8cpp_a77ef131d5aeaf5bf4cdb2029a77edac6}{next\+\_\+result\+\_\+iterator()}} and \mbox{\hyperlink{reels_8cpp_aa097c9d0837284cbaa1861c4565b2e59}{destroy\+\_\+result\+\_\+iterator()}} calls) with the times of the predictions in seconds or -\/1 on error such as id not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a463625a3ae6b1f3ce4d593c929738085}\label{reels_8cpp_a463625a3ae6b1f3ce4d593c929738085}} 
+\index{reels.cpp@{reels.cpp}!targets\_save@{targets\_save}}
+\index{targets\_save@{targets\_save}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_save()}{targets\_save()}}
+{\footnotesize\ttfamily int targets\+\_\+save (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Saves an Targets object as a Binary\+Image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on error, or a binary\+\_\+image\+\_\+id \texorpdfstring{$>$}{>} 0 which is the same as id and must be destroyed using \mbox{\hyperlink{reels_8cpp_a566cc97eaa23f70556ecf2d6e428e292}{destroy\+\_\+binary\+\_\+image\+\_\+iterator()}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_aa312c85d4ab4b01ab01a84a0c88ec8ae}\label{reels_8cpp_aa312c85d4ab4b01ab01a84a0c88ec8ae}} 
+\index{reels.cpp@{reels.cpp}!targets\_set\_time\_format@{targets\_set\_time\_format}}
+\index{targets\_set\_time\_format@{targets\_set\_time\_format}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_set\_time\_format()}{targets\_set\_time\_format()}}
+{\footnotesize\ttfamily bool targets\+\_\+set\+\_\+time\+\_\+format (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{char $\ast$}]{fmt }\end{DoxyParamCaption})}
+
+
+
+Sets the public property time\+\_\+format to simplify the python interface in a Targets object stored by the Targets\+Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call. \\
+\hline
+{\em fmt} & The time format in standard calendar time format \href{http://www.gnu.org/software/libc/manual/html_node/Formatting-Calendar-Time.html}{\texttt{ http\+://www.\+gnu.\+org/software/libc/manual/html\+\_\+node/\+Formatting-\/\+Calendar-\/\+Time.\+html}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on valid id. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_a077ca0e22940e753bc304e4924b1b486}\label{reels_8cpp_a077ca0e22940e753bc304e4924b1b486}} 
+\index{reels.cpp@{reels.cpp}!targets\_tree\_node\_children@{targets\_tree\_node\_children}}
+\index{targets\_tree\_node\_children@{targets\_tree\_node\_children}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_tree\_node\_children()}{targets\_tree\_node\_children()}}
+{\footnotesize\ttfamily char $\ast$ targets\+\_\+tree\+\_\+node\+\_\+children (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{idx }\end{DoxyParamCaption})}
+
+
+
+Lists the children of a tree node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call. \\
+\hline
+{\em idx} & The index of the node in the tree, typically navigated using \mbox{\hyperlink{reels_8cpp_aa6c752809c19cac0a3b5ec32927b1643}{targets\+\_\+tree\+\_\+node\+\_\+idx()}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+On success, it will return a tab separated list of integer codes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{reels_8cpp_aa6c752809c19cac0a3b5ec32927b1643}\label{reels_8cpp_aa6c752809c19cac0a3b5ec32927b1643}} 
+\index{reels.cpp@{reels.cpp}!targets\_tree\_node\_idx@{targets\_tree\_node\_idx}}
+\index{targets\_tree\_node\_idx@{targets\_tree\_node\_idx}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_tree\_node\_idx()}{targets\_tree\_node\_idx()}}
+{\footnotesize\ttfamily int targets\+\_\+tree\+\_\+node\+\_\+idx (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{parent\+\_\+idx,  }\item[{int}]{code }\end{DoxyParamCaption})}
+
+
+
+Returns the index of a tree node by parent node and code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id returned by a previous \mbox{\hyperlink{reels_8cpp_a1b1165c1e44b7298de6ea167bdbd2d4e}{new\+\_\+targets()}} call. \\
+\hline
+{\em parent\+\_\+idx} & The index of the parent node which is either 0 for root or returned from a previous \mbox{\hyperlink{reels_8cpp_aa6c752809c19cac0a3b5ec32927b1643}{targets\+\_\+tree\+\_\+node\+\_\+idx()}} call. \\
+\hline
+{\em code} & The code that leads in the tree from the parent node to the child node.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+On success, i.\+e, if both the parent index exists and contains the code, it will return the index of the child (-\/1 otherwise). 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{reels_8cpp_a87c6228e206d40acd8bb922514f65270}\label{reels_8cpp_a87c6228e206d40acd8bb922514f65270}} 
+\index{reels.cpp@{reels.cpp}!answer\_block@{answer\_block}}
+\index{answer\_block@{answer\_block}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{answer\_block}{answer\_block}}
+{\footnotesize\ttfamily char answer\+\_\+block\mbox{[}8208\mbox{]}}
+
+\mbox{\Hypertarget{reels_8cpp_a3ce3af741592ed7c6bbc6bca94a81ca7}\label{reels_8cpp_a3ce3af741592ed7c6bbc6bca94a81ca7}} 
+\index{reels.cpp@{reels.cpp}!answer\_buffer@{answer\_buffer}}
+\index{answer\_buffer@{answer\_buffer}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{answer\_buffer}{answer\_buffer}}
+{\footnotesize\ttfamily char answer\+\_\+buffer\mbox{[}8192\mbox{]}}
+
+\mbox{\Hypertarget{reels_8cpp_a81f444de1743a2379339d2dcc4094bad}\label{reels_8cpp_a81f444de1743a2379339d2dcc4094bad}} 
+\index{reels.cpp@{reels.cpp}!b64chars@{b64chars}}
+\index{b64chars@{b64chars}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{b64chars}{b64chars}}
+{\footnotesize\ttfamily char b64chars\mbox{[}$\,$\mbox{]} = \char`\"{}ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\char`\"{}}
+
+\mbox{\Hypertarget{reels_8cpp_a7bf7e1476e68f28be16d2d7642ced87d}\label{reels_8cpp_a7bf7e1476e68f28be16d2d7642ced87d}} 
+\index{reels.cpp@{reels.cpp}!b64inverse@{b64inverse}}
+\index{b64inverse@{b64inverse}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{b64inverse}{b64inverse}}
+{\footnotesize\ttfamily uint8\+\_\+t b64inverse\mbox{[}256\mbox{]} = \{0\}}
+
+\mbox{\Hypertarget{reels_8cpp_a34446db4a13547becf65df7e3e1e531d}\label{reels_8cpp_a34446db4a13547becf65df7e3e1e531d}} 
+\index{reels.cpp@{reels.cpp}!clients@{clients}}
+\index{clients@{clients}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clients}{clients}}
+{\footnotesize\ttfamily \mbox{\hyperlink{reels_8cpp_a4e25c11c449f301098e5b0aeb0bb632f}{Clients\+Server}} clients = \{\}}
+
+\mbox{\Hypertarget{reels_8cpp_a49156e4ede1f500653de726716ecb0da}\label{reels_8cpp_a49156e4ede1f500653de726716ecb0da}} 
+\index{reels.cpp@{reels.cpp}!clients\_num@{clients\_num}}
+\index{clients\_num@{clients\_num}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clients\_num}{clients\_num}}
+{\footnotesize\ttfamily int clients\+\_\+num = 0}
+
+\mbox{\Hypertarget{reels_8cpp_a6305b7146e5de73a648a38b46d1ac549}\label{reels_8cpp_a6305b7146e5de73a648a38b46d1ac549}} 
+\index{reels.cpp@{reels.cpp}!clips@{clips}}
+\index{clips@{clips}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clips}{clips}}
+{\footnotesize\ttfamily \mbox{\hyperlink{reels_8cpp_a658506fbff411a4d274e520a5f4710d4}{Clips\+Server}} clips = \{\}}
+
+\mbox{\Hypertarget{reels_8cpp_ac9dda8c6e744f3a852a9d26a699562d9}\label{reels_8cpp_ac9dda8c6e744f3a852a9d26a699562d9}} 
+\index{reels.cpp@{reels.cpp}!clips\_num@{clips\_num}}
+\index{clips\_num@{clips\_num}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{clips\_num}{clips\_num}}
+{\footnotesize\ttfamily int clips\+\_\+num = 0}
+
+\mbox{\Hypertarget{reels_8cpp_adce2424a16866ae1bbce30758fc6ee65}\label{reels_8cpp_adce2424a16866ae1bbce30758fc6ee65}} 
+\index{reels.cpp@{reels.cpp}!events@{events}}
+\index{events@{events}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{events}{events}}
+{\footnotesize\ttfamily \mbox{\hyperlink{reels_8cpp_a4621445be2bfec6306819879d877c997}{Events\+Server}} events = \{\}}
+
+\mbox{\Hypertarget{reels_8cpp_a10449e0245aee2d28b0bd8178e95235d}\label{reels_8cpp_a10449e0245aee2d28b0bd8178e95235d}} 
+\index{reels.cpp@{reels.cpp}!events\_num@{events\_num}}
+\index{events\_num@{events\_num}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{events\_num}{events\_num}}
+{\footnotesize\ttfamily int events\+\_\+num = 0}
+
+\mbox{\Hypertarget{reels_8cpp_aa15ca750c1f18e56d3a75eee54c1ca5b}\label{reels_8cpp_aa15ca750c1f18e56d3a75eee54c1ca5b}} 
+\index{reels.cpp@{reels.cpp}!image@{image}}
+\index{image@{image}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{image}{image}}
+{\footnotesize\ttfamily \mbox{\hyperlink{reels_8cpp_afe560789669a8dbab1aefb1a0e5ccd6c}{Binary\+Image\+Server}} image = \{\}}
+
+\mbox{\Hypertarget{reels_8cpp_a7696818d31f6a0962bcdb14726cbd060}\label{reels_8cpp_a7696818d31f6a0962bcdb14726cbd060}} 
+\index{reels.cpp@{reels.cpp}!it\_times@{it\_times}}
+\index{it\_times@{it\_times}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{it\_times}{it\_times}}
+{\footnotesize\ttfamily \mbox{\hyperlink{reels_8cpp_a435fe75898f20ef1faaf2cf581c332b0}{Iter\+Times\+Server}} it\+\_\+times = \{\}}
+
+\mbox{\Hypertarget{reels_8cpp_a16b081240ad2b32553c5b70fb0dc148e}\label{reels_8cpp_a16b081240ad2b32553c5b70fb0dc148e}} 
+\index{reels.cpp@{reels.cpp}!it\_times\_num@{it\_times\_num}}
+\index{it\_times\_num@{it\_times\_num}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{it\_times\_num}{it\_times\_num}}
+{\footnotesize\ttfamily int it\+\_\+times\+\_\+num = 0}
+
+\mbox{\Hypertarget{reels_8cpp_ad6a5c79e1d169ef1a4db6c30c58252b2}\label{reels_8cpp_ad6a5c79e1d169ef1a4db6c30c58252b2}} 
+\index{reels.cpp@{reels.cpp}!targets@{targets}}
+\index{targets@{targets}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets}{targets}}
+{\footnotesize\ttfamily \mbox{\hyperlink{reels_8cpp_adc2ff60e6ffba59a6a3d7d8f7fccd995}{Targets\+Server}} targets = \{\}}
+
+\mbox{\Hypertarget{reels_8cpp_a81816c2281f290eca2d9a80a2d89c6e5}\label{reels_8cpp_a81816c2281f290eca2d9a80a2d89c6e5}} 
+\index{reels.cpp@{reels.cpp}!targets\_num@{targets\_num}}
+\index{targets\_num@{targets\_num}!reels.cpp@{reels.cpp}}
+\doxysubsubsection{\texorpdfstring{targets\_num}{targets\_num}}
+{\footnotesize\ttfamily int targets\+\_\+num = 0}
+

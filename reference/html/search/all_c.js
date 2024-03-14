@@ -7,8 +7,14 @@ var searchData=
   ['n_5fsucc_5fseen_4',['n_succ_seen',['../structreels_1_1CodeInTreeStatistics.html#a97e0770acc8c04a6fb8dc58b5d5d17a0',1,'reels::CodeInTreeStatistics']]],
   ['n_5fsucc_5ftarget_5',['n_succ_target',['../structreels_1_1CodeInTreeStatistics.html#a454ffa4668c040f6b59a175643422a35',1,'reels::CodeInTreeStatistics']]],
   ['n_5ftarget_6',['n_target',['../structreels_1_1CodeTreeNode.html#a145bc4c7e28bb08a825a3e9e6536cd64',1,'reels::CodeTreeNode']]],
-  ['normal_5fcdf_7',['normal_cdf',['../classreels_1_1Targets.html#afbff88985aa0045475304bc3a56b0ff3',1,'reels::Targets']]],
-  ['normal_5fpdf_8',['normal_pdf',['../classreels_1_1Targets.html#a6dca89e79ea2f68868bd17326b5d19d5',1,'reels::Targets']]],
-  ['num_5fevents_9',['num_events',['../classreels_1_1Events.html#a5249983ac63ead8eeecc5b6de7fb1fee',1,'reels::Events::num_events()'],['../classreels_1_1Clips.html#ab6831205dd7596c2a7b4880cbd6bebb6',1,'reels::Clips::num_events()']]],
-  ['num_5ftargets_10',['num_targets',['../classreels_1_1Targets.html#a194426a4f66ca447b433b1483c6f9b08',1,'reels::Targets']]]
+  ['new_5fclients_7',['new_clients',['../reels_8cpp.html#ad0f10235a85ca2ef5fa0f7d2d1dac347',1,'reels.cpp']]],
+  ['new_5fclips_8',['new_clips',['../reels_8cpp.html#a26afee6065879429fa47c470a33722e2',1,'reels.cpp']]],
+  ['new_5fevents_9',['new_events',['../reels_8cpp.html#afcb458b4621ac0bf9043272aef4f5aaf',1,'reels.cpp']]],
+  ['new_5ftargets_10',['new_targets',['../reels_8cpp.html#a1b1165c1e44b7298de6ea167bdbd2d4e',1,'reels.cpp']]],
+  ['next_5fbinary_5fimage_5fiterator_11',['next_binary_image_iterator',['../reels_8cpp.html#aafdb452dd343c4d6aee60f6cfba9a0cd',1,'reels.cpp']]],
+  ['next_5fresult_5fiterator_12',['next_result_iterator',['../reels_8cpp.html#a77ef131d5aeaf5bf4cdb2029a77edac6',1,'reels.cpp']]],
+  ['normal_5fcdf_13',['normal_cdf',['../classreels_1_1Targets.html#afbff88985aa0045475304bc3a56b0ff3',1,'reels::Targets']]],
+  ['normal_5fpdf_14',['normal_pdf',['../classreels_1_1Targets.html#a6dca89e79ea2f68868bd17326b5d19d5',1,'reels::Targets']]],
+  ['num_5fevents_15',['num_events',['../classreels_1_1Clips.html#ab6831205dd7596c2a7b4880cbd6bebb6',1,'reels::Clips::num_events()'],['../classreels_1_1Events.html#a5249983ac63ead8eeecc5b6de7fb1fee',1,'reels::Events::num_events()']]],
+  ['num_5ftargets_16',['num_targets',['../classreels_1_1Targets.html#a194426a4f66ca447b433b1483c6f9b08',1,'reels::Targets']]]
 ];
