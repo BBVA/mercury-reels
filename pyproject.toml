@@ -16,7 +16,8 @@ authors			= [{name = 'Mercury Team', email = 'mercury.group@bbva.com'}]
 readme			= 'README.md'
 
 [tool.setuptools]
-package-dir		= {'' = 'src'}
+package-dir			 = {'' = 'src'}
+include-package-data = true
 
 [tool.setuptools.packages.find]
 where			= ['src']
