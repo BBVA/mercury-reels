@@ -1,3 +1,5 @@
 include src/reels/_py_reels.so
 
 graft src/reels/
+
+recursive-include notebooks *
