@@ -475,8 +475,54 @@ SCENARIO("Basic math") {
 extern int new_events();
 extern bool destroy_events(int id);
 extern bool events_insert_row(int id, char *p_e, char *p_d, double w);
+extern bool events_define_event(int id, char *p_e, char *p_d, double w, int code);
 extern char *events_describe_next_event(int id, char *prev_event);
 extern bool events_set_store_strings(int id, bool store);
+extern int events_num_events(int id);
+
+extern int new_clients();
+extern bool destroy_clients(int id);
+extern char *clients_hash_client_id(int id, char *p_cli);
+extern bool clients_add_client_id(int id, char *p_cli);
+extern char *clients_hash_by_index(int id, int idx);
+extern int clients_num_clients(int id);
+extern bool clients_load_block(int id, char *p_block);
+extern int clients_save(int id);
+
+extern int new_clips(int id_clients, int id_events);
+extern bool destroy_clips(int id);
+extern bool clips_set_time_format(int id, char *fmt);
+extern bool clips_scan_event(int id, char *p_e, char *p_d, double w, char *p_c, char *p_t);
+extern char *clips_hash_by_previous(int id, char *prev_hash);
+extern bool clips_load_block(int id, char *p_block);
+extern int clips_save(int id);
+extern char *clips_describe_clip(int id, char *client_id);
+extern int clips_num_clips(int id);
+extern int clips_num_events(int id);
+
+extern int new_targets(int id_clips);
+extern bool destroy_targets(int id);
+extern bool targets_set_time_format(int id, char *fmt);
+extern bool targets_insert_target(int id, char *p_c, char *p_t);
+extern bool targets_fit(int id, char *x_form, char *agg, double p, int depth, int as_states);
+extern int targets_predict_clients(int id, int id_clients);
+extern int targets_predict_clips(int id, int id_clips);
+extern bool targets_load_block(int id, char *p_block);
+extern int targets_save(int id);
+extern int targets_num_targets(int id);
+extern int targets_tree_node_idx(int id, int parent_idx, int code);
+extern char *targets_tree_node_children(int id, int idx);
+extern char *targets_describe_tree_node(int id, int idx);
+extern char *targets_describe_tree(int id);
+
+extern int size_result_iterator(int iter_id);
+extern double next_result_iterator(int iter_id);
+extern void destroy_result_iterator(int iter_id);
+
+extern int size_binary_image_iterator(int image_id);
+extern char *next_binary_image_iterator(int image_id);
+extern bool destroy_binary_image_iterator(int image_id);
+
 
 SCENARIO("Test Events") {
 
@@ -1746,6 +1792,182 @@ SCENARIO("Test Targets.save() / Targets.load()") {
 			}
 		}
 	}
+}
+
+
+SCENARIO("Extended Testing Emulating the Python API ") {
+
+	int ev_id = new_events();
+
+	REQUIRE(events_define_event(ev_id, (char *) "emi_A", (char *) "descr_A", 1.0, 1));
+	REQUIRE(events_define_event(ev_id, (char *) "emi_B", (char *) "descr_B", 1.0, 2));
+	REQUIRE(events_num_events(ev_id) == 2);
+
+	int cl_id = new_clients();
+
+	REQUIRE(!clients_add_client_id(cl_id, (char *) ""));
+	REQUIRE(clients_add_client_id(cl_id, (char *) "cli_A"));
+	REQUIRE(clients_add_client_id(cl_id, (char *) "cli_B"));
+	REQUIRE(!clients_add_client_id(cl_id, (char *) "cli_B"));
+	REQUIRE(clients_num_clients(cl_id) == 2);
+
+	String hash_a = clients_hash_client_id(cl_id, (char *) "cli_A");
+	String hash_a_idx = clients_hash_by_index(cl_id, 0);
+
+	REQUIRE(hash_a.length() == 18);
+	REQUIRE(hash_a == hash_a_idx);
+
+	int clips_id = new_clips(cl_id, ev_id);
+	REQUIRE(clips_id > 0);
+	REQUIRE(clips_set_time_format(clips_id, (char *) "%Y-%m-%d %H:%M:%S"));
+
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:00:00"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_B", (char *) "descr_B", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:01:00"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_B", (char *) "2022-06-04 10:00:30"));
+	REQUIRE(!clips_scan_event(clips_id, (char *) "emi_X", (char *) "descr_X", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:02:00"));
+	REQUIRE(!clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_X", (char *) "2022-06-04 10:02:00"));
+
+	REQUIRE(clips_num_clips(clips_id) == 2);
+	REQUIRE(clips_num_events(clips_id) == 3);
+
+	String hash_first = clips_hash_by_previous(clips_id, (char *) "");
+	String hash_second = clips_hash_by_previous(clips_id, (char *) hash_first.c_str());
+	String hash_none = clips_hash_by_previous(clips_id, (char *) hash_second.c_str());
+
+	REQUIRE(hash_first.length() == 18);
+	REQUIRE(hash_second.length() == 18);
+	REQUIRE(hash_first != hash_second);
+	REQUIRE(hash_none.length() == 0);
+
+	String clip_desc = clips_describe_clip(clips_id, (char *) "cli_A");
+	REQUIRE(clip_desc == "1\t2");
+
+	int targ_id = new_targets(clips_id);
+	REQUIRE(targ_id > 0);
+	REQUIRE(targets_set_time_format(targ_id, (char *) "%Y-%m-%d %H:%M:%S"));
+	REQUIRE(targets_insert_target(targ_id, (char *) "cli_A", (char *) "2022-06-04 10:02:00"));
+	REQUIRE(!targets_insert_target(targ_id, (char *) "cli_A", (char *) "2022-06-04 10:02:00"));
+	REQUIRE(targets_num_targets(targ_id) == 1);
+	REQUIRE(targets_fit(targ_id, (char *) "log", (char *) "mean", 0.5, 5, 0));
+
+	String tree_desc = targets_describe_tree(targ_id);
+	String root_children = targets_tree_node_children(targ_id, 0);
+
+	REQUIRE(tree_desc.length() > 0);
+	REQUIRE(root_children.length() > 0);
+
+	int child_code = 0;
+	REQUIRE(sscanf(root_children.c_str(), "%i", &child_code) == 1);
+
+	int child_idx = targets_tree_node_idx(targ_id, 0, child_code);
+	REQUIRE(child_idx >= 0);
+
+	String node_desc = targets_describe_tree_node(targ_id, child_idx);
+	REQUIRE(node_desc.length() > 0);
+
+	int it_pred = targets_predict_clients(targ_id, cl_id);
+	REQUIRE(it_pred > 0);
+	REQUIRE(size_result_iterator(it_pred) == 2);
+
+	double pred_1 = next_result_iterator(it_pred);
+	double pred_2 = next_result_iterator(it_pred);
+
+	REQUIRE(size_result_iterator(it_pred) == 0);
+	REQUIRE(pred_1 > 0);
+	REQUIRE(pred_2 > 0);
+
+	destroy_result_iterator(it_pred);
+
+	int it_pred_clips = targets_predict_clips(targ_id, clips_id);
+	REQUIRE(it_pred_clips > 0);
+	REQUIRE(size_result_iterator(it_pred_clips) == 2);
+	next_result_iterator(it_pred_clips);
+	next_result_iterator(it_pred_clips);
+	destroy_result_iterator(it_pred_clips);
+
+	int image_cli = clients_save(cl_id);
+	REQUIRE(image_cli == cl_id);
+
+	int n_cli_blocks = size_binary_image_iterator(image_cli);
+	REQUIRE(n_cli_blocks > 0);
+
+	std::vector<String> cli_blocks = {};
+	for (int i = 0; i < n_cli_blocks; i++) {
+		String blk = next_binary_image_iterator(image_cli);
+		REQUIRE(blk.length() > 0);
+		cli_blocks.push_back(blk);
+	}
+
+	REQUIRE(destroy_binary_image_iterator(image_cli));
+
+	int cl_id_copy = new_clients();
+	for (std::vector<String>::iterator it = cli_blocks.begin(); it != cli_blocks.end(); ++it)
+		REQUIRE(clients_load_block(cl_id_copy, (char *) it->c_str()));
+	REQUIRE(clients_load_block(cl_id_copy, (char *) ""));
+	REQUIRE(clients_num_clients(cl_id_copy) == 2);
+
+	int image_clp = clips_save(clips_id);
+	REQUIRE(image_clp == clips_id);
+
+	int n_clp_blocks = size_binary_image_iterator(image_clp);
+	REQUIRE(n_clp_blocks > 0);
+
+	std::vector<String> clp_blocks = {};
+	for (int i = 0; i < n_clp_blocks; i++) {
+		String blk = next_binary_image_iterator(image_clp);
+		REQUIRE(blk.length() > 0);
+		clp_blocks.push_back(blk);
+	}
+
+	REQUIRE(destroy_binary_image_iterator(image_clp));
+
+	int ev_id_empty = new_events();
+	int cl_id_empty = new_clients();
+	int clips_id_copy = new_clips(cl_id_empty, ev_id_empty);
+
+	for (std::vector<String>::iterator it = clp_blocks.begin(); it != clp_blocks.end(); ++it)
+		REQUIRE(clips_load_block(clips_id_copy, (char *) it->c_str()));
+	REQUIRE(clips_load_block(clips_id_copy, (char *) ""));
+	REQUIRE(clips_num_clips(clips_id_copy) == 2);
+	REQUIRE(clips_num_events(clips_id_copy) == 3);
+
+	int image_targ = targets_save(targ_id);
+	REQUIRE(image_targ == targ_id);
+
+	int n_targ_blocks = size_binary_image_iterator(image_targ);
+	REQUIRE(n_targ_blocks > 0);
+
+	std::vector<String> targ_blocks = {};
+	for (int i = 0; i < n_targ_blocks; i++) {
+		String blk = next_binary_image_iterator(image_targ);
+		REQUIRE(blk.length() > 0);
+		targ_blocks.push_back(blk);
+	}
+
+	REQUIRE(destroy_binary_image_iterator(image_targ));
+
+	int ev_id_empty_2 = new_events();
+	int cl_id_empty_2 = new_clients();
+	int clips_id_empty = new_clips(cl_id_empty_2, ev_id_empty_2);
+	int targ_id_copy = new_targets(clips_id_empty);
+
+	for (std::vector<String>::iterator it = targ_blocks.begin(); it != targ_blocks.end(); ++it)
+		REQUIRE(targets_load_block(targ_id_copy, (char *) it->c_str()));
+	REQUIRE(targets_load_block(targ_id_copy, (char *) ""));
+	REQUIRE(targets_num_targets(targ_id_copy) == 1);
+
+	destroy_targets(targ_id_copy);
+	destroy_targets(targ_id);
+	destroy_clips(clips_id_empty);
+	destroy_clips(clips_id_copy);
+	destroy_clips(clips_id);
+	destroy_clients(cl_id_empty_2);
+	destroy_clients(cl_id_empty);
+	destroy_clients(cl_id_copy);
+	destroy_clients(cl_id);
+	destroy_events(ev_id_empty_2);
+	destroy_events(ev_id_empty);
+	destroy_events(ev_id);
 }
 
 
