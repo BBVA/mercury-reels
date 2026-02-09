@@ -615,53 +615,43 @@ bool Events::load(pBinaryImage &p_bi, int &c_block, int &c_ofs) {
 	ElementHash hs;
 	char		buffer[8192];
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
+	bool ok = image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
 
-	if (hs != MurmurHash64A(section.c_str(), section.length()))
-		return false;
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
 
-	if (!image_get(p_bi, c_block, c_ofs, &store_strings, sizeof(store_strings)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &store_strings, sizeof(store_strings));
 
-	if (!image_get(p_bi, c_block, c_ofs, &max_num_events, sizeof(max_num_events)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &max_num_events, sizeof(max_num_events));
 
-	if (!image_get(p_bi, c_block, c_ofs, &priority_low, sizeof(priority_low)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &priority_low, sizeof(priority_low));
 
-	if (!image_get(p_bi, c_block, c_ofs, &next_code, sizeof(next_code)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &next_code, sizeof(next_code));
 
 	section = "names_map";
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
 
-	if ((hs != MurmurHash64A(section.c_str(), section.length())) || (names_map.size() != 0))
-		return false;
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
+	ok = ok && (names_map.size() == 0);
 
 	int len;
 
-	if (!image_get(p_bi, c_block, c_ofs, &len, sizeof(len)))
-		return false;
 
-	for (int i = 0; i < len; i++) {
+	ok = ok && image_get(p_bi, c_block, c_ofs, &len, sizeof(len));
+
+	for (int i = 0; ok && i < len; i++) {
 		ElementHash hh;
-		if (!image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh));
 
 		StringUsage su;
-		if (!image_get(p_bi, c_block, c_ofs, &su.seen, sizeof(su.seen)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &su.seen, sizeof(su.seen));
 
 		int ll;
 
-		if (!image_get(p_bi, c_block, c_ofs, &ll, sizeof(ll)))
-			return false;
-
-		if ((ll < 0) || (ll >= 8192))
-			return false;
+		ok = ok && image_get(p_bi, c_block, c_ofs, &ll, sizeof(ll));
+		ok = ok && (ll >= 0) && (ll < 8192);
 
 		if (ll == 0)
 			su.str = (char *) "";
@@ -679,56 +669,53 @@ bool Events::load(pBinaryImage &p_bi, int &c_block, int &c_ofs) {
 
 	section = "event";
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
 
-	if ((hs != MurmurHash64A(section.c_str(), section.length())) || (event.size() != 0))
-		return false;
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
+	ok = ok && (event.size() == 0);
 
-	if (!image_get(p_bi, c_block, c_ofs, &len, sizeof(len)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &len, sizeof(len));
 
-	for (int i = 0; i < len; i++) {
+	for (int i = 0; ok && i < len; i++) {
 		BinEventPt ev;
-		if (!image_get(p_bi, c_block, c_ofs, &ev, sizeof(ev)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &ev, sizeof(ev));
 
 		EventStat es;
-		if (!image_get(p_bi, c_block, c_ofs, &es, sizeof(es)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &es, sizeof(es));
 
 		event[ev] = es;
 	}
 
 	section = "priority";
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
 
-	if ((hs != MurmurHash64A(section.c_str(), section.length())) || (priority.size() != 0))
-		return false;
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
+	ok = ok && (priority.size() == 0);
 
-	if (!image_get(p_bi, c_block, c_ofs, &len, sizeof(len)))
-		return false;
 
-	for (int i = 0; i < len; i++) {
+	ok = ok && image_get(p_bi, c_block, c_ofs, &len, sizeof(len));
+
+	for (int i = 0; ok && i < len; i++) {
 		uint64_t hh;
-		if (!image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh));
 
 		BinEventPt ev;
-		if (!image_get(p_bi, c_block, c_ofs, &ev, sizeof(ev)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &ev, sizeof(ev));
 
 		priority[hh] = ev;
 	}
 
 	section = "end";
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
 
-	return hs == MurmurHash64A(section.c_str(), section.length());
+	return ok;
 }
 
 
@@ -831,21 +818,20 @@ bool Clients::load(pBinaryImage &p_bi, int &c_block, int &c_ofs) {
 	String		section = "clients";
 	ElementHash hs;
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
+	bool ok = image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
 
-	if ((hs != MurmurHash64A(section.c_str(), section.length())) || (id.size() != 0) || (id_set.size() != 0))
-		return false;
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
+	ok = ok && (id.size() == 0);
+	ok = ok && (id_set.size() == 0);
 
 	int len;
 
-	if (!image_get(p_bi, c_block, c_ofs, &len, sizeof(len)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &len, sizeof(len));
 
-	for (int i = 0; i < len; i++) {
+	for (int i = 0; ok && i < len; i++) {
 		ElementHash hh;
-		if (!image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh));
 
 		id.push_back(hh);
 		id_set.insert(hh);
@@ -853,10 +839,10 @@ bool Clients::load(pBinaryImage &p_bi, int &c_block, int &c_ofs) {
 
 	section = "end";
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
 
-	return hs == MurmurHash64A(section.c_str(), section.length());
+	return ok;
 }
 
 
@@ -940,52 +926,40 @@ bool Clips::load(pBinaryImage &p_bi) {
 	String		section = "clips";
 	ElementHash hs;
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
-
-	if (hs != MurmurHash64A(section.c_str(), section.length()))
-		return false;
-
-	if (!image_get(p_bi, c_block, c_ofs, &time_format, sizeof(time_format)))
-		return false;
-
-	if (!clients.load(p_bi, c_block, c_ofs))
-		return false;
-
-	if (!events.load(p_bi, c_block, c_ofs))
-		return false;
+	bool ok = image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
+	ok = ok && image_get(p_bi, c_block, c_ofs, &time_format, sizeof(time_format));
+	ok = ok && clients.load(p_bi, c_block, c_ofs);
+	ok = ok && events.load(p_bi, c_block, c_ofs);
 
 	section = "clip_map";
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
-
-	if ((hs != MurmurHash64A(section.c_str(), section.length())) || (clips.size() != 0))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
+	ok = ok && (clips.size() == 0);
 
 	int len_clips;
-	if (!image_get(p_bi, c_block, c_ofs, &len_clips, sizeof(len_clips)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &len_clips, sizeof(len_clips));
 
-	for (int i = 0; i < len_clips; i++) {
+	for (int i = 0; ok && i < len_clips; i++) {
 		ElementHash hh;
-		if (!image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh));
 
 		int len;
-		if (!image_get(p_bi, c_block, c_ofs, &len, sizeof(len)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &len, sizeof(len));
 
 		Clip clip = {};
 
-		for (int j = 0; j < len; j++) {
+		for (int j = 0; ok && j < len; j++) {
 			TimePoint tp;
-			if (!image_get(p_bi, c_block, c_ofs, &tp, sizeof(tp)))
-				return false;
+
+			ok = ok && image_get(p_bi, c_block, c_ofs, &tp, sizeof(tp));
 
 			uint64_t ev;
-			if (!image_get(p_bi, c_block, c_ofs, &ev, sizeof(ev)))
-				return false;
+
+			ok = ok && image_get(p_bi, c_block, c_ofs, &ev, sizeof(ev));
 
 			clip[tp] = ev;
 		}
@@ -995,10 +969,10 @@ bool Clips::load(pBinaryImage &p_bi) {
 
 	section = "end";
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
+	ok = ok && (MurmurHash64A(section.c_str(), section.length()) == hs);
 
-	return hs == MurmurHash64A(section.c_str(), section.length());
+	return ok;
 }
 
 
@@ -1305,66 +1279,55 @@ bool Targets::load(pBinaryImage &p_bi) {
 	String		section = "targets";
 	ElementHash hs;
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
+	bool ok = image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
 
-	if (hs != MurmurHash64A(section.c_str(), section.length()))
-		return false;
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
 
-	if (!image_get(p_bi, c_block, c_ofs, &time_format, sizeof(time_format)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &time_format, sizeof(time_format));
 
-	if (!image_get(p_bi, c_block, c_ofs, &transform, sizeof(transform)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &transform, sizeof(transform));
 
-	if (!image_get(p_bi, c_block, c_ofs, &aggregate, sizeof(aggregate)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &aggregate, sizeof(aggregate));
 
-	if (!image_get(p_bi, c_block, c_ofs, &binomial_z, sizeof(binomial_z)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &binomial_z, sizeof(binomial_z));
 
-	if (!image_get(p_bi, c_block, c_ofs, &binomial_z_sqr, sizeof(binomial_z_sqr)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &binomial_z_sqr, sizeof(binomial_z_sqr));
 
-	if (!image_get(p_bi, c_block, c_ofs, &binomial_z_sqr_div_2, sizeof(binomial_z_sqr_div_2)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &binomial_z_sqr_div_2, sizeof(binomial_z_sqr_div_2));
 
-	if (!image_get(p_bi, c_block, c_ofs, &tree_depth, sizeof(tree_depth)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &tree_depth, sizeof(tree_depth));
 
 	section = "clip_map";
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
-
-	if ((hs != MurmurHash64A(section.c_str(), section.length())) || (p_clips != nullptr))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
+	ok = ok && (p_clips == nullptr);
 
 	int len_clips;
-	if (!image_get(p_bi, c_block, c_ofs, &len_clips, sizeof(len_clips)))
-		return false;
+
+	ok = ok && image_get(p_bi, c_block, c_ofs, &len_clips, sizeof(len_clips));
 
 	p_clips = new ClipMap;
 
-	for (int i = 0; i < len_clips; i++) {
+	for (int i = 0; ok && i < len_clips; i++) {
 		ElementHash hh;
-		if (!image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh));
 
 		int len;
-		if (!image_get(p_bi, c_block, c_ofs, &len, sizeof(len)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &len, sizeof(len));
 
 		Clip clip = {};
 
-		for (int j = 0; j < len; j++) {
+		for (int j = 0; ok && j < len; j++) {
 			TimePoint tp;
-			if (!image_get(p_bi, c_block, c_ofs, &tp, sizeof(tp)))
-				return false;
+
+			ok = ok && image_get(p_bi, c_block, c_ofs, &tp, sizeof(tp));
 
 			uint64_t ev;
-			if (!image_get(p_bi, c_block, c_ofs, &ev, sizeof(ev)))
-				return false;
+
+			ok = ok && image_get(p_bi, c_block, c_ofs, &ev, sizeof(ev));
 
 			clip[tp] = ev;
 		}
@@ -1374,67 +1337,58 @@ bool Targets::load(pBinaryImage &p_bi) {
 
 	section = "target";
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
-
-	if ((hs != MurmurHash64A(section.c_str(), section.length())) || (target.size() != 0))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
+ 	ok = ok && (target.size() == 0);
 
 	int len_targets;
 
-	if (!image_get(p_bi, c_block, c_ofs, &len_targets, sizeof(len_targets)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &len_targets, sizeof(len_targets));
 
-	for (int i = 0; i < len_targets; i++) {
+	for (int i = 0; ok && i < len_targets; i++) {
 		ElementHash hh;
-		if (!image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &hh, sizeof(hh));
 
 		TimePoint tp;
-		if (!image_get(p_bi, c_block, c_ofs, &tp, sizeof(tp)))
-			return false;
+
+		ok = ok && image_get(p_bi, c_block, c_ofs, &tp, sizeof(tp));
 
 		target[hh] = tp;
 	}
 
 	section = "tree";
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
 
-	if ((hs != MurmurHash64A(section.c_str(), section.length())) || (tree.size() != 1))
-		return false;
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
+	ok = ok && (tree.size() == 1);
 
 	int len_tree;
 
-	if (!image_get(p_bi, c_block, c_ofs, &len_tree, sizeof(len_tree)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &len_tree, sizeof(len_tree));
 
-	for (int i = 0; i < len_tree; i++) {
+	for (int i = 0; ok && i < len_tree; i++) {
 		CodeTreeNode nd = {0, 0, 0, {}};
 
-		if (!image_get(p_bi, c_block, c_ofs, &nd.n_seen, sizeof(uint64_t)))
-			return false;
+		ok = ok && image_get(p_bi, c_block, c_ofs, &nd.n_seen, sizeof(uint64_t));
 
-		if (!image_get(p_bi, c_block, c_ofs, &nd.n_target, sizeof(uint64_t)))
-			return false;
+		ok = ok && image_get(p_bi, c_block, c_ofs, &nd.n_target, sizeof(uint64_t));
 
-		if (!image_get(p_bi, c_block, c_ofs, &nd.sum_time_d, sizeof(ExtFloat)))
-			return false;
+		ok = ok && image_get(p_bi, c_block, c_ofs, &nd.sum_time_d, sizeof(ExtFloat));
 
 		int ll;
 
-		if (!image_get(p_bi, c_block, c_ofs, &ll, sizeof(ll)))
-			return false;
+		ok = ok && image_get(p_bi, c_block, c_ofs, &ll, sizeof(ll));
 
-		for (int j = 0; j < ll; j++) {
+		for (int j = 0; ok && j < ll; j++) {
 			uint64_t key;
-			if (!image_get(p_bi, c_block, c_ofs, &key, sizeof(key)))
-				return false;
+
+			ok = ok && image_get(p_bi, c_block, c_ofs, &key, sizeof(key));
 
 			int idx;
-			if (!image_get(p_bi, c_block, c_ofs, &idx, sizeof(idx)))
-				return false;
+
+			ok = ok && image_get(p_bi, c_block, c_ofs, &idx, sizeof(idx));
 
 			nd.child[key] = idx;
 		}
@@ -1447,10 +1401,10 @@ bool Targets::load(pBinaryImage &p_bi) {
 
 	section = "end";
 
-	if (!image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs)))
-		return false;
+	ok = ok && image_get(p_bi, c_block, c_ofs, &hs, sizeof(hs));
+	ok = ok && (hs == MurmurHash64A(section.c_str(), section.length()));
 
-	return hs == MurmurHash64A(section.c_str(), section.length());
+	return ok;
 }
 
 
