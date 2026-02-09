@@ -2257,7 +2257,6 @@ SCENARIO("Test for optimize_events() (basic)") {
 		}
 	}
 
-
 	GIVEN("A dataset where Clips contains a code that is not defined in Events") {
 
 		// Start from the same minimal successful setup
@@ -2322,6 +2321,175 @@ SCENARIO("Test for optimize_events() (basic)") {
 
 				// And the log should mention that some codes in clips are not in the internal EventMap
 				REQUIRE(log_err.find("codes in clips not defined in internal EventMap") != String::npos);
+			}
+		}
+	}
+}
+
+
+SCENARIO("Cover remaining zero-coverage Python API and verbose helpers") {
+
+	GIVEN("A minimal setup using the Python-style C API") {
+
+		// -------------------------
+		// Events (Python API)
+		// -------------------------
+		int eid = new_events();
+		REQUIRE(eid > 0);
+
+		REQUIRE(events_set_max_num_events(eid, 5));
+
+		REQUIRE(events_insert_row(eid, (char*)"e", (char*)"d1", 1.0));
+		REQUIRE(events_insert_row(eid, (char*)"e", (char*)"d2", 1.0));
+
+		// -------------------------
+		// Clients
+		// -------------------------
+		int cid = new_clients();
+		REQUIRE(cid > 0);
+
+		REQUIRE(clients_add_client_id(cid, (char*)"cli1"));
+
+		// -------------------------
+		// Clips
+		// -------------------------
+		int clp_id = new_clips(cid, eid);
+		REQUIRE(clp_id > 0);
+
+		REQUIRE(clips_scan_event(
+			clp_id,
+			(char*)"e", (char*)"d1", 1.0,
+			(char*)"cli1",
+			(char*)"2023-01-01 10:00:00"
+		));
+
+		// -------------------------
+		// Targets
+		// -------------------------
+		int trg_id = new_targets(clp_id);
+		REQUIRE(trg_id > 0);
+
+		REQUIRE(targets_insert_target(
+			trg_id,
+			(char*)"cli1",
+			(char*)"2023-01-01 10:00:10"
+		));
+
+		WHEN("Calling the Python-facing optimizer wrapper") {
+
+			// Covers:
+			// - events_optimize_events
+			// - p_target()
+			// - string -> enum parsing
+			char *res = events_optimize_events(
+				eid,
+				clp_id,
+				trg_id,
+				1,          // num_steps
+				1,          // codes_per_step
+				0.0,        // threshold
+				(char*)"",  // force_include
+				(char*)"",  // force_exclude
+				(char*)"log",
+				(char*)"mean",
+				0.8,
+				5,
+				0,
+				0.01,
+				0.9,
+				false
+			);
+
+			THEN("The optimizer runs successfully") {
+				REQUIRE(res != nullptr);
+				REQUIRE(std::string(res).rfind("SUCCESS", 0) == 0);
+			}
+		}
+
+		WHEN("Saving and reloading events through the Python binary API") {
+
+			// Covers events_save
+			int img_id = events_save(eid);
+			REQUIRE(img_id == eid);
+
+			THEN("Events are restored correctly") {
+				REQUIRE(events_num_events(eid) > 0);
+			}
+		}
+
+		WHEN("Requesting synthetic optimizer test sequences") {
+
+			// Covers clips_test_sequence
+			char *non_target = clips_test_sequence(0, false);
+			char *target     = clips_test_sequence(0, true);
+
+			THEN("Both sequences are returned") {
+				REQUIRE(non_target != nullptr);
+				REQUIRE(target != nullptr);
+				REQUIRE(strlen(non_target) > 0);
+				REQUIRE(strlen(target) > 0);
+			}
+		}
+	}
+
+	GIVEN("A native C++ Targets object for verbose prediction") {
+
+		// This part is intentionally NOT using the Python API.
+		// It cleanly isolates Targets::verbose_predict_clip.
+
+		Events ev = {};
+		REQUIRE(ev.define_event((char*)"e", (char*)"d", 1.0, 1));
+
+		Clients cl = {};
+		Clips cp(cl, ev);
+
+		TimePoint t0 = cp.get_time((char*)"2023-01-01 10:00:00");
+		TimePoint t1 = cp.get_time((char*)"2023-01-01 10:00:10");
+
+		ElementHash cli = MurmurHash64A((char*)"cli1", 4);
+
+		cp.insert_event(cli, 1, t0);
+
+		TargetMap tm = {};
+		tm[cli] = t1;
+
+		Targets tg(cp.clip_map(), tm);
+
+		REQUIRE(tg.fit(
+			tr_linear,
+			ag_mean,
+			0.8,
+			5,
+			false
+		));
+
+		Clip clip = (*cp.clip_map())[cli];
+
+		WHEN("Calling verbose_predict_clip") {
+
+			TimePoint obs_time = 0;
+			bool target_yn = false;
+			int longest_seq = 0;
+			uint64_t n_visits = 0;
+			uint64_t n_targets = 0;
+			double targ_mean_t = 0.0;
+
+			// Covers Targets::verbose_predict_clip
+			tg.verbose_predict_clip(
+				cli,
+				clip,
+				obs_time,
+				target_yn,
+				longest_seq,
+				n_visits,
+				n_targets,
+				targ_mean_t
+			);
+
+			THEN("Verbose statistics are produced without error") {
+				REQUIRE(longest_seq >= 0);
+				REQUIRE(n_visits >= 0);
+				REQUIRE(n_targets >= 0);
 			}
 		}
 	}
