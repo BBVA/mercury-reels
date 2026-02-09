@@ -1970,6 +1970,231 @@ SCENARIO("Extended Testing Emulating the Python API ") {
 	destroy_events(ev_id);
 }
 
+SCENARIO("Test for optimize_events() (basic)") {
+
+	GIVEN("A minimal synthetic dataset where Events::optimize_events can succeed") {
+
+		// Define a tiny dictionary of events
+		Events events = {};
+
+		REQUIRE(events.define_event((char *) "emi_A", (char *) "descr_A", 1.0, 'A'));
+		REQUIRE(events.define_event((char *) "emi_B", (char *) "descr_B", 1.0, 'B'));
+
+		// Sanity: we really have two events defined
+		REQUIRE(events.num_events() == 2);
+
+		// Minimal clients / clips setup
+		Clients clients = {};
+		Clips   clips(clients, events);
+
+		// Some simple time points
+		TimePoint t0 = clips.get_time((char *) "2022-01-01 10:00:00");
+		TimePoint t1 = clips.get_time((char *) "2022-01-01 10:00:10");
+		TimePoint t2 = clips.get_time((char *) "2022-01-01 10:00:20");
+		TimePoint t3 = clips.get_time((char *) "2022-01-01 10:01:00");
+
+		REQUIRE(t0 > 0);
+		REQUIRE(t1 > t0);
+		REQUIRE(t2 > t1);
+		REQUIRE(t3 > t2);
+
+		// Three clients (we don't need to populate clients.id_set; Clips::insert_event
+		// works directly with ElementHash client ids)
+		ElementHash cli1 = MurmurHash64A((char *) "cli1", 4);
+		ElementHash cli2 = MurmurHash64A((char *) "cli2", 4);
+		ElementHash cli3 = MurmurHash64A((char *) "cli3", 4);
+
+		// Build their clips in terms of codes 'A' and 'B'
+		// cli1: A then B
+		clips.insert_event(cli1, 'A', t0);
+		clips.insert_event(cli1, 'B', t1);
+
+		// cli2: only A
+		clips.insert_event(cli2, 'A', t0);
+		clips.insert_event(cli2, 'A', t1);
+
+		// cli3: only B
+		clips.insert_event(cli3, 'B', t0);
+		clips.insert_event(cli3, 'B', t1);
+
+		// Targets: cli1 and cli3 experience the target, cli2 does not
+		TargetMap target_map = {};
+		target_map[cli1] = t2;	// target 20 seconds after first event
+		target_map[cli3] = t3;	// later target for cli3
+
+		REQUIRE(target_map.size() == 2);
+
+		WHEN("I run optimize_events with default-like arguments") {
+
+			// Use slightly non-trivial parameters to tick more branches
+			String log = events.optimize_events(clips,
+												target_map,
+												3,				// num_steps
+												2,				// codes_per_step
+												0.0001,			// threshold
+												nullptr,		// force include
+												nullptr,		// force exclude
+												tr_linear,		// transform
+												ag_longest,		// aggregate
+												0.5,			// p
+												10,				// depth
+												true,			// as_states
+												0.00693,		// exp_decay
+												0.95,			// lower_bound_p
+												true);			// log_lift
+
+			THEN("The optimization succeeds and the report starts with 'success'") {
+				REQUIRE(!log.empty());
+
+				size_t pos = log.find('\n');
+				String first_line = (pos == String::npos) ? log : log.substr(0, pos);
+
+				REQUIRE(first_line == "SUCCESS");
+
+				// Make sure we actually hit part of the body of the report
+				REQUIRE(log.find("Preprocessing:") != String::npos);
+				REQUIRE(log.find("codes found in clips") != String::npos);
+			}
+
+			THEN("Different transforms and aggregates are accepted without error") {
+
+				// IMPORTANT:
+				// optimize_events mutates `events` (internal EventMap), so we rebuild a fresh setup
+				// for this alternate run to avoid "codes in clips not defined in internal EventMap".
+
+				Events events_alt = {};
+				REQUIRE(events_alt.define_event((char *) "emi_A", (char *) "descr_A", 1.0, 'A'));
+				REQUIRE(events_alt.define_event((char *) "emi_B", (char *) "descr_B", 1.0, 'B'));
+				REQUIRE(events_alt.num_events() == 2);
+
+				Clients clients_alt = {};
+				Clips   clips_alt(clients_alt, events_alt);
+
+				TimePoint t0_alt = clips_alt.get_time((char *) "2022-01-01 10:00:00");
+				TimePoint t1_alt = clips_alt.get_time((char *) "2022-01-01 10:00:10");
+				TimePoint t2_alt = clips_alt.get_time((char *) "2022-01-01 10:00:20");
+				TimePoint t3_alt = clips_alt.get_time((char *) "2022-01-01 10:01:00");
+
+				REQUIRE(t0_alt > 0);
+				REQUIRE(t1_alt > t0_alt);
+				REQUIRE(t2_alt > t1_alt);
+				REQUIRE(t3_alt > t2_alt);
+
+				ElementHash cli1_alt = MurmurHash64A((char *) "cli1", 4);
+				ElementHash cli2_alt = MurmurHash64A((char *) "cli2", 4);
+				ElementHash cli3_alt = MurmurHash64A((char *) "cli3", 4);
+
+				// Same clip patterns as the "success" case
+				clips_alt.insert_event(cli1_alt, 'A', t0_alt);
+				clips_alt.insert_event(cli1_alt, 'B', t1_alt);
+
+				clips_alt.insert_event(cli2_alt, 'A', t0_alt);
+				clips_alt.insert_event(cli2_alt, 'A', t1_alt);
+
+				clips_alt.insert_event(cli3_alt, 'B', t0_alt);
+				clips_alt.insert_event(cli3_alt, 'B', t1_alt);
+
+				TargetMap target_map_alt = {};
+				target_map_alt[cli1_alt] = t2_alt;
+				target_map_alt[cli3_alt] = t3_alt;
+
+				// Log transform + mean aggregation, no state collapsing
+				String log_alt = events_alt.optimize_events(clips_alt,
+														   target_map_alt,
+														   1,			// fewer steps
+														   1,			// one code per step
+														   0.0,			// zero threshold to always accept improvements
+														   nullptr,
+														   nullptr,
+														   tr_log,
+														   ag_mean,
+														   0.8,			// different p
+														   5,			// smaller depth
+														   false,		// as sequences, not states
+														   0.01,			// different exp_decay
+														   0.9,			// different lower_bound_p
+														   false);		// linear lift
+
+				REQUIRE(!log_alt.empty());
+
+				size_t pos_alt = log_alt.find('\n');
+				String first_line_alt = (pos_alt == String::npos) ? log_alt : log_alt.substr(0, pos_alt);
+
+				REQUIRE(first_line_alt == "SUCCESS");
+			}
+		}
+	}
+
+
+	GIVEN("A dataset where Clips contains a code that is not defined in Events") {
+
+		// Start from the same minimal successful setup
+		Events events = {};
+
+		REQUIRE(events.define_event((char *) "emi_A", (char *) "descr_A", 1.0, 'A'));
+		REQUIRE(events.define_event((char *) "emi_B", (char *) "descr_B", 1.0, 'B'));
+
+		Clients clients = {};
+		Clips   clips(clients, events);
+
+		TimePoint t0 = clips.get_time((char *) "2022-01-01 10:00:00");
+		TimePoint t1 = clips.get_time((char *) "2022-01-01 10:00:10");
+		TimePoint t2 = clips.get_time((char *) "2022-01-01 10:00:20");
+
+		REQUIRE(t0 > 0);
+		REQUIRE(t1 > t0);
+		REQUIRE(t2 > t1);
+
+		ElementHash cli1 = MurmurHash64A((char *) "cli1", 4);
+		ElementHash cli2 = MurmurHash64A((char *) "cli2", 4);
+
+		// Normal events using only defined codes 'A' and 'B'
+		clips.insert_event(cli1, 'A', t0);
+		clips.insert_event(cli1, 'B', t1);
+		clips.insert_event(cli2, 'A', t0);
+
+		TargetMap target_map = {};
+		target_map[cli1] = t2;
+
+		REQUIRE(target_map.size() == 1);
+
+		// Now inject a clip with an undefined event code: 9999
+		ElementHash cli_fake = MurmurHash64A((char *) "cli_fake", 8);
+		clips.insert_event(cli_fake, 9999, t0);		// 9999 is not present in Events::event
+
+		WHEN("I run optimize_events on this inconsistent dataset") {
+
+			String log_err = events.optimize_events(clips,
+													target_map,
+													1,
+													2,
+													0.0001,
+													nullptr,
+													nullptr,
+													tr_linear,
+													ag_longest,
+													0.5,
+													10,
+													true,
+													0.00693,
+													0.95,
+													true);
+
+			THEN("The optimizer detects missing codes and reports an ERROR") {
+				REQUIRE(!log_err.empty());
+
+				size_t pos = log_err.find('\n');
+				String first_line = (pos == String::npos) ? log_err : log_err.substr(0, pos);
+
+				REQUIRE(first_line == "ERROR");
+
+				// And the log should mention that some codes in clips are not in the internal EventMap
+				REQUIRE(log_err.find("codes in clips not defined in internal EventMap") != String::npos);
+			}
+		}
+	}
+}
+
 
 SCENARIO("Test Logger") {
 
