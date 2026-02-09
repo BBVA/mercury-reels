@@ -477,8 +477,14 @@ extern bool destroy_events(int id);
 extern bool events_insert_row(int id, char *p_e, char *p_d, double w);
 extern bool events_define_event(int id, char *p_e, char *p_d, double w, int code);
 extern char *events_describe_next_event(int id, char *prev_event);
+extern bool events_load_block(int id, char *p_block);
+extern int events_save(int id);
+extern bool events_set_max_num_events(int id, int max_events);
 extern bool events_set_store_strings(int id, bool store);
 extern int events_num_events(int id);
+extern char *events_optimize_events(int id, int id_clips, int id_targets, int num_steps, int codes_per_step, double threshold,
+									char *force_include, char *force_exclude, char *x_form, char *agg, double p, int depth, int as_states,
+									double exp_decay, double lower_bound_p, bool log_lift);
 
 extern int new_clients();
 extern bool destroy_clients(int id);
@@ -499,6 +505,7 @@ extern int clips_save(int id);
 extern char *clips_describe_clip(int id, char *client_id);
 extern int clips_num_clips(int id);
 extern int clips_num_events(int id);
+extern char *clips_test_sequence(int seq_num, bool target);
 
 extern int new_targets(int id_clips);
 extern bool destroy_targets(int id);
@@ -1969,6 +1976,131 @@ SCENARIO("Extended Testing Emulating the Python API ") {
 	destroy_events(ev_id_empty);
 	destroy_events(ev_id);
 }
+
+
+SCENARIO("Cover python API zero-coverage functions") {
+
+	int ev_id = new_events();
+
+	REQUIRE(events_define_event(ev_id, (char *) "emi_A", (char *) "descr_A", 1.0, 1));
+	REQUIRE(events_define_event(ev_id, (char *) "emi_B", (char *) "descr_B", 1.0, 2));
+
+	int cl_id = new_clients();
+
+	REQUIRE(clients_add_client_id(cl_id, (char *) "cli_A"));
+	REQUIRE(clients_add_client_id(cl_id, (char *) "cli_B"));
+
+	int clips_id = new_clips(cl_id, ev_id);
+	REQUIRE(clips_id > 0);
+	REQUIRE(clips_set_time_format(clips_id, (char *) "%Y-%m-%d %H:%M:%S"));
+
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:00:00"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_B", (char *) "descr_B", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:01:00"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_B", (char *) "2022-06-04 10:00:30"));
+
+	int targ_id = new_targets(clips_id);
+	REQUIRE(targ_id > 0);
+	REQUIRE(targets_set_time_format(targ_id, (char *) "%Y-%m-%d %H:%M:%S"));
+	REQUIRE(targets_insert_target(targ_id, (char *) "cli_A", (char *) "2022-06-04 10:02:00"));
+
+	int ev_opt_id = new_events();
+
+	REQUIRE(events_define_event(ev_opt_id, (char *) "emi_A", (char *) "descr_A", 1.0, 1));
+	REQUIRE(events_define_event(ev_opt_id, (char *) "emi_B", (char *) "descr_B", 1.0, 2));
+
+	char *opt_log = events_optimize_events(ev_opt_id, clips_id, targ_id, 1, 1, 0.0,
+										  (char *) "", (char *) "", (char *) "log", (char *) "mean",
+										  0.5, 3, 0, 0.0, 0.5, false);
+
+	REQUIRE(strncmp(opt_log, "SUCCESS", 7) == 0);
+
+	int ev_cap_id = new_events();
+	REQUIRE(events_set_max_num_events(ev_cap_id, 1));
+	REQUIRE(events_insert_row(ev_cap_id, (char *) "emi_1", (char *) "descr_1", 1.0));
+	REQUIRE(events_insert_row(ev_cap_id, (char *) "emi_2", (char *) "descr_2", 1.0));
+	REQUIRE(events_num_events(ev_cap_id) == 1);
+
+	int image_ev = events_save(ev_id);
+	REQUIRE(image_ev == ev_id);
+
+	int n_ev_blocks = size_binary_image_iterator(image_ev);
+	REQUIRE(n_ev_blocks > 0);
+
+	std::vector<String> ev_blocks = {};
+	for (int i = 0; i < n_ev_blocks; i++) {
+		String blk = next_binary_image_iterator(image_ev);
+		REQUIRE(blk.length() > 0);
+		ev_blocks.push_back(blk);
+	}
+	REQUIRE(destroy_binary_image_iterator(image_ev));
+
+	int ev_load_id = new_events();
+	for (std::vector<String>::iterator it = ev_blocks.begin(); it != ev_blocks.end(); ++it)
+		REQUIRE(events_load_block(ev_load_id, (char *) it->c_str()));
+	REQUIRE(events_load_block(ev_load_id, (char *) ""));
+	REQUIRE(events_num_events(ev_load_id) == 2);
+
+	String seq_a = clips_test_sequence(0, false);
+	String seq_b = clips_test_sequence(0, true);
+	String seq_c = clips_test_sequence(999, false);
+
+	REQUIRE(seq_a.length() > 0);
+	REQUIRE(seq_b.length() > 0);
+	REQUIRE(seq_c.length() == 0);
+
+	Events ev_cpp = {};
+	Clients cli_cpp = {};
+
+	ev_cpp.define_event((char *) "em1", (char *) "desc1", 1.0, 1);
+	ev_cpp.define_event((char *) "em2", (char *) "desc2", 1.0, 2);
+	cli_cpp.add_client_id((char *) "cli_V");
+
+	Clips clp_cpp(cli_cpp, ev_cpp);
+
+	TimePoint t1 = clp_cpp.get_time((char *) "2022-06-01 10:00:00");
+	TimePoint t2 = clp_cpp.get_time((char *) "2022-06-01 10:01:00");
+	TimePoint t3 = clp_cpp.get_time((char *) "2022-06-01 10:03:00");
+
+	ElementHash cli_hash = MurmurHash64A((char *) "cli_V", 5);
+
+	clp_cpp.insert_event(cli_hash, 1, t1);
+	clp_cpp.insert_event(cli_hash, 2, t2);
+
+	TargetMap tm = {};
+	Targets targ_cpp(&clp_cpp.clips, tm);
+
+	REQUIRE(targ_cpp.p_target() == &targ_cpp.target);
+
+	targ_cpp.target[cli_hash] = t3;
+	REQUIRE(targ_cpp.fit(tr_linear, ag_mean, 0.5, 5, false));
+
+	TimePoint obs_time = 0;
+	bool target_yn = false;
+	int longest_seq = 0;
+	uint64_t n_visits = 0;
+	uint64_t n_targets = 0;
+	double targ_mean_t = 0;
+
+	Clip &clip_ref = clp_cpp.clips[cli_hash];
+
+	targ_cpp.verbose_predict_clip(cli_hash, clip_ref, obs_time, target_yn, longest_seq, n_visits, n_targets, targ_mean_t);
+
+	REQUIRE(target_yn);
+	REQUIRE(obs_time == t3 - t2);
+	REQUIRE(longest_seq > 0);
+	REQUIRE(n_visits > 0);
+	REQUIRE(n_targets > 0);
+	REQUIRE(targ_mean_t > 0);
+
+	destroy_targets(targ_id);
+	destroy_clips(clips_id);
+	destroy_clients(cl_id);
+	destroy_events(ev_load_id);
+	destroy_events(ev_cap_id);
+	destroy_events(ev_opt_id);
+	destroy_events(ev_id);
+}
+
 
 SCENARIO("Test for optimize_events() (basic)") {
 
