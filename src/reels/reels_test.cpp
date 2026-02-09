@@ -2102,6 +2102,294 @@ SCENARIO("Cover python API zero-coverage functions") {
 }
 
 
+SCENARIO("Error paths from coverage report") {
+
+	OptimizeEvalItem aa = {1, 0, 1}, bb = {2, 0, 1}, cc = {2, 0, 2};
+
+	REQUIRE(compare_optimize_eval(aa, bb));	// a.t_hat < b.t_hat
+	REQUIRE(!compare_optimize_eval(bb, aa));
+	REQUIRE(compare_optimize_eval(bb, cc));	// b.t_hat == c.t_hat, b.seq_len < c.seq_len
+	REQUIRE(!compare_optimize_eval(cc, bb));
+
+	ImageBlock block;
+
+	char *p_str = image_block_as_string(block);
+
+	REQUIRE(string_as_image_block(block, p_str));
+	char c = p_str[3]; p_str[3] = '_';
+	REQUIRE(!string_as_image_block(block, p_str));
+	p_str[3] = c; c = p_str[2]; p_str[2] = ' ';
+	REQUIRE(!string_as_image_block(block, p_str));
+	p_str[2] = c; c = p_str[1]; p_str[1] = ' ';
+	REQUIRE(!string_as_image_block(block, p_str));
+	p_str[1] = c; c = p_str[0]; p_str[0] = ' ';
+	REQUIRE(!string_as_image_block(block, p_str));
+	p_str[0] = c;
+	REQUIRE(string_as_image_block(block, p_str));
+
+	REQUIRE(!destroy_events(7654321));
+	REQUIRE(!events_insert_row(7654321, nullptr, nullptr, 0.0));
+	REQUIRE(!events_define_event(7654321, nullptr, nullptr, 0.0, 0));
+	REQUIRE(events_describe_next_event(7654321, nullptr) != nullptr);
+	REQUIRE(!events_set_store_strings(7654321, false));
+
+	REQUIRE(!destroy_clients(7654321));
+	destroy_result_iterator(7654321);
+
+	BinaryImage bi = {};
+	ImageBlock full = {};
+	full.size = IMAGE_BUFF_SIZE;
+	full.block_num = 1;
+	bi.push_back(full);
+
+	int v = 123;
+	REQUIRE(image_put(&bi, &v, sizeof(v)));
+
+	int c_block = -1;
+	int c_ofs = 0;
+	int out = 0;
+	REQUIRE(!image_get(&bi, c_block, c_ofs, &out, sizeof(out)));
+
+	c_block = 1;
+	c_ofs = 0;
+	out = 0;
+	REQUIRE(!image_get(&bi, c_block, c_ofs, &out, -1));
+
+	BinaryImage bi_small = {};
+	ImageBlock blk_small = {};
+	blk_small.size = 10;
+	blk_small.block_num = 1;
+	bi_small.push_back(blk_small);
+	c_block = 0;
+	c_ofs = IMAGE_BUFF_SIZE;
+	REQUIRE(!image_get(&bi_small, c_block, c_ofs, &out, 1));
+
+	BinaryImage bi_jump = {};
+	ImageBlock blk_full = {};
+	blk_full.size = IMAGE_BUFF_SIZE;
+	blk_full.block_num = 1;
+	ImageBlock blk_tail = {};
+	blk_tail.size = 4;
+	blk_tail.block_num = 2;
+	bi_jump.push_back(blk_full);
+	bi_jump.push_back(blk_tail);
+	c_block = 0;
+	c_ofs = IMAGE_BUFF_SIZE;
+	REQUIRE(image_get(&bi_jump, c_block, c_ofs, &out, 4));
+
+	char *err_msg = events_optimize_events(99999, 0, 0, 1, 1, 0.0,
+										   (char *) "", (char *) "", (char *) "log", (char *) "mean",
+										   0.5, 1, 0, 0.0, 0.5, false);
+	REQUIRE(strncmp(err_msg, "ERROR", 5) == 0);
+
+	int ev_id = new_events();
+	int cl_id = new_clients();
+
+	REQUIRE(events_define_event(ev_id, (char *) "emi_A", (char *) "descr_A", 1.0, 1));
+	REQUIRE(events_define_event(ev_id, (char *) "emi_B", (char *) "descr_B", 1.0, 2));
+	REQUIRE(clients_add_client_id(cl_id, (char *) "cli_A"));
+
+	int clips_id = new_clips(cl_id, ev_id);
+	REQUIRE(clips_id > 0);
+	REQUIRE(clips_set_time_format(clips_id, (char *) "%Y-%m-%d %H:%M:%S"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:00:00"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_B", (char *) "descr_B", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:01:00"));
+
+	int targ_id = new_targets(clips_id);
+	REQUIRE(targ_id > 0);
+	REQUIRE(targets_set_time_format(targ_id, (char *) "%Y-%m-%d %H:%M:%S"));
+	REQUIRE(targets_insert_target(targ_id, (char *) "cli_A", (char *) "2022-06-04 10:02:00"));
+
+	err_msg = events_optimize_events(ev_id, 99999, targ_id, 1, 1, 0.0,
+									 (char *) "", (char *) "", (char *) "log", (char *) "mean",
+									 0.5, 1, 0, 0.0, 0.5, false);
+	REQUIRE(strncmp(err_msg, "ERROR", 5) == 0);
+
+	err_msg = events_optimize_events(ev_id, clips_id, 99999, 1, 1, 0.0,
+									 (char *) "", (char *) "", (char *) "log", (char *) "mean",
+									 0.5, 1, 0, 0.0, 0.5, false);
+	REQUIRE(strncmp(err_msg, "ERROR", 5) == 0);
+
+	err_msg = events_optimize_events(ev_id, clips_id, targ_id, 1, 1, 0.0,
+									 (char *) "1,2", (char *) "2", (char *) "linear", (char *) "longest",
+									 0.5, 2, 0, 0.0, 0.5, false);
+	REQUIRE(strncmp(err_msg, "SUCCESS", 7) == 0);
+
+	int ev_load_id = new_events();
+
+	REQUIRE(!events_load_block(99999, (char *) "x"));
+	REQUIRE(!events_load_block(ev_load_id, (char *) ""));
+
+	String bad_b64(8192, '!');
+	REQUIRE(!events_load_block(ev_load_id, (char *) bad_b64.c_str()));
+
+	ImageBlock blk2 = {};
+	blk2.size = 0;
+	blk2.block_num = 2;
+	String blk2_str = image_block_as_string(blk2);
+	REQUIRE(!events_load_block(ev_load_id, (char *) blk2_str.c_str()));
+
+	ImageBlock blk1 = {};
+	blk1.size = 0;
+	blk1.block_num = 1;
+	String blk1_str = image_block_as_string(blk1);
+	REQUIRE(events_load_block(ev_load_id, (char *) blk1_str.c_str()));
+
+	ImageBlock blk3 = {};
+	blk3.size = 0;
+	blk3.block_num = 3;
+	String blk3_str = image_block_as_string(blk3);
+	REQUIRE(!events_load_block(ev_load_id, (char *) blk3_str.c_str()));
+
+	REQUIRE(destroy_binary_image_iterator(ev_load_id));
+
+	REQUIRE(events_save(99999) == 0);
+	REQUIRE(!events_set_max_num_events(99999, 5));
+
+	REQUIRE(!clients_add_client_id(99999, (char *) "cli"));
+	REQUIRE(strlen(clients_hash_client_id(99999, (char *) "cli")) == 0);
+	REQUIRE(strlen(clients_hash_by_index(99999, 0)) == 0);
+	REQUIRE(clients_num_clients(99999) == -1);
+	REQUIRE(!clients_load_block(99999, (char *) "x"));
+	REQUIRE(clients_save(99999) == 0);
+
+	REQUIRE(new_clips(99999, 99999) == -1);
+	REQUIRE(new_clips(cl_id, 99999) == -1);
+	REQUIRE(new_clips(99999, ev_id) == -1);
+
+	REQUIRE(!destroy_clips(99999));
+	REQUIRE(!clips_set_time_format(99999, (char *) "%Y"));
+	REQUIRE(!clips_scan_event(99999, (char *) "e", (char *) "d", 1.0, (char *) "c", (char *) "2022-06-04 10:00:00"));
+	REQUIRE(strlen(clips_hash_by_previous(99999, (char *) "")) == 0);
+	REQUIRE(!clips_load_block(99999, (char *) "x"));
+	REQUIRE(clips_save(99999) == 0);
+	REQUIRE(strlen(clips_describe_clip(99999, (char *) "cli")) == 0);
+	REQUIRE(clips_num_clips(99999) == 0);
+	REQUIRE(clips_num_events(99999) == -1);
+	REQUIRE(strlen(clips_describe_clip(clips_id, (char *) "nope")) == 0);
+
+	REQUIRE(new_targets(99999) == -1);
+	REQUIRE(!destroy_targets(99999));
+	REQUIRE(!targets_set_time_format(99999, (char *) "%Y"));
+	REQUIRE(!targets_insert_target(99999, (char *) "cli", (char *) "2022-06-01 00:00:00"));
+	REQUIRE(!targets_fit(99999, (char *) "log", (char *) "mean", 0.5, 2, 0));
+	REQUIRE(targets_predict_clients(99999, cl_id) == -1);
+	REQUIRE(targets_predict_clips(99999, clips_id) == -1);
+	REQUIRE(!targets_load_block(99999, (char *) "x"));
+	REQUIRE(targets_save(99999) == 0);
+	REQUIRE(targets_num_targets(99999) == -1);
+	REQUIRE(targets_tree_node_idx(99999, 0, 1) == -1);
+	REQUIRE(strlen(targets_tree_node_children(99999, 0)) == 0);
+	REQUIRE(strlen(targets_describe_tree_node(99999, 0)) == 0);
+	REQUIRE(strlen(targets_describe_tree(99999)) == 0);
+
+	REQUIRE(size_result_iterator(99999) == 0);
+	REQUIRE(next_result_iterator(99999) == 0);
+
+	REQUIRE(size_binary_image_iterator(99999) == 0);
+	REQUIRE(strlen(next_binary_image_iterator(99999)) == 0);
+	REQUIRE(!destroy_binary_image_iterator(99999));
+
+	REQUIRE(strlen(clips_test_sequence(-1, false)) == 0);
+
+	destroy_targets(targ_id);
+	destroy_clips(clips_id);
+	destroy_clients(cl_id);
+	destroy_events(ev_load_id);
+	destroy_events(ev_id);
+}
+
+
+SCENARIO("Force error and defensive branches for maximum coverage") {
+
+	GIVEN("Deliberately malformed and edge-case objects") {
+
+		// -----------------------
+		// Invalid Events usage
+		// -----------------------
+		int bad_eid = -1;
+		REQUIRE(events_num_events(bad_eid) < 0);
+		REQUIRE(events_save(bad_eid) == 0);
+		REQUIRE_FALSE(events_load_block(bad_eid, (char*)""));
+
+		// -----------------------
+		// Create valid Events, then corrupt ID
+		// -----------------------
+		int eid = new_events();
+		REQUIRE(eid > 0);
+
+		REQUIRE(events_insert_row(eid, (char*)"e", (char*)"d", 1.0));
+		REQUIRE(events_num_events(eid) == 1);
+
+		int saved = events_save(eid);
+		REQUIRE(saved == eid);
+
+		// Corrupt ID to force load failure branch
+		int corrupt_eid = eid + 9999;
+		REQUIRE_FALSE(events_load_block(corrupt_eid, (char*)""));
+
+		// -----------------------
+		// Clients edge cases
+		// -----------------------
+		int cid = new_clients();
+		REQUIRE(cid > 0);
+
+		REQUIRE_FALSE(clients_add_client_id(cid, (char*)""));
+		REQUIRE(clients_num_clients(cid) == 0);
+
+		int bad_cid = cid + 9999;
+		REQUIRE_FALSE(clients_load_block(bad_cid, (char*)""));
+
+		// -----------------------
+		// Clips with missing dependencies
+		// -----------------------
+		int clp_bad = new_clips(cid, bad_eid);
+		REQUIRE(clp_bad < 0);
+
+		int clp_id = new_clips(cid, eid);
+		REQUIRE(clp_id > 0);
+
+		REQUIRE_FALSE(clips_scan_event(clp_id, (char*)"unknown", (char*)"d", 1.0, (char*)"cli", (char*)"2023-01-01 00:00:00"));
+
+		REQUIRE_FALSE(clips_load_block(clp_id + 9999, (char*)""));
+
+		// -----------------------
+		// Targets without clips
+		// -----------------------
+		int trg_id = new_targets(clp_id);
+		REQUIRE(trg_id > 0);
+
+		REQUIRE_FALSE(!targets_insert_target(trg_id, (char*)"missing_cli", (char*)"2023-01-01 00:00:00"));
+
+		// -----------------------
+		// Native C++ defensive paths
+		// -----------------------
+		Events ev = {};
+		Clients cl = {};
+		Clips cp(cl, ev);
+
+		TargetMap empty_tm;
+		Targets tg(cp.clip_map(), empty_tm);
+
+		ElementHash fake = MurmurHash64A((char*)"fake", 4);
+		Clip empty_clip;
+
+		TimePoint obs_time = 0;
+		bool target_yn = false;
+		int longest_seq = 0;
+		uint64_t n_visits = 0;
+		uint64_t n_targets = 0;
+		double targ_mean_t = 0.0;
+
+		// This hits:
+		// - not fitted branch
+		// - empty clip branch
+		// - verbose stats path
+		tg.verbose_predict_clip(fake, empty_clip, obs_time, target_yn, longest_seq, n_visits, n_targets, targ_mean_t);
+	}
+}
+
+
 SCENARIO("Test for optimize_events() (basic)") {
 
 	GIVEN("A minimal synthetic dataset where Events::optimize_events can succeed") {
