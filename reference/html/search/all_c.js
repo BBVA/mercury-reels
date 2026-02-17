@@ -1,20 +1,11 @@
 var searchData=
 [
-  ['n_5fdep_0',['n_dep',['../structreels_1_1CodeInTreeStatistics.html#a553f7fa474a74cca45e4bd6c3ec8c0c5',1,'reels::CodeInTreeStatistics']]],
-  ['n_5fincl_5fseen_1',['n_incl_seen',['../structreels_1_1CodeInTreeStatistics.html#ac9c08933e53d4e3716b4c03fd59493b0',1,'reels::CodeInTreeStatistics']]],
-  ['n_5fincl_5ftarget_2',['n_incl_target',['../structreels_1_1CodeInTreeStatistics.html#a78599c1a60e440029cb1e9dd3e51778d',1,'reels::CodeInTreeStatistics']]],
-  ['n_5fseen_3',['n_seen',['../structreels_1_1CodeTreeNode.html#a14d64da0c8561f09ed33d11e57860e82',1,'reels::CodeTreeNode']]],
-  ['n_5fsucc_5fseen_4',['n_succ_seen',['../structreels_1_1CodeInTreeStatistics.html#a97e0770acc8c04a6fb8dc58b5d5d17a0',1,'reels::CodeInTreeStatistics']]],
-  ['n_5fsucc_5ftarget_5',['n_succ_target',['../structreels_1_1CodeInTreeStatistics.html#a454ffa4668c040f6b59a175643422a35',1,'reels::CodeInTreeStatistics']]],
-  ['n_5ftarget_6',['n_target',['../structreels_1_1CodeTreeNode.html#a145bc4c7e28bb08a825a3e9e6536cd64',1,'reels::CodeTreeNode']]],
-  ['new_5fclients_7',['new_clients',['../reels_8cpp.html#ad0f10235a85ca2ef5fa0f7d2d1dac347',1,'reels.cpp']]],
-  ['new_5fclips_8',['new_clips',['../reels_8cpp.html#a26afee6065879429fa47c470a33722e2',1,'reels.cpp']]],
-  ['new_5fevents_9',['new_events',['../reels_8cpp.html#afcb458b4621ac0bf9043272aef4f5aaf',1,'reels.cpp']]],
-  ['new_5ftargets_10',['new_targets',['../reels_8cpp.html#a1b1165c1e44b7298de6ea167bdbd2d4e',1,'reels.cpp']]],
-  ['next_5fbinary_5fimage_5fiterator_11',['next_binary_image_iterator',['../reels_8cpp.html#aafdb452dd343c4d6aee60f6cfba9a0cd',1,'reels.cpp']]],
-  ['next_5fresult_5fiterator_12',['next_result_iterator',['../reels_8cpp.html#a77ef131d5aeaf5bf4cdb2029a77edac6',1,'reels.cpp']]],
-  ['normal_5fcdf_13',['normal_cdf',['../classreels_1_1Targets.html#afbff88985aa0045475304bc3a56b0ff3',1,'reels::Targets']]],
-  ['normal_5fpdf_14',['normal_pdf',['../classreels_1_1Targets.html#a6dca89e79ea2f68868bd17326b5d19d5',1,'reels::Targets']]],
-  ['num_5fevents_15',['num_events',['../classreels_1_1Clips.html#ab6831205dd7596c2a7b4880cbd6bebb6',1,'reels::Clips::num_events()'],['../classreels_1_1Events.html#a5249983ac63ead8eeecc5b6de7fb1fee',1,'reels::Events::num_events()']]],
-  ['num_5ftargets_16',['num_targets',['../classreels_1_1Targets.html#a194426a4f66ca447b433b1483c6f9b08',1,'reels::Targets']]]
+  ['of_20all_20nodes_20before_20this_20code_20in_20tree_0',['clips that visited the parents (target and no target) of all nodes before this code in tree.',['../structreels_1_1CodeInTreeStatistics.html#autotoc_md0',1,'']]],
+  ['of_20all_20nodes_20before_20this_20code_20in_20tree_20after_20in_20sequence_1',['clips with the target of all nodes before this code in tree (after in sequence).',['../structreels_1_1CodeInTreeStatistics.html#autotoc_md1',1,'']]],
+  ['one_20namespace_2',['There is one namespace',['../index.html#names_TOC',1,'']]],
+  ['operator_3c_3',['operator&lt;',['../structreels_1_1BinEventPt.html#a59169892f9565706dbc1fec8f52c2f82',1,'reels::BinEventPt']]],
+  ['operator_3d_3d_4',['operator==',['../structreels_1_1BinEventPt.html#af08980f08a1a08459e7bc1414542c3c4',1,'reels::BinEventPt']]],
+  ['optimize_5fevents_5',['optimize_events',['../classreels_1_1Events.html#a04a7255b61547f049cf370af2a0411ec',1,'reels::Events']]],
+  ['optimizeeval_6',['OptimizeEval',['../namespacereels.html#a085f2a70bd9319a74fcba2295b958e9e',1,'reels']]],
+  ['optimizeevalitem_7',['OptimizeEvalItem',['../structreels_1_1OptimizeEvalItem.html',1,'reels']]]
 ];

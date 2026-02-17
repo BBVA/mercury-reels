@@ -1,4 +1,5 @@
 <map id="reels::Targets" name="reels::Targets">
-<area shape="rect" id="node1" title="A container class to hold target events and do predictions based on clips." alt="" coords="10,79,119,104"/>
-<area shape="rect" id="node2" href="$classreels_1_1TimeUtil.html" title="A common ancestor of Clips and Targets to avoid duplicating time management." alt="" coords="5,5,124,31"/>
+<area shape="rect" id="Node000001" title="A container class to hold target events and do predictions based on clips." alt="" coords="8,79,109,104"/>
+<area shape="rect" id="Node000002" href="$classreels_1_1TimeUtil.html" title="A common ancestor of Clips and Targets to avoid duplicating time management." alt="" coords="5,5,112,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,44,61,79,56,79,56,44"/>
 </map>

@@ -1,45 +1,45 @@
-\hypertarget{reels__test_8h_source}{}\doxysection{reels\+\_\+test.\+h}
-\label{reels__test_8h_source}\index{reels/reels\_test.h@{reels/reels\_test.h}}
+\doxysection{reels\+\_\+test.\+h}
+\hypertarget{reels__test_8h_source}{}\label{reels__test_8h_source}\index{reels/reels\_test.h@{reels/reels\_test.h}}
 \mbox{\hyperlink{reels__test_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{comment}{/* Mercury-\/Reels}}
-\DoxyCodeLine{2 \textcolor{comment}{}}
-\DoxyCodeLine{3 \textcolor{comment}{    Copyright 2023 Banco Bilbao Vizcaya Argentaria, S.A.}}
-\DoxyCodeLine{4 \textcolor{comment}{}}
-\DoxyCodeLine{5 \textcolor{comment}{    This product includes software developed at}}
-\DoxyCodeLine{6 \textcolor{comment}{}}
-\DoxyCodeLine{7 \textcolor{comment}{    BBVA (https://www.bbva.com/)}}
-\DoxyCodeLine{8 \textcolor{comment}{}}
-\DoxyCodeLine{9 \textcolor{comment}{      Licensed under the Apache License, Version 2.0 (the "{}License"{});}}
-\DoxyCodeLine{10 \textcolor{comment}{    you may not use this file except in compliance with the License.}}
-\DoxyCodeLine{11 \textcolor{comment}{    You may obtain a copy of the License at}}
-\DoxyCodeLine{12 \textcolor{comment}{}}
-\DoxyCodeLine{13 \textcolor{comment}{    http://www.apache.org/licenses/LICENSE-\/2.0}}
-\DoxyCodeLine{14 \textcolor{comment}{}}
-\DoxyCodeLine{15 \textcolor{comment}{      Unless required by applicable law or agreed to in writing, software}}
-\DoxyCodeLine{16 \textcolor{comment}{    distributed under the License is distributed on an "{}AS IS"{} BASIS,}}
-\DoxyCodeLine{17 \textcolor{comment}{    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.}}
-\DoxyCodeLine{18 \textcolor{comment}{    See the License for the specific language governing permissions and}}
-\DoxyCodeLine{19 \textcolor{comment}{    limitations under the License.}}
-\DoxyCodeLine{20 \textcolor{comment}{*/}}
-\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{reels_8h}{reels.h}}"{}}}
-\DoxyCodeLine{22 }
-\DoxyCodeLine{23 \textcolor{preprocessor}{\#if defined TEST}}
-\DoxyCodeLine{24 \textcolor{preprocessor}{\#ifndef INCLUDED\_CATCH2}}
-\DoxyCodeLine{25 \textcolor{preprocessor}{\#define INCLUDED\_CATCH2}}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27 \textcolor{preprocessor}{\#include "{}catch.hpp"{}}}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{30 }
-\DoxyCodeLine{31 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacereels}{reels}};}
-\DoxyCodeLine{32 }
-\DoxyCodeLine{33 \textcolor{keyword}{extern} \textcolor{keywordtype}{char} \mbox{\hyperlink{reels_8cpp_a81f444de1743a2379339d2dcc4094bad}{b64chars}}[];}
-\DoxyCodeLine{34 \textcolor{keywordtype}{char} *\mbox{\hyperlink{reels_8cpp_a0b00567c9a0b17ae2c390c9512144d20}{image\_block\_as\_string}}(uint8\_t *p\_in);}
-\DoxyCodeLine{35 \textcolor{keywordtype}{char} *\mbox{\hyperlink{reels_8cpp_a0b00567c9a0b17ae2c390c9512144d20}{image\_block\_as\_string}}(\mbox{\hyperlink{structreels_1_1ImageBlock}{ImageBlock}} \&blk);}
-\DoxyCodeLine{36 \textcolor{keywordtype}{bool} \mbox{\hyperlink{reels_8cpp_a824686b1b9a5de641bbeaad372e299a0}{string\_as\_image\_block}}(\mbox{\hyperlink{structreels_1_1ImageBlock}{ImageBlock}} \&blk, \textcolor{keywordtype}{char} *p\_in);}
-\DoxyCodeLine{37 \mbox{\hyperlink{namespacereels_a8439b64892718b921e015accbfad1478}{String}} python\_set\_as\_string(\textcolor{keywordtype}{char} *p\_char);}
-\DoxyCodeLine{38 }
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Mercury-\/Reels}}
+\DoxyCodeLine{00002\ \textcolor{comment}{}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ \ Copyright\ 2023\ Banco\ Bilbao\ Vizcaya\ Argentaria,\ S.A.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ \ \ This\ product\ includes\ software\ developed\ at}}
+\DoxyCodeLine{00006\ \textcolor{comment}{}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ \ \ BBVA\ (https://www.bbva.com/)}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ \ \ \ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ \ \ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ \ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00014\ \textcolor{comment}{}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ \ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ \ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{reels_8h}{reels.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#if\ defined\ TEST}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#ifndef\ INCLUDED\_CATCH2}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ INCLUDED\_CATCH2}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}catch.hpp"{}}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacereels}{reels}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{reels_8cpp_a81f444de1743a2379339d2dcc4094bad}{b64chars}}[];}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{reels_8cpp_a0b00567c9a0b17ae2c390c9512144d20}{image\_block\_as\_string}}(uint8\_t\ *p\_in);}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{reels_8cpp_a0b00567c9a0b17ae2c390c9512144d20}{image\_block\_as\_string}}(\mbox{\hyperlink{structreels_1_1ImageBlock}{ImageBlock}}\ \&blk);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{reels_8cpp_a824686b1b9a5de641bbeaad372e299a0}{string\_as\_image\_block}}(\mbox{\hyperlink{structreels_1_1ImageBlock}{ImageBlock}}\ \&blk,\ \textcolor{keywordtype}{char}\ *p\_in);}
+\DoxyCodeLine{00037\ \mbox{\hyperlink{namespacereels_a8439b64892718b921e015accbfad1478}{String}}\ python\_set\_as\_string(\textcolor{keywordtype}{char}\ *p\_char);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

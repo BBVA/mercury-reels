@@ -1,8 +1,28 @@
 var searchData=
 [
-  ['operator_3c_0',['operator&lt;',['../structreels_1_1BinEventPt.html#a59169892f9565706dbc1fec8f52c2f82',1,'reels::BinEventPt']]],
-  ['operator_3d_3d_1',['operator==',['../structreels_1_1BinEventPt.html#af08980f08a1a08459e7bc1414542c3c4',1,'reels::BinEventPt']]],
-  ['optimize_5fevents_2',['optimize_events',['../classreels_1_1Events.html#a04a7255b61547f049cf370af2a0411ec',1,'reels::Events']]],
-  ['optimizeeval_3',['OptimizeEval',['../namespacereels.html#a085f2a70bd9319a74fcba2295b958e9e',1,'reels']]],
-  ['optimizeevalitem_4',['OptimizeEvalItem',['../structreels_1_1OptimizeEvalItem.html',1,'reels']]]
+  ['p_5ftarget_0',['p_target',['../classreels_1_1Targets.html#a0a9bd52e830ad7fe7dd0e5ad07d808e1',1,'reels::Targets']]],
+  ['p_5ftree_1',['p_tree',['../classreels_1_1Targets.html#a903da912dd75677cb03c3c41283d7f9d',1,'reels::Targets']]],
+  ['parents_20target_20and_20no_20target_20of_20all_20nodes_20before_20this_20code_20in_20tree_2',['clips that visited the parents (target and no target) of all nodes before this code in tree.',['../structreels_1_1CodeInTreeStatistics.html#autotoc_md0',1,'']]],
+  ['parse_3',['parse',['../reels__main_8cpp.html#ad63595a62ca812a0721326d4b7868833',1,'reels_main.cpp']]],
+  ['parse_5fbin_5fevent_5fpt_4',['parse_bin_event_pt',['../reels_8cpp.html#a3df92e45e3ed99c4714a0f1fc5a225fe',1,'reels.cpp']]],
+  ['pbinaryimage_5',['pBinaryImage',['../namespacereels.html#ac5c80b0d8cbac5bce1bdf61c9251cc75',1,'reels']]],
+  ['pchar_6',['pChar',['../namespacereels.html#a4c9a27f22e0b05c11ca77c43f0029ac1',1,'reels']]],
+  ['pclients_7',['pClients',['../reels_8cpp.html#a44ead8188e656a732af1286d920d94c7',1,'reels.cpp']]],
+  ['pclipmap_8',['pClipMap',['../namespacereels.html#a967ca40ad0410dcf5f4ff55206a988ff',1,'reels']]],
+  ['pclips_9',['pClips',['../reels_8cpp.html#a72192362c8eca60deb750125bba3156b',1,'reels.cpp']]],
+  ['pcodeset_10',['pCodeSet',['../namespacereels.html#ae76ecaa3940df39d3b8fa491fc62246c',1,'reels']]],
+  ['pcodetree_11',['pCodeTree',['../namespacereels.html#a1d46156e5435a796e0994528e1cf0c54',1,'reels']]],
+  ['pcodetreenode_12',['pCodeTreeNode',['../namespacereels.html#a5d95cbf5c5aeea11aee17d84e67a699b',1,'reels']]],
+  ['pevents_13',['pEvents',['../reels_8cpp.html#ad1adf28e896c3187c750ffbe3121c5f5',1,'reels.cpp']]],
+  ['pitertimes_14',['pIterTimes',['../reels_8cpp.html#ad1b206b2b9e7d3d38fa10defcd4bbe9e',1,'reels.cpp']]],
+  ['predict_15',['predict',['../classreels_1_1Targets.html#aefdb329ae8284265f37c6fee9f3a074a',1,'reels::Targets::predict()'],['../classreels_1_1Targets.html#a553f2ab5dd3bcec26034115b1d917679',1,'reels::Targets::predict(Clients clients)'],['../classreels_1_1Targets.html#a616b36f99f75c5592a7fc82febad23d0',1,'reels::Targets::predict(pClipMap p_clips)']]],
+  ['predict_5fclip_16',['predict_clip',['../classreels_1_1Targets.html#aa0711b5c32e23aab8f4656be2484eab1',1,'reels::Targets']]],
+  ['predict_5fmax_5ftime_17',['PREDICT_MAX_TIME',['../reels_8h.html#a08844c29f8b8dc51fd44de1370158b1a',1,'reels.h']]],
+  ['predict_5ftime_18',['predict_time',['../classreels_1_1Targets.html#a80b4a813cca93acd4439d1d34036327b',1,'reels::Targets']]],
+  ['priority_19',['priority',['../structreels_1_1EventStat.html#a7f0ebd3bcc532128673c1b0e2387689b',1,'reels::EventStat']]],
+  ['priority_5fseen_5ffactor_20',['PRIORITY_SEEN_FACTOR',['../reels_8h.html#a0ca8625cd6d1bdd498b5d0581fc42c49',1,'reels.h']]],
+  ['prioritymap_21',['PriorityMap',['../namespacereels.html#a3102c8c75ce0c85bb260c478b71fa90a',1,'reels']]],
+  ['ptargetmap_22',['pTargetMap',['../namespacereels.html#a0fd1b6d201e1eec9fdbe8940245b5d8d',1,'reels']]],
+  ['ptargets_23',['pTargets',['../reels_8cpp.html#a357c2e2a143d5d74c1c1f4e1df79fe34',1,'reels.cpp']]],
+  ['python_20wrapper_24',['Python wrapper',['../index.html#wrapper_sec',1,'']]]
 ];

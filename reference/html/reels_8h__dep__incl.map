@@ -1,8 +1,14 @@
 <map id="reels/reels.h" name="reels/reels.h">
-<area shape="rect" id="node1" title=" " alt="" coords="163,5,266,31"/>
-<area shape="rect" id="node2" href="$reels_8cpp.html" title=" " alt="" coords="5,79,123,104"/>
-<area shape="rect" id="node3" href="$reels__main_8cpp.html" title=" " alt="" coords="129,152,287,177"/>
-<area shape="rect" id="node4" href="$reels__main_8h.html" title=" " alt="" coords="198,79,341,104"/>
-<area shape="rect" id="node5" href="$reels__test_8h.html" title=" " alt="" coords="365,79,499,104"/>
-<area shape="rect" id="node6" href="$reels__test_8cpp.html" title=" " alt="" coords="357,152,507,177"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="153,5,247,31"/>
+<area shape="rect" id="Node000002" href="$reels_8cpp.html" title=" " alt="" coords="5,79,112,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,39,83,81,81,76,164,34"/>
+<area shape="rect" id="Node000003" href="$reels__main_8cpp.html" title=" " alt="" coords="122,152,265,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="190,44,177,79,176,99,179,118,190,151,185,153,174,120,171,99,172,78,185,42"/>
+<area shape="rect" id="Node000004" href="$reels__main_8h.html" title=" " alt="" coords="187,79,315,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="219,41,245,77,240,80,214,44"/>
+<area shape="rect" id="Node000005" href="$reels__test_8h.html" title=" " alt="" coords="339,79,461,104"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="246,33,368,76,366,81,244,38"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="235,116,205,154,201,150,231,113"/>
+<area shape="rect" id="Node000006" href="$reels__test_8cpp.html" title=" " alt="" coords="332,152,468,177"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="403,118,403,152,397,152,397,118"/>
 </map>

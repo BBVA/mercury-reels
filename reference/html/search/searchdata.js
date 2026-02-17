@@ -1,6 +1,6 @@
 var indexSectionsWithContent =
 {
-  0: "[abcdefghilmnoprstuvw",
+  0: "abcdefghilmnoprstuvw",
   1: "bceilost",
   2: "r",
   3: "mr",
@@ -10,7 +10,7 @@ var indexSectionsWithContent =
   7: "at",
   8: "at",
   9: "cdimpw",
-  10: "["
+  10: "cdfr"
 };
 
 var indexSectionNames =

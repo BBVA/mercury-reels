@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['linear_5fcorrelation_0',['linear_correlation',['../classreels_1_1Events.html#a8cba11f94673a7045f4d9737047788d3',1,'reels::Events']]],
-  ['load_1',['load',['../classreels_1_1Events.html#a464476e8cc5dec6256e29a97392a957d',1,'reels::Events::load(pBinaryImage &amp;p_bi)'],['../classreels_1_1Events.html#ab8a6dec443d149cc7dc5154348185f96',1,'reels::Events::load(pBinaryImage &amp;p_bi, int &amp;c_block, int &amp;c_ofs)'],['../classreels_1_1Clients.html#afda47b3ae3de3c1b61437df8baa4ee3c',1,'reels::Clients::load(pBinaryImage &amp;p_bi)'],['../classreels_1_1Clients.html#a1a6024a5a3ab224c475263fc5e476198',1,'reels::Clients::load(pBinaryImage &amp;p_bi, int &amp;c_block, int &amp;c_ofs)'],['../classreels_1_1Clips.html#a706fc3a60fef03151deda0a7f99e467e',1,'reels::Clips::load()'],['../classreels_1_1Targets.html#a96b6945602462b00a810f3489f3a2288',1,'reels::Targets::load()']]],
-  ['log_2',['log',['../classreels_1_1Logger.html#a0d3cb8eaed0912071e4a610227d694ff',1,'reels::Logger']]],
-  ['log_5fprintf_3',['log_printf',['../classreels_1_1Logger.html#a910e75a2396bad1bd5c3c13c1ea22797',1,'reels::Logger::log_printf(const char *fmt,...)'],['../classreels_1_1Logger.html#a8e1216e4ae9ce9cece84ab1acb30b591',1,'reels::Logger::log_printf(const char *fmt, va_list args)']]],
-  ['logger_4',['Logger',['../classreels_1_1Logger.html',1,'reels']]]
+  ['main_0',['main',['../reels__main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'reels_main.cpp']]],
+  ['main_2edox_1',['main.dox',['../main_8dox.html',1,'']]],
+  ['max_5fnum_5fevents_2',['max_num_events',['../classreels_1_1Events.html#afd8afb0326fc16de30c37b930329c322',1,'reels::Events']]],
+  ['max_5fseq_5flen_5fin_5fpredict_3',['MAX_SEQ_LEN_IN_PREDICT',['../reels_8h.html#a2e7bcfe0de6bafe2bd8f0f397496bbd3',1,'reels.h']]],
+  ['murmur_5fseed_4',['MURMUR_SEED',['../reels_8cpp.html#acf830c3140deca25e44187534c55e5a8',1,'reels.cpp']]],
+  ['murmurhash64a_5',['MurmurHash64A',['../namespacereels.html#aea29224c74ab1bbd3337bc9e22fca30b',1,'reels']]]
 ];

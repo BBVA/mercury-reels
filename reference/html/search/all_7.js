@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['get_5fstr_0',['get_str',['../classreels_1_1Events.html#ae3a42c1d6ad1d4250911ab9ce8d00f39',1,'reels::Events']]],
-  ['get_5ftime_1',['get_time',['../classreels_1_1TimeUtil.html#ae8e19904eaec93a5c9a4f0e6e0792369',1,'reels::TimeUtil']]],
-  ['get_5ftop_5fcodes_2',['get_top_codes',['../classreels_1_1Events.html#ae3546332ef86c25797c4bd194fe50076',1,'reels::Events']]]
+  ['hash_5fclient_5fid_0',['hash_client_id',['../classreels_1_1Clients.html#a993a1fd1834a310f4ea70043545c6215',1,'reels::Clients']]],
+  ['help_1',['help',['../reels__main_8cpp.html#a97ee70a8770dc30d06c744b24eb2fcfc',1,'reels_main.cpp']]]
 ];
