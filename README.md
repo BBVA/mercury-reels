@@ -2,8 +2,6 @@
 
 ![](https://img.shields.io/badge/-c++-black?logo=c%2B%2B&style=social)
 ![](https://img.shields.io/pypi/v/mercury-reels?label=latest%20pypi%20build)
-[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-3816/)
-[![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-3916/)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-31011/)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3119/)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-3128/)
@@ -81,24 +79,10 @@ Reels is implemented in four classes.
 pip install mercury-reels
 ```
 
-## Clone and set up a development environment to work with it
+## How to setup a development environment and contribute to reels
 
-To work with Reels command line or develop Reels, you can set up an environment with git, gcc, make and the following tools:
+See [DEVELOPMENT](src/DEVELOPMENT.md)
 
-  * catch2 (Already included in source code)
-  * doxygen 1.9.5 or better (to render C++ documentation)
-  * mkdocs 1.4.2 or better (to render Python documentation)
-  * swig 4.0.2
-  * python 3.x with appropriate paths to python.h (see Makefile)
-
-```bash
-git clone https://github.com/BBVA/mercury-reels.git
-cd mercury-reels/src
-
-make
-```
-
-Make without arguments gives help. Try all the options. Everything should work assuming the tools are installed.
 
 ## Documentation
 

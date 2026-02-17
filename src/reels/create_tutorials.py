@@ -1,4 +1,5 @@
-import os, pkg_resources, shutil
+import os, shutil
+from importlib.resources import files
 
 
 def create_tutorials(destination, silent = False):
@@ -19,7 +20,14 @@ def create_tutorials(destination, silent = False):
         >>> create_tutorials('/tmp')
 
     """
-    src = pkg_resources.resource_filename(__package__, 'tutorials')
+    src = '%s/tutorials' % str(files(__package__))
+
+    # When the packages is not installed and runs from source code, the path is:
+    # `<..>/mercury-reels/notebooks` instead of `<..>/mercury-reels/src/reels/tutorials`
+
+    if not os.path.exists(src):
+        src = src.replace('/src/reels/tutorials', '/notebooks')
+
     dst = os.path.abspath(destination)
 
     assert src != dst, 'Destination (%s) cannot be the same as source.' % src

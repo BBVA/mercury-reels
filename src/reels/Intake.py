@@ -25,9 +25,15 @@ import pandas as pd
 
 PYSPARK = os.environ.get("SPARK_HOME") is not None
 
+if PYSPARK:
+    try:
+        import pyspark
+
+    except ImportError:
+        PYSPARK = False
+
 
 if PYSPARK:
-    import pyspark
     from pyspark.accumulators import AccumulatorParam
 
     try:
