@@ -18,9 +18,7 @@
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
 
-import pickle
-
-import datetime
+import pickle, datetime, shutil, os
 
 import reels
 
@@ -812,8 +810,21 @@ def test_event_optimizer():
 	assert log.startswith('ERROR')
 
 
-test_events()
-test_clients()
-test_clips()
-test_targets()
-test_event_optimizer()
+def test_create_tutorials():
+	# Silently remove the full tree './reels_tutorials/'
+	shutil.rmtree('./reels_tutorials', ignore_errors = True)
+
+	reels.create_tutorials('./')
+
+	assert os.path.isfile('./reels_tutorials/reels_walkthrough.ipynb')
+
+	# Clean up
+	shutil.rmtree('./reels_tutorials', ignore_errors = True)
+
+
+# test_events()
+# test_clients()
+# test_clips()
+# test_targets()
+# test_event_optimizer()
+# test_create_tutorials()

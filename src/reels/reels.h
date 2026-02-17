@@ -251,6 +251,9 @@ struct OptimizeEvalItem {
 };
 
 
+bool compare_optimize_eval(const OptimizeEvalItem a, const OptimizeEvalItem b);	///< A function to compare two OptimizeEvalItem for sorting.
+
+
 /** \brief OptimizeEval: A vector of OptimizeEvalItem.
 */
 typedef std::vector<OptimizeEvalItem>	OptimizeEval;

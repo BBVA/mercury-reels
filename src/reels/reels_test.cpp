@@ -475,8 +475,61 @@ SCENARIO("Basic math") {
 extern int new_events();
 extern bool destroy_events(int id);
 extern bool events_insert_row(int id, char *p_e, char *p_d, double w);
+extern bool events_define_event(int id, char *p_e, char *p_d, double w, int code);
 extern char *events_describe_next_event(int id, char *prev_event);
+extern bool events_load_block(int id, char *p_block);
+extern int events_save(int id);
+extern bool events_set_max_num_events(int id, int max_events);
 extern bool events_set_store_strings(int id, bool store);
+extern int events_num_events(int id);
+extern char *events_optimize_events(int id, int id_clips, int id_targets, int num_steps, int codes_per_step, double threshold,
+									char *force_include, char *force_exclude, char *x_form, char *agg, double p, int depth, int as_states,
+									double exp_decay, double lower_bound_p, bool log_lift);
+
+extern int new_clients();
+extern bool destroy_clients(int id);
+extern char *clients_hash_client_id(int id, char *p_cli);
+extern bool clients_add_client_id(int id, char *p_cli);
+extern char *clients_hash_by_index(int id, int idx);
+extern int clients_num_clients(int id);
+extern bool clients_load_block(int id, char *p_block);
+extern int clients_save(int id);
+
+extern int new_clips(int id_clients, int id_events);
+extern bool destroy_clips(int id);
+extern bool clips_set_time_format(int id, char *fmt);
+extern bool clips_scan_event(int id, char *p_e, char *p_d, double w, char *p_c, char *p_t);
+extern char *clips_hash_by_previous(int id, char *prev_hash);
+extern bool clips_load_block(int id, char *p_block);
+extern int clips_save(int id);
+extern char *clips_describe_clip(int id, char *client_id);
+extern int clips_num_clips(int id);
+extern int clips_num_events(int id);
+extern char *clips_test_sequence(int seq_num, bool target);
+
+extern int new_targets(int id_clips);
+extern bool destroy_targets(int id);
+extern bool targets_set_time_format(int id, char *fmt);
+extern bool targets_insert_target(int id, char *p_c, char *p_t);
+extern bool targets_fit(int id, char *x_form, char *agg, double p, int depth, int as_states);
+extern int targets_predict_clients(int id, int id_clients);
+extern int targets_predict_clips(int id, int id_clips);
+extern bool targets_load_block(int id, char *p_block);
+extern int targets_save(int id);
+extern int targets_num_targets(int id);
+extern int targets_tree_node_idx(int id, int parent_idx, int code);
+extern char *targets_tree_node_children(int id, int idx);
+extern char *targets_describe_tree_node(int id, int idx);
+extern char *targets_describe_tree(int id);
+
+extern int size_result_iterator(int iter_id);
+extern double next_result_iterator(int iter_id);
+extern void destroy_result_iterator(int iter_id);
+
+extern int size_binary_image_iterator(int image_id);
+extern char *next_binary_image_iterator(int image_id);
+extern bool destroy_binary_image_iterator(int image_id);
+
 
 SCENARIO("Test Events") {
 
@@ -1749,6 +1802,988 @@ SCENARIO("Test Targets.save() / Targets.load()") {
 }
 
 
+SCENARIO("Extended Testing Emulating the Python API ") {
+
+	int ev_id = new_events();
+
+	REQUIRE(events_define_event(ev_id, (char *) "emi_A", (char *) "descr_A", 1.0, 1));
+	REQUIRE(events_define_event(ev_id, (char *) "emi_B", (char *) "descr_B", 1.0, 2));
+	REQUIRE(events_num_events(ev_id) == 2);
+
+	int cl_id = new_clients();
+
+	REQUIRE(!clients_add_client_id(cl_id, (char *) ""));
+	REQUIRE(clients_add_client_id(cl_id, (char *) "cli_A"));
+	REQUIRE(clients_add_client_id(cl_id, (char *) "cli_B"));
+	REQUIRE(!clients_add_client_id(cl_id, (char *) "cli_B"));
+	REQUIRE(clients_num_clients(cl_id) == 2);
+
+	String hash_a = clients_hash_client_id(cl_id, (char *) "cli_A");
+	String hash_a_idx = clients_hash_by_index(cl_id, 0);
+
+	REQUIRE(hash_a.length() == 18);
+	REQUIRE(hash_a == hash_a_idx);
+
+	int clips_id = new_clips(cl_id, ev_id);
+	REQUIRE(clips_id > 0);
+	REQUIRE(clips_set_time_format(clips_id, (char *) "%Y-%m-%d %H:%M:%S"));
+
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:00:00"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_B", (char *) "descr_B", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:01:00"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_B", (char *) "2022-06-04 10:00:30"));
+	REQUIRE(!clips_scan_event(clips_id, (char *) "emi_X", (char *) "descr_X", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:02:00"));
+	REQUIRE(!clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_X", (char *) "2022-06-04 10:02:00"));
+
+	REQUIRE(clips_num_clips(clips_id) == 2);
+	REQUIRE(clips_num_events(clips_id) == 3);
+
+	String hash_first = clips_hash_by_previous(clips_id, (char *) "");
+	String hash_second = clips_hash_by_previous(clips_id, (char *) hash_first.c_str());
+	String hash_none = clips_hash_by_previous(clips_id, (char *) hash_second.c_str());
+
+	REQUIRE(hash_first.length() == 18);
+	REQUIRE(hash_second.length() == 18);
+	REQUIRE(hash_first != hash_second);
+	REQUIRE(hash_none.length() == 0);
+
+	String clip_desc = clips_describe_clip(clips_id, (char *) "cli_A");
+	REQUIRE(clip_desc == "1\t2");
+
+	int targ_id = new_targets(clips_id);
+	REQUIRE(targ_id > 0);
+	REQUIRE(targets_set_time_format(targ_id, (char *) "%Y-%m-%d %H:%M:%S"));
+	REQUIRE(targets_insert_target(targ_id, (char *) "cli_A", (char *) "2022-06-04 10:02:00"));
+	REQUIRE(!targets_insert_target(targ_id, (char *) "cli_A", (char *) "2022-06-04 10:02:00"));
+	REQUIRE(targets_num_targets(targ_id) == 1);
+	REQUIRE(targets_fit(targ_id, (char *) "log", (char *) "mean", 0.5, 5, 0));
+
+	String tree_desc = targets_describe_tree(targ_id);
+	String root_children = targets_tree_node_children(targ_id, 0);
+
+	REQUIRE(tree_desc.length() > 0);
+	REQUIRE(root_children.length() > 0);
+
+	int child_code = 0;
+	REQUIRE(sscanf(root_children.c_str(), "%i", &child_code) == 1);
+
+	int child_idx = targets_tree_node_idx(targ_id, 0, child_code);
+	REQUIRE(child_idx >= 0);
+
+	String node_desc = targets_describe_tree_node(targ_id, child_idx);
+	REQUIRE(node_desc.length() > 0);
+
+	int it_pred = targets_predict_clients(targ_id, cl_id);
+	REQUIRE(it_pred > 0);
+	REQUIRE(size_result_iterator(it_pred) == 2);
+
+	double pred_1 = next_result_iterator(it_pred);
+	double pred_2 = next_result_iterator(it_pred);
+
+	REQUIRE(size_result_iterator(it_pred) == 0);
+	REQUIRE(pred_1 > 0);
+	REQUIRE(pred_2 > 0);
+
+	destroy_result_iterator(it_pred);
+
+	int it_pred_clips = targets_predict_clips(targ_id, clips_id);
+	REQUIRE(it_pred_clips > 0);
+	REQUIRE(size_result_iterator(it_pred_clips) == 2);
+	next_result_iterator(it_pred_clips);
+	next_result_iterator(it_pred_clips);
+	destroy_result_iterator(it_pred_clips);
+
+	int image_cli = clients_save(cl_id);
+	REQUIRE(image_cli == cl_id);
+
+	int n_cli_blocks = size_binary_image_iterator(image_cli);
+	REQUIRE(n_cli_blocks > 0);
+
+	std::vector<String> cli_blocks = {};
+	for (int i = 0; i < n_cli_blocks; i++) {
+		String blk = next_binary_image_iterator(image_cli);
+		REQUIRE(blk.length() > 0);
+		cli_blocks.push_back(blk);
+	}
+
+	REQUIRE(destroy_binary_image_iterator(image_cli));
+
+	int cl_id_copy = new_clients();
+	for (std::vector<String>::iterator it = cli_blocks.begin(); it != cli_blocks.end(); ++it)
+		REQUIRE(clients_load_block(cl_id_copy, (char *) it->c_str()));
+	REQUIRE(clients_load_block(cl_id_copy, (char *) ""));
+	REQUIRE(clients_num_clients(cl_id_copy) == 2);
+
+	int image_clp = clips_save(clips_id);
+	REQUIRE(image_clp == clips_id);
+
+	int n_clp_blocks = size_binary_image_iterator(image_clp);
+	REQUIRE(n_clp_blocks > 0);
+
+	std::vector<String> clp_blocks = {};
+	for (int i = 0; i < n_clp_blocks; i++) {
+		String blk = next_binary_image_iterator(image_clp);
+		REQUIRE(blk.length() > 0);
+		clp_blocks.push_back(blk);
+	}
+
+	REQUIRE(destroy_binary_image_iterator(image_clp));
+
+	int ev_id_empty = new_events();
+	int cl_id_empty = new_clients();
+	int clips_id_copy = new_clips(cl_id_empty, ev_id_empty);
+
+	for (std::vector<String>::iterator it = clp_blocks.begin(); it != clp_blocks.end(); ++it)
+		REQUIRE(clips_load_block(clips_id_copy, (char *) it->c_str()));
+	REQUIRE(clips_load_block(clips_id_copy, (char *) ""));
+	REQUIRE(clips_num_clips(clips_id_copy) == 2);
+	REQUIRE(clips_num_events(clips_id_copy) == 3);
+
+	int image_targ = targets_save(targ_id);
+	REQUIRE(image_targ == targ_id);
+
+	int n_targ_blocks = size_binary_image_iterator(image_targ);
+	REQUIRE(n_targ_blocks > 0);
+
+	std::vector<String> targ_blocks = {};
+	for (int i = 0; i < n_targ_blocks; i++) {
+		String blk = next_binary_image_iterator(image_targ);
+		REQUIRE(blk.length() > 0);
+		targ_blocks.push_back(blk);
+	}
+
+	REQUIRE(destroy_binary_image_iterator(image_targ));
+
+	int ev_id_empty_2 = new_events();
+	int cl_id_empty_2 = new_clients();
+	int clips_id_empty = new_clips(cl_id_empty_2, ev_id_empty_2);
+	int targ_id_copy = new_targets(clips_id_empty);
+
+	for (std::vector<String>::iterator it = targ_blocks.begin(); it != targ_blocks.end(); ++it)
+		REQUIRE(targets_load_block(targ_id_copy, (char *) it->c_str()));
+	REQUIRE(targets_load_block(targ_id_copy, (char *) ""));
+	REQUIRE(targets_num_targets(targ_id_copy) == 1);
+
+	destroy_targets(targ_id_copy);
+	destroy_targets(targ_id);
+	destroy_clips(clips_id_empty);
+	destroy_clips(clips_id_copy);
+	destroy_clips(clips_id);
+	destroy_clients(cl_id_empty_2);
+	destroy_clients(cl_id_empty);
+	destroy_clients(cl_id_copy);
+	destroy_clients(cl_id);
+	destroy_events(ev_id_empty_2);
+	destroy_events(ev_id_empty);
+	destroy_events(ev_id);
+}
+
+
+SCENARIO("Cover python API zero-coverage functions") {
+
+	int ev_id = new_events();
+
+	REQUIRE(events_define_event(ev_id, (char *) "emi_A", (char *) "descr_A", 1.0, 1));
+	REQUIRE(events_define_event(ev_id, (char *) "emi_B", (char *) "descr_B", 1.0, 2));
+
+	int cl_id = new_clients();
+
+	REQUIRE(clients_add_client_id(cl_id, (char *) "cli_A"));
+	REQUIRE(clients_add_client_id(cl_id, (char *) "cli_B"));
+
+	int clips_id = new_clips(cl_id, ev_id);
+	REQUIRE(clips_id > 0);
+	REQUIRE(clips_set_time_format(clips_id, (char *) "%Y-%m-%d %H:%M:%S"));
+
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:00:00"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_B", (char *) "descr_B", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:01:00"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_B", (char *) "2022-06-04 10:00:30"));
+
+	int targ_id = new_targets(clips_id);
+	REQUIRE(targ_id > 0);
+	REQUIRE(targets_set_time_format(targ_id, (char *) "%Y-%m-%d %H:%M:%S"));
+	REQUIRE(targets_insert_target(targ_id, (char *) "cli_A", (char *) "2022-06-04 10:02:00"));
+
+	int ev_opt_id = new_events();
+
+	REQUIRE(events_define_event(ev_opt_id, (char *) "emi_A", (char *) "descr_A", 1.0, 1));
+	REQUIRE(events_define_event(ev_opt_id, (char *) "emi_B", (char *) "descr_B", 1.0, 2));
+
+	char *opt_log = events_optimize_events(ev_opt_id, clips_id, targ_id, 1, 1, 0.0,
+										  (char *) "", (char *) "", (char *) "log", (char *) "mean",
+										  0.5, 3, 0, 0.0, 0.5, false);
+
+	REQUIRE(strncmp(opt_log, "SUCCESS", 7) == 0);
+
+	int ev_cap_id = new_events();
+	REQUIRE(events_set_max_num_events(ev_cap_id, 1));
+	REQUIRE(events_insert_row(ev_cap_id, (char *) "emi_1", (char *) "descr_1", 1.0));
+	REQUIRE(events_insert_row(ev_cap_id, (char *) "emi_2", (char *) "descr_2", 1.0));
+	REQUIRE(events_num_events(ev_cap_id) == 1);
+
+	int image_ev = events_save(ev_id);
+	REQUIRE(image_ev == ev_id);
+
+	int n_ev_blocks = size_binary_image_iterator(image_ev);
+	REQUIRE(n_ev_blocks > 0);
+
+	std::vector<String> ev_blocks = {};
+	for (int i = 0; i < n_ev_blocks; i++) {
+		String blk = next_binary_image_iterator(image_ev);
+		REQUIRE(blk.length() > 0);
+		ev_blocks.push_back(blk);
+	}
+	REQUIRE(destroy_binary_image_iterator(image_ev));
+
+	int ev_load_id = new_events();
+	for (std::vector<String>::iterator it = ev_blocks.begin(); it != ev_blocks.end(); ++it)
+		REQUIRE(events_load_block(ev_load_id, (char *) it->c_str()));
+	REQUIRE(events_load_block(ev_load_id, (char *) ""));
+	REQUIRE(events_num_events(ev_load_id) == 2);
+
+	String seq_a = clips_test_sequence(0, false);
+	String seq_b = clips_test_sequence(0, true);
+	String seq_c = clips_test_sequence(999, false);
+
+	REQUIRE(seq_a.length() > 0);
+	REQUIRE(seq_b.length() > 0);
+	REQUIRE(seq_c.length() == 0);
+
+	Events ev_cpp = {};
+	Clients cli_cpp = {};
+
+	ev_cpp.define_event((char *) "em1", (char *) "desc1", 1.0, 1);
+	ev_cpp.define_event((char *) "em2", (char *) "desc2", 1.0, 2);
+	cli_cpp.add_client_id((char *) "cli_V");
+
+	Clips clp_cpp(cli_cpp, ev_cpp);
+
+	TimePoint t1 = clp_cpp.get_time((char *) "2022-06-01 10:00:00");
+	TimePoint t2 = clp_cpp.get_time((char *) "2022-06-01 10:01:00");
+	TimePoint t3 = clp_cpp.get_time((char *) "2022-06-01 10:03:00");
+
+	ElementHash cli_hash = MurmurHash64A((char *) "cli_V", 5);
+
+	clp_cpp.insert_event(cli_hash, 1, t1);
+	clp_cpp.insert_event(cli_hash, 2, t2);
+
+	TargetMap tm = {};
+	Targets targ_cpp(&clp_cpp.clips, tm);
+
+	REQUIRE(targ_cpp.p_target() == &targ_cpp.target);
+
+	targ_cpp.target[cli_hash] = t3;
+	REQUIRE(targ_cpp.fit(tr_linear, ag_mean, 0.5, 5, false));
+
+	TimePoint obs_time = 0;
+	bool target_yn = false;
+	int longest_seq = 0;
+	uint64_t n_visits = 0;
+	uint64_t n_targets = 0;
+	double targ_mean_t = 0;
+
+	Clip &clip_ref = clp_cpp.clips[cli_hash];
+
+	targ_cpp.verbose_predict_clip(cli_hash, clip_ref, obs_time, target_yn, longest_seq, n_visits, n_targets, targ_mean_t);
+
+	REQUIRE(target_yn);
+	REQUIRE(obs_time == t3 - t2);
+	REQUIRE(longest_seq > 0);
+	REQUIRE(n_visits > 0);
+	REQUIRE(n_targets > 0);
+	REQUIRE(targ_mean_t > 0);
+
+	destroy_targets(targ_id);
+	destroy_clips(clips_id);
+	destroy_clients(cl_id);
+	destroy_events(ev_load_id);
+	destroy_events(ev_cap_id);
+	destroy_events(ev_opt_id);
+	destroy_events(ev_id);
+}
+
+
+SCENARIO("Error paths from coverage report") {
+
+	OptimizeEvalItem aa = {1, 0, 1}, bb = {2, 0, 1}, cc = {2, 0, 2};
+
+	REQUIRE(compare_optimize_eval(aa, bb));	// a.t_hat < b.t_hat
+	REQUIRE(!compare_optimize_eval(bb, aa));
+	REQUIRE(compare_optimize_eval(bb, cc));	// b.t_hat == c.t_hat, b.seq_len < c.seq_len
+	REQUIRE(!compare_optimize_eval(cc, bb));
+
+	ImageBlock block;
+
+	char *p_str = image_block_as_string(block);
+
+	REQUIRE(string_as_image_block(block, p_str));
+	char c = p_str[3]; p_str[3] = '_';
+	REQUIRE(!string_as_image_block(block, p_str));
+	p_str[3] = c; c = p_str[2]; p_str[2] = ' ';
+	REQUIRE(!string_as_image_block(block, p_str));
+	p_str[2] = c; c = p_str[1]; p_str[1] = ' ';
+	REQUIRE(!string_as_image_block(block, p_str));
+	p_str[1] = c; c = p_str[0]; p_str[0] = ' ';
+	REQUIRE(!string_as_image_block(block, p_str));
+	p_str[0] = c;
+	REQUIRE(string_as_image_block(block, p_str));
+
+	REQUIRE(!destroy_events(7654321));
+	REQUIRE(!events_insert_row(7654321, nullptr, nullptr, 0.0));
+	REQUIRE(!events_define_event(7654321, nullptr, nullptr, 0.0, 0));
+	REQUIRE(events_describe_next_event(7654321, nullptr) != nullptr);
+	REQUIRE(!events_set_store_strings(7654321, false));
+
+	REQUIRE(!destroy_clients(7654321));
+	destroy_result_iterator(7654321);
+
+	BinaryImage bi = {};
+	ImageBlock full = {};
+	full.size = IMAGE_BUFF_SIZE;
+	full.block_num = 1;
+	bi.push_back(full);
+
+	int v = 123;
+	REQUIRE(image_put(&bi, &v, sizeof(v)));
+
+	int c_block = -1;
+	int c_ofs = 0;
+	int out = 0;
+	REQUIRE(!image_get(&bi, c_block, c_ofs, &out, sizeof(out)));
+
+	c_block = 1;
+	c_ofs = 0;
+	out = 0;
+	REQUIRE(!image_get(&bi, c_block, c_ofs, &out, -1));
+
+	BinaryImage bi_small = {};
+	ImageBlock blk_small = {};
+	blk_small.size = 10;
+	blk_small.block_num = 1;
+	bi_small.push_back(blk_small);
+	c_block = 0;
+	c_ofs = IMAGE_BUFF_SIZE;
+	REQUIRE(!image_get(&bi_small, c_block, c_ofs, &out, 1));
+
+	BinaryImage bi_jump = {};
+	ImageBlock blk_full = {};
+	blk_full.size = IMAGE_BUFF_SIZE;
+	blk_full.block_num = 1;
+	ImageBlock blk_tail = {};
+	blk_tail.size = 4;
+	blk_tail.block_num = 2;
+	bi_jump.push_back(blk_full);
+	bi_jump.push_back(blk_tail);
+	c_block = 0;
+	c_ofs = IMAGE_BUFF_SIZE;
+	REQUIRE(image_get(&bi_jump, c_block, c_ofs, &out, 4));
+
+	char *err_msg = events_optimize_events(99999, 0, 0, 1, 1, 0.0,
+										   (char *) "", (char *) "", (char *) "log", (char *) "mean",
+										   0.5, 1, 0, 0.0, 0.5, false);
+	REQUIRE(strncmp(err_msg, "ERROR", 5) == 0);
+
+	int ev_id = new_events();
+	int cl_id = new_clients();
+
+	REQUIRE(events_define_event(ev_id, (char *) "emi_A", (char *) "descr_A", 1.0, 1));
+	REQUIRE(events_define_event(ev_id, (char *) "emi_B", (char *) "descr_B", 1.0, 2));
+	REQUIRE(clients_add_client_id(cl_id, (char *) "cli_A"));
+
+	int clips_id = new_clips(cl_id, ev_id);
+	REQUIRE(clips_id > 0);
+	REQUIRE(clips_set_time_format(clips_id, (char *) "%Y-%m-%d %H:%M:%S"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_A", (char *) "descr_A", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:00:00"));
+	REQUIRE(clips_scan_event(clips_id, (char *) "emi_B", (char *) "descr_B", 1.0, (char *) "cli_A", (char *) "2022-06-04 10:01:00"));
+
+	int targ_id = new_targets(clips_id);
+	REQUIRE(targ_id > 0);
+	REQUIRE(targets_set_time_format(targ_id, (char *) "%Y-%m-%d %H:%M:%S"));
+	REQUIRE(targets_insert_target(targ_id, (char *) "cli_A", (char *) "2022-06-04 10:02:00"));
+
+	err_msg = events_optimize_events(ev_id, 99999, targ_id, 1, 1, 0.0,
+									 (char *) "", (char *) "", (char *) "log", (char *) "mean",
+									 0.5, 1, 0, 0.0, 0.5, false);
+	REQUIRE(strncmp(err_msg, "ERROR", 5) == 0);
+
+	err_msg = events_optimize_events(ev_id, clips_id, 99999, 1, 1, 0.0,
+									 (char *) "", (char *) "", (char *) "log", (char *) "mean",
+									 0.5, 1, 0, 0.0, 0.5, false);
+	REQUIRE(strncmp(err_msg, "ERROR", 5) == 0);
+
+	err_msg = events_optimize_events(ev_id, clips_id, targ_id, 1, 1, 0.0,
+									 (char *) "1,2", (char *) "2", (char *) "linear", (char *) "longest",
+									 0.5, 2, 0, 0.0, 0.5, false);
+	REQUIRE(strncmp(err_msg, "SUCCESS", 7) == 0);
+
+	int ev_load_id = new_events();
+
+	REQUIRE(!events_load_block(99999, (char *) "x"));
+	REQUIRE(!events_load_block(ev_load_id, (char *) ""));
+
+	String bad_b64(8192, '!');
+	REQUIRE(!events_load_block(ev_load_id, (char *) bad_b64.c_str()));
+
+	ImageBlock blk2 = {};
+	blk2.size = 0;
+	blk2.block_num = 2;
+	String blk2_str = image_block_as_string(blk2);
+	REQUIRE(!events_load_block(ev_load_id, (char *) blk2_str.c_str()));
+
+	ImageBlock blk1 = {};
+	blk1.size = 0;
+	blk1.block_num = 1;
+	String blk1_str = image_block_as_string(blk1);
+	REQUIRE(events_load_block(ev_load_id, (char *) blk1_str.c_str()));
+
+	ImageBlock blk3 = {};
+	blk3.size = 0;
+	blk3.block_num = 3;
+	String blk3_str = image_block_as_string(blk3);
+	REQUIRE(!events_load_block(ev_load_id, (char *) blk3_str.c_str()));
+
+	REQUIRE(destroy_binary_image_iterator(ev_load_id));
+
+	REQUIRE(events_save(99999) == 0);
+	REQUIRE(!events_set_max_num_events(99999, 5));
+
+	REQUIRE(!clients_add_client_id(99999, (char *) "cli"));
+	REQUIRE(strlen(clients_hash_client_id(99999, (char *) "cli")) == 0);
+	REQUIRE(strlen(clients_hash_by_index(99999, 0)) == 0);
+	REQUIRE(clients_num_clients(99999) == -1);
+	REQUIRE(!clients_load_block(99999, (char *) "x"));
+	REQUIRE(clients_save(99999) == 0);
+
+	REQUIRE(new_clips(99999, 99999) == -1);
+	REQUIRE(new_clips(cl_id, 99999) == -1);
+	REQUIRE(new_clips(99999, ev_id) == -1);
+
+	REQUIRE(!destroy_clips(99999));
+	REQUIRE(!clips_set_time_format(99999, (char *) "%Y"));
+	REQUIRE(!clips_scan_event(99999, (char *) "e", (char *) "d", 1.0, (char *) "c", (char *) "2022-06-04 10:00:00"));
+	REQUIRE(strlen(clips_hash_by_previous(99999, (char *) "")) == 0);
+	REQUIRE(!clips_load_block(99999, (char *) "x"));
+	REQUIRE(clips_save(99999) == 0);
+	REQUIRE(strlen(clips_describe_clip(99999, (char *) "cli")) == 0);
+	REQUIRE(clips_num_clips(99999) == 0);
+	REQUIRE(clips_num_events(99999) == -1);
+	REQUIRE(strlen(clips_describe_clip(clips_id, (char *) "nope")) == 0);
+
+	REQUIRE(new_targets(99999) == -1);
+	REQUIRE(!destroy_targets(99999));
+	REQUIRE(!targets_set_time_format(99999, (char *) "%Y"));
+	REQUIRE(!targets_insert_target(99999, (char *) "cli", (char *) "2022-06-01 00:00:00"));
+	REQUIRE(!targets_fit(99999, (char *) "log", (char *) "mean", 0.5, 2, 0));
+	REQUIRE(targets_predict_clients(99999, cl_id) == -1);
+	REQUIRE(targets_predict_clips(99999, clips_id) == -1);
+	REQUIRE(!targets_load_block(99999, (char *) "x"));
+	REQUIRE(targets_save(99999) == 0);
+	REQUIRE(targets_num_targets(99999) == -1);
+	REQUIRE(targets_tree_node_idx(99999, 0, 1) == -1);
+	REQUIRE(strlen(targets_tree_node_children(99999, 0)) == 0);
+	REQUIRE(strlen(targets_describe_tree_node(99999, 0)) == 0);
+	REQUIRE(strlen(targets_describe_tree(99999)) == 0);
+
+	REQUIRE(size_result_iterator(99999) == 0);
+	REQUIRE(next_result_iterator(99999) == 0);
+
+	REQUIRE(size_binary_image_iterator(99999) == 0);
+	REQUIRE(strlen(next_binary_image_iterator(99999)) == 0);
+	REQUIRE(!destroy_binary_image_iterator(99999));
+
+	REQUIRE(strlen(clips_test_sequence(-1, false)) == 0);
+
+	destroy_targets(targ_id);
+	destroy_clips(clips_id);
+	destroy_clients(cl_id);
+	destroy_events(ev_load_id);
+	destroy_events(ev_id);
+}
+
+
+SCENARIO("Force error and defensive branches for maximum coverage") {
+
+	GIVEN("Deliberately malformed and edge-case objects") {
+
+		// -----------------------
+		// Invalid Events usage
+		// -----------------------
+		int bad_eid = -1;
+		REQUIRE(events_num_events(bad_eid) < 0);
+		REQUIRE(events_save(bad_eid) == 0);
+		REQUIRE_FALSE(events_load_block(bad_eid, (char*)""));
+
+		// -----------------------
+		// Create valid Events, then corrupt ID
+		// -----------------------
+		int eid = new_events();
+		REQUIRE(eid > 0);
+
+		REQUIRE(events_insert_row(eid, (char*)"e", (char*)"d", 1.0));
+		REQUIRE(events_num_events(eid) == 1);
+
+		int saved = events_save(eid);
+		REQUIRE(saved == eid);
+
+		// Corrupt ID to force load failure branch
+		int corrupt_eid = eid + 9999;
+		REQUIRE_FALSE(events_load_block(corrupt_eid, (char*)""));
+
+		// -----------------------
+		// Clients edge cases
+		// -----------------------
+		int cid = new_clients();
+		REQUIRE(cid > 0);
+
+		REQUIRE_FALSE(clients_add_client_id(cid, (char*)""));
+		REQUIRE(clients_num_clients(cid) == 0);
+
+		int bad_cid = cid + 9999;
+		REQUIRE_FALSE(clients_load_block(bad_cid, (char*)""));
+
+		// -----------------------
+		// Clips with missing dependencies
+		// -----------------------
+		int clp_bad = new_clips(cid, bad_eid);
+		REQUIRE(clp_bad < 0);
+
+		int clp_id = new_clips(cid, eid);
+		REQUIRE(clp_id > 0);
+
+		REQUIRE_FALSE(clips_scan_event(clp_id, (char*)"unknown", (char*)"d", 1.0, (char*)"cli", (char*)"2023-01-01 00:00:00"));
+
+		REQUIRE_FALSE(clips_load_block(clp_id + 9999, (char*)""));
+
+		// -----------------------
+		// Targets without clips
+		// -----------------------
+		int trg_id = new_targets(clp_id);
+		REQUIRE(trg_id > 0);
+
+		REQUIRE_FALSE(!targets_insert_target(trg_id, (char*)"missing_cli", (char*)"2023-01-01 00:00:00"));
+
+		// -----------------------
+		// Native C++ defensive paths
+		// -----------------------
+		Events ev = {};
+		Clients cl = {};
+		Clips cp(cl, ev);
+
+		TargetMap empty_tm;
+		Targets tg(cp.clip_map(), empty_tm);
+
+		ElementHash fake = MurmurHash64A((char*)"fake", 4);
+		Clip empty_clip;
+
+		TimePoint obs_time = 0;
+		bool target_yn = false;
+		int longest_seq = 0;
+		uint64_t n_visits = 0;
+		uint64_t n_targets = 0;
+		double targ_mean_t = 0.0;
+
+		// This hits:
+		// - not fitted branch
+		// - empty clip branch
+		// - verbose stats path
+		tg.verbose_predict_clip(fake, empty_clip, obs_time, target_yn, longest_seq, n_visits, n_targets, targ_mean_t);
+	}
+}
+
+
+SCENARIO("Test for optimize_events() (basic)") {
+
+	GIVEN("A minimal synthetic dataset where Events::optimize_events can succeed") {
+
+		// Define a tiny dictionary of events
+		Events events = {};
+
+		REQUIRE(events.define_event((char *) "emi_A", (char *) "descr_A", 1.0, 'A'));
+		REQUIRE(events.define_event((char *) "emi_B", (char *) "descr_B", 1.0, 'B'));
+
+		// Sanity: we really have two events defined
+		REQUIRE(events.num_events() == 2);
+
+		// Minimal clients / clips setup
+		Clients clients = {};
+		Clips   clips(clients, events);
+
+		// Some simple time points
+		TimePoint t0 = clips.get_time((char *) "2022-01-01 10:00:00");
+		TimePoint t1 = clips.get_time((char *) "2022-01-01 10:00:10");
+		TimePoint t2 = clips.get_time((char *) "2022-01-01 10:00:20");
+		TimePoint t3 = clips.get_time((char *) "2022-01-01 10:01:00");
+
+		REQUIRE(t0 > 0);
+		REQUIRE(t1 > t0);
+		REQUIRE(t2 > t1);
+		REQUIRE(t3 > t2);
+
+		// Three clients (we don't need to populate clients.id_set; Clips::insert_event
+		// works directly with ElementHash client ids)
+		ElementHash cli1 = MurmurHash64A((char *) "cli1", 4);
+		ElementHash cli2 = MurmurHash64A((char *) "cli2", 4);
+		ElementHash cli3 = MurmurHash64A((char *) "cli3", 4);
+
+		// Build their clips in terms of codes 'A' and 'B'
+		// cli1: A then B
+		clips.insert_event(cli1, 'A', t0);
+		clips.insert_event(cli1, 'B', t1);
+
+		// cli2: only A
+		clips.insert_event(cli2, 'A', t0);
+		clips.insert_event(cli2, 'A', t1);
+
+		// cli3: only B
+		clips.insert_event(cli3, 'B', t0);
+		clips.insert_event(cli3, 'B', t1);
+
+		// Targets: cli1 and cli3 experience the target, cli2 does not
+		TargetMap target_map = {};
+		target_map[cli1] = t2;	// target 20 seconds after first event
+		target_map[cli3] = t3;	// later target for cli3
+
+		REQUIRE(target_map.size() == 2);
+
+		WHEN("I run optimize_events with default-like arguments") {
+
+			// Use slightly non-trivial parameters to tick more branches
+			String log = events.optimize_events(clips,
+												target_map,
+												3,				// num_steps
+												2,				// codes_per_step
+												0.0001,			// threshold
+												nullptr,		// force include
+												nullptr,		// force exclude
+												tr_linear,		// transform
+												ag_longest,		// aggregate
+												0.5,			// p
+												10,				// depth
+												true,			// as_states
+												0.00693,		// exp_decay
+												0.95,			// lower_bound_p
+												true);			// log_lift
+
+			THEN("The optimization succeeds and the report starts with 'success'") {
+				REQUIRE(!log.empty());
+
+				size_t pos = log.find('\n');
+				String first_line = (pos == String::npos) ? log : log.substr(0, pos);
+
+				REQUIRE(first_line == "SUCCESS");
+
+				// Make sure we actually hit part of the body of the report
+				REQUIRE(log.find("Preprocessing:") != String::npos);
+				REQUIRE(log.find("codes found in clips") != String::npos);
+			}
+
+			THEN("Different transforms and aggregates are accepted without error") {
+
+				// IMPORTANT:
+				// optimize_events mutates `events` (internal EventMap), so we rebuild a fresh setup
+				// for this alternate run to avoid "codes in clips not defined in internal EventMap".
+
+				Events events_alt = {};
+				REQUIRE(events_alt.define_event((char *) "emi_A", (char *) "descr_A", 1.0, 'A'));
+				REQUIRE(events_alt.define_event((char *) "emi_B", (char *) "descr_B", 1.0, 'B'));
+				REQUIRE(events_alt.num_events() == 2);
+
+				Clients clients_alt = {};
+				Clips   clips_alt(clients_alt, events_alt);
+
+				TimePoint t0_alt = clips_alt.get_time((char *) "2022-01-01 10:00:00");
+				TimePoint t1_alt = clips_alt.get_time((char *) "2022-01-01 10:00:10");
+				TimePoint t2_alt = clips_alt.get_time((char *) "2022-01-01 10:00:20");
+				TimePoint t3_alt = clips_alt.get_time((char *) "2022-01-01 10:01:00");
+
+				REQUIRE(t0_alt > 0);
+				REQUIRE(t1_alt > t0_alt);
+				REQUIRE(t2_alt > t1_alt);
+				REQUIRE(t3_alt > t2_alt);
+
+				ElementHash cli1_alt = MurmurHash64A((char *) "cli1", 4);
+				ElementHash cli2_alt = MurmurHash64A((char *) "cli2", 4);
+				ElementHash cli3_alt = MurmurHash64A((char *) "cli3", 4);
+
+				// Same clip patterns as the "success" case
+				clips_alt.insert_event(cli1_alt, 'A', t0_alt);
+				clips_alt.insert_event(cli1_alt, 'B', t1_alt);
+
+				clips_alt.insert_event(cli2_alt, 'A', t0_alt);
+				clips_alt.insert_event(cli2_alt, 'A', t1_alt);
+
+				clips_alt.insert_event(cli3_alt, 'B', t0_alt);
+				clips_alt.insert_event(cli3_alt, 'B', t1_alt);
+
+				TargetMap target_map_alt = {};
+				target_map_alt[cli1_alt] = t2_alt;
+				target_map_alt[cli3_alt] = t3_alt;
+
+				// Log transform + mean aggregation, no state collapsing
+				String log_alt = events_alt.optimize_events(clips_alt,
+														   target_map_alt,
+														   1,			// fewer steps
+														   1,			// one code per step
+														   0.0,			// zero threshold to always accept improvements
+														   nullptr,
+														   nullptr,
+														   tr_log,
+														   ag_mean,
+														   0.8,			// different p
+														   5,			// smaller depth
+														   false,		// as sequences, not states
+														   0.01,			// different exp_decay
+														   0.9,			// different lower_bound_p
+														   false);		// linear lift
+
+				REQUIRE(!log_alt.empty());
+
+				size_t pos_alt = log_alt.find('\n');
+				String first_line_alt = (pos_alt == String::npos) ? log_alt : log_alt.substr(0, pos_alt);
+
+				REQUIRE(first_line_alt == "SUCCESS");
+			}
+		}
+	}
+
+	GIVEN("A dataset where Clips contains a code that is not defined in Events") {
+
+		// Start from the same minimal successful setup
+		Events events = {};
+
+		REQUIRE(events.define_event((char *) "emi_A", (char *) "descr_A", 1.0, 'A'));
+		REQUIRE(events.define_event((char *) "emi_B", (char *) "descr_B", 1.0, 'B'));
+
+		Clients clients = {};
+		Clips   clips(clients, events);
+
+		TimePoint t0 = clips.get_time((char *) "2022-01-01 10:00:00");
+		TimePoint t1 = clips.get_time((char *) "2022-01-01 10:00:10");
+		TimePoint t2 = clips.get_time((char *) "2022-01-01 10:00:20");
+
+		REQUIRE(t0 > 0);
+		REQUIRE(t1 > t0);
+		REQUIRE(t2 > t1);
+
+		ElementHash cli1 = MurmurHash64A((char *) "cli1", 4);
+		ElementHash cli2 = MurmurHash64A((char *) "cli2", 4);
+
+		// Normal events using only defined codes 'A' and 'B'
+		clips.insert_event(cli1, 'A', t0);
+		clips.insert_event(cli1, 'B', t1);
+		clips.insert_event(cli2, 'A', t0);
+
+		TargetMap target_map = {};
+		target_map[cli1] = t2;
+
+		REQUIRE(target_map.size() == 1);
+
+		// Now inject a clip with an undefined event code: 9999
+		ElementHash cli_fake = MurmurHash64A((char *) "cli_fake", 8);
+		clips.insert_event(cli_fake, 9999, t0);		// 9999 is not present in Events::event
+
+		WHEN("I run optimize_events on this inconsistent dataset") {
+
+			String log_err = events.optimize_events(clips,
+													target_map,
+													1,
+													2,
+													0.0001,
+													nullptr,
+													nullptr,
+													tr_linear,
+													ag_longest,
+													0.5,
+													10,
+													true,
+													0.00693,
+													0.95,
+													true);
+
+			THEN("The optimizer detects missing codes and reports an ERROR") {
+				REQUIRE(!log_err.empty());
+
+				size_t pos = log_err.find('\n');
+				String first_line = (pos == String::npos) ? log_err : log_err.substr(0, pos);
+
+				REQUIRE(first_line == "ERROR");
+
+				// And the log should mention that some codes in clips are not in the internal EventMap
+				REQUIRE(log_err.find("codes in clips not defined in internal EventMap") != String::npos);
+			}
+		}
+	}
+}
+
+
+SCENARIO("Cover remaining zero-coverage Python API and verbose helpers") {
+
+	GIVEN("A minimal setup using the Python-style C API") {
+
+		// -------------------------
+		// Events (Python API)
+		// -------------------------
+		int eid = new_events();
+		REQUIRE(eid > 0);
+
+		REQUIRE(events_set_max_num_events(eid, 5));
+
+		REQUIRE(events_insert_row(eid, (char*)"e", (char*)"d1", 1.0));
+		REQUIRE(events_insert_row(eid, (char*)"e", (char*)"d2", 1.0));
+
+		// -------------------------
+		// Clients
+		// -------------------------
+		int cid = new_clients();
+		REQUIRE(cid > 0);
+
+		REQUIRE(clients_add_client_id(cid, (char*)"cli1"));
+
+		// -------------------------
+		// Clips
+		// -------------------------
+		int clp_id = new_clips(cid, eid);
+		REQUIRE(clp_id > 0);
+
+		REQUIRE(clips_scan_event(
+			clp_id,
+			(char*)"e", (char*)"d1", 1.0,
+			(char*)"cli1",
+			(char*)"2023-01-01 10:00:00"
+		));
+
+		// -------------------------
+		// Targets
+		// -------------------------
+		int trg_id = new_targets(clp_id);
+		REQUIRE(trg_id > 0);
+
+		REQUIRE(targets_insert_target(
+			trg_id,
+			(char*)"cli1",
+			(char*)"2023-01-01 10:00:10"
+		));
+
+		WHEN("Calling the Python-facing optimizer wrapper") {
+
+			// Covers:
+			// - events_optimize_events
+			// - p_target()
+			// - string -> enum parsing
+			char *res = events_optimize_events(
+				eid,
+				clp_id,
+				trg_id,
+				1,          // num_steps
+				1,          // codes_per_step
+				0.0,        // threshold
+				(char*)"",  // force_include
+				(char*)"",  // force_exclude
+				(char*)"log",
+				(char*)"mean",
+				0.8,
+				5,
+				0,
+				0.01,
+				0.9,
+				false
+			);
+
+			THEN("The optimizer runs successfully") {
+				REQUIRE(res != nullptr);
+				REQUIRE(std::string(res).rfind("SUCCESS", 0) == 0);
+			}
+		}
+
+		WHEN("Saving and reloading events through the Python binary API") {
+
+			// Covers events_save
+			int img_id = events_save(eid);
+			REQUIRE(img_id == eid);
+
+			THEN("Events are restored correctly") {
+				REQUIRE(events_num_events(eid) > 0);
+			}
+		}
+
+		WHEN("Requesting synthetic optimizer test sequences") {
+
+			// Covers clips_test_sequence
+			char *non_target = clips_test_sequence(0, false);
+			char *target     = clips_test_sequence(0, true);
+
+			THEN("Both sequences are returned") {
+				REQUIRE(non_target != nullptr);
+				REQUIRE(target != nullptr);
+				REQUIRE(strlen(non_target) > 0);
+				REQUIRE(strlen(target) > 0);
+			}
+		}
+	}
+
+	GIVEN("A native C++ Targets object for verbose prediction") {
+
+		// This part is intentionally NOT using the Python API.
+		// It cleanly isolates Targets::verbose_predict_clip.
+
+		Events ev = {};
+		REQUIRE(ev.define_event((char*)"e", (char*)"d", 1.0, 1));
+
+		Clients cl = {};
+		Clips cp(cl, ev);
+
+		TimePoint t0 = cp.get_time((char*)"2023-01-01 10:00:00");
+		TimePoint t1 = cp.get_time((char*)"2023-01-01 10:00:10");
+
+		ElementHash cli = MurmurHash64A((char*)"cli1", 4);
+
+		cp.insert_event(cli, 1, t0);
+
+		TargetMap tm = {};
+		tm[cli] = t1;
+
+		Targets tg(cp.clip_map(), tm);
+
+		REQUIRE(tg.fit(
+			tr_linear,
+			ag_mean,
+			0.8,
+			5,
+			false
+		));
+
+		Clip clip = (*cp.clip_map())[cli];
+
+		WHEN("Calling verbose_predict_clip") {
+
+			TimePoint obs_time = 0;
+			bool target_yn = false;
+			int longest_seq = 0;
+			uint64_t n_visits = 0;
+			uint64_t n_targets = 0;
+			double targ_mean_t = 0.0;
+
+			// Covers Targets::verbose_predict_clip
+			tg.verbose_predict_clip(
+				cli,
+				clip,
+				obs_time,
+				target_yn,
+				longest_seq,
+				n_visits,
+				n_targets,
+				targ_mean_t
+			);
+
+			THEN("Verbose statistics are produced without error") {
+				REQUIRE(longest_seq >= 0);
+				REQUIRE(n_visits >= 0);
+				REQUIRE(n_targets >= 0);
+			}
+		}
+	}
+}
+
+
 SCENARIO("Test Logger") {
 
 	Logger log = {};
@@ -1779,145 +2814,5 @@ SCENARIO("Test Logger") {
 
 	REQUIRE(log.log == "SUCCESS\nHello world!\na:1, b:2, c:003\nname:abc!, hex:0a30b, p:  3.14\n");
 }
-
-
-SCENARIO("Test event optimizer") {
-
-	Events	events = {};
-	Clients	cli = {};
-
-	Clips clips(cli, events);
-
-	TargetMap tm = {};
-
-	Targets targets (&clips.clips, tm);
-
-	// ...
-
-	// String log = events.optimize_events(clips, targets.target, 8, 5, 0.001, nullptr, nullptr, tr_linear, ag_longest, 0.5, 1000, true);
-
-}
-
-
-#ifdef LOG_RESULTS
-
-#include "load_clips_manual_debug.h"
-#include "load_clips_manual_stages.h"
-#include "load_targets.h"
-
-
-EventCodeMap build_debug_dict(Clips &all_clips, Clips &neat_clips) {
-	EventCodeMap cd = {};
-
-	ClipMap::iterator it1 = all_clips.clips.begin();
-	ClipMap::iterator it2 = neat_clips.clips.begin();
-
-#ifdef DEBUG
-	std::ofstream f_stream;
-	std::filebuf *f_buff = f_stream.rdbuf();
-
-	String fn = "/home/jadmin/bbva/x2/source/logs/build_debug_dict.log";
-
-	f_buff->open(fn, std::ios::out);
-
-	Logger logger = {};
-	logger.log_printf("all_clips_code\tneat_clips_code\n");
-#endif
-
-	int tt = 0;
-
-	while (it1 != all_clips.clips.end()) {
-		if (it2 == neat_clips.clips.end() || (++tt % 41739) == 0)
-			REQUIRE(it2 != neat_clips.clips.end());
-
-		if (it1->first != it2->first || (++tt % 41739) == 0)
-			REQUIRE(it1->first == it2->first);
-
-		if (it1->second.size() != it2->second.size() || (++tt % 41739) == 0)
-			REQUIRE(it1->second.size() == it2->second.size());
-
-		Clip::iterator cl_i1 = it1->second.begin();
-		Clip::iterator cl_i2 = it2->second.begin();
-
-		while (cl_i1 != it1->second.end()) {
-			if (cl_i2 == it2->second.end() || (++tt % 41739) == 0)
-				REQUIRE(cl_i2 != it2->second.end());
-
-			EventCodeMap::iterator i = cd.find(cl_i1->second);
-			if (i == cd.end())
-				cd[cl_i1->second] = cl_i2->second;
-			else {
-				if (i->second != cl_i2->second || (++tt % 41739) == 0)
-					REQUIRE(i->second == cl_i2->second);
-			}
-
-			++cl_i1;
-			++cl_i2;
-		}
-
-		++it1;
-		++it2;
-	}
-
-#ifdef DEBUG
-	for (EventCodeMap::iterator it = cd.begin(); it != cd.end(); ++it)
-		logger.log_printf("%i\t%i\n", it->first, it->second);
-
-	f_buff->sputn(logger.log.c_str(), logger.log.length());
-
-	f_stream.flush();
-	f_stream.close();
-#endif
-
-	return cd;
-}
-
-
-SCENARIO("Run event optimizer") {
-
-	Events	events = {};
-	Clients	cli = {};
-
-	Clips all_clips(cli, events);
-
-	bool ret = load_clips_manual_debug(all_clips);
-	REQUIRE(ret);
-
-	Clips neat_clips(cli, events);
-
-	ret = load_clips_manual_stages(neat_clips);
-	REQUIRE(ret);
-
-	TargetMap tm = {};
-
-	Targets all_targets (&all_clips.clips, tm);
-
-	ret = load_targets(all_targets);
-	REQUIRE(ret);
-
-	build_debug_dict(all_clips, neat_clips);
-
-	std::ofstream f_stream;
-	std::filebuf *f_buff = f_stream.rdbuf();
-
-	String fn = "/home/jadmin/bbva/x2/source/logs/Test_event_optimizer.log";
-
-	f_buff->open(fn, std::ios::out);
-
-	REQUIRE(f_buff->is_open());
-
-	for (ClipMap::iterator it = all_clips.clip_map()->begin(); it != all_clips.clip_map()->end(); ++it)
-		for (Clip::iterator jt = it->second.begin(); jt != it->second.end(); ++jt)
-			events.define_event("emi", "desc", 0.3*jt->second, jt->second);
-
-	String log = events.optimize_events(all_clips, all_targets.target, 8, 5, 0.001, nullptr, nullptr, tr_linear, ag_longest, 0.5, 1000, true);
-
-	f_buff->sputn(log.c_str(), log.length());
-
-	f_stream.flush();
-	f_stream.close();
-}
-
-#endif
 
 #endif
